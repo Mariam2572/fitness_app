@@ -1,5 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
-
 class Validator {
   static String? validateEmail(String? val) {
     final RegExp emailRegex = RegExp(
