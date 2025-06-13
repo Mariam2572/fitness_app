@@ -59,6 +59,7 @@ dependencies:
   image_dot_indicator: ^0.0.9
   image_picker: ^1.0.7
   injectable: ^2.5.0
+  intl: any
   json_annotation: ^4.9.0
   logger: ^2.4.0
   lottie: ^3.3.1
