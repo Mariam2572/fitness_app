@@ -7,7 +7,7 @@ class RoutesGenerator {
     switch (settings.name) {
       case RoutesName.onBoarding:
         return MaterialPageRoute(
-          builder: (context) => Onboarding(),
+          builder: (context) => const Onboarding(),
           settings: settings,
         );
       default:
