@@ -15,7 +15,7 @@ abstract class DioModule {
   @Singleton()
   Dio provideDio(
     LogInterceptor logInterceptor,
-    SecureStorageService secureStorageService,
+     
   ) {
     final dio = Dio(
       BaseOptions(
@@ -27,7 +27,7 @@ abstract class DioModule {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = await secureStorageService.readSecureData(
+          final token = await readSecureData(
             Constants.userToken,
           );
           log("token : $token");
@@ -45,8 +45,5 @@ abstract class DioModule {
     return dio;
   }
 
-  @Singleton()
-  ApiService provideApiService(Dio dio) {
-    return ApiService(dio);
-  }
+  
 }
