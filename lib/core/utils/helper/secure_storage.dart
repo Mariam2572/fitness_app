@@ -1,9 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:injectable/injectable.dart';
 
-@singleton
-class SecureStorageService {
-  final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
+
+  const FlutterSecureStorage secureStorage = FlutterSecureStorage();
   Future<void> writeSecureData(String key, String value) async {
     await secureStorage.write(key: key, value: value);
   }
@@ -12,4 +10,4 @@ class SecureStorageService {
     final String? value = await secureStorage.read(key: key);
     return value;
   }
-}
+

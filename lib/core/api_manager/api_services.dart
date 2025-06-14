@@ -8,7 +8,7 @@ part 'api_services.g.dart';
 
 @RestApi(baseUrl: Constants.baseUrl)
 abstract class ApiService {
-  factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
+  factory ApiService(Dio dio,) = _ApiService;
   @POST(Constants.registerEndPoint)
   Future<RegisterResponse> register(@Body() RegisterRequest registerRequest);
 }

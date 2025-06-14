@@ -25,7 +25,6 @@ import '../../features/auth/register/domain/use_cases/register_use_case.dart'
 import '../api_manager/api_manager.dart' as _i266;
 import '../api_manager/api_services.dart' as _i785;
 import '../api_manager/dio_module.dart' as _i591;
-import '../utils/helper/secure_storage.dart' as _i410;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -43,16 +42,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i369.RegisterRepo>(() => _i566.RegisterRepoImpl());
     gh.factory<_i992.RegisterDataSource>(() => _i932.RegisterDataSourceImpl());
     gh.singleton<_i361.Dio>(
-      () => dioModule.provideDio(
-        gh<_i361.LogInterceptor>(),
-        gh<_i410.SecureStorageService>(),
-      ),
-    );
-    gh.singleton<_i266.ApiManager>(
-      () => _i266.ApiManager(dio: gh<_i361.Dio>()),
-    );
-    gh.singleton<_i785.ApiService>(
-      () => dioModule.provideApiService(gh<_i361.Dio>()),
+      () => dioModule.provideDio(gh<_i361.LogInterceptor>()),
     );
     return this;
   }
