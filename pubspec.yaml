@@ -113,7 +113,8 @@ flutter:
   fonts:
     - family: BalooThambi2
       fonts:
-        - asset: assets/fonts/static/BalooThambi2-Medium.ttf
+        # - asset: assets/fonts/static/BalooThambi2-Medium.ttf
+        - asset: assets/fonts/BalooThambi2-Medium.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -54,17 +54,17 @@ class GlassEffectScreen extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Email',
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(color: Colors.white),
                           prefixIcon: Image.asset(AppAssets.mail),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 20),
                       TextField(
                         decoration: InputDecoration(
                           suffixIcon: Image.asset(AppAssets.user, height: 30),
                         ),
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
