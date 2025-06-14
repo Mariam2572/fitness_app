@@ -1,0 +1,11 @@
+{
+    "hey_there": "Hey there!",
+    "welcom_back": "Welcome back!",
+    "login": "Login",
+    "register": "Register",
+    "create_account": "Create an account",
+    "email": "Email",
+    "password": "Password",
+    "forgot_password": "Forgot password?"
+    
+}
