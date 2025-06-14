@@ -12,8 +12,10 @@ Future<ApiResult<T>> apiExecuter<T>(
   } catch (e) {
     if (e is DioException) {
       return ApiError(failure: ServerFailure.fromDioException(e));
-    } else {
+    } else  {
       return ApiError(failure: ServerFailure(errorMessage: e.toString()));
+    
     }
+
   }
 }
