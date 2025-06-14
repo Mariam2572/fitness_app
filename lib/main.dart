@@ -1,5 +1,4 @@
 import 'package:fitness_app/core/provider/app_config_provider.dart';
-import 'package:fitness_app/core/utils/responsive/screen_size_service.dart';
 import 'package:fitness_app/core/utils/routes/routes_generator.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/simple_bloc_observer.dart';
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSizeService.init(context);
     var provider = Provider.of<AppConfigProvider>(context);
     return MaterialApp(
       locale: Locale(provider.appLanguage),
