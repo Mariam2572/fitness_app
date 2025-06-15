@@ -1,89 +1,40 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
-import 'package:fitness_app/core/utils/theme/app_assets.dart';
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
+
 import 'package:flutter/material.dart';
 
-class GlassEffectScreen extends StatelessWidget {
-  const GlassEffectScreen({super.key});
+import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/theme/app_assets.dart';
+import 'package:fitness_app/core/utils/theme/app_colors.dart';
+
+class SharedContainer extends StatelessWidget {
+  List<Widget> children;
+   SharedContainer({
+    Key? key,
+  required  this.children,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          // خلفية الصورة
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/Property 1=Default.png', // غيّري دي حسب الخلفية بتاعتك
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          // طبقة الـ glass effect
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(25),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                child: Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.6,
-                  padding: const EdgeInsets.all(24),
-                  decoration: BoxDecoration(
-                    color: AppColors.neutral80.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(50),
-                    // border: Border.all(color: Colors.white.withOpacity(0.2)),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(height: 20),
-                      const TextField(style: TextStyle(color: Colors.white)),
-                      const SizedBox(height: 20),
-                      const TextField(style: TextStyle(color: Colors.white)),
-                      const SizedBox(height: 20),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Email',
-                          labelStyle: TextStyle(color: Colors.white),
-                          prefixIcon: Image.asset(AppAssets.mail),
-                        ),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      const SizedBox(height: 20),
-                      TextField(
-                        decoration: InputDecoration(
-                          suffixIcon: Image.asset(AppAssets.user, height: 30),
-                        ),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Login'),
-                      ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        child: const Text('Sign Up'),
-                      ),
-                      const SizedBox(height: 20),
-                    ],
+    return 
+      Container(
+                padding:  const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 24,
+                ),
+                width: double.infinity,
+                height: context.height * 0.6,
+                decoration: BoxDecoration(
+                  color: AppColors.neutral90.withOpacity(.01),
+                  borderRadius: BorderRadius.circular(25.0),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 22.6, sigmaY: 22.6),
+                  child:  Column(
+                    children: children
                   ),
                 ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+              );
+}
 }

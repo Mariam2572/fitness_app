@@ -6,5 +6,8 @@
     "create_account": "إنشاء حساب",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
-    "forgot_password": "نسيت كلمة المرور؟"    
+    "forgot_password": "نسيت كلمة المرور؟",
+    "first_name": "الاسم الأول",
+    "last_name": "الاسم الأخير"   ,
+    "already_have_account": "هل لديك حساب بالفعل؟" 
 }

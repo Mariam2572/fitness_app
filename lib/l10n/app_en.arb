@@ -1,11 +1,14 @@
 {
-    "hey_there": "Hey there!",
-    "welcom_back": "Welcome back!",
+    "hey_there": "Hey There",
+    "welcom_back": "WELCOME BACK",
     "login": "Login",
     "register": "Register",
-    "create_account": "Create an account",
+    "create_account": "CREATE AN ACCOUNT",
     "email": "Email",
     "password": "Password",
-    "forgot_password": "Forgot password?"
+    "forgot_password": "Forgot password?",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "already_have_account": "Already Have An Account?"
     
 }

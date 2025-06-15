@@ -12,22 +12,78 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       ),
     ),
-     textTheme: TextTheme(
-    displayLarge: GoogleFonts.balooThambi2(fontSize: 32, fontWeight: FontWeight.normal), // textStyle32
-    displayMedium: GoogleFonts.balooThambi2(fontSize: 30, fontWeight: FontWeight.normal), // textStyle30
-    displaySmall: GoogleFonts.balooThambi2(fontSize: 28, fontWeight: FontWeight.normal), // textStyle28
-    headlineMedium: GoogleFonts.balooThambi2(fontSize: 24, fontWeight: FontWeight.normal), // textStyle24
-    headlineSmall: GoogleFonts.balooThambi2(fontSize: 22, fontWeight: FontWeight.normal), // textStyle22
-    titleLarge: GoogleFonts.balooThambi2(fontSize: 20, fontWeight: FontWeight.normal), // textStyle20
-    titleMedium: GoogleFonts.balooThambi2(fontSize: 19, fontWeight: FontWeight.normal), // textStyle19
-    titleSmall: GoogleFonts.balooThambi2(fontSize: 18, fontWeight: FontWeight.normal), // textStyle18
-    bodyLarge: GoogleFonts.balooThambi2(fontSize: 16, fontWeight: FontWeight.normal), // textStyle16
-    bodyMedium: GoogleFonts.balooThambi2(fontSize: 14, fontWeight: FontWeight.normal), // textStyle14
-    bodySmall: GoogleFonts.balooThambi2(fontSize: 12, fontWeight: FontWeight.normal), // textStyle12
-    labelLarge: GoogleFonts.balooThambi2(fontSize: 11, fontWeight: FontWeight.normal), // textStyle11
-    labelMedium: GoogleFonts.balooThambi2(fontSize: 10, fontWeight: FontWeight.normal), // textStyle10
-    labelSmall: GoogleFonts.balooThambi2(fontSize: 20, fontWeight: FontWeight.w400),    // textStyle20Fell
-  ),
+    textTheme: TextTheme(
+      displayLarge: GoogleFonts.balooThambi2(
+        fontSize: 32,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle32
+      displayMedium: GoogleFonts.balooThambi2(
+        fontSize: 30,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle30
+      displaySmall: GoogleFonts.balooThambi2(
+        fontSize: 28,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle28
+      headlineMedium: GoogleFonts.balooThambi2(
+        fontSize: 24,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle24
+      headlineSmall: GoogleFonts.balooThambi2(
+        fontSize: 22,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle22
+      titleLarge: GoogleFonts.balooThambi2(
+        fontSize: 20,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle20
+      titleMedium: GoogleFonts.balooThambi2(
+        fontSize: 19,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle19
+      titleSmall: GoogleFonts.balooThambi2(
+        fontSize: 18,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle18
+      bodyLarge: GoogleFonts.balooThambi2(
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle16
+      bodyMedium: GoogleFonts.balooThambi2(
+        fontSize: 14,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle14
+      bodySmall: GoogleFonts.balooThambi2(
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle12
+      labelLarge: GoogleFonts.balooThambi2(
+        fontSize: 11,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle11
+      labelMedium: GoogleFonts.balooThambi2(
+        fontSize: 10,
+        fontWeight: FontWeight.normal,
+        color: AppColors.baseWhite,
+      ), // textStyle10
+      labelSmall: GoogleFonts.balooThambi2(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: AppColors.baseWhite,
+      ), // textStyle20Fell
+    ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: const Color(0xFFD9D9D9),
@@ -38,8 +94,14 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Colors.transparent,
-      contentPadding: const EdgeInsets.only(),
-      labelStyle: const TextStyle(color: AppColors.neutral5, fontSize: 16),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 5,
+      ),
+      labelStyle:  TextStyle(color: AppColors.neutral5,
+       fontSize: 12,
+       fontWeight: FontWeight.w400,
+       fontFamily: GoogleFonts.balooThambi2().fontFamily),
       suffixIconColor: AppColors.neutral5,
       border: OutlineInputBorder(
         // gapPadding: 3,

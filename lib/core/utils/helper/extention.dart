@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
+extension LocalizationHelper on BuildContext {
+  AppLocalizations get loc => AppLocalizations.of(this)!;
+}
+extension TextThemeHelper on BuildContext {
+  TextTheme get textTheme => Theme.of(this).textTheme;
+}
 extension MediaQueryHelper on BuildContext {
   double get height => MediaQuery.of(this).size.height;
   double get width => MediaQuery.of(this).size.width;
@@ -15,7 +24,4 @@ extension TextScaleFactorHelper on BuildContext {
 }
 extension ViewInsetsHelper on BuildContext {
   EdgeInsets get viewInsets => MediaQuery.of(this).viewInsets;
-}
-extension TextThemeHelper on BuildContext {
-  TextTheme get textTheme => Theme.of(this).textTheme;
 }
