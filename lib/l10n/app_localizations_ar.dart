@@ -9,19 +9,19 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get hey_there => 'مرحبا بك!';
+  String get heyThere => 'مرحباً!';
 
   @override
-  String get welcom_back => 'مرحبًا بعودتك!';
+  String get welcomeBack => 'مرحباً بعودتك!';
 
   @override
   String get login => 'تسجيل الدخول';
 
   @override
-  String get register => 'تسجيل حساب';
+  String get register => 'تسجيل';
 
   @override
-  String get create_account => 'إنشاء حساب';
+  String get createAccount => 'إنشاء حساب';
 
   @override
   String get email => 'البريد الإلكتروني';
@@ -30,5 +30,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password => 'كلمة المرور';
 
   @override
-  String get forgot_password => 'نسيت كلمة المرور؟';
+  String get forgotPassword => 'نسيت كلمة المرور؟';
+
+  @override
+  String get tellUsAboutYourSelf => 'أخبرنا عن نفسك!';
+
+  @override
+  String get weNeedToKnowYourGender => 'نحتاج أن نعرف جنسك';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get howOldAreYou => 'كم عمرك؟';
+
+  @override
+  String get thisHelpsUsCreateYourPersonalizedPlan =>
+      'هذا يساعدنا في إنشاء خطتك الشخصية';
+
+  @override
+  String get whatIsYourWeight => 'ما هو وزنك؟';
+
+  @override
+  String get whatIsYourHeight => 'ما هو طولك؟';
+
+  @override
+  String get pleaseSelectYourGender => 'الرجاء تحديد الجنس';
 }

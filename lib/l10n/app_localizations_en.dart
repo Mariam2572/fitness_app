@@ -9,10 +9,10 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get hey_there => 'Hey there!';
+  String get heyThere => 'Hey there!';
 
   @override
-  String get welcom_back => 'Welcome back!';
+  String get welcomeBack => 'Welcome back!';
 
   @override
   String get login => 'Login';
@@ -21,7 +21,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register => 'Register';
 
   @override
-  String get create_account => 'Create an account';
+  String get createAccount => 'Create an account';
 
   @override
   String get email => 'Email';
@@ -30,5 +30,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'Password';
 
   @override
-  String get forgot_password => 'Forgot password?';
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get tellUsAboutYourSelf => 'Tell us about yourself!';
+
+  @override
+  String get weNeedToKnowYourGender => 'We Need To Know Your Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get howOldAreYou => 'How old are you?';
+
+  @override
+  String get thisHelpsUsCreateYourPersonalizedPlan =>
+      'This helps us create your personalized plan';
+
+  @override
+  String get whatIsYourWeight => 'What is your weight?';
+
+  @override
+  String get whatIsYourHeight => 'What is your height?';
+
+  @override
+  String get pleaseSelectYourGender => 'Please select your gender';
 }

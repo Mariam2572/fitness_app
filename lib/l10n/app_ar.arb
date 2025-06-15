@@ -1,10 +1,20 @@
 {
-    "hey_there": "مرحبا بك!",
-    "welcom_back": "مرحبًا بعودتك!",
-    "login": "تسجيل الدخول",
-    "register": "تسجيل حساب",
-    "create_account": "إنشاء حساب",
-    "email": "البريد الإلكتروني",
-    "password": "كلمة المرور",
-    "forgot_password": "نسيت كلمة المرور؟"    
+  "heyThere": "مرحباً!",
+  "welcomeBack": "مرحباً بعودتك!",
+  "login": "تسجيل الدخول",
+  "register": "تسجيل",
+  "createAccount": "إنشاء حساب",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "tellUsAboutYourSelf": "أخبرنا عن نفسك!",
+  "weNeedToKnowYourGender": "نحتاج أن نعرف جنسك",
+  "male": "ذكر",
+  "female": "أنثى",
+  "next": "التالي",
+  "howOldAreYou": "كم عمرك؟",
+  "thisHelpsUsCreateYourPersonalizedPlan": "هذا يساعدنا في إنشاء خطتك الشخصية",
+  "whatIsYourWeight": "ما هو وزنك؟",
+  "whatIsYourHeight": "ما هو طولك؟",
+  "pleaseSelectYourGender": "الرجاء تحديد الجنس"
 }

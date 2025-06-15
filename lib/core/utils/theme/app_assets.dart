@@ -9,4 +9,6 @@ class AppAssets {
   static const String defaultImage = 'assets/images/Property 1=Default.png';
   static const String chatRobot = 'assets/images/chat robot.svg';
   static const String user = 'assets/images/user.png';
+  static const String backIcon = "assets/images/Back.svg";
+  static const String authBackGround = 'assets/images/auth_background.png';
 }
