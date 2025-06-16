@@ -62,4 +62,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseSelectYourGender => 'Please select your gender';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get kg => 'kg';
+
+  @override
+  String get cm => 'CM';
 }

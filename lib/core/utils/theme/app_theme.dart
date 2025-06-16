@@ -29,7 +29,11 @@ class AppTheme {
     bodySmall: GoogleFonts.balooThambi2(fontSize: 12, fontWeight: FontWeight.normal), // textStyle12
     labelLarge: GoogleFonts.balooThambi2(fontSize: 11, fontWeight: FontWeight.normal), // textStyle11
     labelMedium: GoogleFonts.balooThambi2(fontSize: 10, fontWeight: FontWeight.normal), // textStyle10
-    labelSmall: GoogleFonts.balooThambi2(fontSize: 20, fontWeight: FontWeight.w400),    // textStyle20Fell
+    labelSmall: GoogleFonts.balooThambi2(fontSize: 20, fontWeight: FontWeight.w400),  
+    headlineLarge: GoogleFonts.balooThambi2(fontSize: 44, fontWeight: FontWeight.normal),
+    
+     
+    
   ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(

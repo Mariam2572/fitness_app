@@ -16,5 +16,8 @@
   "thisHelpsUsCreateYourPersonalizedPlan": "هذا يساعدنا في إنشاء خطتك الشخصية",
   "whatIsYourWeight": "ما هو وزنك؟",
   "whatIsYourHeight": "ما هو طولك؟",
-  "pleaseSelectYourGender": "الرجاء تحديد الجنس"
+  "pleaseSelectYourGender": "الرجاء تحديد الجنس",
+  "year" : "سنة",  
+  "kg" : "كجم",  
+  "cm" : "سم"  
 }

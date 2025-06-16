@@ -16,5 +16,8 @@
   "thisHelpsUsCreateYourPersonalizedPlan": "This helps us create your personalized plan",
   "whatIsYourWeight": "What is your weight?",
   "whatIsYourHeight": "What is your height?",
-  "pleaseSelectYourGender" :"Please select your gender"
+  "pleaseSelectYourGender" :"Please select your gender",
+  "year" : "Year",
+  "kg" : "kg",
+  "cm" : "CM"
 }

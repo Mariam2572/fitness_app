@@ -11,4 +11,7 @@ class AppAssets {
   static const String user = 'assets/images/user.png';
   static const String backIcon = "assets/images/Back.svg";
   static const String authBackGround = 'assets/images/auth_background.png';
+  static const String femaleIcon = 'assets/images/female_icon.png';
+  static const String maleIcon = 'assets/images/male_icon.png';
+  static const String arrowUp = "assets/images/arrow_up.svg";
 }

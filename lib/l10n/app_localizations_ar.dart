@@ -62,4 +62,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pleaseSelectYourGender => 'الرجاء تحديد الجنس';
+
+  @override
+  String get year => 'سنة';
+
+  @override
+  String get kg => 'كجم';
+
+  @override
+  String get cm => 'سم';
 }
