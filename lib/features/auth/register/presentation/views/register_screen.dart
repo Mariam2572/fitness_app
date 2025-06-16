@@ -12,7 +12,6 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RegisterCubit cubit = RegisterCubit();
     return Stack(
       children: [
         Image.asset(
@@ -37,7 +36,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   context.loc.hey_there,
                   style: context.textTheme.titleSmall?.copyWith(
@@ -127,17 +126,18 @@ class RegisterScreen extends StatelessWidget {
                   responsiveHeight(context, 0.05),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text(context.loc.register,
+                    child: Text(
+                      context.loc.register,
                       style: context.textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w900,
                       ),
                     ),
                   ),
                   responsiveHeight(context, 0.02),
-                  const AlreadyHaveAccountSection(),  
+                  const AlreadyHaveAccountSection(),
                 ],
               ),
-              
+
               // Add your registration form here
             ],
           ),
