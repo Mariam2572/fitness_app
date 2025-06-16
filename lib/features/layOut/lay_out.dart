@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fitness_app/l10n/features/home/home_view.dart';
-import 'package:fitness_app/l10n/features/profile/profile_view.dart';
-import 'package:fitness_app/l10n/features/smartCoach/smart_coach_view.dart';
-import 'package:fitness_app/l10n/features/workOuts/work_outs_view.dart';
+import 'package:fitness_app/features/home/home_view.dart';
+import 'package:fitness_app/features/profile/profile_view.dart';
+import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
+import 'package:fitness_app/features/workOuts/work_outs_view.dart';
 
 class LayOut extends StatefulWidget {
   const LayOut({super.key});
