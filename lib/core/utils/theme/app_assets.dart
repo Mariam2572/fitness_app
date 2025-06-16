@@ -10,4 +10,5 @@ class AppAssets {
   static const String chatRobot = 'assets/images/chat robot.svg';
   static const String user = 'assets/images/user.png';
   static const String authBackground = 'assets/images/auth_background.png';
+  static const String eyes = "assets/images/eye.png";
 }

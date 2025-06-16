@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/provider/app_config_provider.dart';
 import 'package:fitness_app/core/utils/routes/routes_generator.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
@@ -8,13 +9,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppConfigProvider(),
       child: const MyApp(),
     ),
   );
+   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
 }
 
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerator,
       theme: AppTheme.appTheme,
-      initialRoute: RoutesName.onBoarding,
+      initialRoute: RoutesName.register,
     );
   }
 }

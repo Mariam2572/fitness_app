@@ -8,6 +8,7 @@ class Onboarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlassEffectScreen();
+    return Container();
+    //  GlassEffectScreen();
   }
 }

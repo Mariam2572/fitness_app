@@ -6,6 +6,7 @@
     "create_account": "CREATE AN ACCOUNT",
     "email": "Email",
     "password": "Password",
+    "confirm_password": "Confirm Password",
     "forgot_password": "Forgot password?",
     "first_name": "First Name",
     "last_name": "Last Name",
