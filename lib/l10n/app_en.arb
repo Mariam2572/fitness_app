@@ -6,6 +6,9 @@
     "create_account": "Create an account",
     "email": "Email",
     "password": "Password",
-    "forgot_password": "Forgot password?"
-    
+    "forgot_password": "Forgot password?",
+    "home": "Home",
+    "smartChat": "Smart Chat",
+    "workOuts": "Work Outs",
+    "profile": "Profile"
 }

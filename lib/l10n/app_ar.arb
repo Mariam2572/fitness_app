@@ -6,5 +6,9 @@
     "create_account": "إنشاء حساب",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
-    "forgot_password": "نسيت كلمة المرور؟"    
+    "forgot_password": "نسيت كلمة المرور؟",
+    "home": "الرئيسية",
+    "smartChat": "الدردشة الذكية",
+    "workOuts": "التمارين",
+    "profile": "الملف الشخصي"
 }
