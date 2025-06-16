@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:fitness_app/core/base/api_result.dart';
+import 'package:fitness_app/core/utils/Error/error_handler.dart';
 import 'package:fitness_app/core/utils/enums/gender.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
@@ -68,5 +69,27 @@ void main() {
         verify(registerUseCase.invoke(registerRequest)).called(1);
       },
     );
+  blocTest<RegisterCubit, RegisterState>(
+    'When call doIntent with RegisterUserIntent, it should call registerUseCase and return ApiError and emits RegisterLoading and then RegisterFailure',
+    build: () {
+      final expectedResponse = ApiError<RegisterResponse>(
+        failure: ServerFailure(errorMessage: 'Registration failed'),
+      );
+      provideDummy<ApiResult<RegisterResponse>>(expectedResponse);
+      when(registerUseCase.invoke(registerRequest))
+          .thenAnswer((_) async => expectedResponse);
+      return registerCubit;
+    },
+    act: (bloc) => bloc.doIntent(
+      RegisterUserIntent(request: registerRequest),
+    ),
+    expect: () => [
+      RegisterLoading(),
+      RegisterFailure('Registration failed'),
+    ],
+    verify: (bloc) {
+      verify(registerUseCase.invoke(registerRequest)).called(1);
+    },
+  );
   });
 }
