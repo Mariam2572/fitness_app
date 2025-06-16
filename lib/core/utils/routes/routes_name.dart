@@ -8,4 +8,7 @@ class RoutesName {
   static const String about = '/about';
   static const String contactUs = '/contactUs';
   static const String faq = '/faq';
+  static const String layOut = '/layOut';
+  static const String smartCoach = '/smartCoach';
+  static const String workouts = '/workouts';
 }
