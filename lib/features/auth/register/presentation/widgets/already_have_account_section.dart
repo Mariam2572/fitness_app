@@ -15,10 +15,7 @@ class AlreadyHaveAccountSection extends StatelessWidget {
       children: [
         Text(
           context.loc.already_have_account,
-          style: text.bodyMedium!.copyWith(
-            
-            fontWeight: FontWeight.w500,
-          ),
+          style: text.bodyMedium!.copyWith(fontWeight: FontWeight.w500),
         ),
         TextButton(
           onPressed: () {
