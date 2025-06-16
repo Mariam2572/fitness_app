@@ -23,7 +23,7 @@ class SharedContainer extends StatelessWidget {
                   vertical: 24,
                 ),
                 width: double.infinity,
-                height: context.height * 0.6,
+                height: context.height * 0.7,
                 decoration: BoxDecoration(
                   color: AppColors.neutral90.withOpacity(.01),
                   borderRadius: BorderRadius.circular(25.0),
@@ -31,8 +31,10 @@ class SharedContainer extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 22.6, sigmaY: 22.6),
-                  child:  Column(
-                    children: children
+                  child:  SingleChildScrollView(
+                    child: Column(
+                      children: children
+                    ),
                   ),
                 ),
               );
