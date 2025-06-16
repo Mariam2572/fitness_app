@@ -10,4 +10,5 @@ class RoutesName {
   static const String faq = '/faq';
   static const String chooseGenderScreen = '/chooseGenderScreen';
   static const String chooseAgeScreen = '/chooseAgeScreen';
+  static const String chooseWeightScreen = '/chooseWeightScreen';
 }

@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
@@ -66,9 +67,7 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                 onChanged: (val) {
                   context.read<RegisterCubit>().age = val;
                   print("aaaaaaage is ${context.read<RegisterCubit>().age}");
-                  setState(() {
-
-                  });
+                  setState(() {});
                 },
               ),
               const SizedBox(height: 16),
@@ -77,7 +76,9 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, RoutesName.chooseWeightScreen);
+                  },
                   child: Text(
                     localization.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
