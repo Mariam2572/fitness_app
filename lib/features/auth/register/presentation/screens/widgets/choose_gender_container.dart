@@ -36,7 +36,7 @@ class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
                   onTap: () {
                     selectedGender = Gender.male.name;
                    RegisterCubit.selectedGender = Gender.male;
-                   print("--------------------${RegisterCubit.selectedGender}");
+                  //  print("--------------------${RegisterCubit.selectedGender}");
                     setState(() {});
                   },
                 ),

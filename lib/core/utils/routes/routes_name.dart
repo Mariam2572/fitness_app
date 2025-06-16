@@ -11,4 +11,5 @@ class RoutesName {
   static const String chooseGenderScreen = '/chooseGenderScreen';
   static const String chooseAgeScreen = '/chooseAgeScreen';
   static const String chooseWeightScreen = '/chooseWeightScreen';
+  static const String chooseHeightScreen = '/chooseHeightScreen';
 }

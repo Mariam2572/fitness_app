@@ -1,6 +1,7 @@
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/onboarding.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,11 @@ class RoutesGenerator {
          case RoutesName.chooseWeightScreen:
         return MaterialPageRoute(
           builder: (context) => const  ChooseWeightScreen(),
+          settings: settings,
+        );
+        case RoutesName.chooseHeightScreen:
+        return MaterialPageRoute(
+          builder: (context) => const  ChooseHeightScreen(),
           settings: settings,
         );
       default:

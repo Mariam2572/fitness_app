@@ -3,18 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class CircularPercentIndicatorWidget extends StatelessWidget {
-  const CircularPercentIndicatorWidget({super.key, required this.percent, required this.achive});
-  final double percent;
-  final String achive;
+  const CircularPercentIndicatorWidget({
+    super.key,
+    
+    required this.currentStep, required this.totalSteps,
+  });
+ 
+  final int totalSteps;
+  final int currentStep;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: CircularPercentIndicator(
         radius: 25,
         lineWidth: 5,
-        percent: percent,
+        percent: currentStep / totalSteps,
         center: Text(
-          achive,
+          '$currentStep/$totalSteps',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AppColors.white,
             fontWeight: FontWeight.w500,

@@ -10,13 +10,14 @@ class ChooseGenderScreenBody extends StatelessWidget {
   const ChooseGenderScreenBody({super.key});
 
   @override
+
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 90),
-        const CircularPercentIndicatorWidget(percent: 0, achive: '1/6'),
+        const CircularPercentIndicatorWidget(currentStep: 1, totalSteps: 6),
         const SizedBox(height: 18),
         Padding(
           padding: const EdgeInsets.only(left: 24),
