@@ -8,4 +8,8 @@ class RoutesName {
   static const String about = '/about';
   static const String contactUs = '/contactUs';
   static const String faq = '/faq';
+  static const String chooseGenderScreen = '/chooseGenderScreen';
+  static const String chooseAgeScreen = '/chooseAgeScreen';
+  static const String chooseWeightScreen = '/chooseWeightScreen';
+  static const String chooseHeightScreen = '/chooseHeightScreen';
 }

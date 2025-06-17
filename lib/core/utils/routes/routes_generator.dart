@@ -1,5 +1,9 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
 import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
@@ -14,7 +18,27 @@ class RoutesGenerator {
     switch (settings.name) {
       case RoutesName.onBoarding:
         return MaterialPageRoute(
-          builder: (context) => const Onboarding(),
+          builder: (context) => const const Onboarding(),
+          settings: settings,
+        );
+        case RoutesName.chooseGenderScreen:
+        return MaterialPageRoute(
+          builder: (context) => const  ChooseGenderScreen(),
+          settings: settings,
+        );
+         case RoutesName.chooseAgeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const  ChooseAgeScreen(),
+          settings: settings,
+        );
+         case RoutesName.chooseWeightScreen:
+        return MaterialPageRoute(
+          builder: (context) => const  ChooseWeightScreen(),
+          settings: settings,
+        );
+        case RoutesName.chooseHeightScreen:
+        return MaterialPageRoute(
+          builder: (context) => const  ChooseHeightScreen(),
           settings: settings,
         );
       case RoutesName.register:

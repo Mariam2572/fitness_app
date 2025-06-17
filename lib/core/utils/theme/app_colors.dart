@@ -3,9 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static const Color success = Color(0xFF00FF00);
+  static const Color error = Color(0xFFFF0000);
   // Red Shades
   static const Color baseWhite = Color(0xFFFFFFFF);
   static const Color mainRed = Color(0xFFFF4100);
+
   static const Color red90 = Color(0xFFFF541A);
   static const Color red80 = Color(0xFFFF7A4D);
   static const Color red70 = Color(0xFFFF8D66);

@@ -18,8 +18,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
   int height = 0;
-  int weiht = 0;
-  int age = 0;
+  int weight = 0;
+  int age = 15;
   String? goal;
   String? activityLevel;
   static Gender selectedGender = Gender.female;

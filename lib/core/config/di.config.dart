@@ -22,7 +22,6 @@ import '../../features/auth/register/domain/repos/data_source/register_data_sour
 import '../../features/auth/register/domain/repos/register_repo.dart' as _i369;
 import '../../features/auth/register/domain/use_cases/register_use_case.dart'
     as _i118;
-import '../api_manager/api_services.dart' as _i785;
 import '../api_manager/dio_module.dart' as _i591;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -34,6 +33,8 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
     gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
+    gh.factory<_i369.RegisterRepo>(() => _i566.RegisterRepoImpl());
+    gh.factory<_i992.RegisterDataSource>(() => _i932.RegisterDataSourceImpl());
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(gh<_i361.LogInterceptor>()),
     );

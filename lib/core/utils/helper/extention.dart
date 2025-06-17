@@ -1,3 +1,4 @@
+import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,6 +14,10 @@ extension MediaQueryHelper on BuildContext {
   double get height => MediaQuery.of(this).size.height;
   double get width => MediaQuery.of(this).size.width;
 }
+extension LocalizationHelper on BuildContext {
+  AppLocalizations get loc => AppLocalizations.of(this)!;
+}
+
 extension PaddingHelper on BuildContext {
   EdgeInsets get padding => MediaQuery.of(this).padding;
 }

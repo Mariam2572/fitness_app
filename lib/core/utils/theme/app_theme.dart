@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData appTheme = ThemeData(
+   
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.mainRed,
@@ -12,6 +13,8 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       ),
     ),
+    
+
     textTheme: TextTheme(
       displayLarge: GoogleFonts.balooThambi2(
         fontSize: 32,
@@ -81,8 +84,12 @@ class AppTheme {
       labelSmall: GoogleFonts.balooThambi2(
         fontSize: 20,
         fontWeight: FontWeight.w400,
+  
         color: AppColors.baseWhite,
-      ), // textStyle20Fell
+      ), headlineLarge: GoogleFonts.balooThambi2(fontSize: 44, fontWeight: FontWeight.normal),
+    
+     
+    
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
