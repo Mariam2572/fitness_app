@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_screen_body.dart';
 
-class RegisterSreen extends StatelessWidget {
+class RegisterScreen extends StatelessWidget {
 
-   RegisterSreen({
+   RegisterScreen({
     Key? key,
   
   }) : super(key: key);

@@ -22,7 +22,7 @@ class RoutesGenerator {
           builder:
               (context) => BlocProvider(
                 create: (context) => RegisterCubit(getIt<RegisterUseCase>()),
-                child: RegisterSreen(),
+                child: RegisterScreen(),
               ),
           settings: settings,
         );

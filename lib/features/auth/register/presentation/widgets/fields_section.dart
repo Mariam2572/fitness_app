@@ -7,14 +7,14 @@ import 'package:fitness_app/features/auth/register/presentation/view_model/cubit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FieldsSection extends StatefulWidget {
-  const FieldsSection({super.key});
+class TextFormFieldsSection extends StatefulWidget {
+  const TextFormFieldsSection({super.key});
 
   @override
-  State<FieldsSection> createState() => _FieldsSectionState();
+  State<TextFormFieldsSection> createState() => _TextFormFieldsSectionState();
 }
 
-class _FieldsSectionState extends State<FieldsSection> {
+class _TextFormFieldsSectionState extends State<TextFormFieldsSection> {
   bool isObscure = true;
   @override
   Widget build(BuildContext context) {
@@ -23,6 +23,7 @@ class _FieldsSectionState extends State<FieldsSection> {
       child: Column(
         children: [
           TextFormField(
+            key: const ValueKey('firstNameField'),
             validator: (value) => Validator.validateName(value),
             controller: context.read<RegisterCubit>().firstNameController,
             decoration: InputDecoration(
@@ -38,6 +39,7 @@ class _FieldsSectionState extends State<FieldsSection> {
           ),
           responsiveHeight(context, 0.02),
           TextFormField(
+            key: const ValueKey('lastNameField'),
             validator: (value) => Validator.validateName(value),
             controller: context.read<RegisterCubit>().lastNameController,
             decoration: InputDecoration(
@@ -53,6 +55,7 @@ class _FieldsSectionState extends State<FieldsSection> {
           ),
           responsiveHeight(context, 0.02),
           TextFormField(
+            key: const ValueKey('emailField'),
             validator: (value) => Validator.validateEmail(value),
             controller: context.read<RegisterCubit>().emailController,
             decoration: InputDecoration(
@@ -68,6 +71,7 @@ class _FieldsSectionState extends State<FieldsSection> {
           ),
           responsiveHeight(context, 0.02),
           TextFormField(
+            key: const ValueKey('passwordField'),
             validator: (value) => Validator.validatePassword(value),
             controller: context.read<RegisterCubit>().passwordController,
             obscureText: isObscure,
@@ -91,6 +95,7 @@ class _FieldsSectionState extends State<FieldsSection> {
           ),
           responsiveHeight(context, 0.02),
           TextFormField(
+            key: const ValueKey('confirmPasswordField'),
             validator:
                 (value) => Validator.validateConfirmPassword(
                   value,

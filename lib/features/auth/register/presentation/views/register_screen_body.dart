@@ -71,7 +71,7 @@ class RegisterScreenBody extends StatelessWidget {
                       ),
                     ),
                     responsiveHeight(context, 0.02),
-                    const FieldsSection(),
+                    const TextFormFieldsSection(),
                     responsiveHeight(context, 0.05),
                     BlocListener<RegisterCubit, RegisterState>(
                       listener: (context, state) {
@@ -95,24 +95,24 @@ class RegisterScreenBody extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           // Trigger the registration process
-                          // final cubit = context.read<RegisterCubit>();
-                          // cubit.doIntent(
-                          //   RegisterUserIntent(
-                          //     request: RegisterRequest(
-                          //       firstName: cubit.firstNameController.text,
-                          //       lastName: cubit.lastNameController.text,
-                          //       email: cubit.emailController.text,
-                          //       password: cubit.passwordController.text,
-                          //       rePassword: cubit.rePasswordController.text,
-                          //       height: 155,
-                          //       weight: 60,
-                          //       age: 24,
-                          //       goal: "cubit.goal",
-                          //       activityLevel: "level2",
-                          //       gender: Gender.male.name,
-                          //     ),
-                          //   ),
-                          // );
+                          final cubit = context.read<RegisterCubit>();
+                          cubit.doIntent(
+                            RegisterUserIntent(
+                              request: RegisterRequest(
+                                firstName: cubit.firstNameController.text,
+                                lastName: cubit.lastNameController.text,
+                                email: cubit.emailController.text,
+                                password: cubit.passwordController.text,
+                                rePassword: cubit.rePasswordController.text,
+                                height: 155,
+                                weight: 60,
+                                age: 24,
+                                goal: "cubit.goal",
+                                activityLevel: "level2",
+                                gender: Gender.male.name,
+                              ),
+                            ),
+                          );
                           //Navigate to complete registration process
                         },
                         child: Text(
