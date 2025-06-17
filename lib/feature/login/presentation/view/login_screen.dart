@@ -1,25 +1,25 @@
+import 'package:fitness_app/core/base/base_state.dart';
+import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:fitness_app/core/utils/validator.dart';
 import 'package:fitness_app/core/utils/widgets/shared_container.dart';
+import 'package:fitness_app/feature/login/data/model/login_request.dart';
+import 'package:fitness_app/feature/login/data/model/login_response/login_response.dart';
+import 'package:fitness_app/feature/login/presentation/view_model/login_cubit.dart';
+import 'package:fitness_app/feature/login/presentation/view_model/login_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Super Fitness Login',
-      home: LoginScreen(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/background.jpg'),
+                image: AssetImage(AppAssets.authBackground),
                 fit: BoxFit.cover,
               ),
             ),
@@ -80,14 +80,51 @@ class LoginScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
 
-                        _buildInputField(Icons.email_outlined, "Email"),
+                        // _buildInputField(Icons.email_outlined, "Email"),
+                        TextFormField(
+                          key: const ValueKey('emailField'),
+                          validator: (value) => Validator.validateEmail(value),
+                          controller:
+                              context.read<LoginCubit>().emailController,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            prefixIcon: Image.asset(
+                              AppAssets.mail,
+                              color: AppColors.neutral5,
+                              width: 20,
+                              height: 15,
+                            ),
+                            prefixIconColor: AppColors.neutral5,
+                          ),
+                        ),
+
+                        TextFormField(
+                          key: const ValueKey('passwordField'),
+                          validator:
+                              (value) => Validator.validatePassword(value),
+                          controller:
+                              context.read<LoginCubit>().passwordController,
+                          obscureText: isObscure,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            suffixIcon: InkWell(
+                              onTap: () {
+                                isObscure = !isObscure;
+                                setState(() {});
+                              },
+                              child: const Icon(Icons.visibility_outlined),
+                            ),
+                            prefixIcon: Image.asset(
+                              AppAssets.lock,
+                              color: AppColors.neutral5,
+                              width: 20,
+                              height: 15,
+                            ),
+                            prefixIconColor: AppColors.neutral5,
+                          ),
+                        ),
                         const SizedBox(height: 8),
 
-                        _buildInputField(
-                          Icons.lock_outline,
-                          "Password",
-                          isPassword: true,
-                        ),
                         const SizedBox(height: 8),
 
                         const Align(
@@ -133,20 +170,52 @@ class LoginScreen extends StatelessWidget {
 
                         SizedBox(
                           width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.mainRed,
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                          child: BlocListener<LoginCubit, LoginState>(
+                            listener: (context, state) {
+                              if (state is LoginSuccess) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Login Successful!'),
+                                    backgroundColor: Colors.green,
+                                  ),
+                                );
+                              }
+                              if (state is LoginFailure) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(state.error),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                              }
+                            },
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.mainRed,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 14,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
                               ),
-                            ),
-                            onPressed: () {},
-                            child: const Text(
-                              "Login",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
+                              onPressed: () {
+                                var cubit = context.read<LoginCubit>();
+                                cubit.doIntent(
+                                  PerformLogin(
+                                    request: LoginRequest(
+                                      email: cubit.emailController.text,
+                                      password: cubit.passwordController.text,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child:  Text(
+                                context.loc.login,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
                           ),
@@ -182,33 +251,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInputField(
-    IconData icon,
-    String hint, {
-    bool isPassword = false,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white30),
-        borderRadius: BorderRadius.circular(32),
-      ),
-      child: TextField(
-        obscureText: isPassword,
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          hintText: hint,
-          hintStyle: const TextStyle(color: Colors.white60),
-          prefixIcon: Icon(icon, color: Colors.white),
-          suffixIcon:
-              isPassword
-                  ? const Icon(Icons.visibility, color: Colors.white)
-                  : null,
-          border: InputBorder.none,
-        ),
-      ),
-    );
-  }
-
+  // Widget _buildInputField(
   Widget _buildSocialIcon(IconData icon) {
     return CircleAvatar(
       radius: 22,

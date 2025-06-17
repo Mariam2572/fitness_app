@@ -77,11 +77,17 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Colors.transparent,
-      contentPadding: const EdgeInsets.only(),
-      labelStyle: const TextStyle(color: AppColors.neutral5, fontSize: 16),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 5,
+      ),
+      labelStyle:  TextStyle(color: AppColors.neutral5,
+       fontSize: 12,
+       fontWeight: FontWeight.w400,
+       fontFamily: GoogleFonts.balooThambi2().fontFamily),
       suffixIconColor: AppColors.neutral5,
       border: OutlineInputBorder(
         // gapPadding: 3,
@@ -101,8 +107,7 @@ class AppTheme {
         borderRadius: BorderRadius.circular(25),
         borderSide: const BorderSide(color: AppColors.neutral5),
       ),
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    ),  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedItemColor: AppColors.mainRed,
       unselectedItemColor: AppColors.neutral5,
       backgroundColor: AppColors.neutral90,

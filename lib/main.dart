@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/provider/app_config_provider.dart';
 import 'package:fitness_app/core/utils/routes/routes_generator.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
@@ -18,6 +19,7 @@ void main() {
     ),
   );
   Bloc.observer = SimpleBlocObserver();
+  configureDependencies();
 }
 
 class MyApp extends StatelessWidget {

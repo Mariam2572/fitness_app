@@ -37,6 +37,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(gh<_i361.LogInterceptor>()),
     );
+    gh.singleton<_i785.ApiService>(
+      () => dioModule.provideApiService(gh<_i361.Dio>()),
+    );
     gh.factory<_i693.LoginRemoteDataSource>(
       () => _i69.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
     );

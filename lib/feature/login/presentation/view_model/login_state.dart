@@ -3,20 +3,25 @@ import 'package:equatable/equatable.dart';
 import 'package:fitness_app/core/base/base_state.dart';
 import 'package:fitness_app/feature/login/data/model/login_response.dart';
 
-class LoginState extends Equatable {
-  final BaseState<LoginResponse>? loginState;
-  LoginResponse? loginResponse;
-  LoginState({this.loginState, this.loginResponse});
-  LoginState copyWith({
-    BaseState<LoginResponse>? loginState,
-    LoginResponse? loginResponse,
-  }) {
-    return LoginState(
-      loginState: loginState ?? this.loginState,
-      loginResponse: loginResponse ?? this.loginResponse,
-    );
-  }
+
+sealed class LoginState extends Equatable {
+  const LoginState();
 
   @override
-  List<Object?> get props => [loginState, loginResponse];
+  List<Object> get props => [];
+}
+
+final class LoginInitial extends LoginState {}
+final class LoginLoading extends LoginState {}
+final class LoginSuccess extends LoginState {
+  final LoginResponse response;
+  const LoginSuccess(this.response);
+  @override
+  List<Object> get props => [response];
+}
+final class LoginFailure extends LoginState {
+  final String error;
+  const LoginFailure(this.error);
+  @override
+  List<Object> get props => [error];
 }
