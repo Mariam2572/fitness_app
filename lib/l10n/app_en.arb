@@ -1,14 +1,21 @@
 {
-    "hey_there": "Hey There",
-    "welcom_back": "WELCOME BACK",
-    "login": "Login",
-    "register": "Register",
-    "create_account": "CREATE AN ACCOUNT",
-    "email": "Email",
-    "password": "Password",
-    "forgot_password": "Forgot password?",
-    "first_name": "First Name",
-    "last_name": "Last Name",
-    "already_have_account": "Already Have An Account?"
-    
+  "hey_there": "Hey There",
+  "welcom_back": "WELCOME BACK",
+  "login": "Login",
+  "register": "Register",
+  "create_account": "CREATE AN ACCOUNT",
+  "email": "Email",
+  "password": "Password",
+  "forgot_password": "Forgot password?",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "already_have_account": "Already Have An Account?",
+  "your_regular": "YOUR REGULAR PHYSICAL",
+  "activity_level": "ACTIVITY LEVEL?",
+  "rookie": "Rookie",
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advance": "Advance",
+  "true_beast": "True Beast",
+  "next": "Next"
 }

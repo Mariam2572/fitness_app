@@ -1,5 +1,6 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper/sized_box_helper.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/shared_container.dart';
@@ -15,7 +16,7 @@ class RegisterScreen extends StatelessWidget {
     return Stack(
       children: [
         Image.asset(
-          AppAssets.authBackground,
+          "assets/images/background.png",
           fit: BoxFit.cover,
           height: double.infinity,
           width: double.infinity,
@@ -125,7 +126,9 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   responsiveHeight(context, 0.05),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, RoutesName.goals);
+                    },
                     child: Text(
                       context.loc.register,
                       style: context.textTheme.bodyLarge?.copyWith(
