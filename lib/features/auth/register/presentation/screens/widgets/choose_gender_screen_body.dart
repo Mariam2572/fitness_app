@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/choose_gender_container.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
@@ -12,7 +13,7 @@ class ChooseGenderScreenBody extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
-    final localization = AppLocalizations.of(context)!;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,7 +23,7 @@ class ChooseGenderScreenBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 24),
           child: Text(
-            localization.tellUsAboutYourSelf,
+            context.loc.tellUsAboutYourSelf,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
               color: AppColors.white,
               fontWeight: FontWeight.w800,
@@ -32,7 +33,7 @@ class ChooseGenderScreenBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 24),
           child: Text(
-            localization.weNeedToKnowYourGender,
+            context.loc.weNeedToKnowYourGender,
             style: Theme.of(
               context,
             ).textTheme.titleSmall?.copyWith(color: AppColors.white),
