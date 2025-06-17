@@ -36,7 +36,6 @@ class LoginScreen extends StatelessWidget {
           ),
           Container(color: Colors.black.withOpacity(0.6)),
 
-          // Foreground content
           SafeArea(
             child: Center(
               child: SingleChildScrollView(
@@ -44,11 +43,8 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Logo
                     Image.asset('assets/images/logo.png', height: 80),
                     const SizedBox(height: 40),
-
-                    // Welcome Text
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Column(
@@ -72,7 +68,6 @@ class LoginScreen extends StatelessWidget {
 
                     const SizedBox(height: 30),
 
-                    // Login Title
                     SharedContainer(
                       children: [
                         const Text(
@@ -85,11 +80,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
 
-                        // Email
                         _buildInputField(Icons.email_outlined, "Email"),
                         const SizedBox(height: 8),
 
-                        // Password
                         _buildInputField(
                           Icons.lock_outline,
                           "Password",
@@ -97,7 +90,6 @@ class LoginScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
 
-                        // Forget Password
                         const Align(
                           alignment: Alignment.centerRight,
                           child: Text(
@@ -111,7 +103,6 @@ class LoginScreen extends StatelessWidget {
 
                         const SizedBox(height: 24),
 
-                        // OR divider
                         const Row(
                           children: [
                             Expanded(child: Divider(color: Colors.white)),
@@ -127,7 +118,6 @@ class LoginScreen extends StatelessWidget {
                         ),
 
                         const SizedBox(height: 24),
-                        // Social icons
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -141,7 +131,6 @@ class LoginScreen extends StatelessWidget {
 
                         const SizedBox(height: 24),
 
-                        // Login Button
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
@@ -165,7 +154,6 @@ class LoginScreen extends StatelessWidget {
 
                         const SizedBox(height: 20),
 
-                        // Register Link
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
