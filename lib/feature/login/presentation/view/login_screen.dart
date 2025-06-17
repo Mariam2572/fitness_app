@@ -1,11 +1,9 @@
-import 'package:fitness_app/core/base/base_state.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/validator.dart';
 import 'package:fitness_app/core/utils/widgets/shared_container.dart';
 import 'package:fitness_app/feature/login/data/model/login_request.dart';
-import 'package:fitness_app/feature/login/data/model/login_response/login_response.dart';
 import 'package:fitness_app/feature/login/presentation/view_model/login_cubit.dart';
 import 'package:fitness_app/feature/login/presentation/view_model/login_state.dart';
 import 'package:flutter/material.dart';
