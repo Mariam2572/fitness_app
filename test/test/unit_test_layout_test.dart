@@ -1,10 +1,10 @@
-import 'package:fitness_app/features/layOut/lay_out.dart';
+import 'package:fitness_app/feature/layOut/lay_out.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fitness_app/features/home/home_view.dart';
-import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
-import 'package:fitness_app/features/workOuts/work_outs_view.dart';
-import 'package:fitness_app/features/profile/profile_view.dart';
+import 'package:fitness_app/feature/home/home_view.dart';
+import 'package:fitness_app/feature/smartCoach/smart_coach_view.dart';
+import 'package:fitness_app/feature/workOuts/work_outs_view.dart';
+import 'package:fitness_app/feature/profile/profile_view.dart';
 
 void main() {
   testWidgets('LayOut navigation works correctly', (WidgetTester tester) async {

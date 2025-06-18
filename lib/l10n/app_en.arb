@@ -1,18 +1,20 @@
 {
     "hey_there": "Hey there!",
     "welcom_back": "Welcome back!",
-    "login": "Login",
     "register": "Register",
-    "create_account": "Create an account",
+    "create_account": "Create Account",
+    "forgot_password": "Forgot Password?",
+    "heyThere": "Hey There",
+    "welcomeBack": "WELCOME BACK",
+    "login": "Login",
     "email": "Email",
     "password": "Password",
-    "forgot_password": "Forgot password?",
+    "forgetPassword": "Forget Password?",
     "home": "Home",
     "smartChat": "Smart Chat",
-    "workOuts": "Work Outs",
+    "workOuts": "Workouts",
     "profile": "Profile",
-    "forgetPassword": "Forget Password ?",
-    "dontHaveAccount": "Don't have an account yet ? Register",
+    "dontHaveAccount": "Don't have an account yet? Register",
     "disciplineQuote": "the price of excellence \n is discipline",
     "onboardingText1": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
     "next": "Next",
@@ -21,5 +23,5 @@
     "back": "Back",
     "noMoreExcuses": "NO MORE EXCUSES \n Do It Now",
     "onboardingText3": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
-    "doIt": "Do IT"
+    "doIt": "Do It"
 }

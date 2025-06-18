@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
@@ -86,11 +87,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           validator: (value) => Validator.validateEmail(value),
                           controller:
                               context.read<LoginCubit>().emailController,
-                          style: TextStyle(color: AppColors.baseWhite),
+                          style: const TextStyle(color: AppColors.baseWhite),
 
                           decoration: InputDecoration(
                             labelText: 'Email',
-                            hintStyle: TextStyle(color: Colors.white),
+                            hintStyle: const TextStyle(color: Colors.white),
                             prefixIcon: Image.asset(
                               AppAssets.mail,
                               color: AppColors.neutral5,
@@ -109,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller:
                               context.read<LoginCubit>().passwordController,
 
-                          style: TextStyle(color: AppColors.baseWhite),
+                          style: const TextStyle(color: AppColors.baseWhite),
                           obscureText: isObscure,
                           decoration: InputDecoration(
                             labelText: 'Password',
@@ -204,6 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               onPressed: () {
+                                Navigator.pushNamed(context, RoutesName.layOut);
                                 var cubit = context.read<LoginCubit>();
                                 cubit.doIntent(
                                   PerformLogin(
