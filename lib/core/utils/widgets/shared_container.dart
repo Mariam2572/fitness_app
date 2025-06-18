@@ -14,7 +14,7 @@ class SharedContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       width: double.infinity,
-      height: context.height * 0.7,
+      height: context.height * 0.6,
       decoration: BoxDecoration(
         color: AppColors.neutral90.withOpacity(.01),
         borderRadius: BorderRadius.circular(25.0),

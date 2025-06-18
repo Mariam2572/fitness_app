@@ -1,6 +1,7 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/core/utils/validator.dart';
 import 'package:fitness_app/core/utils/widgets/shared_container.dart';
 import 'package:fitness_app/feature/login/data/model/login_request.dart';
@@ -8,6 +9,7 @@ import 'package:fitness_app/feature/login/presentation/view_model/login_cubit.da
 import 'package:fitness_app/feature/login/presentation/view_model/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -64,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
 
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 16),
 
                     SharedContainer(
                       children: [
@@ -84,8 +86,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           validator: (value) => Validator.validateEmail(value),
                           controller:
                               context.read<LoginCubit>().emailController,
+                          style: TextStyle(color: AppColors.baseWhite),
+
                           decoration: InputDecoration(
                             labelText: 'Email',
+                            hintStyle: TextStyle(color: Colors.white),
                             prefixIcon: Image.asset(
                               AppAssets.mail,
                               color: AppColors.neutral5,
@@ -95,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             prefixIconColor: AppColors.neutral5,
                           ),
                         ),
+                        const SizedBox(height: 16),
 
                         TextFormField(
                           key: const ValueKey('passwordField'),
@@ -102,6 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               (value) => Validator.validatePassword(value),
                           controller:
                               context.read<LoginCubit>().passwordController,
+
+                          style: TextStyle(color: AppColors.baseWhite),
                           obscureText: isObscure,
                           decoration: InputDecoration(
                             labelText: 'Password',
@@ -121,8 +129,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             prefixIconColor: AppColors.neutral5,
                           ),
                         ),
-                        const SizedBox(height: 8),
-
                         const SizedBox(height: 8),
 
                         const Align(
@@ -152,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
 
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 32),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -208,18 +214,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 );
                               },
-                              child:  Text(
-                                context.loc.login,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
+                              child: Text(
+                                "login",
+
+                                style: AppTextStyle.instance.textStyle14
+                                    .copyWith(
+                                      color: AppColors.baseWhite,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                               ),
                             ),
                           ),
                         ),
 
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 8),
 
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
