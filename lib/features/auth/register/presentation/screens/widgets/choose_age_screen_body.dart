@@ -3,6 +3,7 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/number_picker_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
@@ -19,15 +20,13 @@ class ChooseAgeScreenBody extends StatefulWidget {
 }
 
 class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
-
   @override
   Widget build(BuildContext context) {
-    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 133),
-       const  CircularPercentIndicatorWidget(currentStep: 2, totalSteps: 6),
+        const CircularPercentIndicatorWidget(currentStep: 2, totalSteps: 6),
         const SizedBox(height: 18),
         Padding(
           padding: const EdgeInsets.only(left: 24),
@@ -78,8 +77,9 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, RoutesName.chooseWeightScreen);
-                  },
+                    Navigator.pushNamed(context, 
+                    RoutesName.chooseWeightScreen, );
+                        },
                   child: Text(
                     context.loc.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(

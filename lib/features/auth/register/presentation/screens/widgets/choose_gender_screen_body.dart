@@ -4,7 +4,7 @@ import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/choose_gender_container.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
-import 'package:fitness_app/l10n/app_localizations.dart';
+
 import 'package:flutter/material.dart';
 
 class ChooseGenderScreenBody extends StatelessWidget {

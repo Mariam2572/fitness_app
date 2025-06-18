@@ -11,7 +11,6 @@
   "weNeedToKnowYourGender": "We Need To Know Your Gender",
   "male": "Male",
   "female": "Female",
-  "next": "Next",
   "howOldAreYou": "How old are you?",
   "thisHelpsUsCreateYourPersonalizedPlan": "This helps us create your personalized plan",
   "whatIsYourWeight": "What is your weight?",
@@ -33,5 +32,4 @@
   "advance": "Advance",
   "true_beast": "True Beast",
   "next": "Next"
-    
 }

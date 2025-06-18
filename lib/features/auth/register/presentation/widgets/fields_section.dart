@@ -27,7 +27,7 @@ class _TextFormFieldsSectionState extends State<TextFormFieldsSection> {
             validator: (value) => Validator.validateName(value),
             controller: context.read<RegisterCubit>().firstNameController,
             decoration: InputDecoration(
-              labelText: "context.loc.first_name",
+              labelText: context.loc.first_name,
               prefixIcon: Image.asset(
                 AppAssets.user,
                 color: AppColors.neutral5,
@@ -43,7 +43,7 @@ class _TextFormFieldsSectionState extends State<TextFormFieldsSection> {
             validator: (value) => Validator.validateName(value),
             controller: context.read<RegisterCubit>().lastNameController,
             decoration: InputDecoration(
-              labelText: "context.loc.last_name",
+              labelText: context.loc.last_name,
               prefixIcon: Image.asset(
                 AppAssets.user,
                 color: AppColors.neutral5,
@@ -111,7 +111,7 @@ class _TextFormFieldsSectionState extends State<TextFormFieldsSection> {
                 },
                 child: Image.asset(AppAssets.eyes),
               ),
-              labelText: "context.loc.confirm_password",
+              labelText: context.loc.confirm_password,
               prefixIcon: Image.asset(
                 AppAssets.lock,
                 color: AppColors.neutral5,

@@ -4,12 +4,10 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-
 import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/register_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GoalsScreen extends StatefulWidget {
   const GoalsScreen({super.key});
@@ -31,16 +29,13 @@ class _GoalsScreenState extends State<GoalsScreen> {
               fit: BoxFit.cover,
             ),
           ),
-
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7), // adjust as needed
             child: Container(
               color: Colors.black.withOpacity(0), // Transparent layer
             ),
           ),
-
           Container(color: Colors.black.withOpacity(0.3)),
-
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(24),
@@ -112,92 +107,91 @@ class _GoalsScreenState extends State<GoalsScreen> {
                             color: AppColors.neutral80.withOpacity(0.5),
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          child: Column(
-                            children: [
-                              GoalOptionItem(
-                                label: 'Gain Weight',
-                                selectedValue: selectedGoal,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedGoal = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'Lose Weight',
-                                selectedValue: selectedGoal,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedGoal = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'Get Fitter',
-                                selectedValue: selectedGoal,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedGoal = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'Gain More Flexible',
-                                selectedValue: selectedGoal,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedGoal = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'Learn The Basic',
-                                selectedValue: selectedGoal,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedGoal = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  context.read<RegisterCubit>().goal =
-                                      selectedGoal;
-                                  Navigator.pushNamed(
-                                    context,
-                                    RoutesName.activities,
-                                  );
-                                },
-                                child: Text(
-                                  'Next',
-                                  style: AppTextStyle.instance.textStyle14
-                                      .copyWith(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w800,
-                                      ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                GoalOptionItem(
+                                  label: 'Gain Weight',
+                                  selectedValue: selectedGoal,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedGoal = value!;
+                                    });
+                                  },
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'Lose Weight',
+                                  selectedValue: selectedGoal,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedGoal = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'Get Fitter',
+                                  selectedValue: selectedGoal,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedGoal = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'Gain More Flexible',
+                                  selectedValue: selectedGoal,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedGoal = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'Learn The Basic',
+                                  selectedValue: selectedGoal,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedGoal = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    context.read<RegisterCubit>().goal =
+                                        selectedGoal;
+                                    Navigator.pushNamed(context, RoutesName.activities);
+                                  },
+                                  child: Text(
+                                    'Next',
+                                    style: AppTextStyle.instance.textStyle14
+                                        .copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

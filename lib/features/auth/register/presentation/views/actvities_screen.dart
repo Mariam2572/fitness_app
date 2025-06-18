@@ -85,101 +85,130 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                             color: AppColors.neutral80.withOpacity(0.5),
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          child: Column(
-                            children: [
-                              GoalOptionItem(
-                                label: 'Rookie',
-                                selectedValue: selectedActivity,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedActivity = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'Beginner',
-                                selectedValue: selectedActivity,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedActivity = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'Intermediate',
-                                selectedValue: selectedActivity,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedActivity = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'Advance',
-                                selectedValue: selectedActivity,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedActivity = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              GoalOptionItem(
-                                label: 'True Beast',
-                                selectedValue: selectedActivity,
-                                onChanged: (value) {
-                                  setState(() {
-                                    selectedActivity = value!;
-                                  });
-                                },
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  final cubit = context.read<RegisterCubit>();
-
-                                  final request = RegisterRequest(
-                                    firstName: cubit.firstNameController.text,
-                                    lastName: cubit.lastNameController.text,
-                                    email: cubit.emailController.text,
-                                    password: cubit.passwordController.text,
-                                    height: cubit.height,
-                                    weight: cubit.weiht,
-                                    age: cubit.age,
-                                    goal: cubit.goal,
-                                    activityLevel: cubit.activityLevel,
-                                    gender: "Male",
-                                  );
-
-                                  cubit.doIntent(
-                                    RegisterUserIntent(request: request),
-                                  );
-                                  // Navigator.pushNamed(
-                                  //   context,
-                                  //   RoutesName.activities,
-                                  // );
-                                },
-                                child: const Text('Next'),
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                GoalOptionItem(
+                                  label: 'Rookie',
+                                  selectedValue: selectedActivity,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedActivity = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'Beginner',
+                                  selectedValue: selectedActivity,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedActivity = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'intermediate',
+                                  selectedValue: selectedActivity,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedActivity = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'Advance',
+                                  selectedValue: selectedActivity,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedActivity = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                GoalOptionItem(
+                                  label: 'True Beast',
+                                  selectedValue: selectedActivity,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedActivity = value!;
+                                    });
+                                  },
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                BlocListener<RegisterCubit, RegisterState>(
+                                  listener: (context, state) {
+                                    if (state is RegisterSuccess) {
+                                      ScaffoldMessenger.of(
+                                        context,
+                                      ).showSnackBar(
+                                        const SnackBar(
+                                          content: Text(
+                                            'Registration Successful!',
+                                          ),
+                                          backgroundColor: Colors.green,
+                                        ),
+                                      );
+                                    }
+                                    if (state is RegisterFailure) {
+                                      ScaffoldMessenger.of(
+                                        context,
+                                      ).showSnackBar(
+                                        SnackBar(
+                                          content: Text(state.error),
+                                          backgroundColor: Colors.red,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                        context.read<RegisterCubit>().activityLevel =
+                                        selectedActivity;
+                                      final cubit =
+                                          context.read<RegisterCubit>();
+                                      final request = RegisterRequest(
+                                        firstName:
+                                        cubit.firstNameController.text,
+                                        lastName: cubit.lastNameController.text,
+                                        email: cubit.emailController.text,
+                                        password: cubit.passwordController.text,
+                                        rePassword: cubit.rePasswordController.text,
+                                        height: cubit.height,
+                                        weight: cubit.weight,
+                                        age: cubit.age,
+                                        goal: cubit.goal,
+                                        activityLevel: cubit.activityLevel,
+                                        gender:
+                                            RegisterCubit.selectedGender.name,
+                                      );
+                                      cubit.doIntent(
+                                        RegisterUserIntent(request: request),
+                                      );
+                                      print(request.toJson());
+                                    },
+                                    child: const Text('Next'),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
