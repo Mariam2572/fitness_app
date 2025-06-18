@@ -34,8 +34,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> _register(RegisterUserIntent intent) async {
-    
-    
       emit(RegisterLoading());
       final response = await _registerUseCase.invoke(intent.request);
       switch (response) {
