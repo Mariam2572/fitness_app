@@ -98,17 +98,17 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @hey_there.
+  /// No description provided for @heyThere.
   ///
   /// In en, this message translates to:
   /// **'Hey there!'**
-  String get hey_there;
+  String get heyThere;
 
-  /// No description provided for @welcom_back.
+  /// No description provided for @welcomeBack.
   ///
   /// In en, this message translates to:
   /// **'Welcome back!'**
-  String get welcom_back;
+  String get welcomeBack;
 
   /// No description provided for @login.
   ///
@@ -122,11 +122,11 @@ abstract class AppLocalizations {
   /// **'Register'**
   String get register;
 
-  /// No description provided for @create_account.
+  /// No description provided for @createAccount.
   ///
   /// In en, this message translates to:
   /// **'Create an account'**
-  String get create_account;
+  String get createAccount;
 
   /// No description provided for @email.
   ///
@@ -140,11 +140,161 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get password;
 
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgotPassword;
+
+  /// No description provided for @tellUsAboutYourSelf.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about yourself!'**
+  String get tellUsAboutYourSelf;
+
+  /// No description provided for @weNeedToKnowYourGender.
+  ///
+  /// In en, this message translates to:
+  /// **'We Need To Know Your Gender'**
+  String get weNeedToKnowYourGender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @howOldAreYou.
+  ///
+  /// In en, this message translates to:
+  /// **'How old are you?'**
+  String get howOldAreYou;
+
+  /// No description provided for @thisHelpsUsCreateYourPersonalizedPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'This helps us create your personalized plan'**
+  String get thisHelpsUsCreateYourPersonalizedPlan;
+
+  /// No description provided for @whatIsYourWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'What is your weight?'**
+  String get whatIsYourWeight;
+
+  /// No description provided for @whatIsYourHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'What is your height?'**
+  String get whatIsYourHeight;
+
+  /// No description provided for @pleaseSelectYourGender.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select your gender'**
+  String get pleaseSelectYourGender;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// No description provided for @kg.
+  ///
+  /// In en, this message translates to:
+  /// **'kg'**
+  String get kg;
+
+  /// No description provided for @cm.
+  ///
+  /// In en, this message translates to:
+  /// **'CM'**
+  String get cm;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
   /// No description provided for @forgot_password.
   ///
   /// In en, this message translates to:
   /// **'Forgot password?'**
   String get forgot_password;
+
+  /// No description provided for @first_name.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get first_name;
+
+  /// No description provided for @last_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get last_name;
+
+  /// No description provided for @already_have_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have An Account?'**
+  String get already_have_account;
+
+  /// No description provided for @your_regular.
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR REGULAR PHYSICAL'**
+  String get your_regular;
+
+  /// No description provided for @activity_level.
+  ///
+  /// In en, this message translates to:
+  /// **'ACTIVITY LEVEL?'**
+  String get activity_level;
+
+  /// No description provided for @rookie.
+  ///
+  /// In en, this message translates to:
+  /// **'Rookie'**
+  String get rookie;
+
+  /// No description provided for @beginner.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get beginner;
+
+  /// No description provided for @intermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get intermediate;
+
+  /// No description provided for @advance.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance'**
+  String get advance;
+
+  /// No description provided for @true_beast.
+  ///
+  /// In en, this message translates to:
+  /// **'True Beast'**
+  String get true_beast;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
 }
 
 class _AppLocalizationsDelegate

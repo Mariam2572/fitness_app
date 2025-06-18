@@ -9,26 +9,114 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get hey_there => 'Hey there!';
+  String get heyThere => 'مرحباً!';
 
   @override
-  String get welcom_back => 'Welcome back!';
+  String get welcomeBack => 'مرحباً بعودتك!';
 
   @override
-  String get login => 'Login';
+  String get login => 'تسجيل الدخول';
 
   @override
-  String get register => 'Register';
+  String get register => 'تسجيل';
 
   @override
-  String get create_account => 'Create an account';
+  String get createAccount => 'إنشاء حساب';
 
   @override
-  String get email => 'Email';
+  String get email => 'البريد الإلكتروني';
 
   @override
-  String get password => 'Password';
+  String get password => 'كلمة المرور';
 
   @override
-  String get forgot_password => 'Forgot password?';
+  String get forgotPassword => 'نسيت كلمة المرور؟';
+
+  @override
+  String get tellUsAboutYourSelf => 'أخبرنا عن نفسك!';
+
+  @override
+  String get weNeedToKnowYourGender => 'نحتاج أن نعرف جنسك';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get howOldAreYou => 'كم عمرك؟';
+
+  @override
+  String get thisHelpsUsCreateYourPersonalizedPlan =>
+      'هذا يساعدنا في إنشاء خطتك الشخصية';
+
+  @override
+  String get whatIsYourWeight => 'ما هو وزنك؟';
+
+  @override
+  String get whatIsYourHeight => 'ما هو طولك؟';
+
+  @override
+  String get pleaseSelectYourGender => 'الرجاء تحديد الجنس';
+
+  @override
+  String get year => 'سنة';
+
+  @override
+  String get kg => 'كجم';
+
+  @override
+  String get cm => 'سم';
+
+  @override
+  String get confirm_password => 'تأكيد كلمة المرور';
+
+  @override
+  String get forgot_password => 'نسيت كلمة المرور؟';
+
+  @override
+  String get first_name => 'الاسم الأول';
+
+  @override
+  String get last_name => 'الاسم الأخير';
+
+  @override
+  String get already_have_account => 'هل لديك حساب بالفعل؟';
+
+  @override
+  String get your_regular => 'نشاطك البدني المعتاد';
+
+  @override
+  String get activity_level => 'مستوى النشاط؟';
+
+  @override
+  String get rookie => 'مبتدئ جداً';
+
+  @override
+  String get beginner => 'مبتدئ';
+
+  @override
+  String get intermediate => 'متوسط';
+
+  @override
+  String get advance => 'متقدم';
+
+  @override
+  String get true_beast => 'وحش حقيقي';
+
+  @override
+  String get next => 'التالي';
+  
+  @override
+  // TODO: implement create_account
+  String get create_account => throw UnimplementedError();
+  
+  @override
+  // TODO: implement hey_there
+  String get hey_there => throw UnimplementedError();
+  
+  @override
+  // TODO: implement welcom_back
+  String get welcom_back => throw UnimplementedError();
 }

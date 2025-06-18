@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:fitness_app/core/api_manager/api_services.dart';
 import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/core/utils/helper/secure_storage.dart';
 import 'package:injectable/injectable.dart';
