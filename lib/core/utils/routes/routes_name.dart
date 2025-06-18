@@ -14,6 +14,9 @@ class RoutesName {
   static const String chooseAgeScreen = '/chooseAgeScreen';
   static const String chooseWeightScreen = '/chooseWeightScreen';
   static const String chooseHeightScreen = '/chooseHeightScreen';
+  static const String layOut = '/layOut';
+  static const String smartCoach = '/smartCoach';
+  static const String workouts = '/workouts';
   static const String splash = "/splash";
   static const String onBoardingTwo = '/onBoardingTwo';
   static const String onBoardingThree = '/onBoardingThree';

@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
-import 'package:fitness_app/features/onBoarding/on_boarding_widget.dart';
+import 'package:fitness_app/feature/onBoarding/on_boarding_widget.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingOne extends StatelessWidget {

@@ -25,6 +25,7 @@ abstract class DioModule {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = await readSecureData(Constants.userToken);
+
           log("token : $token");
           options.headers['Authorization'] = 'Bearer $token';
           if (token != null && token.isNotEmpty) {

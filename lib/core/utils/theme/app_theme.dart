@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData appTheme = ThemeData(
-   
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.mainRed,
@@ -13,7 +12,6 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       ),
     ),
-    
 
     textTheme: TextTheme(
       displayLarge: GoogleFonts.balooThambi2(
@@ -84,12 +82,13 @@ class AppTheme {
       labelSmall: GoogleFonts.balooThambi2(
         fontSize: 20,
         fontWeight: FontWeight.w400,
-  
+
         color: AppColors.baseWhite,
-      ), headlineLarge: GoogleFonts.balooThambi2(fontSize: 44, fontWeight: FontWeight.normal),
-    
-     
-    
+      ),
+      headlineLarge: GoogleFonts.balooThambi2(
+        fontSize: 44,
+        fontWeight: FontWeight.normal,
+      ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
@@ -101,14 +100,13 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Colors.transparent,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 5,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+      labelStyle: TextStyle(
+        color: AppColors.neutral5,
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        fontFamily: GoogleFonts.balooThambi2().fontFamily,
       ),
-      labelStyle:  TextStyle(color: AppColors.neutral5,
-       fontSize: 12,
-       fontWeight: FontWeight.w400,
-       fontFamily: GoogleFonts.balooThambi2().fontFamily),
       suffixIconColor: AppColors.neutral5,
       border: OutlineInputBorder(
         // gapPadding: 3,
@@ -131,10 +129,10 @@ class AppTheme {
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedItemColor: AppColors.mainRed,
-      unselectedItemColor: AppColors.neutral5,
+      unselectedIconTheme: IconThemeData(color: Color(0xFFD3D3D3)),
+      showUnselectedLabels: false,
       backgroundColor: AppColors.neutral90,
       type: BottomNavigationBarType.fixed,
-
       elevation: 0,
     ),
   );
