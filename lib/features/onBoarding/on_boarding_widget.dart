@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
@@ -40,7 +41,9 @@ class OnBoardingWidget extends StatelessWidget {
                     child:
                         skip
                             ? InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(context, RoutesName.login);
+                              },
                               child: Text(
                                 'Skip',
                                 style: AppTextStyle.instance.textStyle14
