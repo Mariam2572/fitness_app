@@ -15,8 +15,8 @@ class AppColors {
   static const Color red60 = Color(0xFFFAA080);
   static const Color red50 = Color(0xFFFB3999);
   static const Color red40 = Color(0xFFFC6B21);
-  static const Color red30 = Color(0xFFFD9CC);
-  static const Color red20 = Color(0xFFFECE5);
+  static const Color red30 = Color(0x0fffd9cc);
+  static const Color red20 = Color(0x0fffece5);
 
   // Dark Shades
   static const Color dark100 = Color(0xFF1A0000);

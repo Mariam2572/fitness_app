@@ -15,46 +15,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RoutesGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
     switch (settings.name) {
-      case RoutesName.register:
+
+  case RoutesName.onBoardingOne:
         return MaterialPageRoute(
-          builder: (context) {
-            return RegisterScreen();
-          },
+          builder: (context) => const OnBoardingOne(),
           settings: settings,
         );
-      case RoutesName.goals:
+      case RoutesName.onBoardingTwo:
         return MaterialPageRoute(
-          builder: (context) {
-            return const GoalsScreen();
-          },
+          builder: (context) => const OnBoardingTwo(),
           settings: settings,
         );
-      case RoutesName.chooseGenderScreen:
+      case RoutesName.onBoardingThree:
         return MaterialPageRoute(
-          builder: (context) => const ChooseGenderScreen(),
+          builder: (context) => const OnBoardingThree(),
           settings: settings,
         );
-      case RoutesName.chooseAgeScreen:
+      case RoutesName.splash:
         return MaterialPageRoute(
-          builder: (context) => const ChooseAgeScreen(),
-          settings: settings,
-        );
-      case RoutesName.chooseWeightScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ChooseWeightScreen(),
-          settings: settings,
-        );
-      case RoutesName.chooseHeightScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ChooseHeightScreen(),
+          builder: (context) => const SplashView(),
           settings: settings,
         );
 
-      case RoutesName.activities:
-        return MaterialPageRoute(
-          builder: (context) => const ActivtiesScreen(),
-          settings: settings,
-        );
 
       default:
         return null;

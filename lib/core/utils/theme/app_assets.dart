@@ -16,4 +16,11 @@ class AppAssets {
   static const String arrowUp = "assets/images/arrow_up.svg";
   static const String authBackground = 'assets/images/auth_background.png';
   static const String eyes = "assets/images/eye.png";
+  static const String fit = "assets/images/fit 1.png";
+  static const String backGround = "assets/images/Rectangle 1.png";
+  static const String onBoardingBackGround =
+      "assets/images/on_boarding_back_ground.png";
+  static const String onBoardingOne = "assets/images/on_boarding1.png";
+  static const String onBoardingTwo = "assets/images/on_boarding2.png";
+  static const String onBoardingThree = "assets/images/on_boarding3.png";
 }
