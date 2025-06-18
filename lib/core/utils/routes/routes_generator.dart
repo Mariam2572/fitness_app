@@ -18,7 +18,7 @@ class RoutesGenerator {
     switch (settings.name) {
       case RoutesName.onBoarding:
         return MaterialPageRoute(
-          builder: (context) => const const Onboarding(),
+          builder: (context) => const  Onboarding(),
           settings: settings,
         );
         case RoutesName.chooseGenderScreen:

@@ -79,7 +79,7 @@ class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
                         context,
                       ).textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w800,
-                        color: AppColors.white,
+                        color: AppColors.baseWhite,
                       ),
                     ),
                   ),

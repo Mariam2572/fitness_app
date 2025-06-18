@@ -34,7 +34,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
         NumberPicker(
          
           textStyle: context.textTheme.displayLarge?.copyWith(
-            color: AppColors.white,
+            color: AppColors.baseWhite,
             fontSize: 33,
             fontWeight: FontWeight.w800,
           ),

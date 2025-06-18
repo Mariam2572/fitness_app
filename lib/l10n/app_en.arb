@@ -20,10 +20,10 @@
   "year" : "Year",
   "kg" : "kg",
   "cm" : "CM",
-      "confirm_password": "Confirm Password",
-    "forgot_password": "Forgot password?",
-    "first_name": "First Name",
-    "last_name": "Last Name",
-    "already_have_account": "Already Have An Account?"
+  "confirm_password": "Confirm Password",
+  "forgot_password": "Forgot password?",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "already_have_account": "Already Have An Account?"
     
 }

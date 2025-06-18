@@ -4,6 +4,7 @@ import 'package:fitness_app/core/utils/routes/routes_generator.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/simple_bloc_observer.dart';
 import 'package:fitness_app/core/utils/theme/app_theme.dart';
+import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
     return BlocProvider(
-      create: (context) => RegisterCubit(),
+      create: (context) => RegisterCubit(getIt<RegisterUseCase>()),
       child: MaterialApp(
         locale: Locale(provider.appLanguage),
         localizationsDelegates: AppLocalizations.localizationsDelegates,

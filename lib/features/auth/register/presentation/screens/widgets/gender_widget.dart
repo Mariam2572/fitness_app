@@ -15,7 +15,7 @@ class GenderWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(
-            color: isSelected ? Colors.transparent : AppColors.white,
+            color: isSelected ? Colors.transparent : AppColors.baseWhite,
           ),
           borderRadius: BorderRadius.circular(71),
           color: isSelected ? AppColors.mainRed : Colors.transparent,
@@ -29,7 +29,7 @@ class GenderWidget extends StatelessWidget {
               Text(
                 title,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.white,
+                  color: AppColors.baseWhite,
                   fontWeight: FontWeight.w600,
                 ),
               ),

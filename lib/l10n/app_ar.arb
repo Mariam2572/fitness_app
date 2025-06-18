@@ -21,9 +21,9 @@
   "kg" : "كجم",  
   "cm" : "سم"  ,
   "confirm_password": "تأكيد كلمة المرور",
-    "forgot_password": "نسيت كلمة المرور؟",
-    "first_name": "الاسم الأول",
-    "last_name": "الاسم الأخير"   ,
-    "already_have_account": "هل لديك حساب بالفعل؟" 
+  "forgot_password": "نسيت كلمة المرور؟",
+  "first_name": "الاسم الأول",
+  "last_name": "الاسم الأخير"   ,
+  "already_have_account": "هل لديك حساب بالفعل؟" 
 
 }

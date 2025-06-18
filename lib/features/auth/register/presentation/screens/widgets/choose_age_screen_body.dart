@@ -34,7 +34,7 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
           child: Text(
             context.loc.howOldAreYou,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: AppColors.white,
+              color: AppColors.baseWhite,
               fontWeight: FontWeight.w800,
             ),
           ),
@@ -45,7 +45,7 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
             context.loc.thisHelpsUsCreateYourPersonalizedPlan,
             style: Theme.of(
               context,
-            ).textTheme.titleSmall?.copyWith(color: AppColors.white),
+            ).textTheme.titleSmall?.copyWith(color: AppColors.baseWhite),
           ),
         ),
         const SizedBox(height: 16),
@@ -84,7 +84,7 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                     context.loc.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w800,
-                      color: AppColors.white,
+                      color: AppColors.baseWhite,
                     ),
                   ),
                 ),

@@ -14,7 +14,7 @@ class AlreadyHaveAccountSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          context.loc.already_have_account,
+          context.loc.createAccount,
           style: text.bodyMedium!.copyWith(
             
             fontWeight: FontWeight.w500,

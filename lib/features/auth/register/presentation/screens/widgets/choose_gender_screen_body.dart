@@ -25,7 +25,7 @@ class ChooseGenderScreenBody extends StatelessWidget {
           child: Text(
             context.loc.tellUsAboutYourSelf,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: AppColors.white,
+              color: AppColors.baseWhite,
               fontWeight: FontWeight.w800,
             ),
           ),
@@ -36,7 +36,7 @@ class ChooseGenderScreenBody extends StatelessWidget {
             context.loc.weNeedToKnowYourGender,
             style: Theme.of(
               context,
-            ).textTheme.titleSmall?.copyWith(color: AppColors.white),
+            ).textTheme.titleSmall?.copyWith(color: AppColors.baseWhite),
           ),
         ),
         const SizedBox(height: 16),

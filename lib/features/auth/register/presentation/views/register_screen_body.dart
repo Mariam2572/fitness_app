@@ -4,7 +4,6 @@ import 'package:fitness_app/features/auth/register/data/models/request/register_
 import 'package:fitness_app/features/auth/register/presentation/widgets/fields_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper/sized_box_helper.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
@@ -44,7 +43,7 @@ class RegisterScreenBody extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    context.loc.hey_there,
+                    'context.loc.hey_there',
                     style: context.textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w400,
                     ),
@@ -54,7 +53,7 @@ class RegisterScreenBody extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    context.loc.create_account,
+                    'context.loc.create_account',
                     style: context.textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.w800,
                     ),

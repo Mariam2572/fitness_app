@@ -32,7 +32,7 @@ class _ChooseHeightScreenBodyState extends State<ChooseHeightScreenBody> {
           child: Text(
             context.loc.whatIsYourHeight,
             style: context.textTheme.titleLarge?.copyWith(
-              color: AppColors.white,
+              color: AppColors.baseWhite,
               fontWeight: FontWeight.w800,
             ),
           ),
@@ -42,7 +42,7 @@ class _ChooseHeightScreenBodyState extends State<ChooseHeightScreenBody> {
           child: Text(
             context.loc.thisHelpsUsCreateYourPersonalizedPlan,
             style: context.textTheme.titleSmall?.copyWith(
-              color: AppColors.white,
+              color: AppColors.baseWhite,
             ),
           ),
         ),
@@ -84,7 +84,7 @@ class _ChooseHeightScreenBodyState extends State<ChooseHeightScreenBody> {
                     context.loc.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w800,
-                      color: AppColors.white,
+                      color: AppColors.baseWhite,
                     ),
                   ),
                 ),

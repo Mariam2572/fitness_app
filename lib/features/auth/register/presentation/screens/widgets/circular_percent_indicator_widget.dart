@@ -21,7 +21,7 @@ class CircularPercentIndicatorWidget extends StatelessWidget {
         center: Text(
           '$currentStep/$totalSteps',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.white,
+            color: AppColors.baseWhite,
             fontWeight: FontWeight.w500,
           ),
         ),

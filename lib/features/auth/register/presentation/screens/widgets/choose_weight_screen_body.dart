@@ -37,7 +37,7 @@ class _ChooseWeightScreenBodyState extends State<ChooseWeightScreenBody> {
           child: Text(
             context.loc.whatIsYourWeight,
             style: context.textTheme.titleLarge?.copyWith(
-              color: AppColors.white,
+              color: AppColors.baseWhite,
               fontWeight: FontWeight.w800,
             ),
           ),
@@ -47,7 +47,7 @@ class _ChooseWeightScreenBodyState extends State<ChooseWeightScreenBody> {
           child: Text(
             context.loc.thisHelpsUsCreateYourPersonalizedPlan,
             style: context.textTheme.titleSmall?.copyWith(
-              color: AppColors.white,
+              color: AppColors.baseWhite,
             ),
           ),
         ),
@@ -89,7 +89,7 @@ class _ChooseWeightScreenBodyState extends State<ChooseWeightScreenBody> {
                     context.loc.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w800,
-                      color: AppColors.white,
+                      color: AppColors.baseWhite,
                     ),
                   ),
                 ),
