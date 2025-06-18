@@ -34,8 +34,17 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
     gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
+    gh.factory<_i992.RegisterDataSource>(
+      () => _i932.RegisterDataSourceImpl(gh<_i785.ApiService>()),
+    );
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(gh<_i361.LogInterceptor>()),
+    );
+    gh.factory<_i369.RegisterRepo>(
+      () => _i566.RegisterRepoImpl(dataSource: gh<_i992.RegisterDataSource>()),
+    );
+    gh.factory<_i118.RegisterUseCase>(
+      () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()),
     );
     gh.singleton<_i785.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
