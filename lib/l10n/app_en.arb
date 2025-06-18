@@ -11,7 +11,6 @@
   "weNeedToKnowYourGender": "We Need To Know Your Gender",
   "male": "Male",
   "female": "Female",
-  "next": "Next",
   "howOldAreYou": "How old are you?",
   "thisHelpsUsCreateYourPersonalizedPlan": "This helps us create your personalized plan",
   "whatIsYourWeight": "What is your weight?",
@@ -24,6 +23,13 @@
   "forgot_password": "Forgot password?",
   "first_name": "First Name",
   "last_name": "Last Name",
-  "already_have_account": "Already Have An Account?"
-    
+  "already_have_account": "Already Have An Account?",
+  "your_regular": "YOUR REGULAR PHYSICAL",
+  "activity_level": "ACTIVITY LEVEL?",
+  "rookie": "Rookie",
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advance": "Advance",
+  "true_beast": "True Beast",
+  "next": "Next"
 }

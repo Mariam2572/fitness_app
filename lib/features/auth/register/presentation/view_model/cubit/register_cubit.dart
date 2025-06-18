@@ -11,12 +11,13 @@ part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   final RegisterUseCase _registerUseCase;
+
   RegisterCubit(this._registerUseCase) : super(RegisterInitial());
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController rePasswordController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController(text: 'mariam');
+  TextEditingController lastNameController = TextEditingController(text: 'ahmed');
+  TextEditingController emailController = TextEditingController(text: "mariam@ahmed");
+  TextEditingController passwordController = TextEditingController(text: 'Mariam@123');
+  TextEditingController rePasswordController = TextEditingController(text: 'Mariam@123');
   int height = 0;
   int weight = 0;
   int age = 15;
@@ -34,7 +35,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   Future<void> _register(RegisterUserIntent intent) async {
     
-    if (!(formKey.currentState?.validate() ?? true)) return;
+    
       emit(RegisterLoading());
       final response = await _registerUseCase.invoke(intent.request);
       switch (response) {

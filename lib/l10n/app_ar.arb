@@ -24,6 +24,12 @@
   "forgot_password": "نسيت كلمة المرور؟",
   "first_name": "الاسم الأول",
   "last_name": "الاسم الأخير"   ,
-  "already_have_account": "هل لديك حساب بالفعل؟" 
-
+  "already_have_account": "هل لديك حساب بالفعل؟" ,
+  "your_regular": "نشاطك البدني المعتاد",
+  "activity_level": "مستوى النشاط؟",
+  "rookie": "مبتدئ جداً",
+  "beginner": "مبتدئ",
+  "intermediate": "متوسط",
+  "advance": "متقدم",
+  "true_beast": "وحش حقيقي"
 }
