@@ -30,15 +30,16 @@ class RoutesGenerator {
         );
       case RoutesName.splash:
         return MaterialPageRoute(
-          builder: (context) => const const SplashView(),
+          builder: (context) => const SplashView(),
           settings: settings,
         );
-        case RoutesName.login:
+      case RoutesName.login:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => LoginCubit(getIt<LoginUsecase>()),
-            child: const LoginScreen(),
-          ),
+          builder:
+              (context) => BlocProvider(
+                create: (context) => LoginCubit(getIt<LoginUsecase>()),
+                child: const LoginScreen(),
+              ),
           settings: settings,
         );
 
