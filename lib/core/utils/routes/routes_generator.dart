@@ -41,7 +41,11 @@ class RoutesGenerator {
         );
       case RoutesName.login:
         return MaterialPageRoute(
-          builder: (context) => const Onboarding(),
+          builder:
+              (context) => BlocProvider(
+                create: (context) => LoginCubit(getIt<LoginUsecase>()),
+                child: const LoginScreen(),
+              ),
           settings: settings,
         );
 
@@ -72,11 +76,6 @@ class RoutesGenerator {
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
-          builder:
-              (context) => BlocProvider(
-                create: (context) => LoginCubit(getIt<LoginUsecase>()),
-                child: const LoginScreen(),
-              ),
           settings: settings,
         );
 
