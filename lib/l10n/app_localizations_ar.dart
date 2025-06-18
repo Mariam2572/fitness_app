@@ -9,26 +9,26 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get hey_there => 'Hey there!';
+  String get hey_there => 'مرحبا بك!';
 
   @override
-  String get welcom_back => 'Welcome back!';
+  String get welcom_back => 'مرحبًا بعودتك!';
 
   @override
-  String get login => 'Login';
+  String get login => 'تسجيل الدخول';
 
   @override
-  String get register => 'Register';
+  String get register => 'تسجيل حساب';
 
   @override
-  String get create_account => 'Create an account';
+  String get create_account => 'إنشاء حساب';
 
   @override
-  String get email => 'Email';
+  String get email => 'البريد الإلكتروني';
 
   @override
-  String get password => 'Password';
+  String get password => 'كلمة المرور';
 
   @override
-  String get forgot_password => 'Forgot password?';
+  String get forgot_password => 'نسيت كلمة المرور؟';
 }
