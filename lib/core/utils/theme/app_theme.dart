@@ -109,10 +109,10 @@ class AppTheme {
       ),
     ),  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedItemColor: AppColors.mainRed,
-      unselectedItemColor: AppColors.neutral5,
+      unselectedIconTheme: IconThemeData(color: Color(0xFFD3D3D3)),
+      showUnselectedLabels: false,
       backgroundColor: AppColors.neutral90,
       type: BottomNavigationBarType.fixed,
-
       elevation: 0,
     ),
   );

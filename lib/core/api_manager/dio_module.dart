@@ -14,34 +14,37 @@ abstract class DioModule {
 
   @Singleton()
   Dio provideDio(LogInterceptor logInterceptor) {
-    final dio = Dio(
-      BaseOptions(
-        connectTimeout: const Duration(seconds: 60),
-        baseUrl: Constants.baseUrl,
-      ),
-    );
+    Dio provideDio(LogInterceptor logInterceptor) {
+      final dio = Dio(
+        BaseOptions(
+          connectTimeout: const Duration(seconds: 60),
+          baseUrl: Constants.baseUrl,
+        ),
+      );
 
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final token = await readSecureData(Constants.userToken);
-          log("token : $token");
-          options.headers['Authorization'] = 'Bearer $token';
-          if (token != null && token.isNotEmpty) {
-            options.headers['Authorization'] = 'Bearer $token';
+      dio.interceptors.add(
+        InterceptorsWrapper(
+          onRequest: (options, handler) async {
+            final token = await readSecureData(Constants.userToken);
+            final token = await readSecureData(Constants.userToken);
             log("token : $token");
-          }
-          return handler.next(options);
-        },
-      ),
-    );
+            options.headers['Authorization'] = 'Bearer $token';
+            if (token != null && token.isNotEmpty) {
+              options.headers['Authorization'] = 'Bearer $token';
+              log("token : $token");
+            }
+            return handler.next(options);
+          },
+        ),
+      );
 
-    dio.interceptors.add(logInterceptor);
-    return dio;
-  }
+      dio.interceptors.add(logInterceptor);
+      return dio;
+    }
 
-  @Singleton()
-  ApiService provideApiService(Dio dio) {
-    return ApiService(dio);
+    @Singleton()
+    ApiService provideApiService(Dio dio) {
+      return ApiService(dio);
+    }
   }
 }

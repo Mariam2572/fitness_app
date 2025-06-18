@@ -1,3 +1,4 @@
+import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -28,4 +29,8 @@ extension ViewInsetsHelper on BuildContext {
 
 extension TextThemeHelper on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
+}
+
+extension LocalizationHelper on BuildContext {
+  AppLocalizations get loc => AppLocalizations.of(this)!;
 }

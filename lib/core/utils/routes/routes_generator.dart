@@ -1,5 +1,10 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
+import 'package:fitness_app/features/home/home_view.dart';
+import 'package:fitness_app/features/layOut/lay_out.dart';
+import 'package:fitness_app/features/profile/profile_view.dart';
+import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
+import 'package:fitness_app/features/workOuts/work_outs_view.dart';
 import 'package:fitness_app/feature/login/domain/usecases/login_usecase.dart';
 import 'package:fitness_app/feature/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/feature/login/presentation/view_model/login_cubit.dart';
@@ -7,6 +12,7 @@ import 'package:fitness_app/feature/onBoarding/on_boarding_one.dart';
 import 'package:fitness_app/feature/onBoarding/on_boarding_three.dart';
 import 'package:fitness_app/feature/onBoarding/on_boarding_two.dart';
 import 'package:fitness_app/feature/splash/splash_view.dart';
+import 'package:fitness_app/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,6 +41,37 @@ class RoutesGenerator {
         );
       case RoutesName.login:
         return MaterialPageRoute(
+          builder: (context) => const Onboarding(),
+          settings: settings,
+        );
+
+      case RoutesName.layOut:
+        return MaterialPageRoute(
+          builder: (context) => const LayOut(),
+          settings: settings,
+        );
+
+      case RoutesName.home:
+        return MaterialPageRoute(
+          builder: (context) => const HomeView(),
+          settings: settings,
+        );
+
+      case RoutesName.profile:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileView(),
+          settings: settings,
+        );
+
+      case RoutesName.workouts:
+        return MaterialPageRoute(
+          builder: (context) => const WorkOutsView(),
+          settings: settings,
+        );
+
+      case RoutesName.smartCoach:
+        return MaterialPageRoute(
+          builder: (context) => const SmartCoachView(),
           builder:
               (context) => BlocProvider(
                 create: (context) => LoginCubit(getIt<LoginUsecase>()),
