@@ -22,7 +22,6 @@ import '../../features/auth/register/domain/repos/data_source/register_data_sour
 import '../../features/auth/register/domain/repos/register_repo.dart' as _i369;
 import '../../features/auth/register/domain/use_cases/register_use_case.dart'
     as _i118;
-import '../api_manager/api_manager.dart' as _i266;
 import '../api_manager/api_services.dart' as _i785;
 import '../api_manager/dio_module.dart' as _i591;
 
@@ -34,15 +33,21 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.factory<_i118.RegisterUseCase>(() => _i118.RegisterUseCase());
     gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
-    gh.singleton<_i410.SecureStorageService>(
-      () => _i410.SecureStorageService(),
-    );
-    gh.factory<_i369.RegisterRepo>(() => _i566.RegisterRepoImpl());
-    gh.factory<_i992.RegisterDataSource>(() => _i932.RegisterDataSourceImpl());
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(gh<_i361.LogInterceptor>()),
+    );
+    gh.singleton<_i785.ApiService>(
+      () => dioModule.provideApiService(gh<_i361.Dio>()),
+    );
+    gh.factory<_i992.RegisterDataSource>(
+      () => _i932.RegisterDataSourceImpl(gh<_i785.ApiService>()),
+    );
+    gh.factory<_i369.RegisterRepo>(
+      () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()),
+    );
+    gh.factory<_i118.RegisterUseCase>(
+      () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()),
     );
     return this;
   }

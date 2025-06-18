@@ -44,6 +44,8 @@ abstract class DioModule {
     dio.interceptors.add(logInterceptor);
     return dio;
   }
-
-  
+  @Singleton()
+  ApiService provideApiService(Dio dio) {
+    return ApiService(dio);
+  }
 }
