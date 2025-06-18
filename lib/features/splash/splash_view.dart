@@ -1,0 +1,46 @@
+import 'dart:async';
+
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
+import 'package:fitness_app/core/utils/theme/app_assets.dart';
+import 'package:flutter/material.dart';
+
+class SplashView extends StatefulWidget {
+  const SplashView({super.key});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushNamed(context, RoutesName.onBoardingOne);
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Image.asset(AppAssets.backGround),
+        Padding(
+          padding: const EdgeInsets.only(
+            right: 66,
+            left: 66,
+            top: 160,
+            bottom: 160,
+          ),
+          child: Center(
+            child: Container(
+              // height: 243,
+              // width: 151,
+              child: Image.asset(AppAssets.fit, fit: BoxFit.fitWidth),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
