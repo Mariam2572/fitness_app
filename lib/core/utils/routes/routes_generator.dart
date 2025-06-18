@@ -19,7 +19,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RoutesGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
     switch (settings.name) {
- case RoutesName.register:
+      case RoutesName.register:
         return MaterialPageRoute(
           builder: (context) {
             return RegisterScreen();
@@ -59,7 +59,7 @@ class RoutesGenerator {
           builder: (context) => const ActivtiesScreen(),
           settings: settings,
         );
-  case RoutesName.onBoardingOne:
+      case RoutesName.onBoardingOne:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingOne(),
           settings: settings,
@@ -79,7 +79,6 @@ class RoutesGenerator {
           builder: (context) => const SplashView(),
           settings: settings,
         );
-
 
       default:
         return null;
