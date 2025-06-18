@@ -6,6 +6,16 @@
     "create_account": "Create an account",
     "email": "Email",
     "password": "Password",
-    "forgot_password": "Forgot password?"
-    
+    "forgot_password": "Forgot password?",
+    "forgetPassword": "Forget Password ?",
+    "dontHaveAccount": "Don't have an account yet ? Register",
+    "disciplineQuote": "the price of excellence \n is discipline",
+    "onboardingText1": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
+    "next": "Next",
+    "funFitness": "Fitness has never been so \n much fun",
+    "onboardingText2": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
+    "back": "Back",
+    "noMoreExcuses": "NO MORE EXCUSES \n Do It Now",
+    "onboardingText3": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
+    "doIt": "Do IT"
 }
