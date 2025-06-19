@@ -1,12 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc/bloc.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
+import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.dart';
+import 'package:fitness_app/features/auth/login/presentation/view_model/login_state.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fitness_app/core/base/api_result.dart';
-import 'package:fitness_app/feature/login/data/model/login_request.dart';
-import 'package:fitness_app/feature/login/data/model/login_response.dart';
-import 'package:fitness_app/feature/login/domain/usecases/login_usecase.dart';
-import 'package:fitness_app/feature/login/presentation/view_model/login_state.dart';
+
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginUseCase) : super(LoginInitial());

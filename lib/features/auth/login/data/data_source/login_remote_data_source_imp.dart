@@ -1,9 +1,10 @@
 import 'package:fitness_app/core/api_manager/api_services.dart';
 import 'package:fitness_app/core/base/api_excuter.dart';
 import 'package:fitness_app/core/base/api_result.dart';
-import 'package:fitness_app/feature/login/data/data_source/login_remote_data_source.dart';
-import 'package:fitness_app/feature/login/data/model/login_request.dart';
-import 'package:fitness_app/feature/login/data/model/login_response.dart';
+import 'package:fitness_app/features/auth/login/data/data_source/login_remote_data_source.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
+
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: LoginRemoteDataSource)

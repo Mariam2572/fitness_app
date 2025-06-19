@@ -5,7 +5,7 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/core/utils/validator.dart';
 import 'package:fitness_app/core/utils/widgets/shared_container.dart';
-import 'package:fitness_app/features/auth/login/data/model/login_request.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_state.dart';
 import 'package:flutter/material.dart';

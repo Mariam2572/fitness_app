@@ -6,8 +6,9 @@
 import 'dart:async' as _i5;
 
 import 'package:fitness_app/core/api_manager/api_services.dart' as _i4;
-import 'package:fitness_app/feature/login/data/model/login_request.dart' as _i6;
-import 'package:fitness_app/feature/login/data/model/login_response.dart'
+import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart'
+    as _i6;
+import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart'
     as _i2;
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart'
     as _i7;

@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:fitness_app/core/constants/constants.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
-import 'package:fitness_app/feature/login/data/model/login_request.dart';
-import 'package:fitness_app/feature/login/data/model/login_response.dart';
+
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 part 'api_services.g.dart';
