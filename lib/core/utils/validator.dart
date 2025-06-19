@@ -41,9 +41,9 @@ class Validator {
   static String? validatePassword(String? val) {
     final RegExp passwordRegex = RegExp(r'^(?=.*[A-Z])(?=.*[0-9]).{8,}$');
     if (val == null || val.isEmpty) {
-      return '';
+      return 'password is required';
     } else if (!passwordRegex.hasMatch(val)) {
-      return '';
+      return 'password must be at least 8 characters long, contain at least one uppercase letter and one number';
     } else {
       return null;
     }
@@ -51,9 +51,9 @@ class Validator {
 
   static String? validateConfirmPassword(String? val, String? password) {
     if (val == null || val.isEmpty) {
-      return 'password is required';
+      return 'confirm password is required';
     } else if (val != password) {
-      return 'passwords doesnot match';
+      return 'passwords do not match';
     } else {
       return null;
     }

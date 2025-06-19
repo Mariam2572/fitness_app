@@ -29,9 +29,9 @@ jobs:
           echo "Validating branch name: $BRANCH_NAME"
 
           if [[ "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release)/[a-z0-9\-]+$ ]]; then
-            echo "✅ Branch name is valid."
+            echo " Branch name is valid."
           else
-            echo "❌ Invalid branch name. Must match: feature/, bugfix/, hotfix/, or release/ followed by lowercase letters, numbers, or hyphens."
+            echo " Invalid branch name. Must match: feature/, bugfix/, hotfix/, or release/ followed by lowercase letters, numbers, or hyphens."
             exit 1
           fi
 
@@ -42,8 +42,8 @@ jobs:
           echo "Validating PR title: $PR_TITLE"
 
           if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore):\ .+ ]]; then
-            echo "✅ PR title is valid."
+            echo " PR title is valid."
           else
-            echo "❌ Invalid PR title. Must follow Conventional Commits (e.g., 'feat: add login page')."
+            echo " Invalid PR title. Must follow Conventional Commits (e.g., 'feat: add login page')."
             exit 1
           fi
