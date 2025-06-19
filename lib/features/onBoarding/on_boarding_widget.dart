@@ -31,35 +31,33 @@ class OnBoardingWidget extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Image.asset(AppAssets.onBoardingBackGround, fit: BoxFit.cover),
+            Center(child: Image.asset(image, fit: BoxFit.contain,height: double.infinity
+              ,)),
+            Padding(
+              padding: const EdgeInsets.only(top: 40, right: 17),
+              child: Align(
+                alignment: Alignment.topRight,
+                child:
+                skip
+                    ? InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, RoutesName.login);
+                  },
+                  child: Text(
+                    'Skip',
+                    style: AppTextStyle.instance.textStyle14
+                        .copyWith(color: Colors.white),
+                  ),
+                )
+                    : const Text(""),
+              ),
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, right: 17),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child:
-                        skip
-                            ? InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, RoutesName.login);
-                              },
-                              child: Text(
-                                'Skip',
-                                style: AppTextStyle.instance.textStyle14
-                                    .copyWith(color: Colors.white),
-                              ),
-                            )
-                            : const Text(""),
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Center(child: Image.asset(image, fit: BoxFit.contain)),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Container(
+
+                Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 20,
@@ -160,7 +158,7 @@ class OnBoardingWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
+
               ],
             ),
           ],
