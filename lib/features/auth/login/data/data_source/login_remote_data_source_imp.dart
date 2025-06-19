@@ -20,7 +20,7 @@ class LoginRemoteDataSourceImp implements LoginRemoteDataSource {
     //   return response;
     // },"");
     return apiExecuter<LoginResponse>(() async {
-      var response = await apiService.loginUser(loginRequest);
+      final response = await apiService.loginUser(loginRequest);
 
       return response;
     }, "");
