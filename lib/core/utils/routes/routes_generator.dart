@@ -3,8 +3,6 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
-import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
-import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/actvities_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
@@ -12,11 +10,9 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_g
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
-import 'package:fitness_app/features/home/home_view.dart';
+import 'package:fitness_app/features/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_one.dart';
-import 'package:fitness_app/features/onBoarding/on_boarding_three.dart';
-import 'package:fitness_app/features/onBoarding/on_boarding_two.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
@@ -69,19 +65,19 @@ class RoutesGenerator {
         );
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
-          builder: (context) => const OnBoardingOne(),
+          builder: (context) => const OnBoardingScreen(),
           settings: settings,
         );
-      case RoutesName.onBoardingTwo:
-        return MaterialPageRoute(
-          builder: (context) => const OnBoardingTwo(),
-          settings: settings,
-        );
-      case RoutesName.onBoardingThree:
-        return MaterialPageRoute(
-          builder: (context) => const OnBoardingThree(),
-          settings: settings,
-        );
+      // case RoutesName.onBoardingTwo:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const OnBoardingTwo(),
+      //     settings: settings,
+      //   );
+      // case RoutesName.onBoardingThree:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const OnBoardingThree(),
+      //     settings: settings,
+      //   );
       case RoutesName.splash:
         return MaterialPageRoute(
           builder: (context) => const SplashView(),
