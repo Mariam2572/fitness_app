@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:fitness_app/core/utils/enums/gender.dart';
+import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
-import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/fields_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +43,7 @@ class RegisterScreenBody extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    'context.loc.hey_there',
+                    context.loc.hey_there,
                     style: context.textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w400,
                     ),
@@ -77,45 +75,25 @@ class RegisterScreenBody extends StatelessWidget {
                     BlocListener<RegisterCubit, RegisterState>(
                       listener: (context, state) {
                         if (state is RegisterSuccess) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Registration Successful!'),
-                              backgroundColor: Colors.green,
-                            ),
-                          );
+                          showSnackBar(context, 'Registration successful');
                         }
                         if (state is RegisterFailure) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(state.error),
-                              backgroundColor: Colors.red,
-                            ),
-                          );
+                          showErrorSnackBar(context, state.error);
                         }
                       },
                       child: ElevatedButton(
                         onPressed: () {
-                          // Trigger the registration process
-                          // final cubit = context.read<RegisterCubit>();
-                          // cubit.doIntent(
-                          //   RegisterUserIntent(
-                          //     request: RegisterRequest(
-                          //       firstName: cubit.firstNameController.text,
-                          //       lastName: cubit.lastNameController.text,
-                          //       email: cubit.emailController.text,
-                          //       password: cubit.passwordController.text,
-                          //       rePassword: cubit.rePasswordController.text,
-                          //       height: 155,
-                          //       weight: 60,
-                          //       age: 24,
-                          //       goal: "cubit.goal",
-                          //       activityLevel: "level2",
-                          //       gender: Gender.male.name,
-                          //     ),
-                          //   ),
-                          // );
-                        if (!(context.read<RegisterCubit>(). formKey.currentState?.validate() ?? true)) return;
-                          Navigator.pushNamed(context, RoutesName.chooseGenderScreen );
+                          if (!(context
+                                  .read<RegisterCubit>()
+                                  .formKey
+                                  .currentState
+                                  ?.validate() ??
+                              true))
+                            return;
+                          Navigator.pushNamed(
+                            context,
+                            RoutesName.chooseGenderScreen,
+                          );
                           //Navigate to complete registration process
                         },
                         child: Text(
