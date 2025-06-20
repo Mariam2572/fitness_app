@@ -40,6 +40,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
+  flutter_launcher_icons: ^0.14.4
   flutter_lints: ^3.0.0
   flutter_localizations:
     sdk: flutter

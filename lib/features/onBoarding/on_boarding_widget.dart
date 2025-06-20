@@ -1,7 +1,9 @@
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
+import 'package:fitness_app/core/utils/widgets/shared_container.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingWidget extends StatelessWidget {
@@ -31,8 +33,9 @@ class OnBoardingWidget extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Image.asset(AppAssets.onBoardingBackGround, fit: BoxFit.cover),
-            Center(child: Image.asset(image, fit: BoxFit.contain,height: double.infinity
-              ,)),
+            Center(child: Image.asset(image, fit: BoxFit.contain,
+            height: double.infinity
+              )),
             Padding(
               padding: const EdgeInsets.only(top: 40, right: 17),
               child: Align(
@@ -56,7 +59,6 @@ class OnBoardingWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-
                 Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -68,7 +70,8 @@ class OnBoardingWidget extends StatelessWidget {
                         top: Radius.circular(30),
                       ),
                     ),
-                    child: Column(
+                    child: 
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
@@ -157,8 +160,9 @@ class OnBoardingWidget extends StatelessWidget {
                             ),
                       ],
                     ),
-                  ),
 
+                    ),
+          
               ],
             ),
           ],
