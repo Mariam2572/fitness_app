@@ -3,14 +3,16 @@ import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class GridViewItem extends StatelessWidget {
-  const GridViewItem({super.key});
+  final String name;
+  final String image;
+  const GridViewItem({super.key, required this.name, required this.image});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 163,
       width: 160,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: ClipRRect(
@@ -20,7 +22,7 @@ class GridViewItem extends StatelessWidget {
             Positioned.fill(
               child: Image(
                 image: NetworkImage(
-                  'https://i.pinimg.com/736x/64/eb/ef/64ebefbbd558d77f1a1e0d01a4e050c1.jpg',
+                  image,
                 ),
                 fit: BoxFit.fill,
               ),
@@ -31,7 +33,7 @@ class GridViewItem extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'High Chest',
+                    name,
                     style: AppTextStyle.instance.textStyle16.copyWith(
                       color: AppColors.baseWhite,
                       fontWeight: FontWeight.w700,

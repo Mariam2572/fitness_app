@@ -5,22 +5,24 @@ import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class HomeUpcomingWorkoutItem extends StatelessWidget {
-  const HomeUpcomingWorkoutItem({super.key});
+  final String name;
+  final String image;
+   const HomeUpcomingWorkoutItem({super.key, required this.name, required this.image});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       height: 80,
       width: 80,
 
       child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(45)),
+        borderRadius: const BorderRadius.all(Radius.circular(45)),
         child: Stack(
           children: [
-            const Positioned.fill(
+             Positioned.fill(
               child: Image(
-                image: AssetImage('assets/images/background.png'),
+                image: NetworkImage(image),
                 fit: BoxFit.fill,
               ),
             ),
@@ -38,11 +40,11 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
             ),
 
             Padding(
-              padding: EdgeInsets.only(bottom: 15),
+              padding: const EdgeInsets.only(bottom: 15),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Text(
-                  'upcoming workout item',
+                  name,
                   style: AppTextStyle.instance.textStyle14.copyWith(
                     fontWeight: FontWeight.w400,
                     color: AppColors.baseWhite,
