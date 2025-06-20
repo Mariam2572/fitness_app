@@ -1,13 +1,13 @@
+import 'package:fitness_app/core/utils/enums/activity_enum.dart';
+import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/blur_background.dart';
-import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart'
-    show GoalOptionItem;
+import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/register_indicator.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +19,8 @@ class ActivtiesScreen extends StatefulWidget {
 }
 
 class _ActivtiesScreenState extends State<ActivtiesScreen> {
-  String? selectedActivity = "";
+  ActivityEnum? selectedActivity;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,16 +40,11 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                           backgroundColor: Colors.red,
                           child: Icon(Icons.arrow_back, color: Colors.white),
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                        ),
-
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.25),
                         Image.asset("assets/images/fit 1.png", width: 80),
                       ],
                     ),
-
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-
                     ProgressCircleIndicator(
                       label: '6/6',
                       value: 6 / 6,
@@ -60,7 +56,7 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
-                      'YOUR REGULAR PHYSUCAL',
+                      'YOUR REGULAR PHYSICAL',
                       style: AppTextStyle.instance.textStyle20.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
@@ -88,105 +84,78 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                GoalOptionItem(
-                                  label: 'Rookie',
+                                OptionItem<ActivityEnum>(
+                                  label: activityEnumToString(ActivityEnum.level1),
+                                  value: ActivityEnum.level1,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
-                                      selectedActivity = value!;
+                                      selectedActivity = value;
                                     });
                                   },
                                 ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.02,
-                                ),
-                                GoalOptionItem(
-                                  label: 'Beginner',
+                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                OptionItem<ActivityEnum>(
+                                  label: activityEnumToString(ActivityEnum.level2),
+                                  value: ActivityEnum.level2,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
-                                      selectedActivity = value!;
+                                      selectedActivity = value;
                                     });
                                   },
                                 ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.02,
-                                ),
-                                GoalOptionItem(
-                                  label: 'intermediate',
+                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                OptionItem<ActivityEnum>(
+                                  label: activityEnumToString(ActivityEnum.level3),
+                                  value: ActivityEnum.level3,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
-                                      selectedActivity = value!;
+                                      selectedActivity = value;
                                     });
                                   },
                                 ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.02,
-                                ),
-                                GoalOptionItem(
-                                  label: 'Advance',
+                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                OptionItem<ActivityEnum>(
+                                  label: activityEnumToString(ActivityEnum.level4),
+                                  value: ActivityEnum.level4,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
-                                      selectedActivity = value!;
+                                      selectedActivity = value;
                                     });
                                   },
                                 ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.02,
-                                ),
-                                GoalOptionItem(
-                                  label: 'True Beast',
+                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                OptionItem<ActivityEnum>(
+                                  label: activityEnumToString(ActivityEnum.level5),
+                                  value: ActivityEnum.level5,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
-                                      selectedActivity = value!;
+                                      selectedActivity = value;
                                     });
                                   },
-                                ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 BlocListener<RegisterCubit, RegisterState>(
                                   listener: (context, state) {
                                     if (state is RegisterSuccess) {
-                                      ScaffoldMessenger.of(
-                                        context,
-                                      ).showSnackBar(
-                                        const SnackBar(
-                                          content: Text(
-                                            'Registration Successful!',
-                                          ),
-                                          backgroundColor: Colors.green,
-                                        ),
-                                      );
+                                      showSnackBar(context, 'Registered successfully');
+                                      Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
                                     }
                                     if (state is RegisterFailure) {
-                                      ScaffoldMessenger.of(
-                                        context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text(state.error),
-                                          backgroundColor: Colors.red,
-                                        ),
-                                      );
+                                      showSnackBar(context, state.error);
                                     }
                                   },
                                   child: ElevatedButton(
                                     onPressed: () {
-                                        context.read<RegisterCubit>().activityLevel =
-                                        selectedActivity;
-                                      final cubit =
-                                          context.read<RegisterCubit>();
+                                      final cubit = context.read<RegisterCubit>();
+                                      cubit.activityLevel =
+                                          activityEnumToBackend(selectedActivity!);
+
                                       final request = RegisterRequest(
-                                        firstName:
-                                        cubit.firstNameController.text,
+                                        firstName: cubit.firstNameController.text,
                                         lastName: cubit.lastNameController.text,
                                         email: cubit.emailController.text,
                                         password: cubit.passwordController.text,
@@ -195,13 +164,11 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                         weight: cubit.weight,
                                         age: cubit.age,
                                         goal: cubit.goal,
-                                        activityLevel: cubit.activityLevel,
-                                        gender:
-                                            RegisterCubit.selectedGender.name,
+                                        activityLevel: cubit.activityLevel!,
+                                        gender: RegisterCubit.selectedGender.name,
                                       );
-                                      cubit.doIntent(
-                                        RegisterUserIntent(request: request),
-                                      );
+
+                                      cubit.doIntent(RegisterUserIntent(request: request));
                                       print(request.toJson());
                                     },
                                     child: const Text('Next'),

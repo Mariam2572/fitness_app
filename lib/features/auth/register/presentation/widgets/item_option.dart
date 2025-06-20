@@ -1,14 +1,16 @@
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
-class GoalOptionItem extends StatelessWidget {
+class OptionItem<T> extends StatelessWidget {
   final String label;
-  final String? selectedValue;
-  final Function(String?) onChanged;
+  final T value;
+  final T? selectedValue;
+  final ValueChanged<T?> onChanged;
 
-  const GoalOptionItem({
+  const OptionItem({
     super.key,
     required this.label,
+    required this.value,
     required this.selectedValue,
     required this.onChanged,
   });
@@ -35,8 +37,8 @@ class GoalOptionItem extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          Radio<String>(
-            value: label,
+          Radio<T>(
+            value: value,
             groupValue: selectedValue,
             activeColor: const Color.fromRGBO(211, 211, 211, 1),
             onChanged: onChanged,

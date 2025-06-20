@@ -110,7 +110,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                GoalOptionItem(
+                                OptionItem(
+                                  value: 'Gain Weight' ,
                                   label: 'Gain Weight',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
@@ -123,7 +124,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
-                                GoalOptionItem(
+                                OptionItem(
+                                  value: 'Lose Weight' ,
                                   label: 'Lose Weight',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
@@ -136,20 +138,24 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
-                                GoalOptionItem(
+                                OptionItem(
+                                
+                                  
+                                  
                                   label: 'Get Fitter',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
                                       selectedGoal = value!;
                                     });
-                                  },
+                                  }, value :'Get Fitter' ,
                                 ),
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
-                                GoalOptionItem(
+                                OptionItem(
+                                  value:'Gain More Flexible' ,
                                   label: 'Gain More Flexible',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
@@ -162,7 +168,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
-                                GoalOptionItem(
+                                OptionItem(
+                                  value: 'Learn The Basic',
                                   label: 'Learn The Basic',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {

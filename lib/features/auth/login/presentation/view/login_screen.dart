@@ -121,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                         listener: (context, state) {
                           if (state is LoginSuccess) {
                             showSnackBar(context, 'Login successful');
-                            Navigator.pushNamed(context, RoutesName.layOut);
+                            Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
                           }
                           if (state is LoginFailure) {
                             showErrorSnackBar(context, state.error);

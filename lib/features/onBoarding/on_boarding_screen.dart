@@ -1,11 +1,8 @@
-import 'dart:ui';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/onBoarding/onboarding_bottom_sheet.dart';
 import 'package:fitness_app/features/onBoarding/onboarding_item.dart';
-import 'package:fitness_app/features/onBoarding/onboarding_navigation.dart';
 import 'package:flutter/material.dart';
 
 

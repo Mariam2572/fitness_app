@@ -72,35 +72,25 @@ class RegisterScreenBody extends StatelessWidget {
                     responsiveHeight(context, 0.02),
                     const TextFormFieldsSection(),
                     responsiveHeight(context, 0.05),
-                    BlocListener<RegisterCubit, RegisterState>(
-                      listener: (context, state) {
-                        if (state is RegisterSuccess) {
-                          showSnackBar(context, 'Registration successful');
-                        }
-                        if (state is RegisterFailure) {
-                          showErrorSnackBar(context, state.error);
-                        }
+                    ElevatedButton(
+                      onPressed: () {
+                        if (!(context
+                                .read<RegisterCubit>()
+                                .formKey
+                                .currentState
+                                ?.validate() ??
+                            true))
+                          return;
+                        Navigator.pushNamed(
+                          context,
+                          RoutesName.chooseGenderScreen,
+                        );
+                        //Navigate to complete registration process
                       },
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (!(context
-                                  .read<RegisterCubit>()
-                                  .formKey
-                                  .currentState
-                                  ?.validate() ??
-                              true))
-                            return;
-                          Navigator.pushNamed(
-                            context,
-                            RoutesName.chooseGenderScreen,
-                          );
-                          //Navigate to complete registration process
-                        },
-                        child: Text(
-                          context.loc.register,
-                          style: context.textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w900,
-                          ),
+                      child: Text(
+                        context.loc.register,
+                        style: context.textTheme.bodyLarge?.copyWith(
+                          fontWeight: FontWeight.w900,
                         ),
                       ),
                     ),
