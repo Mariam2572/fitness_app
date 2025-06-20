@@ -12,7 +12,7 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_w
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
-import 'package:fitness_app/features/onBoarding/on_boarding_one.dart';
+import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
@@ -68,16 +68,7 @@ class RoutesGenerator {
           builder: (context) => const OnBoardingScreen(),
           settings: settings,
         );
-      // case RoutesName.onBoardingTwo:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const OnBoardingTwo(),
-      //     settings: settings,
-      //   );
-      // case RoutesName.onBoardingThree:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const OnBoardingThree(),
-      //     settings: settings,
-      //   );
+    
       case RoutesName.splash:
         return MaterialPageRoute(
           builder: (context) => const SplashView(),
@@ -116,13 +107,11 @@ class RoutesGenerator {
           builder: (context) => const WorkOutsView(),
           settings: settings,
         );
-
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
           settings: settings,
         );
-
       default:
         return null;
     }
