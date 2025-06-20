@@ -4,6 +4,7 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/blur_background.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
@@ -36,25 +37,17 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                   children: [
                     Row(
                       children: [
-                        const CircleAvatar(
+                         CircleAvatar(
                           backgroundColor: Colors.red,
-                          child: Icon(Icons.arrow_back, color: Colors.white),
+                          child: IconButton( onPressed: () => Navigator.pop(context), icon:const Icon(  Icons.arrow_back, color: Colors.white)),
                         ),
                         SizedBox(width: MediaQuery.of(context).size.width * 0.25),
                         Image.asset("assets/images/fit 1.png", width: 80),
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    ProgressCircleIndicator(
-                      label: '6/6',
-                      value: 6 / 6,
-                      angle: 4.2,
-                      progressColor: AppColors.mainRed,
-                      textStyle: AppTextStyle.instance.textStyle16.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                    const CircularPercentIndicatorWidget(currentStep: 6, totalSteps: 6)
+,                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
                       'YOUR REGULAR PHYSICAL',
                       style: AppTextStyle.instance.textStyle20.copyWith(
@@ -145,7 +138,7 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                       Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
                                     }
                                     if (state is RegisterFailure) {
-                                      showSnackBar(context, state.error);
+                                      showErrorSnackBar(context, state.error);
                                     }
                                   },
                                   child: ElevatedButton(
