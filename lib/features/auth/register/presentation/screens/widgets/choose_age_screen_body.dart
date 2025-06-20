@@ -78,7 +78,9 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, 
-                    RoutesName.chooseWeightScreen, );
+                    RoutesName.chooseWeightScreen, 
+                      arguments: context.read<RegisterCubit>(),
+                    );
                         },
                   child: Text(
                     context.loc.next,

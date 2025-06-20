@@ -3,6 +3,8 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
+import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
+import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/actvities_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
@@ -23,52 +25,86 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RoutesGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
     switch (settings.name) {
-      case RoutesName.register:
-        return MaterialPageRoute(
-          builder: (context) {
-            return RegisterScreen();
-          },
-          settings: settings,
-        );
-      case RoutesName.goals:
-        return MaterialPageRoute(
-          builder: (context) {
-            return const GoalsScreen();
-          },
-          settings: settings,
-        );
-      case RoutesName.chooseGenderScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ChooseGenderScreen(),
-          settings: settings,
-        );
-      case RoutesName.chooseAgeScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ChooseAgeScreen(),
-          settings: settings,
-        );
-      case RoutesName.chooseWeightScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ChooseWeightScreen(),
-          settings: settings,
-        );
-      case RoutesName.chooseHeightScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ChooseHeightScreen(),
-          settings: settings,
-        );
+    
+  
+    case RoutesName.register:
+      final cubit = RegisterCubit(getIt<RegisterUseCase>());
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: cubit,
+          child:  RegisterScreen(),
+        ),
+        settings: settings,
+      );
 
-      case RoutesName.activities:
-        return MaterialPageRoute(
-          builder: (context) => const ActivtiesScreen(),
-          settings: settings,
-        );
+    case RoutesName.goals:
+      final cubit = settings.arguments as RegisterCubit;
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: cubit,
+          child: const GoalsScreen(),
+        ),
+        settings: settings,
+      );
+
+    case RoutesName.chooseGenderScreen:
+      final cubit = settings.arguments as RegisterCubit;
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: cubit,
+          child: const ChooseGenderScreen(),
+        ),
+        settings: settings,
+      );
+
+    case RoutesName.chooseAgeScreen:
+      final cubit = settings.arguments as RegisterCubit;
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: cubit,
+          child: const ChooseAgeScreen(),
+        ),
+        settings: settings,
+      );
+
+    case RoutesName.chooseWeightScreen:
+      final cubit = settings.arguments as RegisterCubit;
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: cubit,
+          child: const ChooseWeightScreen(),
+        ),
+        settings: settings,
+      );
+
+    case RoutesName.chooseHeightScreen:
+      final cubit = settings.arguments as RegisterCubit;
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: cubit,
+          child: const ChooseHeightScreen(),
+        ),
+        settings: settings,
+      );
+
+    case RoutesName.activities:
+      final cubit = settings.arguments as RegisterCubit;
+      return MaterialPageRoute(
+        builder: (_) => BlocProvider.value(
+          value: cubit,
+          child: const ActivtiesScreen(),
+        ),
+        settings: settings,
+      );
+
+  
+
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(),
           settings: settings,
         );
-    
+
       case RoutesName.splash:
         return MaterialPageRoute(
           builder: (context) => const SplashView(),

@@ -84,6 +84,7 @@ class RegisterScreenBody extends StatelessWidget {
                         Navigator.pushNamed(
                           context,
                           RoutesName.chooseGenderScreen,
+                          arguments: context.read<RegisterCubit>(),
                         );
                         //Navigate to complete registration process
                       },

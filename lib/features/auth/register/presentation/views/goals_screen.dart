@@ -179,7 +179,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   onPressed: () {
                                     context.read<RegisterCubit>().goal =
                                         selectedGoal;
-                                    Navigator.pushNamed(context, RoutesName.activities);
+                                    Navigator.pushNamed(context, RoutesName.activities, arguments: context.read<RegisterCubit>(),);
                                   },
                                   child: Text(
                                     'Next',
