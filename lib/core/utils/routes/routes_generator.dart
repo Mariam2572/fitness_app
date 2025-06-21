@@ -29,7 +29,7 @@ class RoutesGenerator {
       case RoutesName.register:
         return MaterialPageRoute(
           builder: (context) {
-            return const RegisterScreen();
+            return RegisterScreen();
           },
           settings: settings,
         );
