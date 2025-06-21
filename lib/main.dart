@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfigProvider>(context);
+    final provider = Provider.of<AppConfigProvider>(context);
     return BlocProvider(
-        create: (context) => RegisterCubit(getIt<RegisterUseCase>()),
+      create: (context) => RegisterCubit(getIt<RegisterUseCase>()),
       child: MaterialApp(
         locale: Locale(provider.appLanguage),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RoutesGenerator.onGenerator,
         theme: AppTheme.appTheme,
-        initialRoute: RoutesName.splash,
+        initialRoute: RoutesName.mealsDetailsScreen,
       ),
     );
   }

@@ -3,8 +3,6 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
-import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
-import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/actvities_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
@@ -12,6 +10,7 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_g
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
+import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_one.dart';
@@ -30,7 +29,7 @@ class RoutesGenerator {
       case RoutesName.register:
         return MaterialPageRoute(
           builder: (context) {
-            return RegisterScreen();
+            return const RegisterScreen();
           },
           settings: settings,
         );
@@ -124,6 +123,12 @@ class RoutesGenerator {
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
+          settings: settings,
+        );
+
+      case RoutesName.mealsDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MealsDetailsScreen(),
           settings: settings,
         );
 

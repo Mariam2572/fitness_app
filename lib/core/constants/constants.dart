@@ -3,4 +3,5 @@ class Constants {
   static const String userToken = 'userToken';
   static const String loginEndPoint = "auth/signin";
   static const String registerEndPoint = 'auth/signup';
+  static const String mealsDetails = "1/lookup.php?i";
 }

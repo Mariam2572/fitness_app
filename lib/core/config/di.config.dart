@@ -31,6 +31,16 @@ import '../../features/auth/register/domain/repos/data_source/register_data_sour
 import '../../features/auth/register/domain/repos/register_repo.dart' as _i369;
 import '../../features/auth/register/domain/use_cases/register_use_case.dart'
     as _i118;
+import '../../features/foodDetails/data/data_source/meals_details_remote_data_source.dart'
+    as _i710;
+import '../../features/foodDetails/data/data_source/meals_details_remote_data_source_imp.dart'
+    as _i986;
+import '../../features/foodDetails/data/repository_implementation/meals_details_repository_implementation.dart'
+    as _i274;
+import '../../features/foodDetails/domain/repository_contract/meals_details_contract.dart'
+    as _i225;
+import '../../features/foodDetails/domain/usecases/meals_details_usecase.dart'
+    as _i172;
 import '../api_manager/api_services.dart' as _i785;
 import '../api_manager/dio_module.dart' as _i591;
 
@@ -49,8 +59,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i785.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
     );
+    gh.factory<_i710.MealsDetailsRemoteDataSource>(
+      () => _i986.MealsDetailsRemoteDataSourceImp(
+        apiService: gh<_i785.ApiService>(),
+      ),
+    );
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
+    );
+    gh.factory<_i225.MealsDetailsContract>(
+      () => _i274.MealsDetailsRepositoryImplementation(
+        mealsDetailsRemoteDataSource: gh<_i710.MealsDetailsRemoteDataSource>(),
+      ),
     );
     gh.factory<_i96.LoginContract>(
       () => _i268.LoginRepositoryImplementation(
@@ -59,6 +79,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i992.RegisterDataSource>(
       () => _i932.RegisterDataSourceImpl(gh<_i785.ApiService>()),
+    );
+    gh.factory<_i172.MealsDetailsUsecase>(
+      () => _i172.MealsDetailsUsecase(
+        mealsDetailsContract: gh<_i225.MealsDetailsContract>(),
+      ),
     );
     gh.factory<_i369.RegisterRepo>(
       () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()),

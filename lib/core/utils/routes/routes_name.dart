@@ -20,4 +20,5 @@ class RoutesName {
   static const String splash = "/splash";
   static const String onBoardingTwo = '/onBoardingTwo';
   static const String onBoardingThree = '/onBoardingThree';
+  static const String mealsDetailsScreen = '/mealsDetailsScreen';
 }
