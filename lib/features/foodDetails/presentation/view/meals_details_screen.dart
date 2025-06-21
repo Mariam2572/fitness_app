@@ -2,6 +2,7 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/widgets/ingredient_item.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/widgets/nutrient_box_widget.dart';
+import 'package:fitness_app/features/foodDetails/presentation/view/widgets/recommendation_card.dart';
 import 'package:flutter/material.dart';
 
 class MealsDetailsScreen extends StatelessWidget {
@@ -51,7 +52,7 @@ class MealsDetailsScreen extends StatelessWidget {
                           color: AppColors.baseWhite,
                         ),
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -76,7 +77,11 @@ class MealsDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Container(
-              color: Color(0xFF2D2D2D),
+              decoration: BoxDecoration(
+                color: Color(0xFF2D2D2D),
+                borderRadius: BorderRadius.circular(20),
+              ),
+
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -102,12 +107,18 @@ class MealsDetailsScreen extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 18),
             Row(
               children: [
-                _recommendationCard('assets/images/pasta image.png'),
+                RecommendationCard(
+                  imagePath: 'assets/images/test image.png',
+                  label: "Pasta with chicks",
+                ),
                 const SizedBox(width: 12),
-                _recommendationCard('assets/images/pasta image.png'),
+                RecommendationCard(
+                  imagePath: 'assets/images/pasta image.png',
+                  label: "Pasta with chicks",
+                ),
               ],
             ),
           ],
@@ -116,24 +127,32 @@ class MealsDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _recommendationCard(String imagePath) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              imagePath,
-              height: 163,
-              width: 160,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _recommendationCard(String imagePath) {
+  //   return Container(
+  //     height: 160,
+  //     width: 163,
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(20),
+
+  //       image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.fill),
+  //     ),
+  //     child: Stack(
+  //       children: [
+  //         Padding(
+  //           padding: const EdgeInsets.only(left: 16, bottom: 16, right: 20),
+  //           child: Text(
+  //             "data",
+  //             style: AppTextStyle.instance.textStyle16.copyWith(
+  //               color: AppColors.baseWhite,
+  //               fontWeight: FontWeight.w600,
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //       alignment: Alignment.bottomCenter,
+  //     ),
+  //   );
+  // }
 }
 
 // class ProductsDetails extends StatelessWidget {

@@ -19,6 +19,8 @@ class NutrientBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // height: 44,
+      // width: 44,
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.baseWhite),
         borderRadius: BorderRadius.circular(20),
