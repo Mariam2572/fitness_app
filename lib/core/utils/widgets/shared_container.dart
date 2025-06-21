@@ -9,14 +9,15 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 
 class SharedContainer extends StatelessWidget {
   List<Widget> children;
-  SharedContainer({Key? key, required this.children}) : super(key: key);
+  double? height;
+  SharedContainer({Key? key, required this.children , this.height }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       width: double.infinity,
-      height: context.height * 0.7,
+      height:height ?? context.height * 0.7,
       decoration: BoxDecoration(
         color: AppColors.neutral90.withOpacity(.01),
         borderRadius: BorderRadius.circular(25.0),

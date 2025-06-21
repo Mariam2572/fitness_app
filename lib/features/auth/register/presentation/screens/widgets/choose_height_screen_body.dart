@@ -78,7 +78,9 @@ class _ChooseHeightScreenBodyState extends State<ChooseHeightScreenBody> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, RoutesName.goals);
+                    Navigator.pushNamed(context, RoutesName.goals,
+                      arguments: context.read<RegisterCubit>(),
+                    );
                   },
                   child: Text(
                     context.loc.next,

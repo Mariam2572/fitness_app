@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fitness_app/core/base/api_result.dart';
+import 'package:fitness_app/core/utils/enums/activity_enum.dart';
 import 'package:fitness_app/core/utils/enums/gender.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
@@ -13,11 +14,11 @@ class RegisterCubit extends Cubit<RegisterState> {
   final RegisterUseCase _registerUseCase;
 
   RegisterCubit(this._registerUseCase) : super(RegisterInitial());
-  TextEditingController firstNameController = TextEditingController(text: 'mariam');
-  TextEditingController lastNameController = TextEditingController(text: 'ahmed');
-  TextEditingController emailController = TextEditingController(text: "mariam@ahmed");
-  TextEditingController passwordController = TextEditingController(text: 'Mariam@123');
-  TextEditingController rePasswordController = TextEditingController(text: 'Mariam@123');
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController rePasswordController = TextEditingController();
   int height = 0;
   int weight = 0;
   int age = 15;

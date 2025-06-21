@@ -30,17 +30,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
-    return BlocProvider(
-        create: (context) => RegisterCubit(getIt<RegisterUseCase>()),
-      child: MaterialApp(
-        locale: Locale(provider.appLanguage),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: RoutesGenerator.onGenerator,
-        theme: AppTheme.appTheme,
-        initialRoute: RoutesName.splash,
-      ),
+    return MaterialApp(
+      locale: Locale(provider.appLanguage),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: RoutesGenerator.onGenerator,
+      theme: AppTheme.appTheme,
+      initialRoute: RoutesName.splash,
     );
   }
 }

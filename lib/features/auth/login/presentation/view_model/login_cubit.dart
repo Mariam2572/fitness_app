@@ -23,7 +23,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> _handleLogin(PerformLogin intent) async {
-    if (!(formKey.currentState?.validate() ?? true)) return;
+            if (!( formKey.currentState?.validate() ?? true)) return;
     emit(LoginLoading());
     final response = await loginUseCase.invoke(loginRequest: intent.request);
     switch (response) {
@@ -34,7 +34,6 @@ class LoginCubit extends Cubit<LoginState> {
       case ApiSuccess<LoginResponse>():
         emit(LoginSuccess(response.data!));
       default:
-        emit(const LoginFailure('Unexpected error occurred'));
         break;
     }
   }
