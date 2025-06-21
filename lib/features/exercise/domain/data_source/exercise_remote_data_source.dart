@@ -1,1 +1,1 @@
-class ExerciseRemoteDataSource{}
+abstract interface class ExerciseRemoteDataSource{}
