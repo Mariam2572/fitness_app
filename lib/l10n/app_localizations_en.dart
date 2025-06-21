@@ -130,7 +130,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
-  String get dontHaveAccount => 'Don\'t have an account yet? Register';
+  String get dontHaveAccount => 'Don\'t have an account yet ?';
 
   @override
   String get disciplineQuote => 'the price of excellence \n is discipline';

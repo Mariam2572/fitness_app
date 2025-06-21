@@ -341,7 +341,7 @@ abstract class AppLocalizations {
   /// No description provided for @dontHaveAccount.
   ///
   /// In en, this message translates to:
-  /// **'Don\'t have an account yet? Register'**
+  /// **'Don\'t have an account yet ?'**
   String get dontHaveAccount;
 
   /// No description provided for @disciplineQuote.
