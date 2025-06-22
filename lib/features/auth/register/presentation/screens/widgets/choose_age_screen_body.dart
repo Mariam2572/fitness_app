@@ -64,7 +64,7 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                 initialValue: 15,
                 onChanged: (val) {
                   context.read<RegisterCubit>().age = val;
-                
+
                   setState(() {});
                 },
               ),
@@ -75,11 +75,12 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 
-                    RoutesName.chooseWeightScreen, 
+                    Navigator.pushNamed(
+                      context,
+                      RoutesName.chooseWeightScreen,
                       arguments: context.read<RegisterCubit>(),
                     );
-                        },
+                  },
                   child: Text(
                     context.loc.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(

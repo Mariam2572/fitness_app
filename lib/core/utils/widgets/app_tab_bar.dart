@@ -11,7 +11,10 @@ class AppTabBar extends StatelessWidget {
     required this.tabs,
     required this.tabViews,
     this.controller,
-  }) : assert(tabs.length == tabViews.length, 'Tabs and Views must be same length');
+  }) : assert(
+         tabs.length == tabViews.length,
+         'Tabs and Views must be same length',
+       );
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +23,14 @@ class AppTabBar extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-            ),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
             child: TabBar(
               controller: controller,
               labelColor: AppColors.baseWhite,
               unselectedLabelColor: AppColors.baseWhite,
 
               indicatorSize: TabBarIndicatorSize.tab,
-              dividerColor:Colors.transparent,
+              dividerColor: Colors.transparent,
               indicator: BoxDecoration(
                 color: AppColors.mainRed,
                 borderRadius: BorderRadius.circular(24),
@@ -39,10 +40,7 @@ class AppTabBar extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Expanded(
-            child: TabBarView(
-              controller: controller,
-              children: tabViews,
-            ),
+            child: TabBarView(controller: controller, children: tabViews),
           ),
         ],
       ),

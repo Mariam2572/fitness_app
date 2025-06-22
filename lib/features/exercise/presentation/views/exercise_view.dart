@@ -41,4 +41,3 @@ class ExerciseView extends StatelessWidget {
     );
   }
 }
-

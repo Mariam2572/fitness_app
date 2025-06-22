@@ -1,2 +1,1 @@
-abstract interface class ExerciseRepo {
-}
+abstract interface class ExerciseRepo {}

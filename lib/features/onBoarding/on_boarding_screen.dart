@@ -5,8 +5,6 @@ import 'package:fitness_app/features/onBoarding/onboarding_bottom_sheet.dart';
 import 'package:fitness_app/features/onBoarding/onboarding_item.dart';
 import 'package:flutter/material.dart';
 
-
-
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
@@ -81,14 +79,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               controller: _pageController,
               itemCount: _onBoardingItems.length,
               onPageChanged: (index) => setState(() => _currentIndex = index),
-              itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.only(bottom: 80),
-                child: Image.asset(
-                  _onBoardingItems[index].image,
-                  fit: BoxFit.contain,
-                  height: double.infinity,
-                ),
-              ),
+              itemBuilder:
+                  (context, index) => Padding(
+                    padding: const EdgeInsets.only(bottom: 80),
+                    child: Image.asset(
+                      _onBoardingItems[index].image,
+                      fit: BoxFit.contain,
+                      height: double.infinity,
+                    ),
+                  ),
             ),
             if (currentItem.showSkip)
               Positioned(
@@ -117,5 +116,3 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 }
-
-

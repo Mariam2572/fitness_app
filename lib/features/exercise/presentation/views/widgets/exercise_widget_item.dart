@@ -2,6 +2,7 @@ import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+
 class ExerciseWidgetItem extends StatelessWidget {
   const ExerciseWidgetItem({super.key});
 

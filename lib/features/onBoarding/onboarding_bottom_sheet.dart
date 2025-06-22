@@ -14,7 +14,8 @@ class OnBoardingBottomSheet extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
 
-  const OnBoardingBottomSheet({super.key, 
+  const OnBoardingBottomSheet({
+    super.key,
     required this.item,
     required this.currentIndex,
     required this.total,

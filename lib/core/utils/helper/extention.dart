@@ -1,7 +1,5 @@
-
 import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-
 
 extension LocalizationHelper on BuildContext {
   AppLocalizations get loc => AppLocalizations.of(this)!;

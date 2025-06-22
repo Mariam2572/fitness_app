@@ -8,8 +8,7 @@ class CustomGlassContainer extends StatelessWidget {
   final Widget child;
   final double? height;
   @override
-
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: BackdropFilter(
@@ -17,7 +16,7 @@ class CustomGlassContainer extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           height: height ?? context.height * 0.45,
-          child: child
+          child: child,
         ),
       ),
     );
