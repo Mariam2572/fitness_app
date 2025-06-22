@@ -1,4 +1,6 @@
+import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/helper/secure_storage.dart';
 import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
@@ -118,8 +120,17 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: BlocListener<LoginCubit, LoginState>(
-                        listener: (context, state) {
+                        listener: (context, state) async{
                           if (state is LoginSuccess) {
+                            //added the token here so i can get it from the login navigation
+                            final token = state.response.token;
+                            if (token != null && token.isNotEmpty) {
+                              await secureStorage.write(key: Constants.userToken, value: token);
+                              showSnackBar(context, 'Login successful');
+                              Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
+                            } else {
+                              showErrorSnackBar(context, 'Token is missing in response');
+                            }
                             showSnackBar(context, 'Login successful');
                             Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
                           }
