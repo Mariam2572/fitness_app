@@ -68,7 +68,7 @@ class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
                     ),
                     onPressed: () {
                      if (selectedGender != null) {
-                        Navigator.pushNamed(context, RoutesName.chooseAgeScreen);
+                        Navigator.pushNamed(context, RoutesName.chooseAgeScreen,arguments: context.read<RegisterCubit>(),);
                       }else {
                         showSnackBar(context, context.loc.pleaseSelectYourGender);
                       }

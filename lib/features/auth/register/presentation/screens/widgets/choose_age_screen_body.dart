@@ -3,11 +3,9 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/number_picker_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -66,7 +64,7 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                 initialValue: 15,
                 onChanged: (val) {
                   context.read<RegisterCubit>().age = val;
-                  // print("aaaaaaage is ${context.read<RegisterCubit>().age}");
+                
                   setState(() {});
                 },
               ),
@@ -78,7 +76,9 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, 
-                    RoutesName.chooseWeightScreen, );
+                    RoutesName.chooseWeightScreen, 
+                      arguments: context.read<RegisterCubit>(),
+                    );
                         },
                   child: Text(
                     context.loc.next,

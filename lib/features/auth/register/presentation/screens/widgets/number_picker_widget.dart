@@ -32,7 +32,6 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
     return Column(
       children: [
         NumberPicker(
-         
           textStyle: context.textTheme.displayLarge?.copyWith(
             color: AppColors.baseWhite,
             fontSize: 33,

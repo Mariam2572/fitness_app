@@ -79,7 +79,9 @@ class _ChooseWeightScreenBodyState extends State<ChooseWeightScreenBody> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, RoutesName.chooseHeightScreen);
+                    Navigator.pushNamed(context, RoutesName.chooseHeightScreen,
+                      arguments: context.read<RegisterCubit>(),
+                    );
                   },
                   child: Text(
                     context.loc.next,
