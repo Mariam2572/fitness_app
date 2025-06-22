@@ -18,6 +18,7 @@ class RecommendationCard extends StatelessWidget {
         image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.fill),
       ),
       child: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 16, bottom: 16, right: 20),
@@ -30,7 +31,6 @@ class RecommendationCard extends StatelessWidget {
             ),
           ),
         ],
-        alignment: Alignment.bottomCenter,
       ),
     );
   }

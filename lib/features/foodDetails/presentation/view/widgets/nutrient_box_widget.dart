@@ -1,20 +1,12 @@
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
-import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meal.dart';
 import 'package:flutter/material.dart';
 
 class NutrientBoxWidget extends StatelessWidget {
-  // final Meal meal;
-
   String value;
   String label;
 
-  NutrientBoxWidget({
-    super.key,
-    required this.label,
-    required this.value,
-    //  required this.meal
-  });
+  NutrientBoxWidget({super.key, required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {

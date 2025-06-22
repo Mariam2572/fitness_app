@@ -1,5 +1,6 @@
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
+import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meal.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/widgets/ingredient_item.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/widgets/nutrient_box_widget.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/widgets/recommendation_card.dart';
@@ -10,7 +11,17 @@ class MealsDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    final args = ModalRoute.of(context)!.settings.arguments! as Meal;
+
+    return
+    //  BlocProvider(
+    //   create:
+    //       (_) => MealsDetailsCubit(getIt.get<MealsDetailsUsecase>())..doIntent(
+    //         PerformMealsDetails(id: args.idMeal!),
+    //         // (id: args.idMeal!)
+    //       ),
+    // child:
+    Scaffold(
       backgroundColor: Colors.grey[900],
 
       body: Padding(
@@ -78,7 +89,7 @@ class MealsDetailsScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
-                color: Color(0xFF2D2D2D),
+                color: const Color(0xFF2D2D2D),
                 borderRadius: BorderRadius.circular(20),
               ),
 
@@ -124,6 +135,7 @@ class MealsDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
+      // ),
     );
   }
 
