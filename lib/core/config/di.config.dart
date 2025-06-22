@@ -31,6 +31,15 @@ import '../../features/auth/register/domain/repos/data_source/register_data_sour
 import '../../features/auth/register/domain/repos/register_repo.dart' as _i369;
 import '../../features/auth/register/domain/use_cases/register_use_case.dart'
     as _i118;
+import '../../features/exercise/data/data_source/exercise_remote_data_source_impl.dart'
+    as _i424;
+import '../../features/exercise/data/repo_impl/exercise_repo_impl.dart'
+    as _i824;
+import '../../features/exercise/domain/data_source/exercise_remote_data_source.dart'
+    as _i831;
+import '../../features/exercise/domain/repos/exercise_repo.dart' as _i659;
+import '../../features/exercise/domain/use_cases/get_levels_by_prime_mover_muscles.dart'
+    as _i292;
 import '../api_manager/api_services.dart' as _i785;
 import '../api_manager/dio_module.dart' as _i591;
 
@@ -52,10 +61,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
     );
+    gh.factory<_i831.ExerciseRemoteDataSource>(
+      () => _i424.ExerciseRemoteDataSourceImpl(gh<_i785.ApiService>()),
+    );
     gh.factory<_i96.LoginContract>(
       () => _i268.LoginRepositoryImplementation(
         loginRemoteDataSource: gh<_i520.LoginRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i659.ExerciseRepo>(
+      () => _i824.ExerciseRepoImpl(gh<_i831.ExerciseRemoteDataSource>()),
     );
     gh.factory<_i992.RegisterDataSource>(
       () => _i932.RegisterDataSourceImpl(gh<_i785.ApiService>()),
@@ -65,6 +80,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i401.LoginUsecase>(
       () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()),
+    );
+    gh.factory<_i292.GetLevelsByPrimeMoverMuscleUseCases>(
+      () => _i292.GetLevelsByPrimeMoverMuscleUseCases(gh<_i659.ExerciseRepo>()),
     );
     gh.factory<_i118.RegisterUseCase>(
       () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()),
