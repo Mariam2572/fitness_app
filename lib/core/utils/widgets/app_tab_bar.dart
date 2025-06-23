@@ -22,21 +22,23 @@ class AppTabBar extends StatelessWidget {
       length: tabs.length,
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-            child: TabBar(
-              controller: controller,
-              labelColor: AppColors.baseWhite,
-              unselectedLabelColor: AppColors.baseWhite,
-
-              indicatorSize: TabBarIndicatorSize.tab,
-              dividerColor: Colors.transparent,
-              indicator: BoxDecoration(
-                color: AppColors.mainRed,
-                borderRadius: BorderRadius.circular(24),
-              ),
-              tabs: tabs.map((title) => Tab(text: title)).toList(),
+          TabBar(
+            controller: controller,
+            labelColor: AppColors.baseWhite,
+            unselectedLabelColor: AppColors.baseWhite,
+            indicatorSize: TabBarIndicatorSize.tab,
+          isScrollable: true,
+          tabAlignment: TabAlignment.start,
+            dividerColor: Colors.transparent,
+            indicatorPadding: const EdgeInsets.symmetric(
+              horizontal: 8,
+              vertical: 8,
             ),
+            indicator: BoxDecoration(
+              color: AppColors.mainRed,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            tabs: tabs.map((title) => Tab(text: title)).toList(),
           ),
           const SizedBox(height: 10),
           Expanded(
