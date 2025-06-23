@@ -1,4 +1,4 @@
-import 'package:collection/collection.dart';
+
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meal.dart';
@@ -17,14 +17,4 @@ class MealsDatailsResponse {
 
   Map<String, dynamic> toJson() => _$MealsDatailsResponseToJson(this);
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! MealsDatailsResponse) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toJson(), toJson());
-  }
-
-  @override
-  int get hashCode => meals.hashCode;
 }

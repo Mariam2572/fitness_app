@@ -8,7 +8,7 @@ class AppColors {
   // Red Shades
   static const Color baseWhite = Color(0xFFFFFFFF);
   static const Color mainRed = Color(0xFFFF4100);
-
+  static const Color whiteSmoke = Color(0xFFD3D3D3);
   static const Color red90 = Color(0xFFFF541A);
   static const Color red80 = Color(0xFFFF7A4D);
   static const Color red70 = Color(0xFFFF8D66);

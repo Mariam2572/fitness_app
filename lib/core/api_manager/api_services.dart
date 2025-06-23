@@ -25,7 +25,7 @@ abstract class MealApiService {
   factory MealApiService(Dio dio) = _MealApiService;
 
   @GET(Constants.getMealsDetailsEndPoint)
-    Future<dynamic> getMealsDetails(@Path("i") String i);
+    Future<MealsDatailsResponse> getMealsDetails(@Path("i") String i);
 
 }
 
