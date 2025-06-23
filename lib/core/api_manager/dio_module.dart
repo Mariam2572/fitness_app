@@ -17,7 +17,6 @@ abstract class DioModule {
     final dio = Dio(
       BaseOptions(
         connectTimeout: const Duration(seconds: 60),
-        baseUrl: Constants.baseUrl,
       ),
     );
 
