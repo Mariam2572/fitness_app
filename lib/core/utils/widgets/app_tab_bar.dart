@@ -3,18 +3,15 @@ import 'package:flutter/material.dart';
 
 class AppTabBar extends StatelessWidget {
   final List<String> tabs;
-  final List<Widget> tabViews;
+  // final List<Widget> tabViews;
   final TabController? controller; // Optional external controller
 
   const AppTabBar({
     super.key,
     required this.tabs,
-    required this.tabViews,
+    // required this.tabViews,
     this.controller,
-  }) : assert(
-         tabs.length == tabViews.length,
-         'Tabs and Views must be same length',
-       );
+  }) ;
 
   @override
   Widget build(BuildContext context) {

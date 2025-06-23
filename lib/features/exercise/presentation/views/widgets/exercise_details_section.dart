@@ -24,9 +24,12 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
-  @override
-  void initState() {
-    super.initState();
+@override
+void initState() {
+  super.initState();
+
+  if (widget.levelsByMusclesModel != null &&
+      widget.levelsByMusclesModel!.difficultyLevels != null) {
     _tabController = TabController(
       length: widget.levelsByMusclesModel!.difficultyLevels!.length,
       vsync: this,
@@ -36,10 +39,11 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
       if (_tabController.indexIsChanging) return;
 
       context.read<ExerciseCubit>().doIntent(
-        GetLevelsByPrimeMoverMusclesIntent("67c797e226895f87ce0aa94b"),
-      );
+            GetLevelsByPrimeMoverMusclesIntent("67c797e226895f87ce0aa94b"),
+          );
     });
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -118,19 +122,19 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
                           .map((e) => e.name ?? '')
                           .toList() ??
                       [],
-                  tabViews:
-                      widget.levelsByMusclesModel?.difficultyLevels!
-                          .map(
-                            (e) => Center(
-                              child: Text(
-                                e.name ?? '',
-                                style: context.textTheme.bodySmall
-                                    ?.copyWith(fontWeight: FontWeight.w700),
-                              ),
-                            ),
-                          )
-                          .toList() ??
-                      [],
+                  // tabViews:
+                  //     widget.levelsByMusclesModel?.difficultyLevels!
+                  //         .map(
+                  //           (e) => Center(
+                  //             child: Text(
+                  //               e.name ?? '',
+                  //               style: context.textTheme.bodySmall
+                  //                   ?.copyWith(fontWeight: FontWeight.w700),
+                  //             ),
+                  //           ),
+                  //         )
+                  //         .toList() ??
+                  //     [],
                 ),
               ),
             ],

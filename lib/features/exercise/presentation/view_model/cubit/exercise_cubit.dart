@@ -18,14 +18,14 @@ class ExerciseCubit extends Cubit<ExerciseState> {
   final GetExerciseByMoverAndDifficultyLevelUseCase
   _getExerciseByMoverAndDifficultyLevelUseCase;
 
-  doIntent(ExerciseIntent intent) {
+  doIntent(ExerciseIntent intent) async {
     switch (intent) {
       case GetLevelsByPrimeMoverMusclesIntent():
         {
-          _getLevelsByPrimeMoverMuscles(intent.primeMoverMuscleId);
+      await   _getLevelsByPrimeMoverMuscles(intent.primeMoverMuscleId);
         }
       case GetExerciseByMoverAndDifficulty():
-        _getExerciseByMoverAndDifficulty(
+      await  _getExerciseByMoverAndDifficulty(
           primeMoverMuscleId: intent.primeMoverMuscleId,
           difficultyLevelId: intent.difficultyLevelId,
         );

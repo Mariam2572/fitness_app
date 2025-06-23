@@ -19,9 +19,9 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
   @override
   initState() {
     super.initState();
-    context.read<ExerciseCubit>().doIntent(
-      GetLevelsByPrimeMoverMusclesIntent("67c8499726895f87ce0aa9bc"),
-    );
+    // context.read<ExerciseCubit>().doIntent(
+    //   GetLevelsByPrimeMoverMusclesIntent("67c8499726895f87ce0aa9bc"),
+    // );
     context.read<ExerciseCubit>().doIntent(
       GetExerciseByMoverAndDifficulty(
         primeMoverMuscleId: "67c8499726895f87ce0aa9bc",
