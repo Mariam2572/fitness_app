@@ -3,49 +3,32 @@ import 'package:flutter/material.dart';
 
 class AppTabBar extends StatelessWidget {
   final List<String> tabs;
-  final List<Widget> tabViews;
-  final TabController? controller; // Optional external controller
+  // final List<Widget> tabViews;
+  final TabController controller;
 
   const AppTabBar({
     super.key,
     required this.tabs,
-    required this.tabViews,
-    this.controller,
-  }) : assert(
-         tabs.length == tabViews.length,
-         'Tabs and Views must be same length',
-       );
+    // required this.tabViews,
+    required this.controller,
+  }) ;
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: tabs.length,
-      child: Column(
-        children: [
-          TabBar(
-            controller: controller,
-            labelColor: AppColors.baseWhite,
-            unselectedLabelColor: AppColors.baseWhite,
-            indicatorSize: TabBarIndicatorSize.tab,
-          isScrollable: true,
-          tabAlignment: TabAlignment.start,
-            dividerColor: Colors.transparent,
-            indicatorPadding: const EdgeInsets.symmetric(
-              horizontal: 8,
-              vertical: 8,
-            ),
-            indicator: BoxDecoration(
-              color: AppColors.mainRed,
-              borderRadius: BorderRadius.circular(25),
-            ),
-            tabs: tabs.map((title) => Tab(text: title)).toList(),
-          ),
-          // const SizedBox(height: 10),
-          // Expanded(
-          //   child: TabBarView(controller: controller, children: tabViews),
-          // ),
-        ],
+    return TabBar(
+      controller: controller,
+      labelColor: AppColors.baseWhite,
+      unselectedLabelColor: AppColors.baseWhite,
+      indicatorSize: TabBarIndicatorSize.tab,
+      isScrollable: true,
+      tabAlignment: TabAlignment.start,
+      dividerColor: Colors.transparent,
+      indicatorPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      indicator: BoxDecoration(
+        color: AppColors.mainRed,
+        borderRadius: BorderRadius.circular(25),
       ),
+      tabs: tabs.map((title) => Tab(text: title)).toList(),
     );
   }
 }

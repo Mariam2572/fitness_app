@@ -6,6 +6,7 @@ import 'package:fitness_app/features/exercise/presentation/views/widgets/exercis
 import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_widget_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ExerciseViewBody extends StatefulWidget {
   const ExerciseViewBody({super.key});
@@ -18,9 +19,9 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
   @override
   initState() {
     super.initState();
-    context.read<ExerciseCubit>().doIntent(
-      GetLevelsByPrimeMoverMusclesIntent("67c8499726895f87ce0aa9bc"),
-    );
+    // context.read<ExerciseCubit>().doIntent(
+    //   GetLevelsByPrimeMoverMusclesIntent("67c8499726895f87ce0aa9bc"),
+    // );
     context.read<ExerciseCubit>().doIntent(
       GetExerciseByMoverAndDifficulty(
         primeMoverMuscleId: "67c8499726895f87ce0aa9bc",
@@ -33,6 +34,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+    
       body: Stack(
         children: [
           Image.asset(
@@ -42,11 +44,14 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
             width: double.infinity,
           ),
           BlocBuilder<ExerciseCubit, ExerciseState>(
+            buildWhen: (previous, current) => previous != current&& current is ExerciseSuccess,
             builder: (context, state) {
               if (state is ExerciseSuccess) {
                 return Column(
                   children: [
-                    const ExerciseDetailsSection(),
+                    ExerciseDetailsSection(
+                      levelsByMusclesModel: state.levelsByMusclesModel,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: CustomGlassContainer(
