@@ -22,28 +22,27 @@ class ExerciseDetailsSection extends StatefulWidget {
 
 class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
     with TickerProviderStateMixin {
-  late TabController _tabController;
+   late TabController _tabController;
 
-@override
-void initState() {
-  super.initState();
-
-  if (widget.levelsByMusclesModel != null &&
-      widget.levelsByMusclesModel!.difficultyLevels != null) {
-    _tabController = TabController(
-      length: widget.levelsByMusclesModel!.difficultyLevels!.length,
-      vsync: this,
-    );
+  @override
+  void initState() {
+    super.initState();
+    final levels = widget.levelsByMusclesModel?.difficultyLevels ?? [];
+    _tabController = TabController(length: levels.length, vsync: this);
 
     _tabController.addListener(() {
       if (_tabController.indexIsChanging) return;
+      final levelId = levels[_tabController.index].id ?? '';
 
       context.read<ExerciseCubit>().doIntent(
-            GetLevelsByPrimeMoverMusclesIntent("67c797e226895f87ce0aa94b"),
-          );
+        GetExerciseByMoverAndDifficulty(
+          primeMoverMuscleId: "67c8499726895f87ce0aa9bc",
+          difficultyLevelId: levelId,
+        ),
+      );
     });
   }
-}
+
 
   @override
   Widget build(BuildContext context) {
@@ -122,19 +121,7 @@ void initState() {
                           .map((e) => e.name ?? '')
                           .toList() ??
                       [],
-                  // tabViews:
-                  //     widget.levelsByMusclesModel?.difficultyLevels!
-                  //         .map(
-                  //           (e) => Center(
-                  //             child: Text(
-                  //               e.name ?? '',
-                  //               style: context.textTheme.bodySmall
-                  //                   ?.copyWith(fontWeight: FontWeight.w700),
-                  //             ),
-                  //           ),
-                  //         )
-                  //         .toList() ??
-                  //     [],
+              
                 ),
               ),
             ],
