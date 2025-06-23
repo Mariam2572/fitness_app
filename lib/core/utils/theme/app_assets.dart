@@ -24,4 +24,5 @@ class AppAssets {
   static const String onBoardingThree = "assets/images/on_boarding3.png";
   static const String homeBackground = "assets/images/home_background.png";
   static const String exerciseImage = "assets/images/exercise.png";
+  static const String exercise = 'assets/images/exercise_test.jpg';
 }
