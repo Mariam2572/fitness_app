@@ -17,7 +17,6 @@ abstract class DioModule {
     final dio = Dio(
       BaseOptions(
         connectTimeout: const Duration(seconds: 60),
-        baseUrl: Constants.baseUrl,
       ),
     );
 
@@ -44,5 +43,9 @@ abstract class DioModule {
   @Singleton()
   ApiService provideApiService(Dio dio) {
     return ApiService(dio);
+  }
+  @Singleton()
+  MealApiService provideMealApiService(Dio dio) {
+    return MealApiService(dio);
   }
 }

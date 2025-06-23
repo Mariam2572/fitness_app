@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: MealsDetailsRemoteDataSource)
 class MealsDetailsRemoteDataSourceImp implements MealsDetailsRemoteDataSource {
-  final ApiService apiService;
+  final MealApiService apiService;
   MealsDetailsRemoteDataSourceImp({required this.apiService});
   @override
   Future<ApiResult<MealsDatailsResponse>> mealsDatails({

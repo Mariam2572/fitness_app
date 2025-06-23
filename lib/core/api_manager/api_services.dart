@@ -18,8 +18,6 @@ abstract class ApiService {
   Future<LoginResponse> loginUser(@Body() LoginRequest loginRequest);
   @POST(Constants.registerEndPoint)
   Future<RegisterResponse> register(@Body() RegisterRequest registerRequest);
-  @GET("meals/{idMeal}")
-  Future<MealsDatailsResponse> getMealsDetails(@Path("idMeal") String id);
 }
 
 @RestApi(baseUrl: Constants.mealBaseUrl)

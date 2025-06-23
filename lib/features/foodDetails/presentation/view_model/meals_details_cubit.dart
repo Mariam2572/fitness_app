@@ -4,7 +4,9 @@ import 'package:fitness_app/features/foodDetails/domain/usecases/meals_details_u
 import 'package:fitness_app/features/foodDetails/presentation/view_model/meals_details_state.dart';
 
 import 'package:fitness_app/core/base/api_result.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class MealsDetailsCubit extends Cubit<MealsDetailsState> {
   MealsDetailsCubit(this.mealsDetailsUsecase) : super(MealsDetailsInitial());
 
