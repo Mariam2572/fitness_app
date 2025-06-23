@@ -21,3 +21,13 @@ abstract class ApiService {
   @GET("meals/{idMeal}")
   Future<MealsDatailsResponse> getMealsDetails(@Path("idMeal") String id);
 }
+
+@RestApi(baseUrl: Constants.mealBaseUrl)
+abstract class MealApiService {
+  factory MealApiService(Dio dio) = _MealApiService;
+
+  @GET(Constants.getMealsDetailsEndPoint)
+    Future<dynamic> getMealsDetails(@Path("i") String i);
+
+}
+
