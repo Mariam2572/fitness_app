@@ -20,5 +20,10 @@ final class ExerciseSuccess extends ExerciseState {
   final LevelsByMusclesModel? levelsByMusclesModel;
   final ExerciseByPrimeMoverAndDifficultyResponse?
   exerciseByPrimeMoverAndDifficultyResponse;
-  const ExerciseSuccess({this.exerciseByPrimeMoverAndDifficultyResponse,  this.levelsByMusclesModel});
+  
+  const ExerciseSuccess( {
+    this.exerciseByPrimeMoverAndDifficultyResponse,
+    this.levelsByMusclesModel,
+   
+  });
 }

@@ -1,11 +1,13 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseWidgetItem extends StatelessWidget {
-  const ExerciseWidgetItem({super.key});
-
+  const ExerciseWidgetItem({super.key, required this.exercise});
+  final Exercise exercise;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,12 +16,21 @@ class ExerciseWidgetItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
 
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
+          Container(
+            height: 88,
+            width: 81,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              image: DecorationImage(
+                fit: BoxFit.fill,
+
+                image: NetworkImage(
+                  getYouTubeThumbnail(
+                    exercise.shortYoutubeDemonstrationLink ?? "",
+                  ),
+                ),
+              ),
             ),
-            child: Image.asset(AppAssets.exerciseImage, fit: BoxFit.fill),
           ),
           const SizedBox(width: 16),
 

@@ -40,10 +40,10 @@ class AppTabBar extends StatelessWidget {
             ),
             tabs: tabs.map((title) => Tab(text: title)).toList(),
           ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: TabBarView(controller: controller, children: tabViews),
-          ),
+          // const SizedBox(height: 10),
+          // Expanded(
+          //   child: TabBarView(controller: controller, children: tabViews),
+          // ),
         ],
       ),
     );
