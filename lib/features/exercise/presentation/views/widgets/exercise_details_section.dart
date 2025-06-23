@@ -1,9 +1,11 @@
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:fitness_app/core/utils/widgets/build_app_bar.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/cal_and_time_section.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ExerciseDetailsSection extends StatefulWidget {
   const ExerciseDetailsSection({super.key});
@@ -29,6 +31,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             height: context.height * 0.5,
           ),
         ),
+        
         Container(
           width: double.infinity,
           height: context.height * 0.50,
@@ -58,7 +61,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
                   ),
                 ),
                 const SizedBox(height: 16),
-              const CalAndTimeSection(),
+                const CalAndTimeSection(),
                 SizedBox(
                   height: context.height * 0.07,
                   child: AppTabBar(
@@ -92,6 +95,5 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
         ),
       ],
     );
-    ;
   }
 }
