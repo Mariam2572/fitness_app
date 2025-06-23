@@ -48,5 +48,6 @@
   "back": "Back",
   "noMoreExcuses": "NO MORE EXCUSES \n Do It Now",
   "onboardingText3": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
-  "doIt": "Do It"
+  "doIt": "Do It",
+  "anErrorOccurred" : "An error occurred , Please try later"
 }

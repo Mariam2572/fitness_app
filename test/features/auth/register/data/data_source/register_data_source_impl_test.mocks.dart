@@ -3,20 +3,21 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
-import 'dart:async' as _i6;
+import 'dart:async' as _i7;
 
-import 'package:fitness_app/core/api_manager/api_services.dart' as _i5;
+import 'package:fitness_app/core/api_manager/api_services.dart' as _i6;
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart'
-    as _i7;
+    as _i8;
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart'
     as _i2;
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart'
-    as _i8;
+    as _i9;
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart'
     as _i3;
-import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart'
+import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart'
     as _i4;
+import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart'
+    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -44,60 +45,92 @@ class _FakeRegisterResponse_1 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeLevelsByMusclesModel_2 extends _i1.SmartFake
-    implements _i4.LevelsByMusclesModel {
-  _FakeLevelsByMusclesModel_2(Object parent, Invocation parentInvocation)
+class _FakeExerciseByPrimeMoverAndDifficultyResponse_2 extends _i1.SmartFake
+    implements _i4.ExerciseByPrimeMoverAndDifficultyResponse {
+  _FakeExerciseByPrimeMoverAndDifficultyResponse_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(parent, parentInvocation);
+}
+
+class _FakeLevelsByMusclesModel_3 extends _i1.SmartFake
+    implements _i5.LevelsByMusclesModel {
+  _FakeLevelsByMusclesModel_3(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i5.ApiService {
+class MockApiService extends _i1.Mock implements _i6.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.LoginResponse> loginUser(_i7.LoginRequest? loginRequest) =>
+  _i7.Future<_i2.LoginResponse> loginUser(_i8.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
             Invocation.method(#loginUser, [loginRequest]),
-            returnValue: _i6.Future<_i2.LoginResponse>.value(
+            returnValue: _i7.Future<_i2.LoginResponse>.value(
               _FakeLoginResponse_0(
                 this,
                 Invocation.method(#loginUser, [loginRequest]),
               ),
             ),
           )
-          as _i6.Future<_i2.LoginResponse>);
+          as _i7.Future<_i2.LoginResponse>);
 
   @override
-  _i6.Future<_i3.RegisterResponse> register(
-    _i8.RegisterRequest? registerRequest,
+  _i7.Future<_i3.RegisterResponse> register(
+    _i9.RegisterRequest? registerRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#register, [registerRequest]),
-            returnValue: _i6.Future<_i3.RegisterResponse>.value(
+            returnValue: _i7.Future<_i3.RegisterResponse>.value(
               _FakeRegisterResponse_1(
                 this,
                 Invocation.method(#register, [registerRequest]),
               ),
             ),
           )
-          as _i6.Future<_i3.RegisterResponse>);
+          as _i7.Future<_i3.RegisterResponse>);
 
   @override
-  _i6.Future<_i4.LevelsByMusclesModel> getLevelsByMuscles(
+  _i7.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>
+  getExerciseByMoverAndDifficulty(
+    String? primeMoverMuscleId,
+    String? difficultyLevelId,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#getExerciseByMoverAndDifficulty, [
+              primeMoverMuscleId,
+              difficultyLevelId,
+            ]),
+            returnValue:
+                _i7.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>.value(
+                  _FakeExerciseByPrimeMoverAndDifficultyResponse_2(
+                    this,
+                    Invocation.method(#getExerciseByMoverAndDifficulty, [
+                      primeMoverMuscleId,
+                      difficultyLevelId,
+                    ]),
+                  ),
+                ),
+          )
+          as _i7.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>);
+
+  @override
+  _i7.Future<_i5.LevelsByMusclesModel> getLevelsByMuscles(
     String? primeMoverMuscleId,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#getLevelsByMuscles, [primeMoverMuscleId]),
-            returnValue: _i6.Future<_i4.LevelsByMusclesModel>.value(
-              _FakeLevelsByMusclesModel_2(
+            returnValue: _i7.Future<_i5.LevelsByMusclesModel>.value(
+              _FakeLevelsByMusclesModel_3(
                 this,
                 Invocation.method(#getLevelsByMuscles, [primeMoverMuscleId]),
               ),
             ),
           )
-          as _i6.Future<_i4.LevelsByMusclesModel>);
+          as _i7.Future<_i5.LevelsByMusclesModel>);
 }

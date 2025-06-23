@@ -1,6 +1,10 @@
+import 'package:fitness_app/features/exercise/domain/use_cases/get_exercise_by_mover_and_difficulty_level.dart';
+import 'package:fitness_app/features/exercise/domain/use_cases/get_levels_by_prime_mover_muscles.dart';
+import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
+import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:provider/provider.dart';
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/provider/app_config_provider.dart';
@@ -19,7 +23,6 @@ Future<void> main() async {
   );
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
-  
 }
 
 class MyApp extends StatelessWidget {
