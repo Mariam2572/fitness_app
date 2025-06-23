@@ -18,3 +18,13 @@ abstract class ApiService {
   @POST(Constants.registerEndPoint)
   Future<RegisterResponse> register(@Body() RegisterRequest registerRequest);
 }
+
+@RestApi(baseUrl: Constants.mealBaseUrl)
+abstract class MealApiService {
+  factory MealApiService(Dio dio) = _MealApiService;
+
+  @GET(Constants.getMealsDetailsEndPoint)
+    Future<dynamic> getMealsDetails(@Path("i") String i);
+
+}
+
