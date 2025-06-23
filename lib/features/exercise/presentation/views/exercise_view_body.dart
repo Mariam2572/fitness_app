@@ -31,6 +31,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: Stack(
         children: [
@@ -54,7 +55,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
                             return ExerciseWidgetItem(
                               exercise:
                                   state
-                                      .exerciseByPrimeMoverAndDifficultyResponse!
+                                      .exerciseByPrimeMoverAndDifficultyResponse
                                       .exercises![index],
                             );
                           },

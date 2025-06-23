@@ -16,14 +16,22 @@ final class ExerciseFailuer extends ExerciseState {
   const ExerciseFailuer({required this.message});
 }
 
-final class ExerciseSuccess extends ExerciseState {
+final class LevelSuccess extends ExerciseState {
   final LevelsByMusclesModel? levelsByMusclesModel;
   final ExerciseByPrimeMoverAndDifficultyResponse?
   exerciseByPrimeMoverAndDifficultyResponse;
-  
-  const ExerciseSuccess( {
+  final Exercise? exercise;
+  const LevelSuccess({
     this.exerciseByPrimeMoverAndDifficultyResponse,
     this.levelsByMusclesModel,
-   
+    this.exercise,
   });
+}
+
+final class ExerciseSuccess extends ExerciseState {
+ 
+  final ExerciseByPrimeMoverAndDifficultyResponse
+  exerciseByPrimeMoverAndDifficultyResponse;
+  
+  const ExerciseSuccess({required this.exerciseByPrimeMoverAndDifficultyResponse});
 }

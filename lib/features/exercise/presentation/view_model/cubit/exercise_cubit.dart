@@ -19,14 +19,14 @@ class ExerciseCubit extends Cubit<ExerciseState> {
   final GetExerciseByMoverAndDifficultyLevelUseCase
   _getExerciseByMoverAndDifficultyLevelUseCase;
 
-  doIntent(ExerciseIntent intent) {
+  doIntent(ExerciseIntent intent)async {
     switch (intent) {
       case GetLevelsByPrimeMoverMusclesIntent():
         {
-          _getLevelsByPrimeMoverMuscles(intent.primeMoverMuscleId);
+     await     _getLevelsByPrimeMoverMuscles(intent.primeMoverMuscleId);
         }
       case GetExerciseByMoverAndDifficulty():
-        _getExerciseByMoverAndDifficulty(
+     await   _getExerciseByMoverAndDifficulty(
           primeMoverMuscleId: intent.primeMoverMuscleId,
           difficultyLevelId: intent.difficultyLevelId,
         );
@@ -47,7 +47,7 @@ class ExerciseCubit extends Cubit<ExerciseState> {
         );
         break;
       case ApiSuccess<LevelsByMusclesModel>():
-        emit(ExerciseSuccess(levelsByMusclesModel: response.data!));
+        emit(LevelSuccess(levelsByMusclesModel: response.data!));
         break;
       default:
         break;
@@ -68,8 +68,9 @@ class ExerciseCubit extends Cubit<ExerciseState> {
         {
           emit(
             ExerciseSuccess(
-              exerciseByPrimeMoverAndDifficultyResponse: response.data,
-              
+              exerciseByPrimeMoverAndDifficultyResponse:
+                  response.data ??
+                  const ExerciseByPrimeMoverAndDifficultyResponse(),
             ),
           );
         }
