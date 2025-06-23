@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class DioModule {
-  @Singleton()
+  @lazySingleton
   LogInterceptor provideLogger() {
     return LogInterceptor(requestBody: true, responseBody: true);
   }
@@ -17,7 +17,7 @@ abstract class DioModule {
     final dio = Dio(
       BaseOptions(
         connectTimeout: const Duration(seconds: 60),
-        baseUrl: Constants.baseUrl,
+        baseUrl: Constants.foodBaseUrl,
       ),
     );
 

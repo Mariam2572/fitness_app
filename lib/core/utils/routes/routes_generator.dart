@@ -12,6 +12,11 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_g
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart'
+    show GetFoodCategoriesUseCase;
+import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
+import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
+import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
@@ -25,79 +30,77 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RoutesGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
     switch (settings.name) {
-    
-  
-    case RoutesName.register:
-      final cubit = RegisterCubit(getIt<RegisterUseCase>());
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child:  RegisterScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.register:
+        final cubit = RegisterCubit(getIt<RegisterUseCase>());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(value: cubit, child: RegisterScreen()),
+          settings: settings,
+        );
 
-    case RoutesName.goals:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const GoalsScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.goals:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) =>
+                  BlocProvider.value(value: cubit, child: const GoalsScreen()),
+          settings: settings,
+        );
 
-    case RoutesName.chooseGenderScreen:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const ChooseGenderScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.chooseGenderScreen:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const ChooseGenderScreen(),
+              ),
+          settings: settings,
+        );
 
-    case RoutesName.chooseAgeScreen:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const ChooseAgeScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.chooseAgeScreen:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const ChooseAgeScreen(),
+              ),
+          settings: settings,
+        );
 
-    case RoutesName.chooseWeightScreen:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const ChooseWeightScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.chooseWeightScreen:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const ChooseWeightScreen(),
+              ),
+          settings: settings,
+        );
 
-    case RoutesName.chooseHeightScreen:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const ChooseHeightScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.chooseHeightScreen:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const ChooseHeightScreen(),
+              ),
+          settings: settings,
+        );
 
-    case RoutesName.activities:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const ActivtiesScreen(),
-        ),
-        settings: settings,
-      );
-
-  
+      case RoutesName.activities:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const ActivtiesScreen(),
+              ),
+          settings: settings,
+        );
 
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
@@ -143,10 +146,23 @@ class RoutesGenerator {
           builder: (context) => const WorkOutsView(),
           settings: settings,
         );
+
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
           settings: settings,
+        );
+      case RoutesName.food:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create:
+                    (_) => FoodCubit(
+                      getIt<GetFoodCategoriesUseCase>(),
+                      getIt<GetMealsByCategoryUseCase>(),
+                    ),
+                child: const FoodRecommendationPage(),
+              ),
         );
       default:
         return null;

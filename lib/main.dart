@@ -21,7 +21,7 @@ Future<void> main() async {
   );
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
-  configureDependencies();
+  // configureDependencies();
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerator,
       theme: AppTheme.appTheme,
-      initialRoute: RoutesName.splash,
+      initialRoute: RoutesName.food,
     );
   }
 }
