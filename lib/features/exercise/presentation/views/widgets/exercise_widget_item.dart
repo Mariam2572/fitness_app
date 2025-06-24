@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
@@ -10,28 +11,49 @@ class ExerciseWidgetItem extends StatelessWidget {
   final Exercise exercise;
   @override
   Widget build(BuildContext context) {
+    final thumbnailUrl = getYouTubeThumbnail(
+      exercise.shortYoutubeDemonstrationLink ?? "",
+    );
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-
         children: [
           Container(
             height: 88,
             width: 81,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-              image: DecorationImage(
-                fit: BoxFit.fill,
-
-                image: NetworkImage(
-                  getYouTubeThumbnail(
-                    exercise.shortYoutubeDemonstrationLink ?? "",
-                  ),
-                ),
-              ),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.grey[300],
             ),
+            clipBehavior: Clip.antiAlias,
+            child:
+                thumbnailUrl.isNotEmpty
+                    ? CachedNetworkImage(
+                      imageUrl: thumbnailUrl,
+                      fit: BoxFit.fill,
+                      placeholder:
+                          (context, url) => const Center(
+                            child: CircularProgressIndicator.adaptive(
+                              strokeWidth: 2,
+                              constraints: BoxConstraints.tightFor(
+                                width: 20,
+                                height: 20,
+                              ),
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                AppColors.mainRed,
+                              ),
+                              backgroundColor: AppColors.mainRed,
+                            ),
+                          ),
+                      errorWidget:
+                          (context, url, error) => const Center(
+                            child: Icon(Icons.error, color: Colors.red),
+                          ),
+                    )
+                    : const Center(child: Icon(Icons.error, color: Colors.red)),
           ),
+
           const SizedBox(width: 16),
 
           Expanded(

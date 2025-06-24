@@ -6,7 +6,6 @@ import 'package:fitness_app/features/exercise/presentation/views/widgets/exercis
 import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_widget_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ExerciseViewBody extends StatefulWidget {
   const ExerciseViewBody({super.key});
@@ -15,25 +14,58 @@ class ExerciseViewBody extends StatefulWidget {
   State<ExerciseViewBody> createState() => _ExerciseViewBodyState();
 }
 
-class _ExerciseViewBodyState extends State<ExerciseViewBody> {
+class _ExerciseViewBodyState extends State<ExerciseViewBody>
+    with TickerProviderStateMixin {
   @override
-  initState() {
+  @override
+  void initState() {
     super.initState();
-    // context.read<ExerciseCubit>().doIntent(
-    //   GetLevelsByPrimeMoverMusclesIntent("67c8499726895f87ce0aa9bc"),
-    // );
-    context.read<ExerciseCubit>().doIntent(
-      GetExerciseByMoverAndDifficulty(
-        primeMoverMuscleId: "67c8499726895f87ce0aa9bc",
-        difficultyLevelId: "67c797e226895f87ce0aa94b",
-      ),
-    );
+    final cubit = context.read<ExerciseCubit>();
+    cubit
+        .doIntent(
+          GetLevelsByPrimeMoverMusclesIntent(
+            primeMoverMuscleId: "67c8499726895f87ce0aa9bc",
+          ),
+        )
+        .then((value) {
+          if (cubit.levels.isNotEmpty) {
+            cubit.tabController = TabController(
+              length: cubit.levels.length,
+              vsync: this,
+            );
+            final firstId = cubit.levels[0].id;
+            cubit.doIntent(
+              GetExerciseByMoverAndDifficulty(
+                primeMoverMuscleId: '67c8499726895f87ce0aa9bc',
+                difficultyLevelId: firstId ?? '',
+              ),
+            );
+            cubit.tabController.addListener(() {
+              if (!cubit.tabController.indexIsChanging) {
+                final id = cubit.levels[cubit.tabController.index].id;
+                cubit.doIntent(
+                  GetExerciseByMoverAndDifficulty(
+                    primeMoverMuscleId: '67c8499726895f87ce0aa9bc',
+                    difficultyLevelId: id ?? '',
+                  ),
+                );
+              }
+            });
+          }
+        });
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    final cubit = context.read<ExerciseCubit>();
+    cubit.tabController.dispose();
+    cubit.tabController.removeListener(() {});
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       body: Stack(
         children: [
           Image.asset(
@@ -43,24 +75,28 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
             width: double.infinity,
           ),
           BlocBuilder<ExerciseCubit, ExerciseState>(
-            buildWhen: (previous, current) => previous != current&& current is ExerciseSuccess,
+            buildWhen:
+                (previous, current) =>
+                    previous != current && current is ExerciseSuccess,
+
             builder: (context, state) {
               if (state is ExerciseSuccess) {
+                final exercises =
+                    state
+                        .exerciseByPrimeMoverAndDifficultyResponse
+                        ?.exercises ??
+                    [];
+
                 return Column(
                   children: [
-                    ExerciseDetailsSection(
-                      levelsByMusclesModel: state.levelsByMusclesModel,
-                    ),
+                    const ExerciseDetailsSection(),
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: CustomGlassContainer(
                         child: ListView.separated(
                           itemBuilder: (BuildContext context, int index) {
                             return ExerciseWidgetItem(
-                              exercise:
-                                  state
-                                      .exerciseByPrimeMoverAndDifficultyResponse!
-                                      .exercises![index],
+                              exercise: exercises[index],
                             );
                           },
                           separatorBuilder: (BuildContext context, int index) {
@@ -69,7 +105,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
                               thickness: .5,
                             );
                           },
-                          itemCount: 5,
+                          itemCount: exercises.length,
                         ),
                       ),
                     ),
@@ -85,6 +121,5 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
         ],
       ),
     );
-    ;
   }
 }

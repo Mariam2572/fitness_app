@@ -5,47 +5,32 @@ import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
-import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/cal_and_time_section.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ExerciseDetailsSection extends StatefulWidget {
-  final LevelsByMusclesModel? levelsByMusclesModel;
 
-  const ExerciseDetailsSection({super.key, this.levelsByMusclesModel});
+
+  const ExerciseDetailsSection({super.key, });
 
   @override
   State<ExerciseDetailsSection> createState() => _ExerciseDetailsSectionState();
 }
 
 class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
-    with TickerProviderStateMixin {
-   late TabController _tabController;
+     {
 
-  @override
-  void initState() {
-    super.initState();
-    final levels = widget.levelsByMusclesModel?.difficultyLevels ?? [];
-    _tabController = TabController(length: levels.length, vsync: this);
 
-    _tabController.addListener(() {
-      if (_tabController.indexIsChanging) return;
-      final levelId = levels[_tabController.index].id ?? '';
-
-      context.read<ExerciseCubit>().doIntent(
-        GetExerciseByMoverAndDifficulty(
-          primeMoverMuscleId: "67c8499726895f87ce0aa9bc",
-          difficultyLevelId: levelId,
-        ),
-      );
-    });
-  }
+  
 
 
   @override
   Widget build(BuildContext context) {
+    final  cubit = context.read<ExerciseCubit>();
+    if (cubit.tabController == null || cubit.levels.isEmpty) {
+  return const SizedBox.shrink(); // or a loading indicator
+}
     return Stack(
       children: [
         ClipRRect(
@@ -86,13 +71,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // IconButton(
-              //   onPressed: () {
-              //     Navigator.pop(context);
-              //   },
-              //   icon: SvgPicture.asset(AppAssets.backIcon),
-              // ),
-                    
+                
               Text(
                 'Chest Exercise',
                 style: context.textTheme.headlineMedium?.copyWith(
@@ -113,15 +92,11 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
               const SizedBox(height: 16),
                     
               SizedBox(
-                height: context.height * 0.05,
+                height: 50,
                 child: AppTabBar(
-                  controller: _tabController,
-                  tabs:
-                      widget.levelsByMusclesModel?.difficultyLevels!
-                          .map((e) => e.name ?? '')
-                          .toList() ??
-                      [],
-              
+                  controller: cubit.tabController,
+                  tabs: cubit.levels.map((level) => Tab(text: level.name ?? '')).toList() ,
+                        
                 ),
               ),
             ],
