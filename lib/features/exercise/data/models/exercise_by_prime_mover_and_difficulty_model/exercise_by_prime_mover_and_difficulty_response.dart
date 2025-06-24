@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import 'exercise.dart';
 
 class ExerciseByPrimeMoverAndDifficultyResponse extends Equatable {

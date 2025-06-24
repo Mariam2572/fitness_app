@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/src/material/tab_controller.dart';
+
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
@@ -18,8 +20,9 @@ class ExerciseCubit extends Cubit<ExerciseState> {
   _getLevelsByPrimeMoverMusclesUseCase;
   final GetExerciseByMoverAndDifficultyLevelUseCase
   _getExerciseByMoverAndDifficultyLevelUseCase;
-  
- 
+
+  late TabController tabController;
+  List<DifficultyLevels> levels = [];
   doIntent(ExerciseIntent intent) async {
     switch (intent) {
       case GetLevelsByPrimeMoverMusclesIntent():
@@ -39,18 +42,16 @@ class ExerciseCubit extends Cubit<ExerciseState> {
     final response = await _getLevelsByPrimeMoverMusclesUseCase(
       primeMoverMuscleId: primeMoverMuscleId,
     );
-  
-    switch (response) {
-      case ApiError<LevelsByMusclesModel>():
-        emit(
-          ExerciseFailuer(
-            message: response.failure?.errorMessage ?? 'An error occurred',
-          ),
-        );
-        break;
-      case ApiSuccess<LevelsByMusclesModel>():
-        emit(ExerciseSuccess(levelsByMusclesModel: response.data!));
-        break;
+    if (response is ApiSuccess<LevelsByMusclesModel>) {
+      emit(ExerciseSuccess(levelsByMusclesModel: response.data));
+      levels = response.data?.difficultyLevels ?? [];
+    } else if (response is ApiError<LevelsByMusclesModel>) {
+      emit(
+        ExerciseFailuer(
+          message:
+              response.failure?.errorMessage ?? 'An error occurred , try later',
+        ),
+      );
     }
   }
 
@@ -68,9 +69,7 @@ class ExerciseCubit extends Cubit<ExerciseState> {
         {
           emit(
             ExerciseSuccess(
-              exerciseByPrimeMoverAndDifficultyResponse:
-                  response.data ??
-                  const ExerciseByPrimeMoverAndDifficultyResponse(),
+              exerciseByPrimeMoverAndDifficultyResponse: response.data,
             ),
           );
         }
@@ -99,7 +98,7 @@ sealed class ExerciseIntent extends Equatable {
 
 class GetLevelsByPrimeMoverMusclesIntent extends ExerciseIntent {
   final String primeMoverMuscleId;
-  GetLevelsByPrimeMoverMusclesIntent(this.primeMoverMuscleId);
+  GetLevelsByPrimeMoverMusclesIntent({required this.primeMoverMuscleId});
 }
 
 class GetExerciseByMoverAndDifficulty extends ExerciseIntent {

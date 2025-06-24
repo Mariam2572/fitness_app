@@ -1,6 +1,6 @@
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fitness_app/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

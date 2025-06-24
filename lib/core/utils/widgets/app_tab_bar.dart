@@ -2,7 +2,7 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTabBar extends StatelessWidget {
-  final List<String> tabs;
+  final List<Widget> tabs;
   // final List<Widget> tabViews;
   final TabController controller;
 
@@ -28,7 +28,7 @@ class AppTabBar extends StatelessWidget {
         color: AppColors.mainRed,
         borderRadius: BorderRadius.circular(25),
       ),
-      tabs: tabs.map((title) => Tab(text: title)).toList(),
+      tabs: tabs
     );
   }
 }
