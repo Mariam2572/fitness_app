@@ -3,21 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
+import 'dart:async' as _i5;
 
-import 'package:fitness_app/core/api_manager/api_services.dart' as _i6;
-import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart'
-    as _i8;
-import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart'
-    as _i2;
-import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart'
-    as _i9;
-import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart'
-    as _i3;
+import 'package:fitness_app/core/api_manager/api_services.dart' as _i4;
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart'
-    as _i4;
+    as _i2;
 import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart'
-    as _i5;
+    as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -34,90 +26,51 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
-  _FakeLoginResponse_0(Object parent, Invocation parentInvocation)
+class _FakeFoodCategoriesResponse_0 extends _i1.SmartFake
+    implements _i2.FoodCategoriesResponse {
+  _FakeFoodCategoriesResponse_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeRegisterResponse_1 extends _i1.SmartFake
-    implements _i3.RegisterResponse {
-  _FakeRegisterResponse_1(Object parent, Invocation parentInvocation)
+class _FakeMealsOfCategoryResponse_1 extends _i1.SmartFake
+    implements _i3.MealsOfCategoryResponse {
+  _FakeMealsOfCategoryResponse_1(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeFoodCategoriesResponse_2 extends _i1.SmartFake
-    implements _i4.FoodCategoriesResponse {
-  _FakeFoodCategoriesResponse_2(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
-class _FakeMealsOfCategoryResponse_3 extends _i1.SmartFake
-    implements _i5.MealsOfCategoryResponse {
-  _FakeMealsOfCategoryResponse_3(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
-/// A class which mocks [ApiService].
+/// A class which mocks [MealApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i6.ApiService {
-  MockApiService() {
+class MockMealApiService extends _i1.Mock implements _i4.MealApiService {
+  MockMealApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i7.Future<_i2.LoginResponse> loginUser(_i8.LoginRequest? loginRequest) =>
-      (super.noSuchMethod(
-            Invocation.method(#loginUser, [loginRequest]),
-            returnValue: _i7.Future<_i2.LoginResponse>.value(
-              _FakeLoginResponse_0(
-                this,
-                Invocation.method(#loginUser, [loginRequest]),
-              ),
-            ),
-          )
-          as _i7.Future<_i2.LoginResponse>);
-
-  @override
-  _i7.Future<_i3.RegisterResponse> register(
-    _i9.RegisterRequest? registerRequest,
-  ) =>
-      (super.noSuchMethod(
-            Invocation.method(#register, [registerRequest]),
-            returnValue: _i7.Future<_i3.RegisterResponse>.value(
-              _FakeRegisterResponse_1(
-                this,
-                Invocation.method(#register, [registerRequest]),
-              ),
-            ),
-          )
-          as _i7.Future<_i3.RegisterResponse>);
-
-  @override
-  _i7.Future<_i4.FoodCategoriesResponse> getFoodCategories() =>
+  _i5.Future<_i2.FoodCategoriesResponse> getFoodCategories() =>
       (super.noSuchMethod(
             Invocation.method(#getFoodCategories, []),
-            returnValue: _i7.Future<_i4.FoodCategoriesResponse>.value(
-              _FakeFoodCategoriesResponse_2(
+            returnValue: _i5.Future<_i2.FoodCategoriesResponse>.value(
+              _FakeFoodCategoriesResponse_0(
                 this,
                 Invocation.method(#getFoodCategories, []),
               ),
             ),
           )
-          as _i7.Future<_i4.FoodCategoriesResponse>);
+          as _i5.Future<_i2.FoodCategoriesResponse>);
 
   @override
-  _i7.Future<_i5.MealsOfCategoryResponse> getMealsByCategory(
+  _i5.Future<_i3.MealsOfCategoryResponse> getMealsByCategory(
     String? category,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#getMealsByCategory, [category]),
-            returnValue: _i7.Future<_i5.MealsOfCategoryResponse>.value(
-              _FakeMealsOfCategoryResponse_3(
+            returnValue: _i5.Future<_i3.MealsOfCategoryResponse>.value(
+              _FakeMealsOfCategoryResponse_1(
                 this,
                 Invocation.method(#getMealsByCategory, [category]),
               ),
             ),
           )
-          as _i7.Future<_i5.MealsOfCategoryResponse>);
+          as _i5.Future<_i3.MealsOfCategoryResponse>);
 }

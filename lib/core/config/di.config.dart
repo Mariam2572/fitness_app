@@ -58,11 +58,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i785.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
     );
+    gh.singleton<_i785.MealApiService>(
+      () => dioModule.provideMealApiService(gh<_i361.Dio>()),
+    );
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
     );
     gh.factory<_i910.FoodRemoteDataSource>(
-      () => _i338.FoodRemoteDataSourceImpl(gh<_i785.ApiService>()),
+      () => _i338.FoodRemoteDataSourceImpl(gh<_i785.MealApiService>()),
     );
     gh.factory<_i96.LoginContract>(
       () => _i268.LoginRepositoryImplementation(

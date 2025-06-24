@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: FoodRemoteDataSource)
 class FoodRemoteDataSourceImpl implements FoodRemoteDataSource {
-  final ApiService _apiService;
+  final MealApiService _apiService;
 
   FoodRemoteDataSourceImpl(this._apiService);
 

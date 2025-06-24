@@ -3,21 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
+import 'dart:async' as _i5;
 
-import 'package:fitness_app/core/api_manager/api_services.dart' as _i6;
+import 'package:fitness_app/core/api_manager/api_services.dart' as _i4;
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart'
-    as _i8;
+    as _i6;
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart'
     as _i2;
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart'
-    as _i9;
+    as _i7;
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart'
     as _i3;
-import 'package:fitness_app/features/food/data/models/food_categories_response.dart'
-    as _i4;
-import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart'
-    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -45,79 +41,39 @@ class _FakeRegisterResponse_1 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeFoodCategoriesResponse_2 extends _i1.SmartFake
-    implements _i4.FoodCategoriesResponse {
-  _FakeFoodCategoriesResponse_2(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
-class _FakeMealsOfCategoryResponse_3 extends _i1.SmartFake
-    implements _i5.MealsOfCategoryResponse {
-  _FakeMealsOfCategoryResponse_3(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i6.ApiService {
+class MockApiService extends _i1.Mock implements _i4.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i7.Future<_i2.LoginResponse> loginUser(_i8.LoginRequest? loginRequest) =>
+  _i5.Future<_i2.LoginResponse> loginUser(_i6.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
             Invocation.method(#loginUser, [loginRequest]),
-            returnValue: _i7.Future<_i2.LoginResponse>.value(
+            returnValue: _i5.Future<_i2.LoginResponse>.value(
               _FakeLoginResponse_0(
                 this,
                 Invocation.method(#loginUser, [loginRequest]),
               ),
             ),
           )
-          as _i7.Future<_i2.LoginResponse>);
+          as _i5.Future<_i2.LoginResponse>);
 
   @override
-  _i7.Future<_i3.RegisterResponse> register(
-    _i9.RegisterRequest? registerRequest,
+  _i5.Future<_i3.RegisterResponse> register(
+    _i7.RegisterRequest? registerRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#register, [registerRequest]),
-            returnValue: _i7.Future<_i3.RegisterResponse>.value(
+            returnValue: _i5.Future<_i3.RegisterResponse>.value(
               _FakeRegisterResponse_1(
                 this,
                 Invocation.method(#register, [registerRequest]),
               ),
             ),
           )
-          as _i7.Future<_i3.RegisterResponse>);
-
-  @override
-  _i7.Future<_i4.FoodCategoriesResponse> getFoodCategories() =>
-      (super.noSuchMethod(
-            Invocation.method(#getFoodCategories, []),
-            returnValue: _i7.Future<_i4.FoodCategoriesResponse>.value(
-              _FakeFoodCategoriesResponse_2(
-                this,
-                Invocation.method(#getFoodCategories, []),
-              ),
-            ),
-          )
-          as _i7.Future<_i4.FoodCategoriesResponse>);
-
-  @override
-  _i7.Future<_i5.MealsOfCategoryResponse> getMealsByCategory(
-    String? category,
-  ) =>
-      (super.noSuchMethod(
-            Invocation.method(#getMealsByCategory, [category]),
-            returnValue: _i7.Future<_i5.MealsOfCategoryResponse>.value(
-              _FakeMealsOfCategoryResponse_3(
-                this,
-                Invocation.method(#getMealsByCategory, [category]),
-              ),
-            ),
-          )
-          as _i7.Future<_i5.MealsOfCategoryResponse>);
+          as _i5.Future<_i3.RegisterResponse>);
 }

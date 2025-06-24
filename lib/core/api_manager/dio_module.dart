@@ -25,12 +25,9 @@ abstract class DioModule {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = await readSecureData(Constants.userToken);
-
           log("token : $token");
-          options.headers['Authorization'] = 'Bearer $token';
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
-            log("token : $token");
           }
           return handler.next(options);
         },
@@ -44,5 +41,10 @@ abstract class DioModule {
   @Singleton()
   ApiService provideApiService(Dio dio) {
     return ApiService(dio);
+  }
+
+  @Singleton()
+  MealApiService provideMealApiService(Dio dio) {
+    return MealApiService(dio);
   }
 }

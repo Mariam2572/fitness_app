@@ -8,14 +8,15 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../auth/register/data/data_source/register_data_source_impl_test.mocks.dart';
+import 'food_data_source_imp_test.mocks.dart';
 
-@GenerateMocks([ApiService])
+@GenerateMocks([MealApiService])
 void main() {
-  late MockApiService mockApiService;
+  late MockMealApiService mockApiService;
   late FoodRemoteDataSourceImpl dataSource;
 
   setUp(() {
-    mockApiService = MockApiService();
+    mockApiService = MockMealApiService();
     dataSource = FoodRemoteDataSourceImpl(mockApiService);
   });
 
