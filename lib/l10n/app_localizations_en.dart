@@ -161,4 +161,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get doIt => 'Do It';
+  @override
+  String get enter_your_email => 'Enter your email';
+
+  @override
+  String get forget_password_title => 'Forget password';
+
+  @override
+  String get send_otp => 'Send OTP';
+
+  @override
+  String get otp_code => 'OTP CODE';
+
+  @override
+  String get enter_your_otp_check_your_email => 'Enter Your OTP Check Your Email';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get didnt_receive_verficcation_code => "Didn't Receive Verification Code?";
+
+  @override
+  String get resend_code => 'Resend Code?';
+
+  @override
+  String get resend_code_in => 'resend code in';
+
+  @override
+  String get seconds => 'seconds';
+
+  @override
+  String get password_characters => 'make sure its 8 characters or more';
+
+  @override
+  String get create_new_password => 'Create New Password';
+
+  @override
+  String get done => 'Done';
+  @override
+  String get email_sent_successfully => 'Email Sent Successfully!';
 }

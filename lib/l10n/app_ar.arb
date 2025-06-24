@@ -48,5 +48,20 @@
   "back": "رجوع",
   "noMoreExcuses": "لا مزيد من الأعذار \n افعلها الآن",
   "onboardingText3": "لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا",
-  "doIt": "افعلها"
+  "doIt": "افعلها",
+  "enter_your_email": "ادخل بريدك الالكتروني",
+  "forget_password_title": "نسيت كلمط المرور",
+  "send_otp": "ارسال رمز التحقق",
+  "otp_code":"رمز التحقق",
+  "enter_your_otp_check_your_email":"ادخل رمز التحقق ,تفقد بريدك",
+  "confirm":"تأكيد",
+  "didnt_receive_verficcation_code":"لم يصلك رمز التحقق بعد؟",
+  "resend_code":"اعادة ارسال الكود؟",
+  "resend_code_in":"اعادة ارسال الكود في",
+  "seconds":"ثانية",
+  "password_characters": "تأكد من أن كلمة المرور 8 أحرف أو أكثر\nأنشئ كلمة مرور جديدة",
+  "create_new_password": "إنشاء كلمة مرور جديدة",
+  "done": "تم",
+  "email_sent_successfully":"تم ارسال البريد بنجاح!"
+
 }

@@ -161,4 +161,45 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get doIt => 'افعلها';
+  @override
+  String get enter_your_email => 'ادخل بريدك الالكتروني';
+
+  @override
+  String get forget_password_title => 'نسيت كلمة المرور';
+
+  @override
+  String get send_otp => 'ارسال رمز التحقق';
+
+  @override
+  String get otp_code => 'رمز التحقق';
+
+  @override
+  String get enter_your_otp_check_your_email => 'ادخل رمز التحقق ,تفقد بريدك';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get didnt_receive_verficcation_code => 'لم يصلك رمز التحقق بعد؟';
+
+  @override
+  String get resend_code => 'اعادة ارسال الكود؟';
+
+  @override
+  String get resend_code_in => 'اعادة ارسال الكود في';
+
+  @override
+  String get seconds => 'ثانية';
+
+  @override
+  String get password_characters => 'تأكد من أن كلمة المرور 8 أحرف أو أكثر\nأنشئ كلمة مرور جديدة';
+
+  @override
+  String get create_new_password => 'إنشاء كلمة مرور جديدة';
+
+  @override
+  String get done => 'تم';
+  @override
+  String get email_sent_successfully => 'تم ارسال البريد بنجاح!';
+
 }

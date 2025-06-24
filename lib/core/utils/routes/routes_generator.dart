@@ -1,5 +1,8 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
+import 'package:fitness_app/features/auth/forget_password/presentation/views/forget_password_screen.dart';
+import 'package:fitness_app/features/auth/forget_password/presentation/views/reset_password_screen.dart';
+import 'package:fitness_app/features/auth/forget_password/presentation/views/verification_screen.dart';
 import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
@@ -36,7 +39,19 @@ class RoutesGenerator {
         ),
         settings: settings,
       );
-
+      case RoutesName.forgetPassword:
+        return MaterialPageRoute(
+          builder: (context) => ForgetPasswordScreen(),
+          settings: settings,
+        );case RoutesName.verifyCode:
+      return MaterialPageRoute(
+        builder: (context) => VerificationScreen(),
+        settings: settings,
+      );case RoutesName.resetPaswword:
+      return MaterialPageRoute(
+        builder: (context) => ResetPasswordScreen(),
+        settings: settings,
+      );
     case RoutesName.goals:
       final cubit = settings.arguments as RegisterCubit;
       return MaterialPageRoute(

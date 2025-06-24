@@ -48,5 +48,19 @@
   "back": "Back",
   "noMoreExcuses": "NO MORE EXCUSES \n Do It Now",
   "onboardingText3": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
-  "doIt": "Do It"
+  "doIt": "Do It",
+  "enter_your_email": "Enter your email",
+  "forget_password_title": "Forget password",
+  "send_otp": "Send OTP",
+  "otp_code":"OTP CODE",
+  "enter_your_otp_check_your_email":"Enter Your OTP Check Your Email",
+  "confirm":"Confirm",
+  "didnt_receive_verficcation_code":"Didn't Receive Verification Code?",
+  "resend_code":"Resend Code?",
+  "resend_code_in":"resend code in",
+  "seconds":"seconds",
+  "password_characters":"make sure its 8 characters or more",
+  "create_new_password":"Create New Password",
+  "done":"Done",
+  "email_sent_successfully":"Email Sent Successfully!"
 }

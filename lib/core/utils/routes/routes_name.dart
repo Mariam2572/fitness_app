@@ -18,5 +18,7 @@ class RoutesName {
   static const String smartCoach = '/smartCoach';
   static const String workouts = '/workouts';
   static const String splash = "/splash";
-
+  static const String forgetPassword = '/forgetPassword';
+  static const String verifyCode = '/verifyCode';
+  static const String resetPaswword = '/resetPaswword';
 }

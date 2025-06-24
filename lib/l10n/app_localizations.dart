@@ -397,6 +397,20 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Do It'**
   String get doIt;
+  String get enter_your_email;
+  String get forget_password_title;
+  String get send_otp;
+  String get otp_code;
+  String get enter_your_otp_check_your_email;
+  String get confirm;
+  String get didnt_receive_verficcation_code;
+  String get resend_code;
+  String get resend_code_in;
+  String get seconds;
+  String get password_characters;
+  String get create_new_password;
+  String get done;
+  String get email_sent_successfully;
 }
 
 class _AppLocalizationsDelegate

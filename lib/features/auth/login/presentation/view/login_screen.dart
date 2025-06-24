@@ -77,11 +77,15 @@ class LoginScreen extends StatelessWidget {
                     //  const SizedBox(height: 8),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: Text(
-                        context.loc.forgot_password,
-                        style: const TextStyle(
-                          color: AppColors.mainRed,
-                          fontSize: 14,
+                      child: TextButton(onPressed: () {
+                        Navigator.pushNamed(context, RoutesName.forgetPassword);
+                      },
+                        child: Text(
+                          context.loc.forgot_password,
+                          style: const TextStyle(
+                            color: AppColors.mainRed,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                     ),

@@ -5,4 +5,7 @@ class Constants {
   static const String loginEndPoint = "auth/signin";
   static const String registerEndPoint = 'auth/signup';
   static const String getMealsDetailsEndPoint = "lookup.php?i={i}";
+  static const String forgotPassword = 'auth/forgotPassword';
+  static const String verifyResetCode = 'auth/verifyResetCode';
+  static const String resetPassword = 'auth/resetPassword';
 }
