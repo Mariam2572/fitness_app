@@ -22,7 +22,7 @@ class ExerciseDetailsSection extends StatefulWidget {
 
 class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
     with TickerProviderStateMixin {
-   late TabController _tabController;
+  late TabController _tabController;
 
   @override
   void initState() {
@@ -43,7 +43,6 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -59,7 +58,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             height: context.height * 0.5,
           ),
         ),
-        
+
         Container(
           padding: const EdgeInsets.all(16),
           width: double.infinity,
@@ -68,7 +67,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             gradient: const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color(0xff00000000), Color(0xFF242424)],
+               colors: [AppColors.baseBlack, AppColors.neutral90],
             ),
 
             boxShadow: [
@@ -87,13 +86,6 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // IconButton(
-              //   onPressed: () {
-              //     Navigator.pop(context);
-              //   },
-              //   icon: SvgPicture.asset(AppAssets.backIcon),
-              // ),
-                    
               Text(
                 'Chest Exercise',
                 style: context.textTheme.headlineMedium?.copyWith(
@@ -112,7 +104,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
               const SizedBox(height: 16),
               const CalAndTimeSection(),
               const SizedBox(height: 16),
-                    
+
               SizedBox(
                 height: context.height * 0.05,
                 child: AppTabBar(
@@ -122,10 +114,19 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
                           .map((e) => e.name ?? '')
                           .toList() ??
                       [],
-              
                 ),
               ),
             ],
+          ),
+        ),
+        Positioned(
+          top: 40,
+          left: 16,
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset(AppAssets.backIcon),
           ),
         ),
       ],
