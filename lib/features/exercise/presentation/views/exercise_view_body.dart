@@ -1,7 +1,9 @@
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
+import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_details_section.dart';
-import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_list.dart';
+import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_widget_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -121,5 +123,3 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
     );
   }
 }
-
-

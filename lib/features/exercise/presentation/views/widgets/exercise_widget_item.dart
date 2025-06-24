@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
+import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ExerciseWidgetItem extends StatefulWidget {
   const ExerciseWidgetItem({super.key, required this.exercise});
@@ -81,7 +80,7 @@ class _ExerciseWidgetItemState extends State<ExerciseWidgetItem> {
   @override
   Widget build(BuildContext context) {
     final thumbnailUrl = getYouTubeThumbnail(
-      exercise.shortYoutubeDemonstrationLink ?? "",
+     widget.exercise.shortYoutubeDemonstrationLink ?? "",
     );
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -147,7 +146,7 @@ class _ExerciseWidgetItemState extends State<ExerciseWidgetItem> {
           ),
 
           GestureDetector(
-            onTap: () {},
+            onTap: showVideoDialog,
             child: const CircleAvatar(
               backgroundColor: AppColors.mainRed,
               radius: 15,

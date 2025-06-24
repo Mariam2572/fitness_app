@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
-import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/cal_and_time_section.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ExerciseDetailsSection extends StatefulWidget {
 
@@ -20,12 +19,7 @@ class ExerciseDetailsSection extends StatefulWidget {
 
 class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
      {
-
-
-  
-
-
-  @override
+   @override
   Widget build(BuildContext context) {
     final  cubit = context.read<ExerciseCubit>();
     if (cubit.tabController == null || cubit.levels.isEmpty) {
