@@ -9,22 +9,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ExerciseDetailsSection extends StatefulWidget {
-
-
-  const ExerciseDetailsSection({super.key, });
+  const ExerciseDetailsSection({super.key});
 
   @override
   State<ExerciseDetailsSection> createState() => _ExerciseDetailsSectionState();
 }
 
-class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
-     {
-   @override
+class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection> {
+  @override
   Widget build(BuildContext context) {
-    final  cubit = context.read<ExerciseCubit>();
+    final cubit = context.read<ExerciseCubit>();
     if (cubit.tabController == null || cubit.levels.isEmpty) {
-  return const SizedBox.shrink(); // or a loading indicator
-}
+      return const SizedBox.shrink(); // or a loading indicator
+    }
     return Stack(
       children: [
         ClipRRect(
@@ -38,7 +35,6 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             height: context.height * 0.5,
           ),
         ),
-
         Container(
           padding: const EdgeInsets.all(16),
           width: double.infinity,
@@ -47,7 +43,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             gradient: const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-               colors: [AppColors.baseBlack, AppColors.neutral90],
+              colors: [Color(0xff00000000), AppColors.neutral90],
             ),
 
             boxShadow: [
@@ -66,7 +62,6 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-                
               Text(
                 'Chest Exercise',
                 style: context.textTheme.headlineMedium?.copyWith(
@@ -90,8 +85,10 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection>
                 height: 50,
                 child: AppTabBar(
                   controller: cubit.tabController,
-                  tabs: cubit.levels.map((level) => Tab(text: level.name ?? '')).toList() ,
-                        
+                  tabs:
+                      cubit.levels
+                          .map((level) => Tab(text: level.name ?? ''))
+                          .toList(),
                 ),
               ),
             ],
