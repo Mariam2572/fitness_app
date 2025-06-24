@@ -4,5 +4,8 @@ class Constants {
   static const String userToken = 'userToken';
   static const String loginEndPoint = "auth/signin";
   static const String registerEndPoint = 'auth/signup';
+  static const String getAllMusclesGroupsEndPoint = 'muscles';
+  static const String getAllMusclesByMuscleGroupIdEndPoint = 'musclesGroup';
+
   static const String getMealsDetailsEndPoint = "lookup.php?i={i}";
 }

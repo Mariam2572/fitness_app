@@ -31,9 +31,10 @@ class GridViewItem extends StatelessWidget {
               right: 20,
               left: 20,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    name,
+                    name,textAlign: TextAlign.center,
                     style: AppTextStyle.instance.textStyle16.copyWith(
                       color: AppColors.baseWhite,
                       fontWeight: FontWeight.w700,

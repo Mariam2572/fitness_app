@@ -21,7 +21,6 @@ Future<void> main() async {
   );
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
-  configureDependencies();
 }
 
 class MyApp extends StatelessWidget {
