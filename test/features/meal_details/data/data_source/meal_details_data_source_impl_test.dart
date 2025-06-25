@@ -21,7 +21,7 @@ void main() {
   });
 
   group('MealsDetailsRemoteDataSourceImp Tests', () {
-    final meal = Meal(idMeal: '1');
+    final meal = MealDetails(idMeal: '1');
     final response = MealsDatailsResponse(meals: [meal]);
 
     test('should return ApiSuccess when API call is successful', () async {

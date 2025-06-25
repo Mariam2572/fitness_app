@@ -15,7 +15,7 @@ void main() {
   late MockMealsDetailsRemoteDataSource mockRemoteDataSource;
   late MealsDetailsRepositoryImplementation repository;
 
-  final meal = Meal(idMeal: '1');
+  final meal = MealDetails(idMeal: '1');
   final response = MealsDatailsResponse(meals: [meal]);
 
   setUp(() {

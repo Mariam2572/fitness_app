@@ -16,7 +16,7 @@ void main() {
   late MockMealsDetailsContract mockRepository;
   late MealsDetailsUsecase useCase;
 
-  final meal = Meal(idMeal: '1');
+  final meal = MealDetails(idMeal: '1');
   final response = MealsDatailsResponse(meals: [meal]);
 
   setUp(() {
