@@ -2,16 +2,22 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class GenderWidget extends StatelessWidget {
-  const GenderWidget({super.key, required this.image, required this.title, required this.isSelected, this.onTap});
+  const GenderWidget({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.isSelected,
+    this.onTap,
+  });
   final String image;
   final String title;
   final bool isSelected;
- final void Function()? onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onTap,
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(

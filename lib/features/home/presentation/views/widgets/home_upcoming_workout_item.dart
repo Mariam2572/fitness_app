@@ -7,7 +7,11 @@ import 'package:flutter/material.dart';
 class HomeUpcomingWorkoutItem extends StatelessWidget {
   final String name;
   final String image;
-   const HomeUpcomingWorkoutItem({super.key, required this.name, required this.image});
+  const HomeUpcomingWorkoutItem({
+    super.key,
+    required this.name,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +24,8 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(45)),
         child: Stack(
           children: [
-             Positioned.fill(
-              child: Image(
-                image: NetworkImage(image),
-                fit: BoxFit.fill,
-              ),
+            Positioned.fill(
+              child: Image(image: NetworkImage(image), fit: BoxFit.fill),
             ),
             Positioned(
               bottom: 0,

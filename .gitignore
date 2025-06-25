@@ -43,3 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# Generated dependency injection and API service files
+lib/core/api_manager/api_services.g.dart
+lib/core/config/di.config.dart
+

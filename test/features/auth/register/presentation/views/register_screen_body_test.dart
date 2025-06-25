@@ -55,7 +55,7 @@ void main() {
     ) async {
       await pumpWidgetWithLocalization(tester, RegisterScreen());
       final authBackground = find.image(
-        const AssetImage(AppAssets.authBackground),
+         const AssetImage(AppAssets.authBackGround),
       );
       expect(authBackground, findsOneWidget);
     });

@@ -4,6 +4,10 @@ import 'package:fitness_app/features/auth/login/data/model/login_request/login_r
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
+import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
+import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart';
 
@@ -19,16 +23,32 @@ abstract class ApiService {
   Future<LoginResponse> loginUser(@Body() LoginRequest loginRequest);
   @POST(Constants.registerEndPoint)
   Future<RegisterResponse> register(@Body() RegisterRequest registerRequest);
+  @GET(Constants.getExerciseByMoverAndDifficultyEndPoint)
+  Future<ExerciseByPrimeMoverAndDifficultyResponse> getExerciseByMoverAndDifficulty(@Query("primeMoverMuscleId") String primeMoverMuscleId, @Query("difficultyLevelId") String difficultyLevelId);
+
+  @GET(Constants.levelsByMuscleEndPoint)
+  Future<LevelsByMusclesModel> getLevelsByMuscles(@Query("primeMoverMuscleId") String primeMoverMuscleId);
+
+  @GET(Constants.getAllMusclesGroupsEndPoint)
+  Future<GetAllMusclesGroupsReponse> getAllMusclesGroups();
+  @GET("${Constants.getAllMusclesByMuscleGroupIdEndPoint}/{id}")
+  Future<GetAllMusclesByMuscleGroupIdReponse> getAllMusclesByMuscleGroupId( @Path("id") String id);
+
+
 }
 
-@RestApi(baseUrl: Constants.foodBaseUrl)
+@RestApi(baseUrl: Constants.mealBaseUrl)
 abstract class MealApiService {
   factory MealApiService(Dio dio) = _MealApiService;
+
+  @GET(Constants.getMealsDetailsEndPoint)
+    Future<dynamic> getMealsDetails(@Path("i") String i);
 
   @GET(Constants.foodCategoriesEndPoint)
   Future<FoodCategoriesResponse> getFoodCategories();
   @GET(Constants.mealsOfCategoryEndPoint)
   Future<MealsOfCategoryResponse> getMealsByCategory(
-    @Query('c') String category,
-  );
+      @Query('c') String category,
+      );
 }
+

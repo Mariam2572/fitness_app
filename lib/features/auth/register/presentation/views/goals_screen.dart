@@ -65,7 +65,10 @@ class _GoalsScreenState extends State<GoalsScreen> {
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
 
-                const CircularPercentIndicatorWidget(currentStep: 5, totalSteps: 6),
+                    const CircularPercentIndicatorWidget(
+                      currentStep: 5,
+                      totalSteps: 6,
+                    ),
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
@@ -104,7 +107,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                             child: Column(
                               children: [
                                 OptionItem(
-                                  value: 'Gain Weight' ,
+                                  value: 'Gain Weight',
                                   label: 'Gain Weight',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
@@ -118,7 +121,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 OptionItem(
-                                  value: 'Lose Weight' ,
+                                  value: 'Lose Weight',
                                   label: 'Lose Weight',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
@@ -132,23 +135,21 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 OptionItem(
-                                
-                                  
-                                  
                                   label: 'Get Fitter',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
                                       selectedGoal = value!;
                                     });
-                                  }, value :'Get Fitter' ,
+                                  },
+                                  value: 'Get Fitter',
                                 ),
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 OptionItem(
-                                  value:'Gain More Flexible' ,
+                                  value: 'Gain More Flexible',
                                   label: 'Gain More Flexible',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
@@ -179,7 +180,11 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   onPressed: () {
                                     context.read<RegisterCubit>().goal =
                                         selectedGoal;
-                                    Navigator.pushNamed(context, RoutesName.activities, arguments: context.read<RegisterCubit>(),);
+                                    Navigator.pushNamed(
+                                      context,
+                                      RoutesName.activities,
+                                      arguments: context.read<RegisterCubit>(),
+                                    );
                                   },
                                   child: Text(
                                     'Next',

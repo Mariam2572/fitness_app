@@ -25,67 +25,68 @@ class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
   String? selectedGender;
   @override
   Widget build(BuildContext context) {
-  
-    return CustomGlassContainer(child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: Column(
-              spacing: 24,
-              children: [
-                GenderWidget(
-                  image: AppAssets.maleIcon,
-                  title: context.loc.male,
-                
-                   isSelected: selectedGender == Gender.male.name,
-                  onTap: () {
-                    selectedGender = Gender.male.name;
-                   RegisterCubit.selectedGender = Gender.male;
-                  //  print("--------------------${RegisterCubit.selectedGender}");
-                    setState(() {});
-                  },
+    return CustomGlassContainer(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24),
+        child: Column(
+          spacing: 24,
+          children: [
+            GenderWidget(
+              image: AppAssets.maleIcon,
+              title: context.loc.male,
+
+              isSelected: selectedGender == Gender.male.name,
+              onTap: () {
+                selectedGender = Gender.male.name;
+                RegisterCubit.selectedGender = Gender.male;
+                //  print("--------------------${RegisterCubit.selectedGender}");
+                setState(() {});
+              },
+            ),
+            GenderWidget(
+              image: AppAssets.femaleIcon,
+              title: context.loc.female,
+
+              isSelected: selectedGender == Gender.female.name,
+              onTap: () {
+                setState(() {
+                  selectedGender = Gender.female.name;
+                  RegisterCubit.selectedGender = Gender.female;
+                  print("--------------------${RegisterCubit.selectedGender}");
+                  setState(() {});
+                });
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      selectedGender == null ? Colors.grey : AppColors.mainRed,
                 ),
-                GenderWidget(
-                  image: AppAssets.femaleIcon,
-                  title: context.loc.female,
-                  
-                  isSelected: selectedGender == Gender.female.name,
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.female.name;
-                      RegisterCubit.selectedGender = Gender.female;
-                      print("--------------------${RegisterCubit.selectedGender}");
-                      setState(() {});
-                    });
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          selectedGender == null
-                              ? Colors.grey
-                              : AppColors.mainRed,
-                    ),
-                    onPressed: () {
-                     if (selectedGender != null) {
-                        Navigator.pushNamed(context, RoutesName.chooseAgeScreen,arguments: context.read<RegisterCubit>(),);
-                      }else {
-                        showSnackBar(context, context.loc.pleaseSelectYourGender);
-                      }
-                    },
-                    child: Text(
-                      context.loc.next,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.baseWhite,
-                      ),
-                    ),
+                onPressed: () {
+                  if (selectedGender != null) {
+                    Navigator.pushNamed(
+                      context,
+                      RoutesName.chooseAgeScreen,
+                      arguments: context.read<RegisterCubit>(),
+                    );
+                  } else {
+                    showSnackBar(context, context.loc.pleaseSelectYourGender);
+                  }
+                },
+                child: Text(
+                  context.loc.next,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.baseWhite,
                   ),
                 ),
-              ],
+              ),
             ),
-          ),);
+          ],
+        ),
+      ),
+    );
   }
 }
