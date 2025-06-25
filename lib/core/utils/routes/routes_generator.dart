@@ -12,6 +12,7 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_g
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
+import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
 import 'package:fitness_app/features/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
@@ -155,6 +156,11 @@ class RoutesGenerator {
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
+          settings: settings,
+        );
+      case RoutesName.exerciseView:
+        return MaterialPageRoute(
+          builder: (context) => const ExerciseView(),
           settings: settings,
         );
       default:

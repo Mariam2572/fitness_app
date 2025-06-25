@@ -5,10 +5,11 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 class CircularPercentIndicatorWidget extends StatelessWidget {
   const CircularPercentIndicatorWidget({
     super.key,
-    
-    required this.currentStep, required this.totalSteps,
+
+    required this.currentStep,
+    required this.totalSteps,
   });
- 
+
   final int totalSteps;
   final int currentStep;
   @override

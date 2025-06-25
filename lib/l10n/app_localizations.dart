@@ -397,6 +397,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Do It'**
   String get doIt;
+
+  /// No description provided for @anErrorOccurred.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred , Please try later'**
+  String get anErrorOccurred;
 }
 
 class _AppLocalizationsDelegate

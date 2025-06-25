@@ -161,4 +161,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get doIt => 'Do It';
+
+  @override
+  String get anErrorOccurred => 'An error occurred , Please try later';
 }

@@ -12,7 +12,9 @@ import 'package:injectable/injectable.dart';
 class RegisterUseCase {
   final RegisterRepo _registerRepo;
   RegisterUseCase(this._registerRepo);
-  Future<ApiResult<RegisterResponse>>  invoke(RegisterRequest registerRequest) async {
+  Future<ApiResult<RegisterResponse>> invoke(
+    RegisterRequest registerRequest,
+  ) async {
     return await _registerRepo.register(registerRequest);
   }
 }

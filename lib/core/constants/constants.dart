@@ -8,4 +8,6 @@ class Constants {
   static const String getAllMusclesByMuscleGroupIdEndPoint = 'musclesGroup';
 
   static const String getMealsDetailsEndPoint = "lookup.php?i={i}";
+  static const String getExerciseByMoverAndDifficultyEndPoint = "exercises/by-muscle-difficulty";
+  static const String levelsByMuscleEndPoint = 'levels/difficulty-levels/by-prime-mover';
 }

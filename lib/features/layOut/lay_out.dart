@@ -9,7 +9,6 @@ import 'package:fitness_app/features/workOuts/presentation/views/work_outs_view.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class LayOut extends StatefulWidget {
   const LayOut({super.key});
 

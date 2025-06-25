@@ -2,7 +2,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
 
-
 sealed class LoginState extends Equatable {
   const LoginState();
 
