@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
@@ -20,26 +21,34 @@ class GridViewItem extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-              child: Image(
-                image: NetworkImage(
-                  image,
-                ),
+              child: CachedNetworkImage(
+                imageUrl: image,
                 fit: BoxFit.fill,
+                placeholder:
+                    (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.mainRed,
+                      ),
+                    ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
-          Positioned(bottom: 8,
+            Positioned(
+              bottom: 8,
               right: 20,
               left: 20,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    name,textAlign: TextAlign.center,
+                    name,
+                    textAlign: TextAlign.center,
                     style: AppTextStyle.instance.textStyle16.copyWith(
                       color: AppColors.baseWhite,
                       fontWeight: FontWeight.w700,
                     ),
-                  ), Text(
+                  ),
+                  Text(
                     'Exercise',
                     style: AppTextStyle.instance.textStyle16.copyWith(
                       color: AppColors.baseWhite,
@@ -49,7 +58,6 @@ class GridViewItem extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         ),
       ),

@@ -16,7 +16,8 @@ class WorkOutsView extends StatefulWidget {
   State<WorkOutsView> createState() => _WorkOutsViewState();
 }
 
-class _WorkOutsViewState extends State<WorkOutsView> with SingleTickerProviderStateMixin {
+class _WorkOutsViewState extends State<WorkOutsView>
+    with SingleTickerProviderStateMixin {
   int selectedIndex = 0;
   TabController? _tabController;
   List<MusclesGroupBean> groups = [];
@@ -41,20 +42,28 @@ class _WorkOutsViewState extends State<WorkOutsView> with SingleTickerProviderSt
           const BlurredBackground(imagePath: AppAssets.authBackground),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 20,
+              ),
               child: BlocConsumer<WorkOutsCubit, WorkOutsState>(
                 listenWhen: (prev, curr) => curr is WorkOutsSuccess,
                 listener: (context, state) {
                   if (state is WorkOutsSuccess && !tabInitialized) {
                     groups = state.response.musclesGroup ?? [];
                     if (groups.isNotEmpty) {
-                      _tabController = TabController(length: groups.length, vsync: this);
+                      _tabController = TabController(
+                        length: groups.length,
+                        vsync: this,
+                      );
                       _tabController!.addListener(() {
                         final index = _tabController!.index;
                         if (index != selectedIndex) {
                           setState(() => selectedIndex = index);
                           context.read<WorkOutsCubit>().doIntent(
-                            GetAllMusclesByMuscleGroupIdIntent(id: groups[index].id!),
+                            GetAllMusclesByMuscleGroupIdIntent(
+                              id: groups[index].id!,
+                            ),
                           );
                         }
                       });
@@ -67,8 +76,10 @@ class _WorkOutsViewState extends State<WorkOutsView> with SingleTickerProviderSt
                     }
                   }
                 },
-                buildWhen: (prev, curr) =>
-                curr is WorkOutsByIdSuccess || curr is WorkOutsByIdFailure,
+                buildWhen:
+                    (prev, curr) =>
+                        curr is WorkOutsByIdSuccess ||
+                        curr is WorkOutsByIdFailure,
                 builder: (context, state) {
                   List muscles = [];
 
@@ -106,24 +117,28 @@ class _WorkOutsViewState extends State<WorkOutsView> with SingleTickerProviderSt
                         ),
                       const SizedBox(height: 8),
                       Expanded(
-                        child: state is WorkOutsByIdSuccess
-                            ? GridView.builder(
-                          itemCount: muscles.length,
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 20,
-                            mainAxisSpacing: 20,
-                          ),
-                          itemBuilder: (context, index) {
-                            return GridViewItem(
-                              name: muscles[index].name ?? '',
-                              image: muscles[index].image ?? '',
-                            );
-                          },
-                        )
-                            : state is WorkOutsByIdFailure
-                            ? Center(child: Text(state.error))
-                            : const Center(child: CircularProgressIndicator()),
+                        child:
+                            state is WorkOutsByIdSuccess
+                                ? GridView.builder(
+                                  itemCount: muscles.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 20,
+                                        mainAxisSpacing: 20,
+                                      ),
+                                  itemBuilder: (context, index) {
+                                    return GridViewItem(
+                                      name: muscles[index].name ?? '',
+                                      image: muscles[index].image ?? '',
+                                    );
+                                  },
+                                )
+                                : state is WorkOutsByIdFailure
+                                ? Center(child: Text(state.error))
+                                : const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
                       ),
                     ],
                   );
@@ -148,13 +163,14 @@ class TabItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 6),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: isSelected
-          ? BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(30)),
-        color: AppColors.mainRed,
-        border: Border.all(color: AppColors.mainRed),
-      )
-          : null,
+      decoration:
+          isSelected
+              ? BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
+                color: AppColors.mainRed,
+                border: Border.all(color: AppColors.mainRed),
+              )
+              : null,
       child: Text(
         workOut.name ?? 'not found',
         style: const TextStyle(color: AppColors.baseWhite),
