@@ -19,4 +19,5 @@ class RoutesName {
   static const String workouts = '/workouts';
   static const String splash = "/splash";
   static const String exerciseView = "/exerciseView";
+  static const String food = '/food';
 }

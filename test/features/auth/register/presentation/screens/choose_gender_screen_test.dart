@@ -41,8 +41,7 @@ void main() {
 
       final Finder elevatedButton = find.byType(ElevatedButton);
       expect(elevatedButton, findsOneWidget);
-     await tester.tap(elevatedButton);
-      
+      await tester.tap(elevatedButton);
     });
   });
 }

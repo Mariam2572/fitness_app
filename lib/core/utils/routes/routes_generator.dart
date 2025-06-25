@@ -13,6 +13,11 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_h
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart'
+    show GetFoodCategoriesUseCase;
+import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
+import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
+import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
@@ -101,6 +106,8 @@ class RoutesGenerator {
           settings: settings,
         );
 
+  
+
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(),
@@ -153,6 +160,7 @@ class RoutesGenerator {
               ),
           settings: settings,
         );
+
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
@@ -162,6 +170,18 @@ class RoutesGenerator {
         return MaterialPageRoute(
           builder: (context) => const ExerciseView(),
           settings: settings,
+        );
+      case RoutesName.food:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create:
+                    (_) => FoodCubit(
+                      getIt<GetFoodCategoriesUseCase>(),
+                      getIt<GetMealsByCategoryUseCase>(),
+                    ),
+                child: const FoodRecommendationPage(),
+              ),
         );
       default:
         return null;

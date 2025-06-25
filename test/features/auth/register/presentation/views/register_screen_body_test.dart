@@ -1,4 +1,3 @@
-
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
@@ -77,7 +76,6 @@ void main() {
     });
   });
   group('text form field validation', () {
-  
     testWidgets('check if text form field of email is validated', (
       tester,
     ) async {
@@ -93,7 +91,7 @@ void main() {
 
       expect(find.text('email is not valid'), findsOneWidget);
     });
-      testWidgets('check if text form field of email is validated', (
+    testWidgets('check if text form field of email is validated', (
       tester,
     ) async {
       await pumpWidgetWithLocalization(tester, RegisterScreen());
@@ -107,36 +105,39 @@ void main() {
       await tester.pump();
       expect(find.text('email is not valid'), findsNothing);
     });
-      testWidgets('check if text form field of password is  validated when enter weak password', (
-      tester,
-    ) async {
-      await pumpWidgetWithLocalization(tester, RegisterScreen());
-      await tester.enterText(
-        find.byKey(const ValueKey('passwordField')),
-        'mariam',
-      );
-      final button = find.byType(ElevatedButton);
-      await tester.ensureVisible(button);
-      await tester.tap(button);
-      await tester.pump();
+    testWidgets(
+      'check if text form field of password is  validated when enter weak password',
+      (tester) async {
+        await pumpWidgetWithLocalization(tester, RegisterScreen());
+        await tester.enterText(
+          find.byKey(const ValueKey('passwordField')),
+          'mariam',
+        );
+        final button = find.byType(ElevatedButton);
+        await tester.ensureVisible(button);
+        await tester.tap(button);
+        await tester.pump();
 
-      expect(find.text('password must be at least 8 characters long, contain at least one uppercase letter and one number'), findsOneWidget);
-    });
-      testWidgets('check if text form field of password is validated', (
+        expect(
+          find.text(
+            'password must be at least 8 characters long, contain at least one uppercase letter and one number',
+          ),
+          findsOneWidget,
+        );
+      },
+    );
+    testWidgets('check if text form field of password is validated', (
       tester,
     ) async {
       await pumpWidgetWithLocalization(tester, RegisterScreen());
-      await tester.enterText(
-        find.byKey(const ValueKey('passwordField')),
-        '',
-      );
+      await tester.enterText(find.byKey(const ValueKey('passwordField')), '');
       final button = find.byType(ElevatedButton);
       await tester.ensureVisible(button);
       await tester.tap(button);
       await tester.pump();
       expect(find.text('password is required'), findsOneWidget);
     });
-        testWidgets('check if text form field of confirm password is validated', (
+    testWidgets('check if text form field of confirm password is validated', (
       tester,
     ) async {
       await pumpWidgetWithLocalization(tester, RegisterScreen());

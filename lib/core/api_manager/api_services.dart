@@ -8,6 +8,8 @@ import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscl
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
 import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
+import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
+import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart';
 
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -42,5 +44,11 @@ abstract class MealApiService {
   @GET(Constants.getMealsDetailsEndPoint)
     Future<dynamic> getMealsDetails(@Path("i") String i);
 
+  @GET(Constants.foodCategoriesEndPoint)
+  Future<FoodCategoriesResponse> getFoodCategories();
+  @GET(Constants.mealsOfCategoryEndPoint)
+  Future<MealsOfCategoryResponse> getMealsByCategory(
+      @Query('c') String category,
+      );
 }
 
