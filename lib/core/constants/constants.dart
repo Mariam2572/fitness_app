@@ -19,4 +19,11 @@ class Constants {
   static const String getCurrentUserDataEndPoint = 'auth/profile-data';
   static const String randomExerciseTargetMuscleGroupId = '67c79f3526895f87ce0aa96b';
   static const String randomExerciseDifficultyLevelId = '67c797e226895f87ce0aa94b';
+  static const String getAllExercisesEndPoint = 'exercises';
+
+
+
+
+
+
 }

@@ -2,6 +2,7 @@ import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/home_state.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/home_viewModel.dart';
+import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/CategoryView.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/meal_recommendation.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/popular_training_cards.dart';
@@ -41,18 +42,14 @@ class HomeViewBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BlocBuilder<HomeViewModel,HomeState>(
-
                       builder: (context, state) {
-
                         if(state is HomeLoading){
                           return const Center(child: CircularProgressIndicator());
                         }else if(state is HomeSuccess){
-                         return Expanded(
-                        child: Text("Hi ${state.userName} ,\n Let's Start Your Day",style: AppTextStyle.instance.textStyle16.copyWith(
-                            fontWeight: FontWeight.w500
-                        ),
-                        ),
-                      );
+                         return Text("Hi ${state.userName} ,\n Let's Start Your Day",style: AppTextStyle.instance.textStyle16.copyWith(
+                             fontWeight: FontWeight.w500
+                         ),
+                         );
                         }else if(state is HomeError){
                           return Center(child: Text('Error: ${state.message}'));
                         }
@@ -62,7 +59,7 @@ class HomeViewBody extends StatelessWidget {
 
                     const CircleAvatar(
                       radius: 24,
-                      backgroundImage: AssetImage("assets/images/user.png"), // ← Replace with real user image if available
+                      backgroundImage: AssetImage("assets/images/user.png"),
                     ),
                   ],
                 ),
@@ -116,7 +113,18 @@ class HomeViewBody extends StatelessWidget {
 
               UpcomingWorkoutsCategory(bodyParts:categories ) ,
 
-               UpcomingWorkout(),
+               BlocBuilder<HomeViewModel,HomeState>(
+                 builder: (context, state) {
+                   if(state is HomeError){
+                     return Center(child: Text(state.message),);
+                   }else if(state is HomeLoading){
+                     return const Center(child: CircularProgressIndicator());
+                   }else if(state is HomeSuccess){
+                     return UpcomingWorkout(exercises: state.allExercises??[]);
+                   }
+                   return const Center(child: Text("Error happened"));
+                 },
+               ),
 
                const SizedBox(height: 20,),
                 Row(
@@ -128,7 +136,8 @@ class HomeViewBody extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                          onPressed: (){},
+                          onPressed: (){
+                          },
                           child: Text("See All",style: AppTextStyle.instance.textStyle16.copyWith(
                             color: Colors.deepOrange,
                           ),
@@ -136,7 +145,17 @@ class HomeViewBody extends StatelessWidget {
                       )
                     ]
                 ),
-                MealRecommendation(),
+                BlocBuilder<HomeViewModel,HomeState>(
+                  builder: (context, state) {
+                    if(state is HomeError){
+                      return     Center(child: Text(state.message),);
+                    }else if (state is HomeLoading){
+                      return     Center(child:CircularProgressIndicator(),);
+                    }else if(state is HomeSuccess){
+                      return MealRecommendation(mealCategories: state.categories??[]);
+                    }
+                    return const Center(child: Text("Error happened"));                  },
+                ),
                 const SizedBox(height: 20,),
                 Text("Popular Training",style: AppTextStyle.instance.textStyle16.copyWith(
                     fontWeight: FontWeight.w600

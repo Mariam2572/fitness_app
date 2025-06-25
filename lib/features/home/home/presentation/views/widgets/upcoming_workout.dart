@@ -1,46 +1,34 @@
+import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
+import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
+import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/home_upcoming_workout_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpcomingWorkout extends StatelessWidget {
-  const UpcomingWorkout({super.key});
+  final List<Exercises> exercises;
+
+  const UpcomingWorkout({super.key,required this.exercises});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120.h,
-      child:const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:  [
-          // Wrap each in Expanded or Flexible if needed
-          Expanded(
+      height: 104.h,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: exercises.length,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        separatorBuilder: (_, __) => SizedBox(width: 12.w),
+        itemBuilder: (context, index) {
+          return SizedBox(
+            width: 100.w, // fixed width for better visibility
             child: HomeUpcomingWorkoutItem(
-              name: "Chest",
-              image: "assets/images/Chest-Upcoming.jpg",
+              name: exercises[index].exercise ?? "Exercise Name Not Found",
+              image: getYouTubeThumbnail(exercises[index].shortYoutubeDemonstrationLink ?? '')
+              ?? "https://img.youtube.com/vi/DEFAULT_THUMBNAIL/hqdefault.jpg",
             ),
-          ),
-          SizedBox(width: 12),
-          Expanded(
-            child: HomeUpcomingWorkoutItem(
-              name: "Back",
-              image: "assets/images/back-upcoming.jpg",
-            ),
-          ),
-          SizedBox(width: 12),
-          Expanded(
-            child: HomeUpcomingWorkoutItem(
-              name: "Arms",
-              image: "assets/images/arms-upcoming.jpg",
-            ),
-          ),
-          SizedBox(width: 12),
-          Expanded(
-            child: HomeUpcomingWorkoutItem(
-              name: "Legs",
-              image: "assets/images/legs-upcoming.jpg",
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

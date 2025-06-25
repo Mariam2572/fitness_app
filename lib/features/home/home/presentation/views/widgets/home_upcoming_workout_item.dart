@@ -26,7 +26,7 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
           children: [
             // Background Image
             Positioned.fill(
-              child: Image.asset(
+              child: Image.network(
                 image,
                 fit: BoxFit.cover,
               ),

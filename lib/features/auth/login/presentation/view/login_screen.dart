@@ -127,7 +127,11 @@ class LoginScreen extends StatelessWidget {
                             if (token != null && token.isNotEmpty) {
                               await secureStorage.write(key: Constants.userToken, value: token);
                               showSnackBar(context, 'Login successful');
-                              Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
+                              Future.delayed(const Duration(milliseconds: 500), () {
+                                if (context.mounted) {
+                                  Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
+                                }
+                              });
                             } else {
                               showErrorSnackBar(context, 'Token is missing in response');
                             }

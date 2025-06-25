@@ -1,11 +1,14 @@
 
-
 import 'package:fitness_app/core/api_manager/api_services.dart';
+import 'package:fitness_app/core/base/api_excuter.dart';
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/core/utils/helper/secure_storage.dart';
+import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/home/home/data/data_sources/home_remote_data_source.dart';
+import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
 import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:injectable/injectable.dart';
 
 
@@ -13,8 +16,9 @@ import 'package:injectable/injectable.dart';
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource{
 
   final ApiService apiService;
+  final MealApiService mealsApiService;
 
-  HomeRemoteDataSourceImpl(this.apiService);
+  HomeRemoteDataSourceImpl(this.apiService,this.mealsApiService);
 
   @override
   Future<ApiResult<String>> getCurrentUserName()async{
@@ -62,6 +66,17 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource{
       return ApiError(message: "Something went wrong: $e");
     }
   }
+
+  @override
+  Future<ApiResult<FoodCategoriesResponse>> getMealsCategories() {
+    return apiExecuter(() => mealsApiService.getFoodCategories(),"getMealsCategories");
+  }
+  @override
+  Future<ApiResult<ExercisesResponse>> getAllMuscles() {
+    return apiExecuter(() => apiService.getAllExercises(),"getMealsCategories");
+  }
+
+
 
 
 }

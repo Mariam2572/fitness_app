@@ -6,6 +6,10 @@
 import 'dart:async' as _i3;
 
 import 'package:fitness_app/core/base/api_result.dart' as _i4;
+import 'package:fitness_app/features/food/data/models/food_categories_response.dart'
+    as _i7;
+import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart'
+    as _i8;
 import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart'
     as _i6;
 import 'package:fitness_app/features/home/home/domain/repositories/home_repo.dart'
@@ -61,4 +65,31 @@ class MockHomeRepo extends _i1.Mock implements _i2.HomeRepo {
                 ),
           )
           as _i3.Future<_i4.ApiResult<_i6.RandomExerciseResponse>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>> getMealsCategories() =>
+      (super.noSuchMethod(
+            Invocation.method(#getMealsCategories, []),
+            returnValue:
+                _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>>.value(
+                  _i5.dummyValue<_i4.ApiResult<_i7.FoodCategoriesResponse>>(
+                    this,
+                    Invocation.method(#getMealsCategories, []),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>> getAllExercises() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAllExercises, []),
+            returnValue: _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>>.value(
+              _i5.dummyValue<_i4.ApiResult<_i8.ExercisesResponse>>(
+                this,
+                Invocation.method(#getAllExercises, []),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>>);
 }

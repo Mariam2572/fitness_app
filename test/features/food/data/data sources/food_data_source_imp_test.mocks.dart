@@ -3,13 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
-import 'package:fitness_app/core/api_manager/api_services.dart' as _i4;
+import 'package:fitness_app/core/api_manager/api_services.dart' as _i5;
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart'
-    as _i2;
-import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart'
     as _i3;
+import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart'
+    as _i4;
+import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meals_datails_response.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -26,51 +28,70 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeFoodCategoriesResponse_0 extends _i1.SmartFake
-    implements _i2.FoodCategoriesResponse {
-  _FakeFoodCategoriesResponse_0(Object parent, Invocation parentInvocation)
+class _FakeMealsDatailsResponse_0 extends _i1.SmartFake
+    implements _i2.MealsDatailsResponse {
+  _FakeMealsDatailsResponse_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeMealsOfCategoryResponse_1 extends _i1.SmartFake
-    implements _i3.MealsOfCategoryResponse {
-  _FakeMealsOfCategoryResponse_1(Object parent, Invocation parentInvocation)
+class _FakeFoodCategoriesResponse_1 extends _i1.SmartFake
+    implements _i3.FoodCategoriesResponse {
+  _FakeFoodCategoriesResponse_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeMealsOfCategoryResponse_2 extends _i1.SmartFake
+    implements _i4.MealsOfCategoryResponse {
+  _FakeMealsOfCategoryResponse_2(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [MealApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMealApiService extends _i1.Mock implements _i4.MealApiService {
+class MockMealApiService extends _i1.Mock implements _i5.MealApiService {
   MockMealApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.FoodCategoriesResponse> getFoodCategories() =>
+  _i6.Future<_i2.MealsDatailsResponse> getMealsDetails(String? i) =>
+      (super.noSuchMethod(
+            Invocation.method(#getMealsDetails, [i]),
+            returnValue: _i6.Future<_i2.MealsDatailsResponse>.value(
+              _FakeMealsDatailsResponse_0(
+                this,
+                Invocation.method(#getMealsDetails, [i]),
+              ),
+            ),
+          )
+          as _i6.Future<_i2.MealsDatailsResponse>);
+
+  @override
+  _i6.Future<_i3.FoodCategoriesResponse> getFoodCategories() =>
       (super.noSuchMethod(
             Invocation.method(#getFoodCategories, []),
-            returnValue: _i5.Future<_i2.FoodCategoriesResponse>.value(
-              _FakeFoodCategoriesResponse_0(
+            returnValue: _i6.Future<_i3.FoodCategoriesResponse>.value(
+              _FakeFoodCategoriesResponse_1(
                 this,
                 Invocation.method(#getFoodCategories, []),
               ),
             ),
           )
-          as _i5.Future<_i2.FoodCategoriesResponse>);
+          as _i6.Future<_i3.FoodCategoriesResponse>);
 
   @override
-  _i5.Future<_i3.MealsOfCategoryResponse> getMealsByCategory(
+  _i6.Future<_i4.MealsOfCategoryResponse> getMealsByCategory(
     String? category,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#getMealsByCategory, [category]),
-            returnValue: _i5.Future<_i3.MealsOfCategoryResponse>.value(
-              _FakeMealsOfCategoryResponse_1(
+            returnValue: _i6.Future<_i4.MealsOfCategoryResponse>.value(
+              _FakeMealsOfCategoryResponse_2(
                 this,
                 Invocation.method(#getMealsByCategory, [category]),
               ),
             ),
           )
-          as _i5.Future<_i3.MealsOfCategoryResponse>);
+          as _i6.Future<_i4.MealsOfCategoryResponse>);
 }

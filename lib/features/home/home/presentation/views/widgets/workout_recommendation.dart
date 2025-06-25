@@ -20,7 +20,9 @@ class WorkoutRecommendation extends StatelessWidget{
        itemBuilder: (context, index) {
          final exerciseName = exercises[index].exercise;
          final videoUrl = exercises[index].shortYoutubeDemonstrationLink;
-         final image = getYouTubeThumbnail(videoUrl??"");
+         final image = (videoUrl != null && videoUrl.isNotEmpty)
+             ? getYouTubeThumbnail(videoUrl)
+             : "https://img.youtube.com/vi/default.jpg";
          return RecommendationItem(name: exerciseName??"Exercise Not Found", image: image);
        },
       ),
