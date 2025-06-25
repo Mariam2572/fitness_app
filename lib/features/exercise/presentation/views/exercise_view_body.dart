@@ -4,19 +4,21 @@ import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_details_section.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_widget_item.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExerciseViewBody extends StatefulWidget {
-  const ExerciseViewBody({super.key});
-
+  const ExerciseViewBody({super.key, required this.muscle});
+  final MusclesBean muscle;
   @override
   State<ExerciseViewBody> createState() => _ExerciseViewBodyState();
 }
 
 class _ExerciseViewBodyState extends State<ExerciseViewBody>
     with TickerProviderStateMixin {
-  @override
+      
+ 
   @override
   void initState() {
     super.initState();
@@ -24,7 +26,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
     cubit
         .doIntent(
           GetLevelsByPrimeMoverMusclesIntent(
-            primeMoverMuscleId: "67c8499726895f87ce0aa9bc",
+            primeMoverMuscleId: widget.muscle.id!,
           ),
         )
         .then((value) {
@@ -36,7 +38,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
             final firstId = cubit.levels[0].id;
             cubit.doIntent(
               GetExerciseByMoverAndDifficulty(
-                primeMoverMuscleId: '67c8499726895f87ce0aa9bc',
+                primeMoverMuscleId: widget.muscle.id!,
                 difficultyLevelId: firstId ?? '',
               ),
             );
@@ -45,7 +47,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
                 final id = cubit.levels[cubit.tabController.index].id;
                 cubit.doIntent(
                   GetExerciseByMoverAndDifficulty(
-                    primeMoverMuscleId: '67c8499726895f87ce0aa9bc',
+                    primeMoverMuscleId: widget.muscle.id!,
                     difficultyLevelId: id ?? '',
                   ),
                 );
@@ -54,14 +56,8 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
           }
         });
   }
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    final cubit = context.read<ExerciseCubit>();
-    cubit.tabController.dispose();
-    cubit.tabController.removeListener(() {});
-    super.dispose();
-  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +85,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
 
                 return Column(
                   children: [
-                    const ExerciseDetailsSection(),
+                    ExerciseDetailsSection(muscle: widget.muscle),
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: CustomGlassContainer(
@@ -114,7 +110,9 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
               } else if (state is ExerciseFailuer) {
                 return Text(state.message);
               } else {
-                return const Center(child: CircularProgressIndicator());
+                return const Center(
+                  child: CircularProgressIndicator(color: AppColors.mainRed),
+                );
               }
             },
           ),
