@@ -3,15 +3,21 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
+import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/actvities_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart'
+    show GetFoodCategoriesUseCase;
+import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
+import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
+import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
@@ -61,15 +67,16 @@ class RoutesGenerator {
           settings: settings,
         );
 
-    case RoutesName.activities:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const ActivtiesScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.activities:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const ActivtiesScreen(),
+              ),
+          settings: settings,
+        );
 
 
 
@@ -117,6 +124,7 @@ class RoutesGenerator {
           builder: (context) => const WorkOutsView(),
           settings: settings,
         );
+
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
@@ -134,6 +142,18 @@ class RoutesGenerator {
           settings: settings,
         );
 
+      case RoutesName.food:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create:
+                    (_) => FoodCubit(
+                      getIt<GetFoodCategoriesUseCase>(),
+                      getIt<GetMealsByCategoryUseCase>(),
+                    ),
+                child: const FoodRecommendationPage(),
+              ),
+        );
       default:
         return null;
     }

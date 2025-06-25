@@ -19,8 +19,8 @@ class RoutesName {
   static const String workouts = '/workouts';
   static const String splash = "/splash";
   static const String exerciseView = "/exerciseView";
-
   static const String onBoardingTwo = '/onBoardingTwo';
   static const String onBoardingThree = '/onBoardingThree';
   static const String mealsDetailsScreen = '/mealsDetailsScreen';
+  static const String food = '/food';
 }
