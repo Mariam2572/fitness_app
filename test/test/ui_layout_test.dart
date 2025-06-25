@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/home/presentation/views/home_view.dart';
+import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';

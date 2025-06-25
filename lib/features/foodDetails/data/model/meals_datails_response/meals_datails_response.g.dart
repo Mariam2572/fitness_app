@@ -11,7 +11,7 @@ MealsDatailsResponse _$MealsDatailsResponseFromJson(
 ) => MealsDatailsResponse(
   meals:
       (json['meals'] as List<dynamic>?)
-          ?.map((e) => Meal.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => MealDetails.fromJson(e as Map<String, dynamic>))
           .toList(),
 );
 

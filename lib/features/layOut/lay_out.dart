@@ -1,5 +1,5 @@
 import 'package:fitness_app/core/config/di.dart';
-import 'package:fitness_app/features/home/presentation/views/home_view.dart';
+import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
@@ -51,35 +51,32 @@ class _LayOutState extends State<LayOut> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return SafeArea(
-      child: Scaffold(
-        body: _screens[_selectedIndex],
-        bottomNavigationBar: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 24, right: 32, left: 32),
-            child: Container(
-              decoration: BoxDecoration(
-                color:
+    return Scaffold(
+      extendBody: true,
+      body: _screens[_selectedIndex],
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 24, right: 32, left: 32),
+        child: Container(
+          decoration: BoxDecoration(
+            color:
                 theme.bottomNavigationBarTheme.backgroundColor ??
-                    Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: BottomNavigationBar(
-                  type: BottomNavigationBarType.fixed,
-                  backgroundColor: Colors.transparent,
-                  // elevation: 0,
-                  currentIndex: _selectedIndex,
-                  onTap: _onItemTapped,
-                  items: [
-                    _buildBarItem("assets/images/home.png", "Home"),
-                    _buildBarItem("assets/images/smart chat.png", "Smart Chat"),
-                    _buildBarItem("assets/images/work outs.png", "Work Outs"),
-                    _buildBarItem("assets/images/profile.png", "Profile"),
-                  ],
-                ),
-              ),
+                Colors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.transparent,
+              // elevation: 0,
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              items: [
+                _buildBarItem("assets/images/home.png", "Home"),
+                _buildBarItem("assets/images/smart chat.png", "Smart Chat"),
+                _buildBarItem("assets/images/work outs.png", "Work Outs"),
+                _buildBarItem("assets/images/profile.png", "Profile"),
+              ],
             ),
           ),
         ),

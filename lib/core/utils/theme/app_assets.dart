@@ -29,4 +29,5 @@ class AppAssets {
   static const String backButton = "assets/images/Back.png";
   static const String mealsDetailsBackGround =
       "assets/images/meals details back ground.png";
+  static const String homeBackGround = "assets/images/HomeBg.jpg";
 }

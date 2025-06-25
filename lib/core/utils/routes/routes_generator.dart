@@ -20,8 +20,8 @@ import 'package:fitness_app/features/food/domain/usecases/get_food_categories_us
 import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
 import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
 import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
-import 'package:fitness_app/features/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
+import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
