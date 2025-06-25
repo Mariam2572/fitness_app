@@ -39,7 +39,12 @@ class _WorkOutsViewState extends State<WorkOutsView>
     return Scaffold(
       body: Stack(
         children: [
-          const BlurredBackground(imagePath: AppAssets.authBackground),
+          Image.asset(
+            AppAssets.homeBackground,
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+          ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
