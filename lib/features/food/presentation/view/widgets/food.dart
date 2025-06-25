@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/blur_background.dart';
@@ -37,7 +37,7 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.85),
+      backgroundColor: Colors.black.withValues( alpha: 0.85),
       body: Stack(
         children: [
           const BlurredBackground(
@@ -181,6 +181,10 @@ class MealsByCategoryTab extends StatelessWidget {
             itemBuilder: (context, index) {
               final meal = meals[index];
               return FoodItemCard(
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.mealsDetailsScreen,
+                  arguments:meal.id );
+                },
                 imageUrl: meal.thumbnail ?? '',
                 title: meal.name ?? '',
               );
@@ -204,46 +208,50 @@ class MealsByCategoryTab extends StatelessWidget {
 class FoodItemCard extends StatelessWidget {
   final String imageUrl;
   final String title;
+  final VoidCallback onTap;
 
-  const FoodItemCard({super.key, required this.imageUrl, required this.title});
+  const FoodItemCard({super.key, required this.imageUrl, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Stack(
-        children: [
-          Positioned.fill(child: Image.network(imageUrl, fit: BoxFit.cover)),
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0x80000000), Color(0x80000000)],
-                begin: Alignment.topCenter,
-                end: Alignment.topCenter,
+    return GestureDetector(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Stack(
+          children: [
+            Positioned.fill(child: Image.network(imageUrl, fit: BoxFit.cover)),
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0x80000000), Color(0x80000000)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.topCenter,
+                ),
               ),
             ),
-          ),
-          Positioned(
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: Align(
-              alignment: Alignment.center,
-              child: SizedBox(
-                width: 120,
-                child: Text(
-                  title,
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyle.instance.textStyle20.copyWith(
-                    fontWeight: FontWeight.bold,
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: 120,
+                  child: Text(
+                    title,
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyle.instance.textStyle20.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

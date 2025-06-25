@@ -43,4 +43,4 @@ abstract class MealApiService {
       @Query('c') String category,
       );
 }
-}
+

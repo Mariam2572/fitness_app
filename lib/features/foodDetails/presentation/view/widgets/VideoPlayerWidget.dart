@@ -14,7 +14,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidgetWithLink> {
 
   void showVideoDialog() {
     final videoId = YoutubePlayer.convertUrlToId(
-      widget.link ?? '',
+      widget.link,
     );
 
     if (videoId == null) return;
@@ -32,33 +32,29 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidgetWithLink> {
         return Dialog(
           backgroundColor: Colors.transparent,
           insetPadding: EdgeInsets.zero,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [AppColors.baseBlack, AppColors.neutral90],
-                ),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [AppColors.baseBlack, AppColors.neutral90],
+              ),
 
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFF000000).withOpacity(0.2),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              height: context.height * 0.40,
-              width: context.width,
-              child: YoutubePlayer(
-                controller: _youtubeController!,
-                showVideoProgressIndicator: true,
-                progressIndicatorColor: AppColors.baseWhite,
-              ),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF000000).withValues(alpha:0.2),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
+            height: context.height * 0.40,
+            width: context.width,
+            child: YoutubePlayer(
+              controller: _youtubeController!,
+              showVideoProgressIndicator: true,
+              progressIndicatorColor: AppColors.baseWhite,
             ),
           ),
         );
