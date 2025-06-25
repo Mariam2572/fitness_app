@@ -1,10 +1,5 @@
-enum ActivityEnum {
-  level1,
-  level2,
-  level3,
-  level4,
-  level5,
-}
+enum ActivityEnum { level1, level2, level3, level4, level5 }
+
 String activityEnumToString(ActivityEnum activityEnum) {
   switch (activityEnum) {
     case ActivityEnum.level1:
@@ -22,7 +17,6 @@ String activityEnumToString(ActivityEnum activityEnum) {
   }
 }
 
- activityEnumToBackend(ActivityEnum activityEnum) {
+activityEnumToBackend(ActivityEnum activityEnum) {
   return activityEnum.toString().split('.').last;
 }
-

@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
     return Stack(
       children: [
         Image.asset(
-          AppAssets.authBackground,
+          AppAssets.authBackGround,
           fit: BoxFit.cover,
           height: double.infinity,
           width: double.infinity,
@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                const FormFieldsSection(),
+                    const FormFieldsSection(),
                     const SizedBox(height: 16),
                     //  const SizedBox(height: 8),
                     Align(
@@ -132,7 +132,11 @@ class LoginScreen extends StatelessWidget {
                               showErrorSnackBar(context, 'Token is missing in response');
                             }
                             showSnackBar(context, 'Login successful');
-                            Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              RoutesName.layOut,
+                              (route) => false,
+                            );
                           }
                           if (state is LoginFailure) {
                             showErrorSnackBar(context, state.error);
@@ -199,8 +203,6 @@ class LoginScreen extends StatelessWidget {
         ),
       ],
     );
-
-  
   }
 }
 

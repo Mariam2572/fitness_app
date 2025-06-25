@@ -31,6 +31,15 @@ import '../../features/auth/register/domain/repos/data_source/register_data_sour
 import '../../features/auth/register/domain/repos/register_repo.dart' as _i369;
 import '../../features/auth/register/domain/use_cases/register_use_case.dart'
     as _i118;
+import '../../features/food/data/data%20sources/food_data_source.dart' as _i910;
+import '../../features/food/data/data%20sources/food_data_source_imp.dart'
+    as _i338;
+import '../../features/food/data/repos/food_repo_imp.dart' as _i46;
+import '../../features/food/domain/repos/food_repo.dart' as _i474;
+import '../../features/food/domain/usecases/get_food_categories_usecase.dart'
+    as _i589;
+import '../../features/food/domain/usecases/get_meals_of_category_usecase.dart'
+    as _i740;
 import '../../features/home/home/data/data_sources/home_remote_data_source.dart'
     as _i159;
 import '../../features/home/home/data/data_sources/home_remote_data_source_impl.dart'
@@ -52,15 +61,21 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
+    gh.lazySingleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(gh<_i361.LogInterceptor>()),
     );
     gh.singleton<_i785.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
     );
+    gh.singleton<_i785.MealApiService>(
+      () => dioModule.provideMealApiService(gh<_i361.Dio>()),
+    );
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
+    );
+    gh.factory<_i910.FoodRemoteDataSource>(
+      () => _i338.FoodRemoteDataSourceImpl(gh<_i785.MealApiService>()),
     );
     gh.factory<_i159.HomeRemoteDataSource>(
       () => _i37.HomeRemoteDataSourceImpl(gh<_i785.ApiService>()),
@@ -76,11 +91,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i992.RegisterDataSource>(
       () => _i932.RegisterDataSourceImpl(gh<_i785.ApiService>()),
     );
+    gh.factory<_i474.FoodRepo>(
+      () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()),
+    );
     gh.factory<_i369.RegisterRepo>(
       () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()),
     );
     gh.factory<_i401.LoginUsecase>(
       () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()),
+    );
+    gh.factory<_i589.GetFoodCategoriesUseCase>(
+      () => _i589.GetFoodCategoriesUseCase(gh<_i474.FoodRepo>()),
+    );
+    gh.factory<_i740.GetMealsByCategoryUseCase>(
+      () => _i740.GetMealsByCategoryUseCase(gh<_i474.FoodRepo>()),
     );
     gh.factory<_i204.HomeUseCase>(
       () => _i204.HomeUseCase(gh<_i751.HomeRepo>()),

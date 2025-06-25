@@ -11,5 +11,3 @@ class ChooseWeightScreen extends StatelessWidget {
     );
   }
 }
-
-
