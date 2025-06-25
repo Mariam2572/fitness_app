@@ -87,6 +87,13 @@ class ExerciseCubit extends Cubit<ExerciseState> {
         break;
     }
   }
+  void dispose() {
+    // TODO: implement dispose
+   
+    tabController.dispose();
+    tabController.removeListener(() {});
+    super.close();
+  }
 }
 
 // class ExerciseFailure {}

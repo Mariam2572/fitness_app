@@ -1,11 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+
 class ExerciseImage extends StatelessWidget {
-  const ExerciseImage({
-    super.key,
-    required this.thumbnailUrl,
-  });
+  const ExerciseImage({super.key, required this.thumbnailUrl});
 
   final String thumbnailUrl;
 
@@ -16,7 +14,7 @@ class ExerciseImage extends StatelessWidget {
       width: 81,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.grey[300],
+        color: Colors.transparent,
       ),
       clipBehavior: Clip.antiAlias,
       child:

@@ -4,6 +4,8 @@ import 'package:fitness_app/features/auth/login/data/model/login_request/login_r
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
@@ -27,6 +29,13 @@ abstract class ApiService {
 
   @GET(Constants.levelsByMuscleEndPoint)
   Future<LevelsByMusclesModel> getLevelsByMuscles(@Query("primeMoverMuscleId") String primeMoverMuscleId);
+
+  @GET(Constants.getAllMusclesGroupsEndPoint)
+  Future<GetAllMusclesGroupsReponse> getAllMusclesGroups();
+  @GET("${Constants.getAllMusclesByMuscleGroupIdEndPoint}/{id}")
+  Future<GetAllMusclesByMuscleGroupIdReponse> getAllMusclesByMuscleGroupId( @Path("id") String id);
+
+
 }
 
 @RestApi(baseUrl: Constants.mealBaseUrl)

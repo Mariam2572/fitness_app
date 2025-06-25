@@ -25,7 +25,10 @@ import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
-import 'package:fitness_app/features/workOuts/work_outs_view.dart';
+import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
+import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
+import 'package:fitness_app/features/workOuts/presentation/view_model/cubit/work_outs_cubit.dart';
+import 'package:fitness_app/features/workOuts/presentation/views/work_outs_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -121,7 +124,15 @@ class RoutesGenerator {
 
       case RoutesName.workouts:
         return MaterialPageRoute(
-          builder: (context) => const WorkOutsView(),
+          builder:
+              (context) => BlocProvider(
+                create:
+                    (context) => WorkOutsCubit(
+                      getIt<GetAllMusclesGroupsUseCase>(),
+                      getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
+                    )..doIntent(GetAllMusclesGroupsIntent()),
+                child: const WorkOutsView(),
+              ),
           settings: settings,
         );
 

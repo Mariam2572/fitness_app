@@ -4,6 +4,7 @@ import 'package:fitness_app/features/exercise/domain/use_cases/get_levels_by_pri
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
 
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view_body.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,12 +13,15 @@ class ExerciseView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MusclesBean data =
+        ModalRoute.of(context)!.settings.arguments as MusclesBean;
     return BlocProvider(
-      create: (context) => ExerciseCubit(
-                getIt.get<GetLevelsByPrimeMoverMuscleUseCases>(),
-                getIt.get<GetExerciseByMoverAndDifficultyLevelUseCase>(),
-              ),
-      child: const ExerciseViewBody(),
+      create:
+          (context) => ExerciseCubit(
+            getIt.get<GetLevelsByPrimeMoverMuscleUseCases>(),
+            getIt.get<GetExerciseByMoverAndDifficultyLevelUseCase>(),
+          ),
+      child: ExerciseViewBody(muscle: data),
     );
   }
 }

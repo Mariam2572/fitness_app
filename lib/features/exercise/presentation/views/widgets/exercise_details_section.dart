@@ -1,16 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/cal_and_time_section.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ExerciseDetailsSection extends StatefulWidget {
-  const ExerciseDetailsSection({super.key});
-
+  const ExerciseDetailsSection({super.key, required this.muscle});
+  final MusclesBean muscle;
+  // final Exercise exercise;
   @override
   State<ExerciseDetailsSection> createState() => _ExerciseDetailsSectionState();
 }
@@ -28,8 +32,13 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection> {
           borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(25),
           ),
-          child: Image.asset(
-            AppAssets.exercise,
+          child: CachedNetworkImage(
+            placeholder: (context, url) {
+              return const Center(
+                child: CircularProgressIndicator(color: AppColors.mainRed),
+              );
+            },
+            imageUrl: widget.muscle.image ?? '',
             fit: BoxFit.cover,
             width: double.infinity,
             height: context.height * 0.5,
@@ -63,7 +72,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                'Chest Exercise',
+                widget.muscle.name ?? '',
                 style: context.textTheme.headlineMedium?.copyWith(
                   color: AppColors.baseWhite,
                   fontWeight: FontWeight.bold,
@@ -99,7 +108,9 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection> {
           left: 16,
           child: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+    Navigator.of(context).pop();
+  });
             },
             icon: SvgPicture.asset(AppAssets.backIcon),
           ),
