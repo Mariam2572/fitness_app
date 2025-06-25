@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'meal.g.dart';
 
 @JsonSerializable()
-class Meal {
+class MealDetails {
   String? idMeal;
   String? strMeal;
   dynamic strMealAlternate;
@@ -59,7 +59,7 @@ class Meal {
   dynamic strCreativeCommonsConfirmed;
   dynamic dateModified;
 
-  Meal({
+  MealDetails({
     this.idMeal,
     this.strMeal,
     this.strMealAlternate,
@@ -115,14 +115,14 @@ class Meal {
     this.dateModified,
   });
 
-  factory Meal.fromJson(Map<String, dynamic> json) => _$MealFromJson(json);
+  factory MealDetails.fromJson(Map<String, dynamic> json) => _$MealDetailsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MealToJson(this);
+  Map<String, dynamic> toJson() => _$MealDetailsToJson(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! Meal) return false;
+    if (other is! MealDetails) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }

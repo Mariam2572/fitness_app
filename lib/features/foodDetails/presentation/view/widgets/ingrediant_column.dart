@@ -3,7 +3,7 @@ import 'package:fitness_app/features/foodDetails/presentation/view/widgets/ingre
 import 'package:flutter/material.dart';
 
 class IngredientColumn extends StatelessWidget {
-  final Meal meal;
+  final MealDetails meal;
 
   const IngredientColumn({super.key, required this.meal});
 

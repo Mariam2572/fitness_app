@@ -10,12 +10,13 @@ class RecommendationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(right: 16),
       height: 160,
       width: 163,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
 
-        image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.fill),
+        image: DecorationImage(image: NetworkImage(imagePath), fit: BoxFit.fill),
       ),
       child: Stack(
         alignment: Alignment.bottomCenter,

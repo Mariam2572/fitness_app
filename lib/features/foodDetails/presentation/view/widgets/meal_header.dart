@@ -3,10 +3,10 @@ import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meal.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/widgets/VideoPlayerWidget.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/widgets/nutrient_box_widget.dart';
-import 'package:flutter/material.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class MealHeader extends StatelessWidget {
-  final Meal? meal;
+  final MealDetails? meal;
 
   const MealHeader({required this.meal});
 
@@ -15,24 +15,19 @@ class MealHeader extends StatelessWidget {
     return Stack(
 
       children: [
-        Positioned.fill(
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/auth_background.png"),
-                fit: BoxFit.fill,
 
-              ),
-            ),
+        ClipRRect(
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(24),
+            bottomRight: Radius.circular(24),
           ),
-        ),
-
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: 340,
-          child: Image.network(
-            meal?.strMealThumb ?? '',
-            fit: BoxFit.cover,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 340,
+            child: Image.network(
+              meal?.strMealThumb ?? '',
+              fit: BoxFit.cover,
+            ),
           ),
         ),
 

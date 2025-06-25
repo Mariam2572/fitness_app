@@ -7,7 +7,7 @@ part 'meals_datails_response.g.dart';
 
 @JsonSerializable()
 class MealsDatailsResponse {
-  List<Meal>? meals;
+  List<MealDetails>? meals;
 
   MealsDatailsResponse({this.meals});
 
