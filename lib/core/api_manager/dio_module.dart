@@ -18,7 +18,7 @@ abstract class DioModule {
     final dio = Dio(
       BaseOptions(
         connectTimeout: const Duration(seconds: 60),
-        baseUrl: Constants.foodBaseUrl,
+        baseUrl: Constants.baseUrl,
       ),
     );
 
@@ -26,9 +26,12 @@ abstract class DioModule {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = await readSecureData(Constants.userToken);
+
           log("token : $token");
+          options.headers['Authorization'] = 'Bearer $token';
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
+            log("token : $token");
           }
           options.headers['Accept-Language'] = appConfigProvider.appLanguage;
           return handler.next(options);
@@ -44,7 +47,6 @@ abstract class DioModule {
   ApiService provideApiService(Dio dio) {
     return ApiService(dio);
   }
-
   @Singleton()
   MealApiService provideMealApiService(Dio dio) {
     return MealApiService(dio);

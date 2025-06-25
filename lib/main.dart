@@ -1,18 +1,15 @@
-import 'package:fitness_app/features/exercise/domain/use_cases/get_exercise_by_mover_and_difficulty_level.dart';
-import 'package:fitness_app/features/exercise/domain/use_cases/get_levels_by_prime_mover_muscles.dart';
-import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
-import 'package:fitness_app/l10n/app_localizations.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-
-import 'package:provider/provider.dart';
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/provider/app_config_provider.dart';
 import 'package:fitness_app/core/utils/routes/routes_generator.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/simple_bloc_observer.dart';
 import 'package:fitness_app/core/utils/theme/app_theme.dart';
+import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
+import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
+import 'package:fitness_app/l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +21,7 @@ Future<void> main() async {
   );
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
-  // configureDependencies();
+  configureDependencies();
 }
 
 class MyApp extends StatelessWidget {

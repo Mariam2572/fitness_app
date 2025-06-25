@@ -14,6 +14,7 @@ class AppAssets {
   static const String femaleIcon = 'assets/images/female_icon.png';
   static const String maleIcon = 'assets/images/male_icon.png';
   static const String arrowUp = "assets/images/arrow_up.svg";
+  static const String authBackground = 'assets/images/auth_background.png';
   static const String eyes = "assets/images/eye.png";
   static const String fit = "assets/images/fit 1.png";
   static const String backGround = "assets/images/Rectangle 1.png";
@@ -25,4 +26,7 @@ class AppAssets {
   static const String homeBackground = "assets/images/home_background.png";
   static const String exerciseImage = "assets/images/exercise.png";
   static const String exercise = 'assets/images/exercise_test.jpg';
+  static const String backButton = "assets/images/Back.png";
+  static const String mealsDetailsBackGround =
+      "assets/images/meals details back ground.png";
 }

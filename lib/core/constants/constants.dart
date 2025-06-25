@@ -8,8 +8,8 @@ class Constants {
   static const String getAllMusclesByMuscleGroupIdEndPoint = 'musclesGroup';
 
   static const String getMealsDetailsEndPoint = "lookup.php?i={i}";
-  static const String getExerciseByMoverAndDifficultyEndPoint = "exercises/by-muscle-difficulty";
-  static const String levelsByMuscleEndPoint = 'levels/difficulty-levels/by-prime-mover';
   static const String foodCategoriesEndPoint = 'categories.php';
   static const String mealsOfCategoryEndPoint = 'filter.php';
-}
+  static const String getExerciseByMoverAndDifficultyEndPoint = "exercises/by-muscle-difficulty";
+  static const String levelsByMuscleEndPoint = 'levels/difficulty-levels/by-prime-mover';
+

@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 
 class AppTabBar extends StatelessWidget {
   final List<Widget> tabs;
-  // final List<Widget> tabViews;
   final TabController controller;
 
   const AppTabBar({
     super.key,
     required this.tabs,
-    // required this.tabViews,
     required this.controller,
   }) ;
 

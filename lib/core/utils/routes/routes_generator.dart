@@ -4,6 +4,8 @@ import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.da
 import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/actvities_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
@@ -19,6 +21,7 @@ import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_
 import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
 import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/home/presentation/views/home_view.dart';
+import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
@@ -106,7 +109,7 @@ class RoutesGenerator {
           settings: settings,
         );
 
-  
+
 
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
@@ -160,7 +163,6 @@ class RoutesGenerator {
               ),
           settings: settings,
         );
-
       case RoutesName.smartCoach:
         return MaterialPageRoute(
           builder: (context) => const SmartCoachView(),
@@ -170,6 +172,25 @@ class RoutesGenerator {
         return MaterialPageRoute(
           builder: (context) => const ExerciseView(),
           settings: settings,
+        );
+
+      case RoutesName.mealsDetailsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MealsDetailsScreen(),
+          settings: settings,
+        );
+
+      case RoutesName.food:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create:
+                    (_) => FoodCubit(
+                      getIt<GetFoodCategoriesUseCase>(),
+                      getIt<GetMealsByCategoryUseCase>(),
+                    ),
+                child: const FoodRecommendationPage(),
+              ),
         );
       case RoutesName.food:
         return MaterialPageRoute(
