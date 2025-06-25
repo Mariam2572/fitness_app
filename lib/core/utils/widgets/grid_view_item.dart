@@ -20,14 +20,10 @@ class GridViewItem extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-              child: Image(
-                image: NetworkImage(
-                  image,
-                ),
-                fit: BoxFit.fill,
-              ),
+              child: Image(image: NetworkImage(image), fit: BoxFit.fill),
             ),
-          Positioned(bottom: 8,
+            Positioned(
+              bottom: 8,
               right: 20,
               left: 20,
               child: Column(
@@ -38,7 +34,8 @@ class GridViewItem extends StatelessWidget {
                       color: AppColors.baseWhite,
                       fontWeight: FontWeight.w700,
                     ),
-                  ), Text(
+                  ),
+                  Text(
                     'Exercise',
                     style: AppTextStyle.instance.textStyle16.copyWith(
                       color: AppColors.baseWhite,
@@ -48,7 +45,6 @@ class GridViewItem extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         ),
       ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ChooseHeightScreen extends StatelessWidget {
   const ChooseHeightScreen({super.key});
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return const CompleteRegisterationAppBarAndBackgroundSection(
       body: ChooseHeightScreenBody(),
     );

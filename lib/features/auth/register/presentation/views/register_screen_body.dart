@@ -19,7 +19,7 @@ class RegisterScreenBody extends StatelessWidget {
     return Stack(
       children: [
         Image.asset(
-          AppAssets.authBackground,
+          AppAssets.authBackGround,
           fit: BoxFit.cover,
           height: double.infinity,
           width: double.infinity,

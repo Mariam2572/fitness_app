@@ -4,11 +4,11 @@ import 'package:fitness_app/features/auth/register/domain/use_cases/register_use
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_screen_body.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
+import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mockito/annotations.dart';
 
 import '../view_model/cubit/register_cubit_test.mocks.dart';
@@ -56,7 +56,7 @@ void main() {
     ) async {
       await pumpWidgetWithLocalization(tester, RegisterScreen());
       final authBackground = find.image(
-        const AssetImage(AppAssets.authBackground),
+         const AssetImage(AppAssets.authBackGround),
       );
       expect(authBackground, findsOneWidget);
     });

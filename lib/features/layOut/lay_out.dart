@@ -4,7 +4,6 @@ import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/workOuts/work_outs_view.dart';
 import 'package:flutter/material.dart';
 
-
 class LayOut extends StatefulWidget {
   const LayOut({super.key});
 

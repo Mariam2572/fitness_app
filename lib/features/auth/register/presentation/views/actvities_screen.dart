@@ -37,17 +37,28 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                   children: [
                     Row(
                       children: [
-                         CircleAvatar(
+                        CircleAvatar(
                           backgroundColor: Colors.red,
-                          child: IconButton( onPressed: () => Navigator.pop(context), icon:const Icon(  Icons.arrow_back, color: Colors.white)),
+                          child: IconButton(
+                            onPressed: () => Navigator.pop(context),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width * 0.25),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                        ),
                         Image.asset("assets/images/fit 1.png", width: 80),
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    const CircularPercentIndicatorWidget(currentStep: 6, totalSteps: 6)
-,                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                    const CircularPercentIndicatorWidget(
+                      currentStep: 6,
+                      totalSteps: 6,
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
                       'YOUR REGULAR PHYSICAL',
                       style: AppTextStyle.instance.textStyle20.copyWith(
@@ -78,7 +89,9 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                             child: Column(
                               children: [
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level1),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level1,
+                                  ),
                                   value: ActivityEnum.level1,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
@@ -87,9 +100,14 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level2),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level2,
+                                  ),
                                   value: ActivityEnum.level2,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
@@ -98,9 +116,14 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level3),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level3,
+                                  ),
                                   value: ActivityEnum.level3,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
@@ -109,9 +132,14 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level4),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level4,
+                                  ),
                                   value: ActivityEnum.level4,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
@@ -120,9 +148,14 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level5),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level5,
+                                  ),
                                   value: ActivityEnum.level5,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
@@ -134,8 +167,15 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                 BlocListener<RegisterCubit, RegisterState>(
                                   listener: (context, state) {
                                     if (state is RegisterSuccess) {
-                                      showSnackBar(context, 'Registered successfully');
-                                      Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
+                                      showSnackBar(
+                                        context,
+                                        'Registered successfully',
+                                      );
+                                      Navigator.pushNamedAndRemoveUntil(
+                                        context,
+                                        RoutesName.layOut,
+                                        (route) => false,
+                                      );
                                     }
                                     if (state is RegisterFailure) {
                                       showErrorSnackBar(context, state.error);
@@ -143,25 +183,33 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   },
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      final cubit = context.read<RegisterCubit>();
+                                      final cubit =
+                                          context.read<RegisterCubit>();
                                       cubit.activityLevel =
-                                          activityEnumToBackend(selectedActivity!);
+                                          activityEnumToBackend(
+                                            selectedActivity!,
+                                          );
 
                                       final request = RegisterRequest(
-                                        firstName: cubit.firstNameController.text,
+                                        firstName:
+                                            cubit.firstNameController.text,
                                         lastName: cubit.lastNameController.text,
                                         email: cubit.emailController.text,
                                         password: cubit.passwordController.text,
-                                        rePassword: cubit.rePasswordController.text,
+                                        rePassword:
+                                            cubit.rePasswordController.text,
                                         height: cubit.height,
                                         weight: cubit.weight,
                                         age: cubit.age,
                                         goal: cubit.goal,
                                         activityLevel: cubit.activityLevel!,
-                                        gender: RegisterCubit.selectedGender.name,
+                                        gender:
+                                            RegisterCubit.selectedGender.name,
                                       );
 
-                                      cubit.doIntent(RegisterUserIntent(request: request));
+                                      cubit.doIntent(
+                                        RegisterUserIntent(request: request),
+                                      );
                                       print(request.toJson());
                                     },
                                     child: const Text('Next'),

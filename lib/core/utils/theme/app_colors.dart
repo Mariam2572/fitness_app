@@ -17,7 +17,6 @@ class AppColors {
   static const Color red40 = Color(0xFFFC6B21);
   static const Color red30 = Color(0x0fffd9cc);
   static const Color red20 = Color(0x0fffece5);
-  
 
   // Dark Shades
   static const Color dark100 = Color(0xFF1A0000);
@@ -42,4 +41,6 @@ class AppColors {
   static const Color neutral20 = Color(0xFFA7A7A7);
   static const Color neutral10 = Color(0xFFBDBDBD);
   static const Color neutral5 = Color(0xFFD9D9D9);
+  static const Color neutral0 = Color(0xFFD3D3D3);
+
 }

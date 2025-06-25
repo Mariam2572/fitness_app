@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';

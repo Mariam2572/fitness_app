@@ -66,6 +66,7 @@ dependencies:
   provider: ^6.1.4
   retrofit: ^4.4.0
   url_launcher: ^6.3.0
+  youtube_player_flutter: ^9.1.1
 dev_dependencies:
   build_runner: ^2.3.3
   commitlint_cli: ^0.8.1
