@@ -1,8 +1,10 @@
+import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_details_section.dart';
 import 'package:fitness_app/features/exercise/presentation/views/widgets/exercise_widget_item.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -22,7 +24,7 @@ void main() {
     return MaterialApp(
       home: BlocProvider<ExerciseCubit>.value(
         value: mockCubit,
-        child: const ExerciseViewBody(),
+        child:  ExerciseViewBody(muscle: MusclesBean(id: '1', name: 'name',image: AppAssets.exerciseImage ),),
       ),
     );
   }
@@ -32,7 +34,7 @@ void main() {
   ) async {
     when(
       () => mockCubit.state,
-    ).thenReturn(ExerciseFailuer(message: 'Failed to load'));
+    ).thenReturn(const ExerciseFailuer(message: 'Failed to load'));
 
     await tester.pumpWidget(createWidgetUnderTest());
 
