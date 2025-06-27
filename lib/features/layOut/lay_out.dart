@@ -1,7 +1,7 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
-import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
+import 'package:fitness_app/features/smartCoach/presentation/views/smart_coach_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
 import 'package:fitness_app/features/workOuts/presentation/view_model/cubit/work_outs_cubit.dart';
