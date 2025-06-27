@@ -1,12 +1,10 @@
-import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/home_state.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/home_viewModel.dart';
-import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/CategoryView.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/meal_recommendation.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/popular_training_cards.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/recommendation_item.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/upcoming_workout.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/upcoming_workouts_category.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/workout_recommendation.dart';
@@ -101,7 +99,7 @@ class HomeViewBody extends StatelessWidget {
                     ),
 
                     TextButton(
-                        onPressed: (){},
+                        onPressed: (){Navigator.pushNamed(context, RoutesName.workouts);},
                         child: Text("See All",style: AppTextStyle.instance.textStyle16.copyWith(
                         color: Colors.deepOrange,
 
@@ -137,6 +135,7 @@ class HomeViewBody extends StatelessWidget {
                       ),
                       TextButton(
                           onPressed: (){
+                            Navigator.pushNamed(context, RoutesName.food);
                           },
                           child: Text("See All",style: AppTextStyle.instance.textStyle16.copyWith(
                             color: Colors.deepOrange,

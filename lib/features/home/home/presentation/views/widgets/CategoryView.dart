@@ -1,6 +1,5 @@
 import 'package:fitness_app/features/home/home/presentation/views/widgets/ExerciseCategoriesWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // Data class for category information
 class CategoryData {
@@ -40,10 +39,7 @@ label: 'Trainer',
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: REdgeInsets.all(4),
-        child: ExerciseCategoriesWidget(categories: categories)
-    );
+    return ExerciseCategoriesWidget(categories: categories);
 
   }
 }
