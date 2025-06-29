@@ -403,6 +403,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred , Please try later'**
   String get anErrorOccurred;
+
+  /// No description provided for @noResponse.
+  ///
+  /// In en, this message translates to:
+  /// **' No Response'**
+  String get noResponse;
 }
 
 class _AppLocalizationsDelegate

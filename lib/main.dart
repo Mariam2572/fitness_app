@@ -2,6 +2,7 @@ import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/provider/app_config_provider.dart';
 import 'package:fitness_app/core/utils/routes/routes_generator.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
+import 'package:fitness_app/core/utils/services/gemini_service.dart';
 import 'package:fitness_app/core/utils/simple_bloc_observer.dart';
 import 'package:fitness_app/core/utils/theme/app_theme.dart';
 import 'package:fitness_app/l10n/app_localizations.dart';
@@ -12,8 +13,10 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+ await GeminiService().initialize();
 
-   await configureDependencies();
+  await configureDependencies();
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppConfigProvider(),
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
-    return  ScreenUtilInit(
+    return ScreenUtilInit(
       designSize: const Size(375, 812), // match your design (e.g., Figma)
       minTextAdapt: true,
       splitScreenMode: true,
