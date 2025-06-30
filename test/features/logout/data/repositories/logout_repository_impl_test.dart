@@ -31,7 +31,7 @@ void main() {
       },
     );
     test(
-      'when call logout repository should call get exercise repo and it should return ApiError<String>',
+      'when call logout repository should call logout repo and it should return ApiError<String>',
       () async {
         //arrange
         final expectedLevel = ApiError<String>(

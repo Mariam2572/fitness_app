@@ -9,9 +9,8 @@ sealed class ProfileState extends Equatable {
 
 final class ProfileInitial extends ProfileState {}
 final class ProfileLoading extends ProfileState {}
-// ignore: must_be_immutable
 final class ProfileLoaded extends ProfileState {
-  String message;
+  final String message;
   ProfileLoaded({required this.message});
 }
 final class ProfileError extends ProfileState {

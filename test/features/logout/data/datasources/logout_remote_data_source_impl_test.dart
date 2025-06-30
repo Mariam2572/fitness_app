@@ -26,7 +26,7 @@ void main() {
       () async {
         when(
           mockApiService.logout(),
-        ).thenThrow(Exception('Registration failed'));
+        ).thenThrow(Exception('Logout failed'));
 
         final result = await logoutRemoteDataSourceImpl.logout();
 
