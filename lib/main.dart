@@ -5,6 +5,8 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/services/gemini_service.dart';
 import 'package:fitness_app/core/utils/simple_bloc_observer.dart';
 import 'package:fitness_app/core/utils/theme/app_theme.dart';
+import 'package:fitness_app/features/smartCoach/domain/use_case/send_message_use_case.dart';
+import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
 import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +15,9 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- await GeminiService().initialize();
-
   await configureDependencies();
+  final geminiService = getIt<GeminiService>();
+  await geminiService.initialize();
 
   runApp(
     ChangeNotifierProvider(
@@ -37,14 +39,17 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          locale: Locale(provider.appLanguage),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: RoutesGenerator.onGenerator,
-          theme: AppTheme.appTheme,
-          initialRoute: RoutesName.splash,
+        return BlocProvider(
+          create: (context) => SmartCoachCubit(getIt<SendMessageUseCase>()),
+          child: MaterialApp(
+            locale: Locale(provider.appLanguage),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: RoutesGenerator.onGenerator,
+            theme: AppTheme.appTheme,
+            initialRoute: RoutesName.splash,
+          ),
         );
       },
     );

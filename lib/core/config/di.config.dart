@@ -73,6 +73,14 @@ import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
 import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
 import '../../features/home/home/presentation/view_model/home_viewModel.dart'
     as _i1043;
+import '../../features/smartCoach/data/data_source/remote_data_source/smart_coach_remote_data_source_impl.dart'
+    as _i101;
+import '../../features/smartCoach/data/repo/smart_coach_repo_impl.dart' as _i94;
+import '../../features/smartCoach/domain/repo/smart_coach_remote_data_source.dart'
+    as _i511;
+import '../../features/smartCoach/domain/repo/smart_coach_repo.dart' as _i708;
+import '../../features/smartCoach/domain/use_case/send_message_use_case.dart'
+    as _i469;
 import '../../features/workOuts/data/data_source/work_outs_data_source_impl.dart'
     as _i931;
 import '../../features/workOuts/data/repos/work_outs_repo_impl.dart' as _i638;
@@ -86,6 +94,7 @@ import '../../features/workOuts/domain/use_cases/get_all_muscles_groups_use_case
 import '../api_manager/api_services.dart' as _i785;
 import '../api_manager/dio_module.dart' as _i591;
 import '../provider/app_config_provider.dart' as _i291;
+import '../utils/services/gemini_service.dart' as _i92;
 import 'di.dart' as _i913;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -97,14 +106,25 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
     final appModule = _$AppModule();
+    gh.singleton<_i92.GeminiService>(() => _i92.GeminiService());
     gh.lazySingleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.lazySingleton<_i291.AppConfigProvider>(
       () => appModule.appConfigProvider,
+    );
+    gh.factory<_i511.SmartCoachRemoteDataSource>(
+      () => _i101.SmartCoachRemoteDataSourceImpl(
+        geminiService: gh<_i92.GeminiService>(),
+      ),
     );
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
         gh<_i361.LogInterceptor>(),
         gh<_i291.AppConfigProvider>(),
+      ),
+    );
+    gh.factory<_i708.SmartCoachRepo>(
+      () => _i94.SmartCoachRepoImpl(
+        remoteDataSource: gh<_i511.SmartCoachRemoteDataSource>(),
       ),
     );
     gh.singleton<_i785.ApiService>(
@@ -123,6 +143,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i785.ApiService>(),
         gh<_i785.MealApiService>(),
       ),
+    );
+    gh.factory<_i469.SendMessageUseCase>(
+      () => _i469.SendMessageUseCase(gh<_i708.SmartCoachRepo>()),
     );
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
