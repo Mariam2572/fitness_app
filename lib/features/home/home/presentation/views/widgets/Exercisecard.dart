@@ -44,8 +44,8 @@ class ExerciseCard extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black.withOpacity(0.3),
-                      Colors.black.withOpacity(0.7),
+                      Colors.black.withValues(alpha :0.3),
+                      Colors.black.withValues(alpha: 0.7),
                     ],
                   ),
                 ),
@@ -74,23 +74,23 @@ class ExerciseCard extends StatelessWidget {
                         Container(
                           padding: REdgeInsets.all(5),
                           decoration:  BoxDecoration(
-                            color: AppColors.neutral90.withOpacity(0.7),
+                            color: AppColors.neutral90.withValues(alpha :0.7),
                             borderRadius: const BorderRadius.all(Radius.circular(20))
                           ),
                           child: Text(
                             taskCount,
-                            style: AppTextStyle.instance.textStyle14
+                            style: AppTextStyle.instance.textStyle12
                           ),
                         ),
                         Container(
                           padding:  REdgeInsets.all(2),
                           decoration: BoxDecoration(
-                            color: AppColors.neutral90.withOpacity(0.7),
+                            color: AppColors.neutral90.withValues(alpha :0.7),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
                             level,
-                              style: AppTextStyle.instance.textStyle14.copyWith(
+                              style: AppTextStyle.instance.textStyle12.copyWith(
                               color: AppColors.mainRed
                             )
                           ),
