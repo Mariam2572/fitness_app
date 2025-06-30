@@ -20,15 +20,15 @@ class _LayOutState extends State<LayOut> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens =  [
-    HomeView(),
-    SmartCoachView(),
+    const HomeView(),
+    const SmartCoachView(),
     BlocProvider(
       create: (context) => WorkOutsCubit(
         getIt<GetAllMusclesGroupsUseCase>(),
         getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
-      )..doIntent(GetAllMusclesGroupsIntent()),      child: WorkOutsView(),
+      )..doIntent(GetAllMusclesGroupsIntent()),      child: const WorkOutsView(),
     ),
-    ProfileView(),
+    const ProfileView(),
   ];
 
   void _onItemTapped(int index) {
