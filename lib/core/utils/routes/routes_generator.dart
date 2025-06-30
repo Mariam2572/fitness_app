@@ -11,8 +11,6 @@ import 'package:fitness_app/features/auth/register/presentation/views/actvities_
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart'
@@ -23,7 +21,9 @@ import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
+import 'package:fitness_app/features/logout/domain/usecases/logout_usecase.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
+import 'package:fitness_app/features/profile/cubit/profile_cubit.dart';
 import 'package:fitness_app/features/profile/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
@@ -109,8 +109,6 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
-
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(),
@@ -146,7 +144,11 @@ class RoutesGenerator {
 
       case RoutesName.profile:
         return MaterialPageRoute(
-          builder: (context) => const ProfileView(),
+          builder:
+              (context) => BlocProvider(
+                create: (context) =>  ProfileCubit(getIt<LogoutUseCase>()),
+                child: const ProfileView(),
+              ),
           settings: settings,
         );
 
@@ -192,18 +194,8 @@ class RoutesGenerator {
                 child: const FoodRecommendationPage(),
               ),
         );
-      case RoutesName.food:
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider(
-                create:
-                    (_) => FoodCubit(
-                      getIt<GetFoodCategoriesUseCase>(),
-                      getIt<GetMealsByCategoryUseCase>(),
-                    ),
-                child: const FoodRecommendationPage(),
-              ),
-        );
+
+        
       default:
         return null;
     }
