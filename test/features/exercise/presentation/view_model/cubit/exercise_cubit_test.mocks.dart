@@ -42,32 +42,37 @@ class MockGetExerciseByMoverAndDifficultyLevelUseCase extends _i1.Mock
 
   @override
   _i3.Future<_i4.ApiResult<_i5.ExerciseByPrimeMoverAndDifficultyResponse>>
-  call({
+      call({
     required String? primeMoverMuscleId,
     required String? difficultyLevelId,
   }) =>
-      (super.noSuchMethod(
-            Invocation.method(#call, [], {
-              #primeMoverMuscleId: primeMoverMuscleId,
-              #difficultyLevelId: difficultyLevelId,
-            }),
+          (super.noSuchMethod(
+            Invocation.method(
+              #call,
+              [],
+              {
+                #primeMoverMuscleId: primeMoverMuscleId,
+                #difficultyLevelId: difficultyLevelId,
+              },
+            ),
             returnValue: _i3.Future<
-              _i4.ApiResult<_i5.ExerciseByPrimeMoverAndDifficultyResponse>
-            >.value(
-              _i6.dummyValue<
-                _i4.ApiResult<_i5.ExerciseByPrimeMoverAndDifficultyResponse>
-              >(
-                this,
-                Invocation.method(#call, [], {
+                    _i4.ApiResult<
+                        _i5.ExerciseByPrimeMoverAndDifficultyResponse>>.value(
+                _i6.dummyValue<
+                    _i4
+                    .ApiResult<_i5.ExerciseByPrimeMoverAndDifficultyResponse>>(
+              this,
+              Invocation.method(
+                #call,
+                [],
+                {
                   #primeMoverMuscleId: primeMoverMuscleId,
                   #difficultyLevelId: difficultyLevelId,
-                }),
+                },
               ),
-            ),
-          )
-          as _i3.Future<
-            _i4.ApiResult<_i5.ExerciseByPrimeMoverAndDifficultyResponse>
-          >);
+            )),
+          ) as _i3.Future<
+              _i4.ApiResult<_i5.ExerciseByPrimeMoverAndDifficultyResponse>>);
 }
 
 /// A class which mocks [GetLevelsByPrimeMoverMuscleUseCases].
@@ -80,22 +85,22 @@ class MockGetLevelsByPrimeMoverMuscleUseCases extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i8.LevelsByMusclesModel>> call({
-    required String? primeMoverMuscleId,
-  }) =>
+  _i3.Future<_i4.ApiResult<_i8.LevelsByMusclesModel>> call(
+          {required String? primeMoverMuscleId}) =>
       (super.noSuchMethod(
-            Invocation.method(#call, [], {
-              #primeMoverMuscleId: primeMoverMuscleId,
-            }),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i8.LevelsByMusclesModel>>.value(
-                  _i6.dummyValue<_i4.ApiResult<_i8.LevelsByMusclesModel>>(
-                    this,
-                    Invocation.method(#call, [], {
-                      #primeMoverMuscleId: primeMoverMuscleId,
-                    }),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i8.LevelsByMusclesModel>>);
+        Invocation.method(
+          #call,
+          [],
+          {#primeMoverMuscleId: primeMoverMuscleId},
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i8.LevelsByMusclesModel>>.value(
+            _i6.dummyValue<_i4.ApiResult<_i8.LevelsByMusclesModel>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+            {#primeMoverMuscleId: primeMoverMuscleId},
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i8.LevelsByMusclesModel>>);
 }

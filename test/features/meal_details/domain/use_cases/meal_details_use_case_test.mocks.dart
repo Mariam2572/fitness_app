@@ -37,18 +37,22 @@ class MockMealsDetailsContract extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.MealsDatailsResponse>> mealsDatails({
-    required String? id,
-  }) =>
+  _i3.Future<_i4.ApiResult<_i5.MealsDatailsResponse>> mealsDatails(
+          {required String? id}) =>
       (super.noSuchMethod(
-            Invocation.method(#mealsDatails, [], {#id: id}),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i5.MealsDatailsResponse>>.value(
-                  _i6.dummyValue<_i4.ApiResult<_i5.MealsDatailsResponse>>(
-                    this,
-                    Invocation.method(#mealsDatails, [], {#id: id}),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i5.MealsDatailsResponse>>);
+        Invocation.method(
+          #mealsDatails,
+          [],
+          {#id: id},
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i5.MealsDatailsResponse>>.value(
+            _i6.dummyValue<_i4.ApiResult<_i5.MealsDatailsResponse>>(
+          this,
+          Invocation.method(
+            #mealsDatails,
+            [],
+            {#id: id},
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i5.MealsDatailsResponse>>);
 }

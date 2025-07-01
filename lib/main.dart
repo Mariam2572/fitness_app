@@ -5,12 +5,16 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/services/gemini_service.dart';
 import 'package:fitness_app/core/utils/simple_bloc_observer.dart';
 import 'package:fitness_app/core/utils/theme/app_theme.dart';
+import 'package:fitness_app/features/smartCoach/data/models/ChatMessageHiveModel.dart';
+import 'package:fitness_app/features/smartCoach/data/models/ConversationHiveModel.dart';
 import 'package:fitness_app/features/smartCoach/domain/use_case/send_message_use_case.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
 import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -19,6 +23,14 @@ Future<void> main() async {
   final geminiService = getIt<GeminiService>();
   await geminiService.initialize();
 
+
+  await Hive.initFlutter();
+  Hive.registerAdapter(ChatMessageHiveModelAdapter());
+  Hive.registerAdapter(ConversationHiveModelAdapter());
+  await Hive.openBox<ConversationHiveModel>('conversations');
+
+  final conversationBox = await Hive.openBox<ConversationHiveModel>('conversations');
+  getIt.registerSingleton<Box<ConversationHiveModel>>(conversationBox);
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppConfigProvider(),
@@ -48,7 +60,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RoutesGenerator.onGenerator,
             theme: AppTheme.appTheme,
-            initialRoute: RoutesName.splash,
+            initialRoute: RoutesName.login,
           ),
         );
       },

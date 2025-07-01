@@ -39,51 +39,56 @@ class MockExerciseRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.LevelsByMusclesModel>> getLevelsByMuscles({
-    required String? primeMoverMuscleId,
-  }) =>
+  _i3.Future<_i4.ApiResult<_i5.LevelsByMusclesModel>> getLevelsByMuscles(
+          {required String? primeMoverMuscleId}) =>
       (super.noSuchMethod(
-            Invocation.method(#getLevelsByMuscles, [], {
-              #primeMoverMuscleId: primeMoverMuscleId,
-            }),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i5.LevelsByMusclesModel>>.value(
-                  _i6.dummyValue<_i4.ApiResult<_i5.LevelsByMusclesModel>>(
-                    this,
-                    Invocation.method(#getLevelsByMuscles, [], {
-                      #primeMoverMuscleId: primeMoverMuscleId,
-                    }),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i5.LevelsByMusclesModel>>);
+        Invocation.method(
+          #getLevelsByMuscles,
+          [],
+          {#primeMoverMuscleId: primeMoverMuscleId},
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i5.LevelsByMusclesModel>>.value(
+            _i6.dummyValue<_i4.ApiResult<_i5.LevelsByMusclesModel>>(
+          this,
+          Invocation.method(
+            #getLevelsByMuscles,
+            [],
+            {#primeMoverMuscleId: primeMoverMuscleId},
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i5.LevelsByMusclesModel>>);
 
   @override
   _i3.Future<_i4.ApiResult<_i7.ExerciseByPrimeMoverAndDifficultyResponse>>
-  getExerciseByMoverAndDifficultyLevel({
+      getExerciseByMoverAndDifficultyLevel({
     required String? primeMoverMuscleId,
     required String? difficultyLevelId,
   }) =>
-      (super.noSuchMethod(
-            Invocation.method(#getExerciseByMoverAndDifficultyLevel, [], {
-              #primeMoverMuscleId: primeMoverMuscleId,
-              #difficultyLevelId: difficultyLevelId,
-            }),
+          (super.noSuchMethod(
+            Invocation.method(
+              #getExerciseByMoverAndDifficultyLevel,
+              [],
+              {
+                #primeMoverMuscleId: primeMoverMuscleId,
+                #difficultyLevelId: difficultyLevelId,
+              },
+            ),
             returnValue: _i3.Future<
-              _i4.ApiResult<_i7.ExerciseByPrimeMoverAndDifficultyResponse>
-            >.value(
-              _i6.dummyValue<
-                _i4.ApiResult<_i7.ExerciseByPrimeMoverAndDifficultyResponse>
-              >(
-                this,
-                Invocation.method(#getExerciseByMoverAndDifficultyLevel, [], {
+                    _i4.ApiResult<
+                        _i7.ExerciseByPrimeMoverAndDifficultyResponse>>.value(
+                _i6.dummyValue<
+                    _i4
+                    .ApiResult<_i7.ExerciseByPrimeMoverAndDifficultyResponse>>(
+              this,
+              Invocation.method(
+                #getExerciseByMoverAndDifficultyLevel,
+                [],
+                {
                   #primeMoverMuscleId: primeMoverMuscleId,
                   #difficultyLevelId: difficultyLevelId,
-                }),
+                },
               ),
-            ),
-          )
-          as _i3.Future<
-            _i4.ApiResult<_i7.ExerciseByPrimeMoverAndDifficultyResponse>
-          >);
+            )),
+          ) as _i3.Future<
+              _i4.ApiResult<_i7.ExerciseByPrimeMoverAndDifficultyResponse>>);
 }
