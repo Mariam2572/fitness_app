@@ -164,4 +164,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get anErrorOccurred => 'An error occurred , Please try later';
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmNewPassword => 'Confirm New Password';
+
+  @override
+  String get passwordChangedSuccessfully => 'Password changed successfully!';
+
+  @override
+  String get passwordsDoNotMatch =>
+      'New password and confirmation do not match';
 }

@@ -13,6 +13,16 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/auth/change%20password/data/data_source/change_password_data_source.dart'
+    as _i283;
+import '../../features/auth/change%20password/data/data_source/change_password_data_source_imp.dart'
+    as _i20;
+import '../../features/auth/change%20password/data/repo/change_password_repo_imp.dart'
+    as _i756;
+import '../../features/auth/change%20password/domain/repo/change_pssword_repo.dart'
+    as _i760;
+import '../../features/auth/change%20password/domain/usecase/change_passwrod_usecase.dart'
+    as _i793;
 import '../../features/auth/login/data/data_source/login_remote_data_source.dart'
     as _i520;
 import '../../features/auth/login/data/data_source/login_remote_data_source_imp.dart'
@@ -158,12 +168,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1002.WorkOutsRepo>(
       () => _i638.WorkOutsRepoImpl(gh<_i980.WorkOutsDataSource>()),
     );
+    gh.factory<_i283.ChangePasswordRemoteDataSource>(
+      () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()),
+    );
     gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(
       () =>
           _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()),
     );
     gh.factory<_i80.GetAllMusclesGroupsUseCase>(
       () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()),
+    );
+    gh.factory<_i760.ChangePasswordRepo>(
+      () => _i756.ChangePasswordRepoImpl(
+        gh<_i283.ChangePasswordRemoteDataSource>(),
+      ),
     );
     gh.factory<_i474.FoodRepo>(
       () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()),
@@ -181,6 +199,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i204.HomeUseCase>(
       () => _i204.HomeUseCase(gh<_i751.HomeRepo>()),
+    );
+    gh.factory<_i793.ChangePasswordUseCase>(
+      () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()),
     );
     gh.factory<_i782.MealsDetailsCubit>(
       () => _i782.MealsDetailsCubit(gh<_i172.MealsDetailsUsecase>()),

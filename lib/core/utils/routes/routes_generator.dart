@@ -1,5 +1,8 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
+import 'package:fitness_app/features/auth/change%20password/domain/usecase/change_passwrod_usecase.dart';
+import 'package:fitness_app/features/auth/change%20password/presentation/view%20model/change_password_cubit.dart';
+import 'package:fitness_app/features/auth/change%20password/presentation/view/change_password_screen.dart';
 import 'package:fitness_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
@@ -109,8 +112,6 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
-
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(),
@@ -177,6 +178,16 @@ class RoutesGenerator {
       case RoutesName.mealsDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => const MealsDetailsScreen(),
+          settings: settings,
+        );
+      case RoutesName.changePassword:
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create:
+                    (_) => ChangePasswordCubit(getIt<ChangePasswordUseCase>()),
+                child: const ChangePasswordScreen(),
+              ),
           settings: settings,
         );
 

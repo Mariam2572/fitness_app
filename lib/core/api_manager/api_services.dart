@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fitness_app/core/constants/constants.dart';
+import 'package:fitness_app/features/auth/change%20password/data/model/change_password_request.dart';
+import 'package:fitness_app/features/auth/change%20password/data/model/change_password_response.dart';
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
@@ -31,46 +33,54 @@ abstract class ApiService {
   @POST(Constants.registerEndPoint)
   Future<RegisterResponse> register(@Body() RegisterRequest registerRequest);
   @GET(Constants.getExerciseByMoverAndDifficultyEndPoint)
-  Future<ExerciseByPrimeMoverAndDifficultyResponse> getExerciseByMoverAndDifficulty(@Query("primeMoverMuscleId") String primeMoverMuscleId, @Query("difficultyLevelId") String difficultyLevelId);
+  Future<ExerciseByPrimeMoverAndDifficultyResponse>
+  getExerciseByMoverAndDifficulty(
+    @Query("primeMoverMuscleId") String primeMoverMuscleId,
+    @Query("difficultyLevelId") String difficultyLevelId,
+  );
 
   @GET(Constants.levelsByMuscleEndPoint)
-  Future<LevelsByMusclesModel> getLevelsByMuscles(@Query("primeMoverMuscleId") String primeMoverMuscleId);
+  Future<LevelsByMusclesModel> getLevelsByMuscles(
+    @Query("primeMoverMuscleId") String primeMoverMuscleId,
+  );
 
   @GET(Constants.getAllMusclesGroupsEndPoint)
   Future<GetAllMusclesGroupsReponse> getAllMusclesGroups();
   @GET("${Constants.getAllMusclesByMuscleGroupIdEndPoint}/{id}")
-  Future<GetAllMusclesByMuscleGroupIdReponse> getAllMusclesByMuscleGroupId( @Path("id") String id);
+  Future<GetAllMusclesByMuscleGroupIdReponse> getAllMusclesByMuscleGroupId(
+    @Path("id") String id,
+  );
   @GET(Constants.getAllExercisesEndPoint)
   Future<ExercisesResponse> getAllExercises();
-
 
   @GET(Constants.getCurrentUserDataEndPoint)
   Future<UserResponse> getUserData(@Header("Authorization") String userToken);
 
   @GET(Constants.randomExercisesEndPoint)
   Future<RandomExerciseResponse> getRandomExercises(
-      @Query("targetMuscleGroupId") String targetMuscleGroupId ,
-      @Query("difficultyLevelId") String difficultyLevelId ,
-      @Query("limit") int limit
-      );
-
+    @Query("targetMuscleGroupId") String targetMuscleGroupId,
+    @Query("difficultyLevelId") String difficultyLevelId,
+    @Query("limit") int limit,
+  );
+  @PATCH(Constants.changePassword)
+  Future<ChangePasswordResponse> changePassword(
+    @Body() ChangePasswordRequest ChangePasswordRequest,
+    @Header("Authorization") String userToken,
+  );
 }
-
 
 @RestApi(baseUrl: Constants.mealBaseUrl)
 abstract class MealApiService {
   factory MealApiService(Dio dio) = _MealApiService;
 
   @GET(Constants.getMealsDetailsEndPoint)
-    Future<MealsDatailsResponse> getMealsDetails(@Path("i") String i);
+  Future<MealsDatailsResponse> getMealsDetails(@Path("i") String i);
 
   @GET(Constants.foodCategoriesEndPoint)
   Future<FoodCategoriesResponse> getFoodCategories();
 
   @GET(Constants.mealsOfCategoryEndPoint)
   Future<MealsOfCategoryResponse> getMealsByCategory(
-      @Query('c') String category,
-      );
-
+    @Query('c') String category,
+  );
 }
-
