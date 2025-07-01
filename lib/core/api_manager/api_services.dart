@@ -59,6 +59,13 @@ abstract class ApiService {
     @Query("difficultyLevelId") String difficultyLevelId,
     @Query("limit") int limit,
   );
+
+  @MultiPart()
+  @PUT(Constants.upLoadProfilePhoto)
+  Future<String> uploadPhoto(@Part(name: "photo") File image);
+
+  @GET(Constants.getCurrentUserDataEndPoint)
+  Future<UserResponse> getProfileData();
 }
 
 @RestApi(baseUrl: Constants.mealBaseUrl)
@@ -75,8 +82,4 @@ abstract class MealApiService {
   Future<MealsOfCategoryResponse> getMealsByCategory(
     @Query('c') String category,
   );
-
-  @MultiPart()
-  @PUT(Constants.upLoadProfilePhoto)
-  Future<String> uploadPhoto(@Part(name: "photo") File image);
 }

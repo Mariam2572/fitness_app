@@ -1,40 +1,34 @@
 import 'dart:io';
 
 import 'package:fitness_app/core/base/api_result.dart';
+import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
 import 'package:fitness_app/features/profile/data/data_source/profile_remote_data_source.dart';
 import 'package:fitness_app/features/profile/domain/repos/profile_repo.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: ProfileRepo)
-class ProfileRepoImpl implements ProfileRepo {
+@Injectable(as: ProfileRepository)
+class ProfileRepositoryImpl extends ProfileRepository {
   final ProfileRemoteDataSource remoteDataSource;
 
-  ProfileRepoImpl({required this.remoteDataSource});
+  ProfileRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<ApiResult<String>> uploadPhoto(File photo) {
-    // TODO: implement uploadPhoto
-    throw UnimplementedError();
+  Future<ApiResult<UserResponse>> getProfile() async {
+    try {
+      final result = await remoteDataSource.getProfile();
+      return ApiSuccess(data: result);
+    } catch (e) {
+      return ApiError(message: e.toString());
+    }
+  }
+
+  @override
+  Future<ApiResult<String>> uploadPhoto(File file) async {
+    try {
+      final result = await remoteDataSource.uploadPhoto(file);
+      return ApiSuccess(data: result);
+    } catch (e) {
+      return ApiError(message: e.toString());
+    }
   }
 }
-
-//   @override
-//   Future<ApiResult<String>> uploadPhoto(File photo) async {
-//     try {
-//       if (await photo.exists()) {
-//         log(" file exists. path: ${photo.path}");
-//       } else {
-//         log("file doesn't exist.");
-//       }
-//       final data = await remoteDataSource.uploadPhoto(photo);
-//       return Right(data);
-//     } catch (e) {
-//       if (e is DioException) {
-//         return left(ServerFailure.fromDioException(e));
-//       } else {
-//         log('error  $e');
-//         return left(ServerFailure(errorMessage: e.toString()));
-//       }
-//     }
-//   }
-// }
