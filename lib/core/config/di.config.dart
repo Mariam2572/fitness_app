@@ -73,6 +73,11 @@ import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
 import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
 import '../../features/home/home/presentation/view_model/home_viewModel.dart'
     as _i1043;
+import '../../features/profile/data/data_source/profile_remote_data_source.dart'
+    as _i998;
+import '../../features/profile/data/data_source/profile_remote_data_source_impl.dart'
+    as _i531;
+import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
 import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
 import '../../features/profile/domain/use_case/get_profile_data.dart' as _i663;
 import '../../features/profile/domain/use_case/upload_photo__use_case.dart'
@@ -111,12 +116,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i291.AppConfigProvider>(),
       ),
     );
-    gh.factory<_i763.UploadPhoto>(
-      () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()),
-    );
-    gh.factory<_i663.GetProfileData>(
-      () => _i663.GetProfileData(gh<_i1007.ProfileRepository>()),
-    );
     gh.singleton<_i785.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
     );
@@ -136,6 +135,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
+    );
+    gh.factory<_i998.ProfileRemoteDataSource>(
+      () => _i531.ProfileRemoteDataSourceImpl(gh<_i785.ApiService>()),
     );
     gh.factory<_i225.MealsDetailsContract>(
       () => _i274.MealsDetailsRepositoryImplementation(
@@ -183,6 +185,9 @@ extension GetItInjectableX on _i174.GetIt {
         mealsDetailsContract: gh<_i225.MealsDetailsContract>(),
       ),
     );
+    gh.factory<_i1007.ProfileRepository>(
+      () => _i1072.ProfileRepositoryImpl(gh<_i998.ProfileRemoteDataSource>()),
+    );
     gh.factory<_i369.RegisterRepo>(
       () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()),
     );
@@ -208,6 +213,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i740.GetMealsByCategoryUseCase>(
       () => _i740.GetMealsByCategoryUseCase(gh<_i474.FoodRepo>()),
+    );
+    gh.factory<_i763.UploadPhoto>(
+      () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()),
+    );
+    gh.factory<_i663.GetProfileData>(
+      () => _i663.GetProfileData(gh<_i1007.ProfileRepository>()),
     );
     gh.factory<_i118.RegisterUseCase>(
       () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()),
