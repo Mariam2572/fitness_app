@@ -3,8 +3,6 @@ import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class IngredientItem extends StatelessWidget {
-  // final Product product;
-  //  widget.product.images![index] as String,
   String name;
   String amount;
 
@@ -41,5 +39,3 @@ class IngredientItem extends StatelessWidget {
     );
   }
 }
-
-

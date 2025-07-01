@@ -11,8 +11,6 @@ import 'package:fitness_app/features/auth/register/presentation/views/actvities_
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart'
@@ -24,7 +22,7 @@ import 'package:fitness_app/features/foodDetails/presentation/view/meals_details
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
-import 'package:fitness_app/features/profile/profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
@@ -108,8 +106,6 @@ class RoutesGenerator {
               ),
           settings: settings,
         );
-
-
 
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(

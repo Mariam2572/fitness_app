@@ -73,6 +73,12 @@ import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
 import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
 import '../../features/home/home/presentation/view_model/home_viewModel.dart'
     as _i1043;
+import '../../features/profile/data/data_source/profile_remote_data_source.dart'
+    as _i998;
+import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
+import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
+import '../../features/profile/domain/use_case/upload_photo__use_case.dart'
+    as _i763;
 import '../../features/workOuts/data/data_source/work_outs_data_source_impl.dart'
     as _i931;
 import '../../features/workOuts/data/repos/work_outs_repo_impl.dart' as _i638;
@@ -100,6 +106,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.lazySingleton<_i291.AppConfigProvider>(
       () => appModule.appConfigProvider,
+    );
+    gh.factory<_i1007.ProfileRepo>(
+      () => _i1072.ProfileRepoImpl(
+        remoteDataSource: gh<_i998.ProfileRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i763.UploadPhotoUseCase>(
+      () => _i763.UploadPhotoUseCase(gh<_i1007.ProfileRepo>()),
     );
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
@@ -158,12 +172,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1002.WorkOutsRepo>(
       () => _i638.WorkOutsRepoImpl(gh<_i980.WorkOutsDataSource>()),
     );
+    gh.factory<_i80.GetAllMusclesGroupsUseCase>(
+      () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()),
+    );
     gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(
       () =>
           _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()),
-    );
-    gh.factory<_i80.GetAllMusclesGroupsUseCase>(
-      () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()),
     );
     gh.factory<_i474.FoodRepo>(
       () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()),

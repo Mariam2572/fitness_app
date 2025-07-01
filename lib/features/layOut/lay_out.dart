@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
-import 'package:fitness_app/features/profile/profile_view.dart';
+import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
@@ -19,14 +19,16 @@ class LayOut extends StatefulWidget {
 class _LayOutState extends State<LayOut> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens =  [
+  final List<Widget> _screens = [
     HomeView(),
     SmartCoachView(),
     BlocProvider(
-      create: (context) => WorkOutsCubit(
-        getIt<GetAllMusclesGroupsUseCase>(),
-        getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
-      )..doIntent(GetAllMusclesGroupsIntent()),      child: WorkOutsView(),
+      create:
+          (context) => WorkOutsCubit(
+            getIt<GetAllMusclesGroupsUseCase>(),
+            getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
+          )..doIntent(GetAllMusclesGroupsIntent()),
+      child: WorkOutsView(),
     ),
     ProfileView(),
   ];
@@ -59,8 +61,7 @@ class _LayOutState extends State<LayOut> {
         child: Container(
           decoration: BoxDecoration(
             color:
-                theme.bottomNavigationBarTheme.backgroundColor ??
-                Colors.white,
+                theme.bottomNavigationBarTheme.backgroundColor ?? Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
           child: ClipRRect(
