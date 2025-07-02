@@ -61,4 +61,13 @@
   "logout" : "تسجيل الخروج",
   "yes" : "نعم",
   "no": "لا"
+  "anErrorOccurred" : "  . برجاء المحاولة لاحقا لقد حدث خطأ ما",
+  "editProfile":"تعديل الملف الشخصي",
+  "yourWeight":"وزنك",
+  "yourHeight":"طولك",
+  "yourAge":"عمرك",
+  "yourGender":"جنسك",
+  "yourGoal":"هدفك",
+  "yourActivityLevel":"مستوى نشاطك",
+  "tapToEdit":"انقر للتعديل"
 }

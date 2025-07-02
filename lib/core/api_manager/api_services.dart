@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_request.dart';
@@ -9,6 +11,9 @@ import 'package:fitness_app/features/auth/login/data/model/login_response/login_
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
 import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
+import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
+import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart';
+import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
@@ -21,6 +26,7 @@ import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
 
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
+
 part 'api_services.g.dart';
 
 @RestApi(baseUrl: Constants.baseUrl)
@@ -29,26 +35,28 @@ abstract class ApiService {
 
   @POST(Constants.loginEndPoint)
   Future<LoginResponse> loginUser(@Body() LoginRequest loginRequest);
+
   @POST(Constants.registerEndPoint)
   Future<RegisterResponse> register(@Body() RegisterRequest registerRequest);
+
   @GET(Constants.getExerciseByMoverAndDifficultyEndPoint)
   Future<ExerciseByPrimeMoverAndDifficultyResponse>
- 
   getExerciseByMoverAndDifficulty(
-    
     @Query("primeMoverMuscleId") String primeMoverMuscleId,
-   
     @Query("difficultyLevelId") String difficultyLevelId,
-  
   );
 
   @GET(Constants.levelsByMuscleEndPoint)
   Future<LevelsByMusclesModel> getLevelsByMuscles(
     @Query("primeMoverMuscleId") String primeMoverMuscleId,
   );
+  Future<LevelsByMusclesModel> getLevelsByMuscles(
+    @Query("primeMoverMuscleId") String primeMoverMuscleId,
+  );
 
   @GET(Constants.getAllMusclesGroupsEndPoint)
   Future<GetAllMusclesGroupsReponse> getAllMusclesGroups();
+
   @GET("${Constants.getAllMusclesByMuscleGroupIdEndPoint}/{id}")
   Future<GetAllMusclesByMuscleGroupIdReponse> getAllMusclesByMuscleGroupId(
     @Path("id") String id,

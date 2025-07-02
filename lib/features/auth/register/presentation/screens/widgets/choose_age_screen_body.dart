@@ -6,12 +6,15 @@ import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/number_picker_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ChooseAgeScreenBody extends StatefulWidget {
-  const ChooseAgeScreenBody({super.key});
+  final int? value;
+
+  const ChooseAgeScreenBody({super.key, this.value});
 
   @override
   State<ChooseAgeScreenBody> createState() => _ChooseAgeScreenBodyState();
@@ -61,9 +64,11 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
               NumberPickerWidget(
                 minValue: 15,
                 maxValue: 90,
-                initialValue: 15,
+                initialValue: context.read<EditProfileCubit?>()?.age??19,
+
                 onChanged: (val) {
-                  context.read<RegisterCubit>().age = val;
+                  context.read<RegisterCubit?>()?.age = val;
+                  context.read<EditProfileCubit?>()?.age=val;
 
                   setState(() {});
                 },
@@ -71,14 +76,17 @@ class _ChooseAgeScreenBodyState extends State<ChooseAgeScreenBody> {
               const SizedBox(height: 16),
               SvgPicture.asset(AppAssets.arrowUp),
               const SizedBox(height: 31),
-              Padding(
+              context.read<EditProfileCubit>().isEditProfile? SizedBox():     Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
                       RoutesName.chooseWeightScreen,
-                      arguments: context.read<RegisterCubit>(),
+                      arguments:   {
+                        'registerCubit': context.read<RegisterCubit>(),
+
+                      },
                     );
                   },
                   child: Text(

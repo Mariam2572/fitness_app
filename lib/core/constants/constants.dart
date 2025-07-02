@@ -21,6 +21,10 @@ class Constants {
   static const String randomExerciseDifficultyLevelId =
       '67c797e226895f87ce0aa94b';
   static const String getAllExercisesEndPoint = 'exercises';
+  static const String uploadPhotoEndPoint = 'auth/upload-photo';
+  static const String getLoggedProfileDataEndPoint = 'auth/profile-data';
+  static const String editProfileEndPoint = 'auth/editProfile';
+
   static const String geminiApiKey = "geminiApiKey";
   static const String logoutEndPoint = 'auth/logout';  static const String changePassword = 'auth/change-password';
   static const String upLoadProfilePhoto = "auth/upload-photo";

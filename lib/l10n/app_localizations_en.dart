@@ -193,4 +193,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noResponse => ' No Response';
+
+  @override
+  String get editProfile => "Edit Profile";
+
+  @override
+  String get tapToEdit =>"tap To Edit";
+
+  @override
+  String get yourActivityLevel => "Your Activity Level";
+
+  @override
+  String get yourAge => "Your Age";
+
+  @override
+  String get yourGender => "Your Gender";
+
+  @override
+  String get yourGoal => "Your Goal";
+
+  @override
+  String get yourHeight => "Your Height";
+
+  @override
+  String get yourWeight => "Your Weight";
 }

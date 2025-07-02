@@ -7,6 +7,7 @@ import 'package:fitness_app/features/auth/register/presentation/screens/widgets/
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/register_indicator.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,9 +19,11 @@ class GoalsScreen extends StatefulWidget {
 }
 
 class _GoalsScreenState extends State<GoalsScreen> {
-  String? selectedGoal = "";
   @override
   Widget build(BuildContext context) {
+    String? selectedGoal = context.read<EditProfileCubit?>()?.goal;
+
+    ;
     return Scaffold(
       body: Stack(
         children: [
@@ -112,6 +115,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
                                   },
@@ -126,6 +131,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
                                   },
@@ -139,6 +146,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
                                   },
@@ -154,6 +163,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
                                   },
@@ -169,6 +180,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   onChanged: (value) {
                                     setState(() {
                                       selectedGoal = value!;
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                     });
                                   },
                                 ),
@@ -176,25 +189,30 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    context.read<RegisterCubit>().goal =
-                                        selectedGoal;
-                                    Navigator.pushNamed(
-                                      context,
-                                      RoutesName.activities,
-                                      arguments: context.read<RegisterCubit>(),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Next',
-                                    style: AppTextStyle.instance.textStyle14
-                                        .copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                        ),
-                                  ),
-                                ),
+                                context.read<EditProfileCubit>().isEditProfile
+                                    ? SizedBox()
+                                    : ElevatedButton(
+                                      onPressed: () {
+                                        context.read<RegisterCubit?>()?.goal =
+                                            selectedGoal;
+                                        Navigator.pushNamed(
+                                          context,
+                                          RoutesName.activities,
+                                          arguments: {
+                                            'registerCubit':
+                                                context.read<RegisterCubit>(),
+                                          },
+                                        );
+                                      },
+                                      child: Text(
+                                        'Next',
+                                        style: AppTextStyle.instance.textStyle14
+                                            .copyWith(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w800,
+                                            ),
+                                      ),
+                                    ),
                               ],
                             ),
                           ),

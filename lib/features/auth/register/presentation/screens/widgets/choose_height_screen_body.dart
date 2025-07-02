@@ -7,6 +7,7 @@ import 'package:fitness_app/features/auth/register/presentation/screens/widgets/
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/number_picker_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -62,9 +63,10 @@ class _ChooseHeightScreenBodyState extends State<ChooseHeightScreenBody> {
               NumberPickerWidget(
                 minValue: 100,
                 maxValue: 200,
-                initialValue: 100,
+                initialValue: context.read<EditProfileCubit?>()?.height??80,
                 onChanged: (val) {
-                  context.read<RegisterCubit>().height = val;
+                  context.read<RegisterCubit?>()?.height = val;
+                  context.read<EditProfileCubit?>()?.height=val;
                   // print(
                   //   "---------height is ${context.read<RegisterCubit>().height}",
                   // );
@@ -74,14 +76,16 @@ class _ChooseHeightScreenBodyState extends State<ChooseHeightScreenBody> {
               const SizedBox(height: 16),
               SvgPicture.asset(AppAssets.arrowUp),
               const SizedBox(height: 31),
-              Padding(
+              context.read<EditProfileCubit>().isEditProfile?SizedBox():   Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
                       RoutesName.goals,
-                      arguments: context.read<RegisterCubit>(),
+                      arguments:   {
+                        'registerCubit': context.read<RegisterCubit>(),
+                      },
                     );
                   },
                   child: Text(

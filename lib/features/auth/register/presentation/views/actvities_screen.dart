@@ -9,6 +9,7 @@ import 'package:fitness_app/features/auth/register/presentation/view_model/cubit
 import 'package:fitness_app/features/auth/register/presentation/widgets/blur_background.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/register_indicator.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,10 +21,11 @@ class ActivtiesScreen extends StatefulWidget {
 }
 
 class _ActivtiesScreenState extends State<ActivtiesScreen> {
-  ActivityEnum? selectedActivity;
 
   @override
   Widget build(BuildContext context) {
+    ActivityEnum ?selectedActivity=context.read<EditProfileCubit?>()?.activityLevel;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -97,6 +99,7 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   onChanged: (value) {
                                     setState(() {
                                       selectedActivity = value;
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                     });
                                   },
                                 ),
@@ -113,6 +116,7 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   onChanged: (value) {
                                     setState(() {
                                       selectedActivity = value;
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                     });
                                   },
                                 ),
@@ -128,6 +132,7 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                       selectedActivity = value;
                                     });
                                   },
@@ -144,6 +149,7 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                       selectedActivity = value;
                                     });
                                   },
@@ -160,11 +166,12 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                       selectedActivity = value;
                                     });
                                   },
                                 ),
-                                BlocListener<RegisterCubit, RegisterState>(
+                                context.read<EditProfileCubit>().isEditProfile?    SizedBox():  BlocListener<RegisterCubit, RegisterState>(
                                   listener: (context, state) {
                                     if (state is RegisterSuccess) {
                                       showSnackBar(
@@ -184,30 +191,30 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       final cubit =
-                                          context.read<RegisterCubit>();
-                                      cubit.activityLevel =
+                                          context.read<RegisterCubit?>();
+                                      cubit?.activityLevel =
                                           activityEnumToBackend(
                                             selectedActivity!,
                                           );
 
                                       final request = RegisterRequest(
                                         firstName:
-                                            cubit.firstNameController.text,
-                                        lastName: cubit.lastNameController.text,
-                                        email: cubit.emailController.text,
-                                        password: cubit.passwordController.text,
+                                            cubit?.firstNameController.text,
+                                        lastName: cubit?.lastNameController.text,
+                                        email: cubit?.emailController.text,
+                                        password: cubit?.passwordController.text,
                                         rePassword:
-                                            cubit.rePasswordController.text,
-                                        height: cubit.height,
-                                        weight: cubit.weight,
-                                        age: cubit.age,
-                                        goal: cubit.goal,
-                                        activityLevel: cubit.activityLevel!,
+                                            cubit?.rePasswordController.text,
+                                        height: cubit?.height,
+                                        weight: cubit?.weight,
+                                        age: cubit?.age,
+                                        goal: cubit?.goal,
+                                        activityLevel: cubit?.activityLevel!,
                                         gender:
                                             RegisterCubit.selectedGender.name,
                                       );
 
-                                      cubit.doIntent(
+                                      cubit?.doIntent(
                                         RegisterUserIntent(request: request),
                                       );
                                       print(request.toJson());
