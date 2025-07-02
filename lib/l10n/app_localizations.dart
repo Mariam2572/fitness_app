@@ -403,17 +403,47 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred , Please try later'**
   String get anErrorOccurred;
+
+  /// No description provided for @changePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
   String get changePassword;
+
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
   String get currentPassword;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
   String get newPassword;
+
+  /// No description provided for @confirmNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm New Password'**
   String get confirmNewPassword;
+
+  /// No description provided for @passwordChangedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully!'**
   String get passwordChangedSuccessfully;
+
+  /// No description provided for @passwordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'New password and confirmation do not match'**
   String get passwordsDoNotMatch;
 
   /// No description provided for @logout_confirmation.
   ///
   /// In en, this message translates to:
-  /// **'Do you want to logout?'**
+  /// **'Are you sure to close the Application ?'**
   String get logout_confirmation;
 
   /// No description provided for @logout.

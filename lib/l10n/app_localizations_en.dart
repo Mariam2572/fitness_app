@@ -164,6 +164,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get anErrorOccurred => 'An error occurred , Please try later';
+
   @override
   String get changePassword => 'Change Password';
 
@@ -182,12 +183,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passwordsDoNotMatch =>
       'New password and confirmation do not match';
+
   @override
   String get logout_confirmation => 'Are you sure to close the Application ?';
+
   @override
   String get logout => 'Logout';
+
   @override
   String get yes => 'Yes';
+
   @override
   String get no => 'No';
 }

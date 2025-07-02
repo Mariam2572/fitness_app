@@ -182,21 +182,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordsDoNotMatch => 'كلمة المرور الجديدة وتأكيدها غير متطابقين';
-  
+
   @override
-  // TODO: implement logout
-  String get logout =>'تسجيل الخروج';
-  
-  @override
-  // TODO: implement logout_confirmation
   String get logout_confirmation => 'هل تريد اغلاق التطبيق؟';
-  
+
   @override
-  // TODO: implement no
-  String get no => 'لا';
-  
+  String get logout => 'تسجيل الخروج';
+
   @override
-  // TODO: implement yes
   String get yes => 'نعم';
-  
+
+  @override
+  String get no => 'لا';
 }
