@@ -3,20 +3,20 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i13;
-import 'dart:io' as _i16;
+import 'dart:async' as _i15;
+import 'dart:io' as _i21;
 
-import 'package:fitness_app/core/api_manager/api_services.dart' as _i12;
+import 'package:fitness_app/core/api_manager/api_services.dart' as _i14;
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_request.dart'
     as _i18;
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_response.dart'
     as _i11;
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart'
-    as _i14;
+    as _i16;
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart'
     as _i2;
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart'
-    as _i15;
+    as _i17;
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart'
     as _i3;
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart'
@@ -29,12 +29,18 @@ import 'package:fitness_app/features/home/home/data/models/RandomExerciseRespons
     as _i10;
 import 'package:fitness_app/features/home/home/data/models/UserResponse.dart'
     as _i9;
+import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart'
+    as _i20;
+import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart'
+    as _i12;
+import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart'
+    as _i13;
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart'
     as _i7;
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart'
     as _i6;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i17;
+import 'package:mockito/src/dummies.dart' as _i19;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -158,50 +164,72 @@ class _FakeChangePasswordResponse_9 extends _i1.SmartFake
         );
 }
 
+class _FakeGetUserDataReponse_10 extends _i1.SmartFake
+    implements _i12.GetUserDataReponse {
+  _FakeGetUserDataReponse_10(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeUploadPhotoResponse_11 extends _i1.SmartFake
+    implements _i13.UploadPhotoResponse {
+  _FakeUploadPhotoResponse_11(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i12.ApiService {
+class MockApiService extends _i1.Mock implements _i14.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.LoginResponse> loginUser(_i14.LoginRequest? loginRequest) =>
+  _i15.Future<_i2.LoginResponse> loginUser(_i16.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #loginUser,
           [loginRequest],
         ),
-        returnValue: _i13.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
+        returnValue: _i15.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
           this,
           Invocation.method(
             #loginUser,
             [loginRequest],
           ),
         )),
-      ) as _i13.Future<_i2.LoginResponse>);
+      ) as _i15.Future<_i2.LoginResponse>);
 
   @override
-  _i13.Future<_i3.RegisterResponse> register(
-          _i15.RegisterRequest? registerRequest) =>
+  _i15.Future<_i3.RegisterResponse> register(
+          _i17.RegisterRequest? registerRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #register,
           [registerRequest],
         ),
         returnValue:
-            _i13.Future<_i3.RegisterResponse>.value(_FakeRegisterResponse_1(
+            _i15.Future<_i3.RegisterResponse>.value(_FakeRegisterResponse_1(
           this,
           Invocation.method(
             #register,
             [registerRequest],
           ),
         )),
-      ) as _i13.Future<_i3.RegisterResponse>);
+      ) as _i15.Future<_i3.RegisterResponse>);
 
   @override
-  _i13.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>
+  _i15.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>
       getExerciseByMoverAndDifficulty(
     String? primeMoverMuscleId,
     String? difficultyLevelId,
@@ -214,7 +242,7 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
                 difficultyLevelId,
               ],
             ),
-            returnValue: _i13
+            returnValue: _i15
                 .Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>.value(
                 _FakeExerciseByPrimeMoverAndDifficultyResponse_2(
               this,
@@ -226,17 +254,17 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
                 ],
               ),
             )),
-          ) as _i13.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>);
+          ) as _i15.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>);
 
   @override
-  _i13.Future<_i5.LevelsByMusclesModel> getLevelsByMuscles(
+  _i15.Future<_i5.LevelsByMusclesModel> getLevelsByMuscles(
           String? primeMoverMuscleId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getLevelsByMuscles,
           [primeMoverMuscleId],
         ),
-        returnValue: _i13.Future<_i5.LevelsByMusclesModel>.value(
+        returnValue: _i15.Future<_i5.LevelsByMusclesModel>.value(
             _FakeLevelsByMusclesModel_3(
           this,
           Invocation.method(
@@ -244,16 +272,16 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
             [primeMoverMuscleId],
           ),
         )),
-      ) as _i13.Future<_i5.LevelsByMusclesModel>);
+      ) as _i15.Future<_i5.LevelsByMusclesModel>);
 
   @override
-  _i13.Future<_i6.GetAllMusclesGroupsReponse> getAllMusclesGroups() =>
+  _i15.Future<_i6.GetAllMusclesGroupsReponse> getAllMusclesGroups() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllMusclesGroups,
           [],
         ),
-        returnValue: _i13.Future<_i6.GetAllMusclesGroupsReponse>.value(
+        returnValue: _i15.Future<_i6.GetAllMusclesGroupsReponse>.value(
             _FakeGetAllMusclesGroupsReponse_4(
           this,
           Invocation.method(
@@ -261,17 +289,17 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
             [],
           ),
         )),
-      ) as _i13.Future<_i6.GetAllMusclesGroupsReponse>);
+      ) as _i15.Future<_i6.GetAllMusclesGroupsReponse>);
 
   @override
-  _i13.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>
+  _i15.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>
       getAllMusclesByMuscleGroupId(String? id) => (super.noSuchMethod(
             Invocation.method(
               #getAllMusclesByMuscleGroupId,
               [id],
             ),
             returnValue:
-                _i13.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>.value(
+                _i15.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>.value(
                     _FakeGetAllMusclesByMuscleGroupIdReponse_5(
               this,
               Invocation.method(
@@ -279,42 +307,42 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
                 [id],
               ),
             )),
-          ) as _i13.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>);
+          ) as _i15.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>);
 
   @override
-  _i13.Future<_i8.ExercisesResponse> getAllExercises() => (super.noSuchMethod(
+  _i15.Future<_i8.ExercisesResponse> getAllExercises() => (super.noSuchMethod(
         Invocation.method(
           #getAllExercises,
           [],
         ),
         returnValue:
-            _i13.Future<_i8.ExercisesResponse>.value(_FakeExercisesResponse_6(
+            _i15.Future<_i8.ExercisesResponse>.value(_FakeExercisesResponse_6(
           this,
           Invocation.method(
             #getAllExercises,
             [],
           ),
         )),
-      ) as _i13.Future<_i8.ExercisesResponse>);
+      ) as _i15.Future<_i8.ExercisesResponse>);
 
   @override
-  _i13.Future<_i9.UserResponse> getUserData(String? userToken) =>
+  _i15.Future<_i9.UserResponse> getUserData(String? userToken) =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserData,
           [userToken],
         ),
-        returnValue: _i13.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
+        returnValue: _i15.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
           this,
           Invocation.method(
             #getUserData,
             [userToken],
           ),
         )),
-      ) as _i13.Future<_i9.UserResponse>);
+      ) as _i15.Future<_i9.UserResponse>);
 
   @override
-  _i13.Future<_i10.RandomExerciseResponse> getRandomExercises(
+  _i15.Future<_i10.RandomExerciseResponse> getRandomExercises(
     String? targetMuscleGroupId,
     String? difficultyLevelId,
     int? limit,
@@ -328,7 +356,7 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
             limit,
           ],
         ),
-        returnValue: _i13.Future<_i10.RandomExerciseResponse>.value(
+        returnValue: _i15.Future<_i10.RandomExerciseResponse>.value(
             _FakeRandomExerciseResponse_8(
           this,
           Invocation.method(
@@ -340,40 +368,25 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
             ],
           ),
         )),
-      ) as _i13.Future<_i10.RandomExerciseResponse>);
+      ) as _i15.Future<_i10.RandomExerciseResponse>);
 
   @override
-  _i13.Future<String> uploadPhoto(_i16.File? image) => (super.noSuchMethod(
-        Invocation.method(
-          #uploadPhoto,
-          [image],
-        ),
-        returnValue: _i13.Future<String>.value(_i17.dummyValue<String>(
-          this,
-          Invocation.method(
-            #uploadPhoto,
-            [image],
-          ),
-        )),
-      ) as _i13.Future<String>);
-
-  @override
-  _i13.Future<_i9.UserResponse> getProfileData() => (super.noSuchMethod(
+  _i15.Future<_i9.UserResponse> getProfileData() => (super.noSuchMethod(
         Invocation.method(
           #getProfileData,
           [],
         ),
-        returnValue: _i13.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
+        returnValue: _i15.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
           this,
           Invocation.method(
             #getProfileData,
             [],
           ),
         )),
-      ) as _i13.Future<_i9.UserResponse>);
+      ) as _i15.Future<_i9.UserResponse>);
 
   @override
-  _i13.Future<_i11.ChangePasswordResponse> changePassword(
+  _i15.Future<_i11.ChangePasswordResponse> changePassword(
     _i18.ChangePasswordRequest? ChangePasswordRequest,
     String? userToken,
   ) =>
@@ -385,7 +398,7 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
             userToken,
           ],
         ),
-        returnValue: _i13.Future<_i11.ChangePasswordResponse>.value(
+        returnValue: _i15.Future<_i11.ChangePasswordResponse>.value(
             _FakeChangePasswordResponse_9(
           this,
           Invocation.method(
@@ -396,20 +409,72 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
             ],
           ),
         )),
-      ) as _i13.Future<_i11.ChangePasswordResponse>);
+      ) as _i15.Future<_i11.ChangePasswordResponse>);
 
   @override
-  _i13.Future<String> logout() => (super.noSuchMethod(
+  _i15.Future<String> logout() => (super.noSuchMethod(
         Invocation.method(
           #logout,
           [],
         ),
-        returnValue: _i13.Future<String>.value(_i17.dummyValue<String>(
+        returnValue: _i15.Future<String>.value(_i19.dummyValue<String>(
           this,
           Invocation.method(
             #logout,
             [],
           ),
         )),
-      ) as _i13.Future<String>);
+      ) as _i15.Future<String>);
+
+  @override
+  _i15.Future<_i12.GetUserDataReponse> getLoggedProfileData() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getLoggedProfileData,
+          [],
+        ),
+        returnValue: _i15.Future<_i12.GetUserDataReponse>.value(
+            _FakeGetUserDataReponse_10(
+          this,
+          Invocation.method(
+            #getLoggedProfileData,
+            [],
+          ),
+        )),
+      ) as _i15.Future<_i12.GetUserDataReponse>);
+
+  @override
+  _i15.Future<_i12.GetUserDataReponse> editProfile(
+          _i20.EditProfileRequest? editProfileRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProfile,
+          [editProfileRequest],
+        ),
+        returnValue: _i15.Future<_i12.GetUserDataReponse>.value(
+            _FakeGetUserDataReponse_10(
+          this,
+          Invocation.method(
+            #editProfile,
+            [editProfileRequest],
+          ),
+        )),
+      ) as _i15.Future<_i12.GetUserDataReponse>);
+
+  @override
+  _i15.Future<_i13.UploadPhotoResponse> uploadPhoto(_i21.File? image) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadPhoto,
+          [image],
+        ),
+        returnValue: _i15.Future<_i13.UploadPhotoResponse>.value(
+            _FakeUploadPhotoResponse_11(
+          this,
+          Invocation.method(
+            #uploadPhoto,
+            [image],
+          ),
+        )),
+      ) as _i15.Future<_i13.UploadPhotoResponse>);
 }

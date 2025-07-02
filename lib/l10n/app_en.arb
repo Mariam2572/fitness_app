@@ -62,4 +62,15 @@
   "logout" : "Logout",
   "yes" : "Yes",
   "no": "No"
+  "anErrorOccurred" : "An error occurred , Please try later",
+  "editProfile":"Edit Profile",
+  "yourWeight":"Your Weight",
+  "yourHeight":"Your Height",
+  "yourAge":"Your Age",
+  "yourGender":"Your Gender",
+  "yourGoal":"Your Goal",
+  "yourActivityLevel":"Your Activity Level",
+  "tapToEdit":"tap To Edit"
+
+
 }

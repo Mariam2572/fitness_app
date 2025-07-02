@@ -18,8 +18,8 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     return response;
   }
 
-  @override
-  Future<String> uploadPhoto(File photo) async {
-    return await apiService.uploadPhoto(photo);
-  }
+  // @override
+  // Future<String> uploadPhoto(File photo) async {
+  //   return await apiService.uploadPhoto(photo);
+  // }
 }

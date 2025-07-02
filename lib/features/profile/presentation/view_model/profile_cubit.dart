@@ -23,9 +23,9 @@ class ProfileCubit extends Cubit<ProfileState> {
       case LoadProfileIntent():
         await _loadProfile();
         break;
-      case UploadPhotoIntent(:final photo):
-        await _uploadPhoto(photo);
-        break;
+      // case UploadPhotoIntent(:final photo):
+      //   await _uploadPhoto(photo);
+      //   break;
       case LogoutIntent():
         await _logout();
         break;
@@ -45,19 +45,19 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<void> _uploadPhoto(File photo) async {
-    emit(ProfileUploading());
-    final result = await uploadPhoto(photo);
-    switch (result) {
-      case ApiSuccess<String>():
-        log('Photo uploaded: ${result.data}');
-        await _loadProfile(); // Reload profile after upload
-        break;
-      case ApiError<String>():
-        emit(ProfileError(message: result.failure.toString()));
-        break;
-    }
-  }
+  // Future<void> _uploadPhoto(File photo) async {
+  //   emit(ProfileUploading());
+  //   final result = await uploadPhoto(photo);
+  //   switch (result) {
+  //     case ApiSuccess<String>():
+  //       log('Photo uploaded: ${result.data}');
+  //       await _loadProfile(); // Reload profile after upload
+  //       break;
+  //     case ApiError<String>():
+  //       emit(ProfileError(message: result.failure.toString()));
+  //       break;
+  //   }
+  // }
 
   _logout() async {
     emit(ProfileLoading());

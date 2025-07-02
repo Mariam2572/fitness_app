@@ -9,6 +9,6 @@ class UploadPhoto {
   final ProfileRepository repository;
   UploadPhoto(this.repository);
 
-  Future<ApiResult<String>> call(File file) async =>
-      await repository.uploadPhoto(file);
+  // Future<ApiResult<String>> call(File file) async =>
+  //     await repository.uploadPhoto(file);
 }

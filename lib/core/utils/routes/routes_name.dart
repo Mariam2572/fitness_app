@@ -26,4 +26,5 @@ class RoutesName {
   static const String previousChatScreen = '/previousChats';
   static const String chatGetStarted = '/chatGetStarted';
   static const String changePassword = 'changePasswordScreen';
+  static const String editProfile = '/editProfile';
 }

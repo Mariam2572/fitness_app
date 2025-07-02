@@ -5,6 +5,6 @@ import 'dart:io';
 
 abstract class ProfileRepository {
   Future<ApiResult<UserResponse>> getProfile();
-  Future<ApiResult<String>> uploadPhoto(File file);
+  // Future<ApiResult<String>> uploadPhoto(File file);
 }
 

@@ -196,5 +196,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get yes => 'نعم';
 
   @override
-  String get no => 'لا';
+  String get noResponse => 'لا يوجد رد';
+
+  @override
+  String get editProfile => "تعديل الملف الشخصي";
+
+  @override
+  String get tapToEdit =>  "انقر للتعديل";
+  @override
+  String get yourActivityLevel => "مستوى نشاطك";
+
+  @override
+  String get yourAge => "عمرك";
+
+  @override
+  String get yourGender =>"جنسك";
+
+  @override
+  String get yourGoal => "هدفك";
+
+  @override
+  String get yourHeight =>"طولك";
+
+  @override
+  String get yourWeight => "وزنك";
 }

@@ -22,13 +22,13 @@ class ProfileRepositoryImpl extends ProfileRepository {
     }
   }
 
-  @override
-  Future<ApiResult<String>> uploadPhoto(File file) async {
-    try {
-      final result = await remoteDataSource.uploadPhoto(file);
-      return ApiSuccess(data: result);
-    } catch (e) {
-      return ApiError(message: e.toString());
-    }
-  }
+  // @override
+  // Future<ApiResult<String>> uploadPhoto(File file) async {
+  //   try {
+  //     final result = await remoteDataSource.uploadPhoto(file);
+  //     return ApiSuccess(data: result);
+  //   } catch (e) {
+  //     return ApiError(message: e.toString());
+  //   }
+  // }
 }
