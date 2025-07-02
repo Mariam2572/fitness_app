@@ -1,11 +1,12 @@
 import 'package:fitness_app/core/config/di.dart';
-import 'package:fitness_app/core/provider/app_config_provider.dart';
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
-import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
+import 'package:fitness_app/features/logout/domain/usecases/logout_usecase.dart';
 import 'package:fitness_app/features/profile/domain/use_case/get_profile_data.dart';
 import 'package:fitness_app/features/profile/domain/use_case/upload_photo__use_case.dart';
+import 'package:fitness_app/features/profile/logout_sheet.dart';
 import 'package:fitness_app/features/profile/presentation/view/widgets/build_back_button.dart';
 import 'package:fitness_app/features/profile/presentation/view/widgets/build_list_tile.dart';
 import 'package:fitness_app/features/profile/presentation/view/widgets/languge.dart';
@@ -13,7 +14,6 @@ import 'package:fitness_app/features/profile/presentation/view_model/profile_cub
 import 'package:fitness_app/features/profile/presentation/view_model/profile_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -28,7 +28,7 @@ class _ProfileViewState extends State<ProfileView> {
     return BlocProvider(
       create:
           (context) =>
-              ProfileCubit(getIt<GetProfileData>(), getIt<UploadPhoto>())
+              ProfileCubit(getIt<GetProfileData>(), getIt<UploadPhoto>(), getIt<LogoutUseCase>())
                 ..doIntent(LoadProfileIntent()),
       child: const _ProfileBody(),
     );
@@ -58,7 +58,7 @@ class _ProfileBody extends StatelessWidget {
               builder: (context, state) {
                 if (state is ProfileLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state is ProfileSuccess) {
+                } else if (state is ProfileSuccess ) {
                   final user = state.user;
                   return Column(
                     children: [
@@ -82,7 +82,7 @@ class _ProfileBody extends StatelessWidget {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                          user.user!.photo ?? 'https://i.imgur.com/BoN9kdC.png',
+                          user?.user!.photo ?? 'https://i.imgur.com/BoN9kdC.png',
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -90,16 +90,16 @@ class _ProfileBody extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            user.user!.firstName ?? 'User Name',
+                            user?.user!.firstName ?? 'User Name',
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Text("  "),
+                          const Text("  "),
                           Text(
-                            user.user!.lastName ?? 'User Name',
+                            user?.user!.lastName ?? 'User Name',
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -110,10 +110,11 @@ class _ProfileBody extends StatelessWidget {
                       ),
 
                       const SizedBox(height: 24),
-                      _buildSettingsList(),
+                      _buildSettingsList(context),
                     ],
                   );
-                } else if (state is ProfileError) {
+                } 
+                else if (state is ProfileError) {
                   return Center(
                     child: Text(
                       'Error: ${state.message}',
@@ -131,7 +132,7 @@ class _ProfileBody extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingsList() {
+  Widget _buildSettingsList(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22),
@@ -151,10 +152,12 @@ class _ProfileBody extends StatelessWidget {
 
               BuildListTile(
                 icon: Icons.cached_outlined,
-                title: 'Change Password',
-                onTap: () {},
+                title: context.loc.changePassword,
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.changePassword);
+                },
               ),
-              Languge(),
+              const Languge(),
               BuildListTile(
                 icon: Icons.security,
                 title: 'Security',
@@ -172,9 +175,15 @@ class _ProfileBody extends StatelessWidget {
               ),
               BuildListTile(
                 icon: Icons.logout,
-                title: 'Logout',
+                title: context.loc.logout,
                 color: AppColors.mainRed,
-                onTap: () {},
+                onTap: () {
+                  showLogoutDialog(context, () async {
+                    context.read<ProfileCubit>().doIntent(LogoutIntent());
+                          Navigator.pushReplacementNamed(context, RoutesName.login,);
+
+                  });
+                },
               ),
             ],
           ),

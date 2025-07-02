@@ -83,15 +83,6 @@ import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
 import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
 import '../../features/home/home/presentation/view_model/home_viewModel.dart'
     as _i1043;
-import '../../features/profile/data/data_source/profile_remote_data_source.dart'
-    as _i998;
-import '../../features/profile/data/data_source/profile_remote_data_source_impl.dart'
-    as _i531;
-import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
-import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
-import '../../features/profile/domain/use_case/get_profile_data.dart' as _i663;
-import '../../features/profile/domain/use_case/upload_photo__use_case.dart'
-    as _i763;
 import '../../features/logout/data/datasources/logout_remote_data_source_impl.dart'
     as _i115;
 import '../../features/logout/data/datasources/logout_remote_datasource.dart'
@@ -101,6 +92,15 @@ import '../../features/logout/data/repositories/logout_repository_impl.dart'
 import '../../features/logout/domain/repositories/logout_repository.dart'
     as _i1004;
 import '../../features/logout/domain/usecases/logout_usecase.dart' as _i98;
+import '../../features/profile/data/data_source/profile_remote_data_source.dart'
+    as _i998;
+import '../../features/profile/data/data_source/profile_remote_data_source_impl.dart'
+    as _i531;
+import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
+import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
+import '../../features/profile/domain/use_case/get_profile_data.dart' as _i663;
+import '../../features/profile/domain/use_case/upload_photo__use_case.dart'
+    as _i763;
 import '../../features/workOuts/data/data_source/work_outs_data_source_impl.dart'
     as _i931;
 import '../../features/workOuts/data/repos/work_outs_repo_impl.dart' as _i638;

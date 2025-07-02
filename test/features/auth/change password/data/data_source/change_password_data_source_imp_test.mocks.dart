@@ -345,6 +345,16 @@ class MockApiService extends _i1.Mock implements _i13.ApiService {
             ),
           )
           as _i14.Future<_i11.ChangePasswordResponse>);
+
+  @override
+  _i14.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i14.Future<String>.value(
+              _i18.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i14.Future<String>);
 }
 
 /// A class which mocks [FlutterSecureStorage].

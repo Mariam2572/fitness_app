@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/auth/change%20password/presentation/view%20model/change_password_cubit.dart';
 import 'package:fitness_app/features/auth/change%20password/presentation/view%20model/change_password_states.dart';
 import 'package:flutter/material.dart';
@@ -146,7 +147,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     context,
                                     context.loc.passwordChangedSuccessfully,
                                   );
-                                  Navigator.pop(context);
+                                  Navigator.pushReplacementNamed(context, RoutesName.login);
                                 } else if (state is ChangePasswordFailure) {
                                   showErrorSnackBar(context, state.message);
                                 }

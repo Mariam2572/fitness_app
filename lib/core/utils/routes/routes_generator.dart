@@ -24,9 +24,7 @@ import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
-import 'package:fitness_app/features/logout/domain/usecases/logout_usecase.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
-import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
@@ -144,15 +142,15 @@ class RoutesGenerator {
           settings: settings,
         );
 
-      case RoutesName.profile:
-        return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
-                create: (context) =>  ProfileCubit(getIt<LogoutUseCase>()),
-                child: const ProfileView(),
-              ),
-          settings: settings,
-        );
+      // case RoutesName.profile:
+      //   return MaterialPageRoute(
+      //     builder:
+      //         (context) => BlocProvider(
+      //           create: (context) =>  ProfileCubit(getIt<LogoutUseCase>()),
+      //           child: const ProfileView(),
+      //         ),
+      //     settings: settings,
+      //   );
 
       case RoutesName.workouts:
         return MaterialPageRoute(
@@ -184,17 +182,6 @@ class RoutesGenerator {
           settings: settings,
         );
       case RoutesName.changePassword:
-        return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
-                create:
-                    (_) => ChangePasswordCubit(getIt<ChangePasswordUseCase>()),
-                child: const ChangePasswordScreen(),
-              ),
-          settings: settings,
-        );
-
-      case RoutesName.food:
         return MaterialPageRoute(
           builder:
               (context) => BlocProvider(

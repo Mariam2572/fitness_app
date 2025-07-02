@@ -16,19 +16,22 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    checkAuth();
     super.initState();
-  }
-  checkAuth() async {
-    final token = await readSecureData(Constants.userToken);
     Timer(const Duration(seconds: 2), () {
-      if (token != null) {
-        Navigator.pushReplacementNamed(context, RoutesName.layOut);
-      } else {
-        Navigator.pushReplacementNamed(context, RoutesName.login);
-      }
+      Navigator.pushReplacementNamed(context, RoutesName.onBoardingOne);
     });
   }
+
+  // Future<void> checkAuth() async {
+  //   final token = await readSecureData(Constants.userToken);
+  //   Timer(const Duration(seconds: 2), () {
+  //     if (token != null) {
+  //       Navigator.pushReplacementNamed(context, RoutesName.layOut);
+  //     } else {
+  //       Navigator.pushReplacementNamed(context, RoutesName.login);
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

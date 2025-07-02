@@ -55,10 +55,7 @@
   "newPassword": "كلمة المرور الجديدة",
   "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
   "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح!",
-  "passwordsDoNotMatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين"
-}
-
-  "anErrorOccurred" : "  . برجاء المحاولة لاحقا لقد حدث خطأ ما",
+  "passwordsDoNotMatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين",
   "logout_confirmation" : "هل تريد اغلاق التطبيق؟",
   "logout" : "تسجيل الخروج",
   "yes" : "نعم",

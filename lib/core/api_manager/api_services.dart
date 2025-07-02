@@ -78,14 +78,10 @@ abstract class ApiService {
     @Body() ChangePasswordRequest ChangePasswordRequest,
     @Header("Authorization") String userToken,
   );
-}
-    @Query("targetMuscleGroupId") String targetMuscleGroupId,
-    @Query("difficultyLevelId") String difficultyLevelId,
-    @Query("limit") int limit,
-  );
-  @GET(Constants.logoutEndPoint)
+    @GET(Constants.logoutEndPoint)
   Future<String> logout();
 }
+  
 
 @RestApi(baseUrl: Constants.mealBaseUrl)
 abstract class MealApiService {
@@ -100,6 +96,5 @@ abstract class MealApiService {
   Future<MealsOfCategoryResponse> getMealsByCategory(
     @Query('c') String category,
   );
-    @Query('c') String category,
-  );
+  
 }

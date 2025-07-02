@@ -35,7 +35,6 @@ import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscl
     as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i17;
-import 'package:mockito/src/dummies.dart' as _i15;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -314,12 +313,12 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
           as _i13.Future<_i11.ChangePasswordResponse>);
 
   @override
-  _i12.Future<String> logout() =>
+  _i13.Future<String> logout() =>
       (super.noSuchMethod(
             Invocation.method(#logout, []),
-            returnValue: _i12.Future<String>.value(
-              _i15.dummyValue<String>(this, Invocation.method(#logout, [])),
+            returnValue: _i13.Future<String>.value(
+              _i17.dummyValue<String>(this, Invocation.method(#logout, [])),
             ),
           )
-          as _i12.Future<String>);
+          as _i13.Future<String>);
 }
