@@ -190,4 +190,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yes => 'Yes';
   @override
   String get no => 'No';
+
+  @override
+  String get noResponse => ' No Response';
 }

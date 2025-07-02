@@ -39,30 +39,37 @@ class MockFoodRepo extends _i1.Mock implements _i2.FoodRepo {
   @override
   _i3.Future<_i4.ApiResult<_i5.FoodCategoriesResponse>> getFoodCategories() =>
       (super.noSuchMethod(
-            Invocation.method(#getFoodCategories, []),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i5.FoodCategoriesResponse>>.value(
-                  _i6.dummyValue<_i4.ApiResult<_i5.FoodCategoriesResponse>>(
-                    this,
-                    Invocation.method(#getFoodCategories, []),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i5.FoodCategoriesResponse>>);
+        Invocation.method(
+          #getFoodCategories,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.ApiResult<_i5.FoodCategoriesResponse>>.value(
+                _i6.dummyValue<_i4.ApiResult<_i5.FoodCategoriesResponse>>(
+          this,
+          Invocation.method(
+            #getFoodCategories,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i5.FoodCategoriesResponse>>);
 
   @override
   _i3.Future<_i4.ApiResult<_i7.MealsOfCategoryResponse>> getMealsByCategory(
-    String? category,
-  ) =>
+          String? category) =>
       (super.noSuchMethod(
-            Invocation.method(#getMealsByCategory, [category]),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i7.MealsOfCategoryResponse>>.value(
-                  _i6.dummyValue<_i4.ApiResult<_i7.MealsOfCategoryResponse>>(
-                    this,
-                    Invocation.method(#getMealsByCategory, [category]),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i7.MealsOfCategoryResponse>>);
+        Invocation.method(
+          #getMealsByCategory,
+          [category],
+        ),
+        returnValue:
+            _i3.Future<_i4.ApiResult<_i7.MealsOfCategoryResponse>>.value(
+                _i6.dummyValue<_i4.ApiResult<_i7.MealsOfCategoryResponse>>(
+          this,
+          Invocation.method(
+            #getMealsByCategory,
+            [category],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i7.MealsOfCategoryResponse>>);
 }

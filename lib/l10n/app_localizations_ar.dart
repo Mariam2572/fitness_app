@@ -199,4 +199,7 @@ class AppLocalizationsAr extends AppLocalizations {
   // TODO: implement yes
   String get yes => 'نعم';
   
+
+  @override
+  String get noResponse => 'لا يوجد رد';
 }

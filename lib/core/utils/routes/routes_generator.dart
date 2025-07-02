@@ -25,7 +25,8 @@ import 'package:fitness_app/features/foodDetails/presentation/view/meals_details
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
-import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
+import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
+import 'package:fitness_app/features/smartCoach/presentation/views/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
@@ -142,15 +143,21 @@ class RoutesGenerator {
           settings: settings,
         );
 
-      // case RoutesName.profile:
-      //   return MaterialPageRoute(
-      //     builder:
-      //         (context) => BlocProvider(
-      //           create: (context) =>  ProfileCubit(getIt<LogoutUseCase>()),
-      //           child: const ProfileView(),
-      //         ),
-      //     settings: settings,
-      //   );
+      case RoutesName.previousChatScreen:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+          builder:
+              (context) => PreviousConversationsScreen(
+                onConversationSelected: args['onConversationSelected'],
+              ),
+          settings: settings,
+        );
+
+      case RoutesName.profile:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileView(),
+          settings: settings,
+        );
 
       case RoutesName.workouts:
         return MaterialPageRoute(
@@ -166,8 +173,15 @@ class RoutesGenerator {
           settings: settings,
         );
       case RoutesName.smartCoach:
+        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (context) => const SmartCoachView(),
+          builder:
+              (context) => SmartCoachView(
+                messages: args['messages'],
+                onSessionEnd: args['onSessionEnd'],
+                previousConversationViewModel:
+                    args['previousConversationViewModel'],
+              ),
           settings: settings,
         );
       case RoutesName.exerciseView:
@@ -191,6 +205,8 @@ class RoutesGenerator {
               ),
           settings: settings,
         );
+
+
       case RoutesName.food:
         return MaterialPageRoute(
           builder:

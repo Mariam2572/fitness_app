@@ -33,8 +33,13 @@ import 'package:mockito/src/dummies.dart' as _i7;
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeFoodRepo_0 extends _i1.SmartFake implements _i2.FoodRepo {
-  _FakeFoodRepo_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeFoodRepo_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [GetFoodCategoriesUseCase].
@@ -47,26 +52,31 @@ class MockGetFoodCategoriesUseCase extends _i1.Mock
   }
 
   @override
-  _i2.FoodRepo get foodRepo =>
-      (super.noSuchMethod(
-            Invocation.getter(#foodRepo),
-            returnValue: _FakeFoodRepo_0(this, Invocation.getter(#foodRepo)),
-          )
-          as _i2.FoodRepo);
+  _i2.FoodRepo get foodRepo => (super.noSuchMethod(
+        Invocation.getter(#foodRepo),
+        returnValue: _FakeFoodRepo_0(
+          this,
+          Invocation.getter(#foodRepo),
+        ),
+      ) as _i2.FoodRepo);
 
   @override
   _i4.Future<_i5.ApiResult<_i6.FoodCategoriesResponse>> invoke() =>
       (super.noSuchMethod(
-            Invocation.method(#invoke, []),
-            returnValue:
-                _i4.Future<_i5.ApiResult<_i6.FoodCategoriesResponse>>.value(
-                  _i7.dummyValue<_i5.ApiResult<_i6.FoodCategoriesResponse>>(
-                    this,
-                    Invocation.method(#invoke, []),
-                  ),
-                ),
-          )
-          as _i4.Future<_i5.ApiResult<_i6.FoodCategoriesResponse>>);
+        Invocation.method(
+          #invoke,
+          [],
+        ),
+        returnValue:
+            _i4.Future<_i5.ApiResult<_i6.FoodCategoriesResponse>>.value(
+                _i7.dummyValue<_i5.ApiResult<_i6.FoodCategoriesResponse>>(
+          this,
+          Invocation.method(
+            #invoke,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i5.ApiResult<_i6.FoodCategoriesResponse>>);
 }
 
 /// A class which mocks [GetMealsByCategoryUseCase].
@@ -79,26 +89,30 @@ class MockGetMealsByCategoryUseCase extends _i1.Mock
   }
 
   @override
-  _i2.FoodRepo get foodRepo =>
-      (super.noSuchMethod(
-            Invocation.getter(#foodRepo),
-            returnValue: _FakeFoodRepo_0(this, Invocation.getter(#foodRepo)),
-          )
-          as _i2.FoodRepo);
+  _i2.FoodRepo get foodRepo => (super.noSuchMethod(
+        Invocation.getter(#foodRepo),
+        returnValue: _FakeFoodRepo_0(
+          this,
+          Invocation.getter(#foodRepo),
+        ),
+      ) as _i2.FoodRepo);
 
   @override
   _i4.Future<_i5.ApiResult<_i9.MealsOfCategoryResponse>> invoke(
-    String? category,
-  ) =>
+          String? category) =>
       (super.noSuchMethod(
-            Invocation.method(#invoke, [category]),
-            returnValue:
-                _i4.Future<_i5.ApiResult<_i9.MealsOfCategoryResponse>>.value(
-                  _i7.dummyValue<_i5.ApiResult<_i9.MealsOfCategoryResponse>>(
-                    this,
-                    Invocation.method(#invoke, [category]),
-                  ),
-                ),
-          )
-          as _i4.Future<_i5.ApiResult<_i9.MealsOfCategoryResponse>>);
+        Invocation.method(
+          #invoke,
+          [category],
+        ),
+        returnValue:
+            _i4.Future<_i5.ApiResult<_i9.MealsOfCategoryResponse>>.value(
+                _i7.dummyValue<_i5.ApiResult<_i9.MealsOfCategoryResponse>>(
+          this,
+          Invocation.method(
+            #invoke,
+            [category],
+          ),
+        )),
+      ) as _i4.Future<_i5.ApiResult<_i9.MealsOfCategoryResponse>>);
 }

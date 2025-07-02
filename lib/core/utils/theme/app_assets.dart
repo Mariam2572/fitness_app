@@ -30,4 +30,6 @@ class AppAssets {
   static const String mealsDetailsBackGround =
       "assets/images/meals details back ground.png";
   static const String homeBackGround = "assets/images/HomeBg.jpg";
+  static const String robot = "assets/images/Robot skipping with a rope.png";
+  static const String robotAvatar = "assets/images/Ellipse 7.png";
 }

@@ -40,56 +40,71 @@ class MockHomeRepo extends _i1.Mock implements _i2.HomeRepo {
   }
 
   @override
-  _i3.Future<_i4.ApiResult<String>> getCurrentUserName() =>
-      (super.noSuchMethod(
-            Invocation.method(#getCurrentUserName, []),
-            returnValue: _i3.Future<_i4.ApiResult<String>>.value(
-              _i5.dummyValue<_i4.ApiResult<String>>(
-                this,
-                Invocation.method(#getCurrentUserName, []),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.ApiResult<String>>);
+  _i3.Future<_i4.ApiResult<String>> getCurrentUserName() => (super.noSuchMethod(
+        Invocation.method(
+          #getCurrentUserName,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<String>>.value(
+            _i5.dummyValue<_i4.ApiResult<String>>(
+          this,
+          Invocation.method(
+            #getCurrentUserName,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<String>>);
 
   @override
   _i3.Future<_i4.ApiResult<_i6.RandomExerciseResponse>> getRandomExercises() =>
       (super.noSuchMethod(
-            Invocation.method(#getRandomExercises, []),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i6.RandomExerciseResponse>>.value(
-                  _i5.dummyValue<_i4.ApiResult<_i6.RandomExerciseResponse>>(
-                    this,
-                    Invocation.method(#getRandomExercises, []),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i6.RandomExerciseResponse>>);
+        Invocation.method(
+          #getRandomExercises,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.ApiResult<_i6.RandomExerciseResponse>>.value(
+                _i5.dummyValue<_i4.ApiResult<_i6.RandomExerciseResponse>>(
+          this,
+          Invocation.method(
+            #getRandomExercises,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i6.RandomExerciseResponse>>);
 
   @override
   _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>> getMealsCategories() =>
       (super.noSuchMethod(
-            Invocation.method(#getMealsCategories, []),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>>.value(
-                  _i5.dummyValue<_i4.ApiResult<_i7.FoodCategoriesResponse>>(
-                    this,
-                    Invocation.method(#getMealsCategories, []),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>>);
+        Invocation.method(
+          #getMealsCategories,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>>.value(
+                _i5.dummyValue<_i4.ApiResult<_i7.FoodCategoriesResponse>>(
+          this,
+          Invocation.method(
+            #getMealsCategories,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i7.FoodCategoriesResponse>>);
 
   @override
   _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>> getAllExercises() =>
       (super.noSuchMethod(
-            Invocation.method(#getAllExercises, []),
-            returnValue: _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>>.value(
-              _i5.dummyValue<_i4.ApiResult<_i8.ExercisesResponse>>(
-                this,
-                Invocation.method(#getAllExercises, []),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>>);
+        Invocation.method(
+          #getAllExercises,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>>.value(
+            _i5.dummyValue<_i4.ApiResult<_i8.ExercisesResponse>>(
+          this,
+          Invocation.method(
+            #getAllExercises,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i8.ExercisesResponse>>);
 }

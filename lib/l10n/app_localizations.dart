@@ -433,6 +433,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No'**
   String get no;
+
+  /// No description provided for @noResponse.
+  ///
+  /// In en, this message translates to:
+  /// **' No Response'**
+  String get noResponse;
 }
 
 class _AppLocalizationsDelegate
