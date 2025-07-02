@@ -403,6 +403,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred , Please try later'**
   String get anErrorOccurred;
+  String get changePassword;
+  String get currentPassword;
+  String get newPassword;
+  String get confirmNewPassword;
+  String get passwordChangedSuccessfully;
+  String get passwordsDoNotMatch;
 }
 
 class _AppLocalizationsDelegate

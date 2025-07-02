@@ -164,4 +164,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get anErrorOccurred => '  . برجاء المحاولة لاحقا لقد حدث خطأ ما';
+
+  @override
+  String get changePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get currentPassword => 'كلمة المرور الحالية';
+
+  @override
+  String get newPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get confirmNewPassword => 'تأكيد كلمة المرور الجديدة';
+
+  @override
+  String get passwordChangedSuccessfully => 'تم تغيير كلمة المرور بنجاح!';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمة المرور الجديدة وتأكيدها غير متطابقين';
 }
