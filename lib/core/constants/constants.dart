@@ -21,6 +21,6 @@ class Constants {
   static const String randomExerciseDifficultyLevelId =
       '67c797e226895f87ce0aa94b';
   static const String getAllExercisesEndPoint = 'exercises';
-  static const String changePassword = 'auth/change-password';
+  static const String logoutEndPoint = 'auth/logout';  static const String changePassword = 'auth/change-password';
   static const String upLoadProfilePhoto = "auth/upload-photo";
 }

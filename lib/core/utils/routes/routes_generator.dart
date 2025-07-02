@@ -24,6 +24,7 @@ import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
+import 'package:fitness_app/features/logout/domain/usecases/logout_usecase.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/smart_coach_view.dart';
@@ -145,7 +146,11 @@ class RoutesGenerator {
 
       case RoutesName.profile:
         return MaterialPageRoute(
-          builder: (context) => const ProfileView(),
+          builder:
+              (context) => BlocProvider(
+                create: (context) =>  ProfileCubit(getIt<LogoutUseCase>()),
+                child: const ProfileView(),
+              ),
           settings: settings,
         );
 
@@ -192,14 +197,12 @@ class RoutesGenerator {
       case RoutesName.food:
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider(
+              (context) => BlocProvider(
                 create:
-                    (_) => FoodCubit(
-                      getIt<GetFoodCategoriesUseCase>(),
-                      getIt<GetMealsByCategoryUseCase>(),
-                    ),
-                child: const FoodRecommendationPage(),
+                    (_) => ChangePasswordCubit(getIt<ChangePasswordUseCase>()),
+                child: const ChangePasswordScreen(),
               ),
+          settings: settings,
         );
       case RoutesName.food:
         return MaterialPageRoute(

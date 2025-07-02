@@ -57,3 +57,10 @@
   "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح!",
   "passwordsDoNotMatch": "كلمة المرور الجديدة وتأكيدها غير متطابقين"
 }
+
+  "anErrorOccurred" : "  . برجاء المحاولة لاحقا لقد حدث خطأ ما",
+  "logout_confirmation" : "هل تريد اغلاق التطبيق؟",
+  "logout" : "تسجيل الخروج",
+  "yes" : "نعم",
+  "no": "لا"
+}
