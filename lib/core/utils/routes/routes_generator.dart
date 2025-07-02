@@ -11,8 +11,6 @@ import 'package:fitness_app/features/auth/register/presentation/views/actvities_
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart'
@@ -110,8 +108,6 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
-
       case RoutesName.onBoardingOne:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(),
@@ -148,9 +144,10 @@ class RoutesGenerator {
       case RoutesName.previousChatScreen:
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (context) => PreviousConversationsScreen(
-            onConversationSelected: args['onConversationSelected'],
-          ),
+          builder:
+              (context) => PreviousConversationsScreen(
+                onConversationSelected: args['onConversationSelected'],
+              ),
           settings: settings,
         );
 
@@ -176,11 +173,13 @@ class RoutesGenerator {
       case RoutesName.smartCoach:
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (context) => SmartCoachView(
-            messages: args['messages'],
-            onSessionEnd: args['onSessionEnd'],
-            previousConversationViewModel: args['previousConversationViewModel'],
-          ),
+          builder:
+              (context) => SmartCoachView(
+                messages: args['messages'],
+                onSessionEnd: args['onSessionEnd'],
+                previousConversationViewModel:
+                    args['previousConversationViewModel'],
+              ),
           settings: settings,
         );
       case RoutesName.exerciseView:
@@ -207,6 +206,8 @@ class RoutesGenerator {
                 child: const FoodRecommendationPage(),
               ),
         );
+
+
       case RoutesName.food:
         return MaterialPageRoute(
           builder:

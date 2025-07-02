@@ -112,65 +112,39 @@ class PreviousChatScreenbody extends StatelessWidget {
           final sortedConversations = List.from(state.conversations)
             ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
 
-          return ListView.separated(
+          return ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             itemCount: sortedConversations.length,
-            separatorBuilder: (_, __) => const Divider(
-              thickness: 1,
-              color: Colors.grey,
-              height: 20,
-            ),
             itemBuilder: (context, index) {
               final convo = sortedConversations[index];
               final preview = _getConversationPreview(convo.messages);
-              final timeAgo = _formatTimestamp(convo.timestamp);
-
-              return Card(
-                elevation: 2,
-                margin: const EdgeInsets.symmetric(vertical: 4),
-                child: ListTile(
-                  leading: const CircleAvatar(
-                    backgroundColor: Colors.blue,
-                    child: Icon(
-                      Icons.chat,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                  ),
-                  title: Text(
-                    preview,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              return InkWell(
+                borderRadius: BorderRadius.circular(12),
+                onTap: () => _navigateToSmartCoach(context, convo.messages),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
+                  child: Row(
                     children: [
-                      const SizedBox(height: 4),
-                      Text(
-                        timeAgo,
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 12,
-                        ),
+                      const Icon(
+                        Icons.arrow_back_ios_new,
+                        color: Color(0xFFCB6A19),
+                        size: 22,
                       ),
-                      Text(
-                        '${convo.messages.length} message${convo.messages.length > 1 ? 's' : ''}',
-                        style: TextStyle(
-                          color: Colors.grey[500],
-                          fontSize: 11,
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Text(
+                          preview,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
                   ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: Colors.grey,
-                  ),
-                  onTap: () => _navigateToSmartCoach(context, convo.messages),
                 ),
               );
             },

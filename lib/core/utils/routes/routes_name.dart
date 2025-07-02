@@ -24,4 +24,5 @@ class RoutesName {
   static const String mealsDetailsScreen = '/mealsDetailsScreen';
   static const String food = '/food';
   static const String previousChatScreen = '/previousChats';
+  static const String chatGetStarted = '/chatGetStarted';
 }
