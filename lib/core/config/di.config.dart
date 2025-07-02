@@ -101,6 +101,20 @@ import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
 import '../../features/profile/domain/use_case/get_profile_data.dart' as _i663;
 import '../../features/profile/domain/use_case/upload_photo__use_case.dart'
     as _i763;
+import '../../features/profile/edit_profile/data/data_source/edit_profile_impl.dart'
+    as _i688;
+import '../../features/profile/edit_profile/data/repos/edit_profile_repo_impl.dart'
+    as _i98;
+import '../../features/profile/edit_profile/domain/data_source/edit_profile_data_source.dart'
+    as _i843;
+import '../../features/profile/edit_profile/domain/repos/edit_profile_repo.dart'
+    as _i129;
+import '../../features/profile/edit_profile/domain/use_cases/edit_profile_use_case.dart'
+    as _i514;
+import '../../features/profile/edit_profile/domain/use_cases/get_logged_user_data_use_case.dart'
+    as _i963;
+import '../../features/profile/edit_profile/domain/use_cases/upload_photo_use_case.dart'
+    as _i978;
 import '../../features/smartCoach/data/data_source/remote_data_source/smart_coach_remote_data_source_impl.dart'
     as _i101;
 import '../../features/smartCoach/data/data_sources/local/conversation_local_datasource.dart'
@@ -194,6 +208,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i274.MealsDetailsRepositoryImplementation(
             mealsDetailsRemoteDataSource:
                 gh<_i710.MealsDetailsRemoteDataSource>()));
+    gh.factory<_i843.EditProfileDataSource>(
+        () => _i688.EditProfileImpl(gh<_i785.ApiService>()));
     gh.factory<_i980.WorkOutsDataSource>(
         () => _i931.WorkOutsDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i998.GetPreviousConversationsUseCase>(() =>
@@ -222,6 +238,8 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i671.LogoutRemoteDataSource>()));
     gh.factory<_i98.LogoutUseCase>(
         () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()));
+    gh.factory<_i129.EditProfileRepo>(
+        () => _i98.EditProfileRepoImpl(gh<_i843.EditProfileDataSource>()));
     gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(() =>
         _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()));
     gh.factory<_i80.GetAllMusclesGroupsUseCase>(
@@ -230,6 +248,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i283.ChangePasswordRemoteDataSource>()));
     gh.factory<_i474.FoodRepo>(
         () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()));
+    gh.factory<_i514.EditProfileUseCase>(
+        () => _i514.EditProfileUseCase(gh<_i129.EditProfileRepo>()));
+    gh.factory<_i963.GetLoggedUserDataUseCase>(
+        () => _i963.GetLoggedUserDataUseCase(gh<_i129.EditProfileRepo>()));
+    gh.factory<_i978.UploadPhotoUseCase>(
+        () => _i978.UploadPhotoUseCase(gh<_i129.EditProfileRepo>()));
     gh.factory<_i172.MealsDetailsUsecase>(() => _i172.MealsDetailsUsecase(
         mealsDetailsContract: gh<_i225.MealsDetailsContract>()));
     gh.factory<_i1007.ProfileRepository>(() =>

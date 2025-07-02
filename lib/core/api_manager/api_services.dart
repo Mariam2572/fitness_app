@@ -50,9 +50,7 @@ abstract class ApiService {
   Future<LevelsByMusclesModel> getLevelsByMuscles(
     @Query("primeMoverMuscleId") String primeMoverMuscleId,
   );
-  Future<LevelsByMusclesModel> getLevelsByMuscles(
-    @Query("primeMoverMuscleId") String primeMoverMuscleId,
-  );
+  
 
   @GET(Constants.getAllMusclesGroupsEndPoint)
   Future<GetAllMusclesGroupsReponse> getAllMusclesGroups();
@@ -74,9 +72,9 @@ abstract class ApiService {
     @Query("limit") int limit,
   );
 
-  @MultiPart()
-  @PUT(Constants.upLoadProfilePhoto)
-  Future<String> uploadPhoto(@Part(name: "photo") File image);
+  // @MultiPart()
+  // @PUT(Constants.upLoadProfilePhoto)
+  // Future<String> uploadPhoto(@Part(name: "photo") File image);
 
   @GET(Constants.getCurrentUserDataEndPoint)
   Future<UserResponse> getProfileData(
@@ -88,6 +86,15 @@ abstract class ApiService {
   );
     @GET(Constants.logoutEndPoint)
   Future<String> logout();
+    @GET(Constants.getLoggedProfileDataEndPoint)
+  Future<GetUserDataReponse> getLoggedProfileData();
+
+  @PUT(Constants.editProfileEndPoint)
+  Future<GetUserDataReponse> editProfile(@Body() EditProfileRequest editProfileRequest);
+  @PUT(Constants.uploadPhotoEndPoint)
+  @MultiPart()
+  Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File image);
+
 }
   
 
