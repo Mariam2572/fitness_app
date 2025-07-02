@@ -185,6 +185,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'New password and confirmation do not match';
 
   @override
+  String get noResponse => ' No Response';
+
+  @override
   String get logout_confirmation => 'Are you sure to close the Application ?';
 
   @override
@@ -195,7 +198,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get no => 'No';
-
-  @override
-  String get noResponse => ' No Response';
 }
