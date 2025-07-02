@@ -25,6 +25,7 @@ import 'package:fitness_app/features/foodDetails/presentation/view/meals_details
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
+import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';

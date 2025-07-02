@@ -30,14 +30,24 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeChangePasswordUseCase_0 extends _i1.SmartFake
     implements _i2.ChangePasswordUseCase {
-  _FakeChangePasswordUseCase_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeChangePasswordUseCase_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 class _FakeChangePasswordState_1 extends _i1.SmartFake
     implements _i3.ChangePasswordState {
-  _FakeChangePasswordState_1(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeChangePasswordState_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [ChangePasswordCubit].
@@ -50,77 +60,102 @@ class MockChangePasswordCubit extends _i1.Mock
   }
 
   @override
-  _i2.ChangePasswordUseCase get changePasswordUseCase =>
-      (super.noSuchMethod(
-            Invocation.getter(#changePasswordUseCase),
-            returnValue: _FakeChangePasswordUseCase_0(
-              this,
-              Invocation.getter(#changePasswordUseCase),
-            ),
-          )
-          as _i2.ChangePasswordUseCase);
+  _i2.ChangePasswordUseCase get changePasswordUseCase => (super.noSuchMethod(
+        Invocation.getter(#changePasswordUseCase),
+        returnValue: _FakeChangePasswordUseCase_0(
+          this,
+          Invocation.getter(#changePasswordUseCase),
+        ),
+      ) as _i2.ChangePasswordUseCase);
 
   @override
-  _i3.ChangePasswordState get state =>
-      (super.noSuchMethod(
-            Invocation.getter(#state),
-            returnValue: _FakeChangePasswordState_1(
-              this,
-              Invocation.getter(#state),
-            ),
-          )
-          as _i3.ChangePasswordState);
+  _i3.ChangePasswordState get state => (super.noSuchMethod(
+        Invocation.getter(#state),
+        returnValue: _FakeChangePasswordState_1(
+          this,
+          Invocation.getter(#state),
+        ),
+      ) as _i3.ChangePasswordState);
 
   @override
-  _i5.Stream<_i3.ChangePasswordState> get stream =>
-      (super.noSuchMethod(
-            Invocation.getter(#stream),
-            returnValue: _i5.Stream<_i3.ChangePasswordState>.empty(),
-          )
-          as _i5.Stream<_i3.ChangePasswordState>);
+  _i5.Stream<_i3.ChangePasswordState> get stream => (super.noSuchMethod(
+        Invocation.getter(#stream),
+        returnValue: _i5.Stream<_i3.ChangePasswordState>.empty(),
+      ) as _i5.Stream<_i3.ChangePasswordState>);
 
   @override
-  bool get isClosed =>
-      (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
-          as bool);
+  bool get isClosed => (super.noSuchMethod(
+        Invocation.getter(#isClosed),
+        returnValue: false,
+      ) as bool);
 
   @override
   void doIntent(_i4.ChangePasswordIntent? intent) => super.noSuchMethod(
-    Invocation.method(#doIntent, [intent]),
-    returnValueForMissingStub: null,
-  );
-
-  @override
-  void emit(_i3.ChangePasswordState? state) => super.noSuchMethod(
-    Invocation.method(#emit, [state]),
-    returnValueForMissingStub: null,
-  );
-
-  @override
-  void onChange(_i6.Change<_i3.ChangePasswordState>? change) =>
-      super.noSuchMethod(
-        Invocation.method(#onChange, [change]),
+        Invocation.method(
+          #doIntent,
+          [intent],
+        ),
         returnValueForMissingStub: null,
       );
 
   @override
-  void addError(Object? error, [StackTrace? stackTrace]) => super.noSuchMethod(
-    Invocation.method(#addError, [error, stackTrace]),
-    returnValueForMissingStub: null,
-  );
+  void emit(_i3.ChangePasswordState? state) => super.noSuchMethod(
+        Invocation.method(
+          #emit,
+          [state],
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  void onError(Object? error, StackTrace? stackTrace) => super.noSuchMethod(
-    Invocation.method(#onError, [error, stackTrace]),
-    returnValueForMissingStub: null,
-  );
+  void onChange(_i6.Change<_i3.ChangePasswordState>? change) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #onChange,
+          [change],
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  _i5.Future<void> close() =>
-      (super.noSuchMethod(
-            Invocation.method(#close, []),
-            returnValue: _i5.Future<void>.value(),
-            returnValueForMissingStub: _i5.Future<void>.value(),
-          )
-          as _i5.Future<void>);
+  void addError(
+    Object? error, [
+    StackTrace? stackTrace,
+  ]) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #addError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void onError(
+    Object? error,
+    StackTrace? stackTrace,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #onError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i5.Future<void> close() => (super.noSuchMethod(
+        Invocation.method(
+          #close,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }

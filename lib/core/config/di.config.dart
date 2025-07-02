@@ -171,34 +171,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i785.ApiService>(
         () => dioModule.provideApiService(gh<_i361.Dio>()));
     gh.singleton<_i785.MealApiService>(
-      () => dioModule.provideMealApiService(gh<_i361.Dio>()),
-    );
-    gh.factory<_i710.MealsDetailsRemoteDataSource>(
-      () => _i986.MealsDetailsRemoteDataSourceImp(
-        apiService: gh<_i785.MealApiService>(),
-      ),
-    );
-    gh.factory<_i159.HomeRemoteDataSource>(
-      () => _i37.HomeRemoteDataSourceImpl(
-        gh<_i785.ApiService>(),
-        gh<_i785.MealApiService>(),
-      ),
-    );
-    gh.factory<_i671.LogoutRemoteDataSource>(
-      () =>
-          _i115.LogoutRemoteDataSourceImpl(apiService: gh<_i785.ApiService>()),
-    );
-    gh.factory<_i520.LoginRemoteDataSource>(
-      () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()),
-    );
-    gh.factory<_i998.ProfileRemoteDataSource>(
-      () => _i531.ProfileRemoteDataSourceImpl(gh<_i785.ApiService>()),
-    );
-    gh.factory<_i225.MealsDetailsContract>(
-      () => _i274.MealsDetailsRepositoryImplementation(
-        mealsDetailsRemoteDataSource: gh<_i710.MealsDetailsRemoteDataSource>(),
-      ),
-    );
         () => dioModule.provideMealApiService(gh<_i361.Dio>()));
     gh.factory<_i374.ConversationRepository>(() =>
         _i234.ConversationRepositoryImpl(
@@ -210,10 +182,14 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i785.ApiService>(),
           gh<_i785.MealApiService>(),
         ));
+    gh.factory<_i671.LogoutRemoteDataSource>(() =>
+        _i115.LogoutRemoteDataSourceImpl(apiService: gh<_i785.ApiService>()));
     gh.factory<_i469.SendMessageUseCase>(
         () => _i469.SendMessageUseCase(gh<_i708.SmartCoachRepo>()));
     gh.factory<_i520.LoginRemoteDataSource>(() =>
         _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()));
+    gh.factory<_i998.ProfileRemoteDataSource>(
+        () => _i531.ProfileRemoteDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i225.MealsDetailsContract>(() =>
         _i274.MealsDetailsRepositoryImplementation(
             mealsDetailsRemoteDataSource:
@@ -239,60 +215,33 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i992.RegisterDataSource>(
         () => _i932.RegisterDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i1002.WorkOutsRepo>(
-      () => _i638.WorkOutsRepoImpl(gh<_i980.WorkOutsDataSource>()),
-    );
-    gh.factory<_i283.ChangePasswordRemoteDataSource>(
-      () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()),
-    );
-    gh.factory<_i1004.LogoutRepository>(
-      () => _i885.LogoutRepositoryImpl(
-        remoteDataSource: gh<_i671.LogoutRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_i98.LogoutUseCase>(
-      () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()),
-    );
-    gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(
-      () =>
-          _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()),
-    );
         () => _i638.WorkOutsRepoImpl(gh<_i980.WorkOutsDataSource>()));
+    gh.factory<_i283.ChangePasswordRemoteDataSource>(
+        () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()));
+    gh.factory<_i1004.LogoutRepository>(() => _i885.LogoutRepositoryImpl(
+        remoteDataSource: gh<_i671.LogoutRemoteDataSource>()));
+    gh.factory<_i98.LogoutUseCase>(
+        () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()));
     gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(() =>
         _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()));
     gh.factory<_i80.GetAllMusclesGroupsUseCase>(
-      () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()),
-    );
-    gh.factory<_i760.ChangePasswordRepo>(
-      () => _i756.ChangePasswordRepoImpl(
-        gh<_i283.ChangePasswordRemoteDataSource>(),
-      ),
-    );
         () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()));
+    gh.factory<_i760.ChangePasswordRepo>(() => _i756.ChangePasswordRepoImpl(
+        gh<_i283.ChangePasswordRemoteDataSource>()));
     gh.factory<_i474.FoodRepo>(
-      () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()),
-    );
-    gh.factory<_i172.MealsDetailsUsecase>(
-      () => _i172.MealsDetailsUsecase(
-        mealsDetailsContract: gh<_i225.MealsDetailsContract>(),
-      ),
-    );
-    gh.factory<_i1007.ProfileRepository>(
-      () => _i1072.ProfileRepositoryImpl(gh<_i998.ProfileRemoteDataSource>()),
-    );
         () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()));
     gh.factory<_i172.MealsDetailsUsecase>(() => _i172.MealsDetailsUsecase(
         mealsDetailsContract: gh<_i225.MealsDetailsContract>()));
+    gh.factory<_i1007.ProfileRepository>(() =>
+        _i1072.ProfileRepositoryImpl(gh<_i998.ProfileRemoteDataSource>()));
     gh.factory<_i369.RegisterRepo>(
         () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()));
     gh.factory<_i401.LoginUsecase>(
         () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()));
     gh.factory<_i204.HomeUseCase>(
-      () => _i204.HomeUseCase(gh<_i751.HomeRepo>()),
-    );
-    gh.factory<_i793.ChangePasswordUseCase>(
-      () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()),
-    );
         () => _i204.HomeUseCase(gh<_i751.HomeRepo>()));
+    gh.factory<_i793.ChangePasswordUseCase>(
+        () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()));
     gh.factory<_i782.MealsDetailsCubit>(
         () => _i782.MealsDetailsCubit(gh<_i172.MealsDetailsUsecase>()));
     gh.factory<_i646.GetExerciseByMoverAndDifficultyLevelUseCase>(() =>
@@ -303,15 +252,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i589.GetFoodCategoriesUseCase>(
         () => _i589.GetFoodCategoriesUseCase(gh<_i474.FoodRepo>()));
     gh.factory<_i740.GetMealsByCategoryUseCase>(
-      () => _i740.GetMealsByCategoryUseCase(gh<_i474.FoodRepo>()),
-    );
-    gh.factory<_i663.GetProfileData>(
-      () => _i663.GetProfileData(gh<_i1007.ProfileRepository>()),
-    );
-    gh.factory<_i763.UploadPhoto>(
-      () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()),
-    );
         () => _i740.GetMealsByCategoryUseCase(gh<_i474.FoodRepo>()));
+    gh.factory<_i663.GetProfileData>(
+        () => _i663.GetProfileData(gh<_i1007.ProfileRepository>()));
+    gh.factory<_i763.UploadPhoto>(
+        () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
     gh.factory<_i118.RegisterUseCase>(
         () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()));
     gh.factory<_i1043.HomeViewModel>(
