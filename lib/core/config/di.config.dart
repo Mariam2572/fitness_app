@@ -183,12 +183,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i283.ChangePasswordRemoteDataSource>(
       () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()),
     );
-    gh.factory<_i80.GetAllMusclesGroupsUseCase>(
-      () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()),
-    );
     gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(
       () =>
           _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()),
+    );
+    gh.factory<_i80.GetAllMusclesGroupsUseCase>(
+      () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()),
     );
     gh.factory<_i760.ChangePasswordRepo>(
       () => _i756.ChangePasswordRepoImpl(
@@ -235,11 +235,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i740.GetMealsByCategoryUseCase>(
       () => _i740.GetMealsByCategoryUseCase(gh<_i474.FoodRepo>()),
     );
-    gh.factory<_i763.UploadPhoto>(
-      () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()),
-    );
     gh.factory<_i663.GetProfileData>(
       () => _i663.GetProfileData(gh<_i1007.ProfileRepository>()),
+    );
+    gh.factory<_i763.UploadPhoto>(
+      () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()),
     );
     gh.factory<_i118.RegisterUseCase>(
       () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()),

@@ -4,10 +4,11 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i14;
+import 'dart:io' as _i17;
 
 import 'package:fitness_app/core/api_manager/api_services.dart' as _i13;
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_request.dart'
-    as _i17;
+    as _i19;
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_response.dart'
     as _i11;
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart'
@@ -32,9 +33,10 @@ import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscl
     as _i7;
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart'
     as _i6;
-import 'package:flutter/foundation.dart' as _i18;
+import 'package:flutter/foundation.dart' as _i20;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i12;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i18;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -300,8 +302,31 @@ class MockApiService extends _i1.Mock implements _i13.ApiService {
           as _i14.Future<_i10.RandomExerciseResponse>);
 
   @override
+  _i14.Future<String> uploadPhoto(_i17.File? image) =>
+      (super.noSuchMethod(
+            Invocation.method(#uploadPhoto, [image]),
+            returnValue: _i14.Future<String>.value(
+              _i18.dummyValue<String>(
+                this,
+                Invocation.method(#uploadPhoto, [image]),
+              ),
+            ),
+          )
+          as _i14.Future<String>);
+
+  @override
+  _i14.Future<_i9.UserResponse> getProfileData() =>
+      (super.noSuchMethod(
+            Invocation.method(#getProfileData, []),
+            returnValue: _i14.Future<_i9.UserResponse>.value(
+              _FakeUserResponse_7(this, Invocation.method(#getProfileData, [])),
+            ),
+          )
+          as _i14.Future<_i9.UserResponse>);
+
+  @override
   _i14.Future<_i11.ChangePasswordResponse> changePassword(
-    _i17.ChangePasswordRequest? ChangePasswordRequest,
+    _i19.ChangePasswordRequest? ChangePasswordRequest,
     String? userToken,
   ) =>
       (super.noSuchMethod(
@@ -397,7 +422,7 @@ class MockFlutterSecureStorage extends _i1.Mock
   @override
   void registerListener({
     required String? key,
-    required _i18.ValueChanged<String?>? listener,
+    required _i20.ValueChanged<String?>? listener,
   }) => super.noSuchMethod(
     Invocation.method(#registerListener, [], {#key: key, #listener: listener}),
     returnValueForMissingStub: null,
@@ -406,7 +431,7 @@ class MockFlutterSecureStorage extends _i1.Mock
   @override
   void unregisterListener({
     required String? key,
-    required _i18.ValueChanged<String?>? listener,
+    required _i20.ValueChanged<String?>? listener,
   }) => super.noSuchMethod(
     Invocation.method(#unregisterListener, [], {
       #key: key,

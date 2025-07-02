@@ -71,11 +71,7 @@ abstract class ApiService {
   Future<String> uploadPhoto(@Part(name: "photo") File image);
 
   @GET(Constants.getCurrentUserDataEndPoint)
-  Future<UserResponse> getProfileData();
-}
-    @Query("targetMuscleGroupId") String targetMuscleGroupId,
-    @Query("difficultyLevelId") String difficultyLevelId,
-    @Query("limit") int limit,
+  Future<UserResponse> getProfileData(
   );
   @PATCH(Constants.changePassword)
   Future<ChangePasswordResponse> changePassword(
@@ -90,8 +86,6 @@ abstract class MealApiService {
 
   @GET(Constants.getMealsDetailsEndPoint)
   Future<MealsDatailsResponse> getMealsDetails(@Path("i") String i);
-  Future<MealsDatailsResponse> getMealsDetails(@Path("i") String i);
-
   @GET(Constants.foodCategoriesEndPoint)
   Future<FoodCategoriesResponse> getFoodCategories();
 
