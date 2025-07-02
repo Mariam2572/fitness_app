@@ -41,7 +41,7 @@ final class GetProfileFailure extends EditProfileState {
 final class UploadPhotoInitial extends EditProfileState {}
 final class UploadPhotoLoading extends EditProfileState {}
 final class UploadPhotoSuccess extends EditProfileState {
-  final String response;
+  final UploadPhotoResponse response;
   const UploadPhotoSuccess(this.response);
   @override
   List<Object> get props => [response];

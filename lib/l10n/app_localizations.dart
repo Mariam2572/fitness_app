@@ -403,6 +403,22 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred , Please try later'**
   String get anErrorOccurred;
+
+  String get editProfile;
+
+  String get yourWeight;
+
+  String get yourHeight;
+
+  String get yourAge;
+
+  String get yourGender;
+
+  String get yourGoal;
+
+  String get yourActivityLevel;
+
+  String get tapToEdit;
 }
 
 class _AppLocalizationsDelegate

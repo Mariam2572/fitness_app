@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart';
+import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart';
 import 'package:fitness_app/features/profile/edit_profile/domain/data_source/edit_profile_data_source.dart';
 import 'package:fitness_app/features/profile/edit_profile/domain/repos/edit_profile_repo.dart';
 
@@ -24,7 +25,7 @@ class EditProfileRepoImpl implements EditProfileRepo {
   }
 
   @override
-  Future<ApiResult<String>> uploadPhoto(File photo) async {
+  Future<ApiResult<UploadPhotoResponse>> uploadPhoto(File photo) async {
     return await _editProfileDataSource.uploadPhoto(photo);
   }
 

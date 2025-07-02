@@ -73,6 +73,20 @@ import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
 import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
 import '../../features/home/home/presentation/view_model/home_viewModel.dart'
     as _i1043;
+import '../../features/profile/edit_profile/data/data_source/edit_profile_impl.dart'
+    as _i688;
+import '../../features/profile/edit_profile/data/repos/edit_profile_repo_impl.dart'
+    as _i98;
+import '../../features/profile/edit_profile/domain/data_source/edit_profile_data_source.dart'
+    as _i843;
+import '../../features/profile/edit_profile/domain/repos/edit_profile_repo.dart'
+    as _i129;
+import '../../features/profile/edit_profile/domain/use_cases/edit_profile_use_case.dart'
+    as _i514;
+import '../../features/profile/edit_profile/domain/use_cases/get_logged_user_data_use_case.dart'
+    as _i963;
+import '../../features/profile/edit_profile/domain/use_cases/upload_photo_use_case.dart'
+    as _i978;
 import '../../features/workOuts/data/data_source/work_outs_data_source_impl.dart'
     as _i931;
 import '../../features/workOuts/data/repos/work_outs_repo_impl.dart' as _i638;
@@ -132,6 +146,9 @@ extension GetItInjectableX on _i174.GetIt {
         mealsDetailsRemoteDataSource: gh<_i710.MealsDetailsRemoteDataSource>(),
       ),
     );
+    gh.factory<_i843.EditProfileDataSource>(
+      () => _i688.EditProfileImpl(gh<_i785.ApiService>()),
+    );
     gh.factory<_i980.WorkOutsDataSource>(
       () => _i931.WorkOutsDataSourceImpl(gh<_i785.ApiService>()),
     );
@@ -158,6 +175,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1002.WorkOutsRepo>(
       () => _i638.WorkOutsRepoImpl(gh<_i980.WorkOutsDataSource>()),
     );
+    gh.factory<_i129.EditProfileRepo>(
+      () => _i98.EditProfileRepoImpl(gh<_i843.EditProfileDataSource>()),
+    );
     gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(
       () =>
           _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()),
@@ -167,6 +187,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i474.FoodRepo>(
       () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()),
+    );
+    gh.factory<_i978.UploadPhotoUseCase>(
+      () => _i978.UploadPhotoUseCase(gh<_i129.EditProfileRepo>()),
+    );
+    gh.factory<_i514.EditProfileUseCase>(
+      () => _i514.EditProfileUseCase(gh<_i129.EditProfileRepo>()),
+    );
+    gh.factory<_i963.GetLoggedUserDataUseCase>(
+      () => _i963.GetLoggedUserDataUseCase(gh<_i129.EditProfileRepo>()),
     );
     gh.factory<_i172.MealsDetailsUsecase>(
       () => _i172.MealsDetailsUsecase(

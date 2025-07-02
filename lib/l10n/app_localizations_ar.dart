@@ -164,4 +164,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get anErrorOccurred => '  . برجاء المحاولة لاحقا لقد حدث خطأ ما';
+
+  @override
+  String get editProfile => "تعديل الملف الشخصي";
+
+  @override
+  String get tapToEdit =>  "انقر للتعديل";
+  @override
+  String get yourActivityLevel => "مستوى نشاطك";
+
+  @override
+  String get yourAge => "عمرك";
+
+  @override
+  String get yourGender =>"جنسك";
+
+  @override
+  String get yourGoal => "هدفك";
+
+  @override
+  String get yourHeight =>"طولك";
+
+  @override
+  String get yourWeight => "وزنك";
 }

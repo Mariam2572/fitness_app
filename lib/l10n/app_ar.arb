@@ -49,5 +49,13 @@
   "noMoreExcuses": "لا مزيد من الأعذار \n افعلها الآن",
   "onboardingText3": "لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا",
   "doIt": "افعلها",
-  "anErrorOccurred" : "  . برجاء المحاولة لاحقا لقد حدث خطأ ما"
+  "anErrorOccurred" : "  . برجاء المحاولة لاحقا لقد حدث خطأ ما",
+  "editProfile":"تعديل الملف الشخصي",
+  "yourWeight":"وزنك",
+  "yourHeight":"طولك",
+  "yourAge":"عمرك",
+  "yourGender":"جنسك",
+  "yourGoal":"هدفك",
+  "yourActivityLevel":"مستوى نشاطك",
+  "tapToEdit":"انقر للتعديل"
 }

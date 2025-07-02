@@ -9,6 +9,7 @@ import 'package:fitness_app/features/auth/register/data/models/response/register
 import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart';
+import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
@@ -72,10 +73,13 @@ abstract class ApiService {
 
   @PUT(Constants.editProfileEndPoint)
   Future<GetUserDataReponse> editProfile(@Body() EditProfileRequest editProfileRequest);
-
   @PUT(Constants.uploadPhotoEndPoint)
   @MultiPart()
-  Future<String> uploadPhoto(@Part(name: "photo") File image);
+  Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File image);
+
+
+
+
 }
 
 @RestApi(baseUrl: Constants.mealBaseUrl)
