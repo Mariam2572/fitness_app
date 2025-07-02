@@ -5,13 +5,18 @@ class BuildBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: CircleAvatar(
-          backgroundColor: Colors.transparent,
-          child: Image(image: AssetImage("assets/images/Back.png")),
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: const Align(
+        alignment: Alignment.topLeft,
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            child: Image(image: AssetImage("assets/images/Back.png")),
+          ),
         ),
       ),
     );

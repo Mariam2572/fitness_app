@@ -1,7 +1,9 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/provider/app_config_provider.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:fitness_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:fitness_app/features/profile/domain/use_case/get_profile_data.dart';
 import 'package:fitness_app/features/profile/domain/use_case/upload_photo__use_case.dart';
 import 'package:fitness_app/features/profile/presentation/view/widgets/build_back_button.dart';
@@ -13,9 +15,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -79,14 +86,29 @@ class _ProfileBody extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Text(
-                        user.user!.firstName ?? 'User Name',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            user.user!.firstName ?? 'User Name',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text("  "),
+                          Text(
+                            user.user!.lastName ?? 'User Name',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
+
                       const SizedBox(height: 24),
                       _buildSettingsList(),
                     ],
@@ -122,22 +144,16 @@ class _ProfileBody extends StatelessWidget {
           child: ListView(
             children: [
               BuildListTile(
-                icon: Icons.person_outline,
+                icon: Icons.person,
                 title: 'Edit Profile',
                 onTap: () {},
               ),
 
               BuildListTile(
-                icon: Icons.lock_outline,
+                icon: Icons.cached_outlined,
                 title: 'Change Password',
                 onTap: () {},
               ),
-
-              //  BuildListTile(
-              //    icon: Icons.language,
-              //    title: 'Select Language (English)',
-              //    notSelectLanguge: false,
-              //  ),
               Languge(),
               BuildListTile(
                 icon: Icons.security,
@@ -150,7 +166,7 @@ class _ProfileBody extends StatelessWidget {
                 onTap: () {},
               ),
               BuildListTile(
-                icon: Icons.help_outline,
+                icon: Icons.help_outline_outlined,
                 title: 'Help',
                 onTap: () {},
               ),

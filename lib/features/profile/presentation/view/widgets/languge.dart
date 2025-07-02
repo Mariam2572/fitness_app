@@ -20,7 +20,7 @@ class Languge extends StatelessWidget {
                 Icon(Icons.language, color: AppColors.mainRed),
                 SizedBox(width: 16),
                 Text(
-                  isEnglish ? 'Language (English' : 'اللغة (عربي)',
+                  isEnglish ? 'Language (English)' : 'اللغة (عربي)',
                   style: AppTextStyle.instance.textStyle16.copyWith(
                     color: AppColors.baseWhite,
                     fontWeight: FontWeight.w600,
