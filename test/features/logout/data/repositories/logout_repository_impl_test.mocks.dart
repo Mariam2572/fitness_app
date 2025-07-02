@@ -34,15 +34,18 @@ class MockLogoutRepository extends _i1.Mock implements _i2.LogoutRepository {
   }
 
   @override
-  _i3.Future<_i4.ApiResult<String>> logout() =>
-      (super.noSuchMethod(
-            Invocation.method(#logout, []),
-            returnValue: _i3.Future<_i4.ApiResult<String>>.value(
-              _i5.dummyValue<_i4.ApiResult<String>>(
-                this,
-                Invocation.method(#logout, []),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.ApiResult<String>>);
+  _i3.Future<_i4.ApiResult<String>> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<String>>.value(
+            _i5.dummyValue<_i4.ApiResult<String>>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<String>>);
 }

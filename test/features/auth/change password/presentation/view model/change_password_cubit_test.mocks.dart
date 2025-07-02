@@ -33,8 +33,13 @@ import 'package:mockito/src/dummies.dart' as _i8;
 
 class _FakeChangePasswordRepo_0 extends _i1.SmartFake
     implements _i2.ChangePasswordRepo {
-  _FakeChangePasswordRepo_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeChangePasswordRepo_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [ChangePasswordUseCase].
@@ -47,29 +52,30 @@ class MockChangePasswordUseCase extends _i1.Mock
   }
 
   @override
-  _i2.ChangePasswordRepo get repo =>
-      (super.noSuchMethod(
-            Invocation.getter(#repo),
-            returnValue: _FakeChangePasswordRepo_0(
-              this,
-              Invocation.getter(#repo),
-            ),
-          )
-          as _i2.ChangePasswordRepo);
+  _i2.ChangePasswordRepo get repo => (super.noSuchMethod(
+        Invocation.getter(#repo),
+        returnValue: _FakeChangePasswordRepo_0(
+          this,
+          Invocation.getter(#repo),
+        ),
+      ) as _i2.ChangePasswordRepo);
 
   @override
   _i4.Future<_i5.ApiResult<_i6.ChangePasswordResponse>> invoke(
-    _i7.ChangePasswordRequest? request,
-  ) =>
+          _i7.ChangePasswordRequest? request) =>
       (super.noSuchMethod(
-            Invocation.method(#invoke, [request]),
-            returnValue:
-                _i4.Future<_i5.ApiResult<_i6.ChangePasswordResponse>>.value(
-                  _i8.dummyValue<_i5.ApiResult<_i6.ChangePasswordResponse>>(
-                    this,
-                    Invocation.method(#invoke, [request]),
-                  ),
-                ),
-          )
-          as _i4.Future<_i5.ApiResult<_i6.ChangePasswordResponse>>);
+        Invocation.method(
+          #invoke,
+          [request],
+        ),
+        returnValue:
+            _i4.Future<_i5.ApiResult<_i6.ChangePasswordResponse>>.value(
+                _i8.dummyValue<_i5.ApiResult<_i6.ChangePasswordResponse>>(
+          this,
+          Invocation.method(
+            #invoke,
+            [request],
+          ),
+        )),
+      ) as _i4.Future<_i5.ApiResult<_i6.ChangePasswordResponse>>);
 }

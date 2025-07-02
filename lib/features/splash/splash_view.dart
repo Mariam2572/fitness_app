@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/core/utils/helper/secure_storage.dart';
+import 'package:fitness_app/core/constants/constants.dart';
+import 'package:fitness_app/core/utils/helper/secure_storage.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:flutter/material.dart';
@@ -16,23 +18,19 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
+    checkAuth();
     super.initState();
+  }
+  checkAuth() async {
+    final token = await readSecureData(Constants.userToken);
     Timer(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, RoutesName.onBoardingOne);
+      if (token != null) {
+        Navigator.pushReplacementNamed(context, RoutesName.layOut);
+      } else {
+        Navigator.pushReplacementNamed(context, RoutesName.login);
+      }
     });
   }
-
-  // Future<void> checkAuth() async {
-  //   final token = await readSecureData(Constants.userToken);
-  //   Timer(const Duration(seconds: 2), () {
-  //     if (token != null) {
-  //       Navigator.pushReplacementNamed(context, RoutesName.layOut);
-  //     } else {
-  //       Navigator.pushReplacementNamed(context, RoutesName.login);
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Stack(

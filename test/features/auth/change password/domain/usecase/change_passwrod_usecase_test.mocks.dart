@@ -39,18 +39,23 @@ class MockChangePasswordRepo extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.ChangePasswordResponse>> changePassword({
-    required _i6.ChangePasswordRequest? request,
-  }) =>
+  _i3.Future<_i4.ApiResult<_i5.ChangePasswordResponse>> changePassword(
+          {required _i6.ChangePasswordRequest? request}) =>
       (super.noSuchMethod(
-            Invocation.method(#changePassword, [], {#request: request}),
-            returnValue:
-                _i3.Future<_i4.ApiResult<_i5.ChangePasswordResponse>>.value(
-                  _i7.dummyValue<_i4.ApiResult<_i5.ChangePasswordResponse>>(
-                    this,
-                    Invocation.method(#changePassword, [], {#request: request}),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.ApiResult<_i5.ChangePasswordResponse>>);
+        Invocation.method(
+          #changePassword,
+          [],
+          {#request: request},
+        ),
+        returnValue:
+            _i3.Future<_i4.ApiResult<_i5.ChangePasswordResponse>>.value(
+                _i7.dummyValue<_i4.ApiResult<_i5.ChangePasswordResponse>>(
+          this,
+          Invocation.method(
+            #changePassword,
+            [],
+            {#request: request},
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i5.ChangePasswordResponse>>);
 }

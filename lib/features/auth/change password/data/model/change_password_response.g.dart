@@ -7,12 +7,15 @@ part of 'change_password_response.dart';
 // **************************************************************************
 
 ChangePasswordResponse _$ChangePasswordResponseFromJson(
-  Map<String, dynamic> json,
-) => ChangePasswordResponse(
-  message: json['message'] as String?,
-  token: json['token'] as String?,
-);
+        Map<String, dynamic> json) =>
+    ChangePasswordResponse(
+      message: json['message'] as String?,
+      token: json['token'] as String?,
+    );
 
 Map<String, dynamic> _$ChangePasswordResponseToJson(
-  ChangePasswordResponse instance,
-) => <String, dynamic>{'message': instance.message, 'token': instance.token};
+        ChangePasswordResponse instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'token': instance.token,
+    };

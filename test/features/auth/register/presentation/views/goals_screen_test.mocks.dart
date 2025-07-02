@@ -28,15 +28,24 @@ import 'package:mockito/src/dummies.dart' as _i4;
 
 class _FakeTextEditingController_0 extends _i1.SmartFake
     implements _i2.TextEditingController {
-  _FakeTextEditingController_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeTextEditingController_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 class _FakeGlobalKey_1<T extends _i2.State<_i2.StatefulWidget>>
-    extends _i1.SmartFake
-    implements _i2.GlobalKey<T> {
-  _FakeGlobalKey_1(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+    extends _i1.SmartFake implements _i2.GlobalKey<T> {
+  _FakeGlobalKey_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [RegisterCubit].
@@ -48,214 +57,268 @@ class MockRegisterCubit extends _i1.Mock implements _i3.RegisterCubit {
   }
 
   @override
-  _i2.TextEditingController get firstNameController =>
-      (super.noSuchMethod(
-            Invocation.getter(#firstNameController),
-            returnValue: _FakeTextEditingController_0(
-              this,
-              Invocation.getter(#firstNameController),
-            ),
-          )
-          as _i2.TextEditingController);
+  _i2.TextEditingController get firstNameController => (super.noSuchMethod(
+        Invocation.getter(#firstNameController),
+        returnValue: _FakeTextEditingController_0(
+          this,
+          Invocation.getter(#firstNameController),
+        ),
+      ) as _i2.TextEditingController);
 
   @override
   set firstNameController(_i2.TextEditingController? _firstNameController) =>
       super.noSuchMethod(
-        Invocation.setter(#firstNameController, _firstNameController),
+        Invocation.setter(
+          #firstNameController,
+          _firstNameController,
+        ),
         returnValueForMissingStub: null,
       );
 
   @override
-  _i2.TextEditingController get lastNameController =>
-      (super.noSuchMethod(
-            Invocation.getter(#lastNameController),
-            returnValue: _FakeTextEditingController_0(
-              this,
-              Invocation.getter(#lastNameController),
-            ),
-          )
-          as _i2.TextEditingController);
+  _i2.TextEditingController get lastNameController => (super.noSuchMethod(
+        Invocation.getter(#lastNameController),
+        returnValue: _FakeTextEditingController_0(
+          this,
+          Invocation.getter(#lastNameController),
+        ),
+      ) as _i2.TextEditingController);
 
   @override
   set lastNameController(_i2.TextEditingController? _lastNameController) =>
       super.noSuchMethod(
-        Invocation.setter(#lastNameController, _lastNameController),
+        Invocation.setter(
+          #lastNameController,
+          _lastNameController,
+        ),
         returnValueForMissingStub: null,
       );
 
   @override
-  _i2.TextEditingController get emailController =>
-      (super.noSuchMethod(
-            Invocation.getter(#emailController),
-            returnValue: _FakeTextEditingController_0(
-              this,
-              Invocation.getter(#emailController),
-            ),
-          )
-          as _i2.TextEditingController);
+  _i2.TextEditingController get emailController => (super.noSuchMethod(
+        Invocation.getter(#emailController),
+        returnValue: _FakeTextEditingController_0(
+          this,
+          Invocation.getter(#emailController),
+        ),
+      ) as _i2.TextEditingController);
 
   @override
   set emailController(_i2.TextEditingController? _emailController) =>
       super.noSuchMethod(
-        Invocation.setter(#emailController, _emailController),
+        Invocation.setter(
+          #emailController,
+          _emailController,
+        ),
         returnValueForMissingStub: null,
       );
 
   @override
-  _i2.TextEditingController get passwordController =>
-      (super.noSuchMethod(
-            Invocation.getter(#passwordController),
-            returnValue: _FakeTextEditingController_0(
-              this,
-              Invocation.getter(#passwordController),
-            ),
-          )
-          as _i2.TextEditingController);
+  _i2.TextEditingController get passwordController => (super.noSuchMethod(
+        Invocation.getter(#passwordController),
+        returnValue: _FakeTextEditingController_0(
+          this,
+          Invocation.getter(#passwordController),
+        ),
+      ) as _i2.TextEditingController);
 
   @override
   set passwordController(_i2.TextEditingController? _passwordController) =>
       super.noSuchMethod(
-        Invocation.setter(#passwordController, _passwordController),
+        Invocation.setter(
+          #passwordController,
+          _passwordController,
+        ),
         returnValueForMissingStub: null,
       );
 
   @override
-  _i2.TextEditingController get rePasswordController =>
-      (super.noSuchMethod(
-            Invocation.getter(#rePasswordController),
-            returnValue: _FakeTextEditingController_0(
-              this,
-              Invocation.getter(#rePasswordController),
-            ),
-          )
-          as _i2.TextEditingController);
+  _i2.TextEditingController get rePasswordController => (super.noSuchMethod(
+        Invocation.getter(#rePasswordController),
+        returnValue: _FakeTextEditingController_0(
+          this,
+          Invocation.getter(#rePasswordController),
+        ),
+      ) as _i2.TextEditingController);
 
   @override
   set rePasswordController(_i2.TextEditingController? _rePasswordController) =>
       super.noSuchMethod(
-        Invocation.setter(#rePasswordController, _rePasswordController),
+        Invocation.setter(
+          #rePasswordController,
+          _rePasswordController,
+        ),
         returnValueForMissingStub: null,
       );
 
   @override
-  int get height =>
-      (super.noSuchMethod(Invocation.getter(#height), returnValue: 0) as int);
+  int get height => (super.noSuchMethod(
+        Invocation.getter(#height),
+        returnValue: 0,
+      ) as int);
 
   @override
   set height(int? _height) => super.noSuchMethod(
-    Invocation.setter(#height, _height),
-    returnValueForMissingStub: null,
-  );
+        Invocation.setter(
+          #height,
+          _height,
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  int get weight =>
-      (super.noSuchMethod(Invocation.getter(#weight), returnValue: 0) as int);
+  int get weight => (super.noSuchMethod(
+        Invocation.getter(#weight),
+        returnValue: 0,
+      ) as int);
 
   @override
   set weight(int? _weight) => super.noSuchMethod(
-    Invocation.setter(#weight, _weight),
-    returnValueForMissingStub: null,
-  );
+        Invocation.setter(
+          #weight,
+          _weight,
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  int get age =>
-      (super.noSuchMethod(Invocation.getter(#age), returnValue: 0) as int);
+  int get age => (super.noSuchMethod(
+        Invocation.getter(#age),
+        returnValue: 0,
+      ) as int);
 
   @override
   set age(int? _age) => super.noSuchMethod(
-    Invocation.setter(#age, _age),
-    returnValueForMissingStub: null,
-  );
+        Invocation.setter(
+          #age,
+          _age,
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
   set goal(String? _goal) => super.noSuchMethod(
-    Invocation.setter(#goal, _goal),
-    returnValueForMissingStub: null,
-  );
+        Invocation.setter(
+          #goal,
+          _goal,
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
   set activityLevel(String? _activityLevel) => super.noSuchMethod(
-    Invocation.setter(#activityLevel, _activityLevel),
-    returnValueForMissingStub: null,
-  );
+        Invocation.setter(
+          #activityLevel,
+          _activityLevel,
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  _i2.GlobalKey<_i2.FormState> get formKey =>
-      (super.noSuchMethod(
-            Invocation.getter(#formKey),
-            returnValue: _FakeGlobalKey_1<_i2.FormState>(
-              this,
-              Invocation.getter(#formKey),
-            ),
-          )
-          as _i2.GlobalKey<_i2.FormState>);
+  _i2.GlobalKey<_i2.FormState> get formKey => (super.noSuchMethod(
+        Invocation.getter(#formKey),
+        returnValue: _FakeGlobalKey_1<_i2.FormState>(
+          this,
+          Invocation.getter(#formKey),
+        ),
+      ) as _i2.GlobalKey<_i2.FormState>);
 
   @override
   set formKey(_i2.GlobalKey<_i2.FormState>? _formKey) => super.noSuchMethod(
-    Invocation.setter(#formKey, _formKey),
-    returnValueForMissingStub: null,
-  );
+        Invocation.setter(
+          #formKey,
+          _formKey,
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  _i3.RegisterState get state =>
-      (super.noSuchMethod(
-            Invocation.getter(#state),
-            returnValue: _i4.dummyValue<_i3.RegisterState>(
-              this,
-              Invocation.getter(#state),
-            ),
-          )
-          as _i3.RegisterState);
+  _i3.RegisterState get state => (super.noSuchMethod(
+        Invocation.getter(#state),
+        returnValue: _i4.dummyValue<_i3.RegisterState>(
+          this,
+          Invocation.getter(#state),
+        ),
+      ) as _i3.RegisterState);
 
   @override
-  _i5.Stream<_i3.RegisterState> get stream =>
-      (super.noSuchMethod(
-            Invocation.getter(#stream),
-            returnValue: _i5.Stream<_i3.RegisterState>.empty(),
-          )
-          as _i5.Stream<_i3.RegisterState>);
+  _i5.Stream<_i3.RegisterState> get stream => (super.noSuchMethod(
+        Invocation.getter(#stream),
+        returnValue: _i5.Stream<_i3.RegisterState>.empty(),
+      ) as _i5.Stream<_i3.RegisterState>);
 
   @override
-  bool get isClosed =>
-      (super.noSuchMethod(Invocation.getter(#isClosed), returnValue: false)
-          as bool);
+  bool get isClosed => (super.noSuchMethod(
+        Invocation.getter(#isClosed),
+        returnValue: false,
+      ) as bool);
 
   @override
   void doIntent(_i3.RegisterIntent? intent) => super.noSuchMethod(
-    Invocation.method(#doIntent, [intent]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(
+          #doIntent,
+          [intent],
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void emit(_i3.RegisterState? state) => super.noSuchMethod(
-    Invocation.method(#emit, [state]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(
+          #emit,
+          [state],
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void onChange(_i6.Change<_i3.RegisterState>? change) => super.noSuchMethod(
-    Invocation.method(#onChange, [change]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(
+          #onChange,
+          [change],
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  void addError(Object? error, [StackTrace? stackTrace]) => super.noSuchMethod(
-    Invocation.method(#addError, [error, stackTrace]),
-    returnValueForMissingStub: null,
-  );
+  void addError(
+    Object? error, [
+    StackTrace? stackTrace,
+  ]) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #addError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  void onError(Object? error, StackTrace? stackTrace) => super.noSuchMethod(
-    Invocation.method(#onError, [error, stackTrace]),
-    returnValueForMissingStub: null,
-  );
+  void onError(
+    Object? error,
+    StackTrace? stackTrace,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #onError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
 
   @override
-  _i5.Future<void> close() =>
-      (super.noSuchMethod(
-            Invocation.method(#close, []),
-            returnValue: _i5.Future<void>.value(),
-            returnValueForMissingStub: _i5.Future<void>.value(),
-          )
-          as _i5.Future<void>);
+  _i5.Future<void> close() => (super.noSuchMethod(
+        Invocation.method(
+          #close,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }

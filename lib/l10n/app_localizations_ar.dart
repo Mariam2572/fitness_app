@@ -184,6 +184,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordsDoNotMatch => 'كلمة المرور الجديدة وتأكيدها غير متطابقين';
 
   @override
+  String get noResponse => 'لا يوجد رد';
+
+  @override
   String get logout_confirmation => 'هل تريد اغلاق التطبيق؟';
 
   @override
@@ -192,6 +195,9 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get yes => 'نعم';
 
+
+  @override
+  String get noResponse => 'لا يوجد رد';
   @override
   String get no => 'لا';
 }
