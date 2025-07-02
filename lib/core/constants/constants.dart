@@ -14,6 +14,10 @@ class Constants {
       "exercises/by-muscle-difficulty";
   static const String levelsByMuscleEndPoint =
       'levels/difficulty-levels/by-prime-mover';
+  static const String getExerciseByMoverAndDifficultyEndPoint =
+      "exercises/by-muscle-difficulty";
+  static const String levelsByMuscleEndPoint =
+      'levels/difficulty-levels/by-prime-mover';
 
   static const String randomExercisesEndPoint = 'exercises/random';
   static const String getCurrentUserDataEndPoint = 'auth/profile-data';
@@ -21,7 +25,12 @@ class Constants {
       '67c79f3526895f87ce0aa96b';
   static const String randomExerciseDifficultyLevelId =
       '67c797e226895f87ce0aa94b';
+  static const String randomExerciseTargetMuscleGroupId =
+      '67c79f3526895f87ce0aa96b';
+  static const String randomExerciseDifficultyLevelId =
+      '67c797e226895f87ce0aa94b';
   static const String getAllExercisesEndPoint = 'exercises';
 
   static const String changePassword = 'auth/change-password';
+  static const String upLoadProfilePhoto = "auth/upload-photo";
 }

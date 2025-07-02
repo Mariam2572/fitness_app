@@ -1,0 +1,19 @@
+import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+
+abstract class ProfileState {}
+
+class ProfileInitial extends ProfileState {}
+
+class ProfileLoading extends ProfileState {}
+
+class ProfileSuccess extends ProfileState {
+  final UserResponse user;
+  ProfileSuccess({required this.user});
+}
+
+class ProfileUploading extends ProfileState {}
+
+class ProfileError extends ProfileState {
+  final String message;
+  ProfileError({required this.message});
+}

@@ -7,7 +7,7 @@ Future<ApiResult<T>> apiExecuter<T>(
   String? source,
 ) async {
   try {
-    var result = await apiCall.call();
+    final result = await apiCall.call();
     return ApiSuccess(data: result);
   } catch (e) {
     if (e is DioException) {

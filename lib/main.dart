@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-   await configureDependencies();
+  await configureDependencies();
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppConfigProvider(),
@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfigProvider>(context);
-    return  ScreenUtilInit(
+    final provider = Provider.of<AppConfigProvider>(context);
+    return ScreenUtilInit(
       designSize: const Size(375, 812), // match your design (e.g., Figma)
       minTextAdapt: true,
       splitScreenMode: true,
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RoutesGenerator.onGenerator,
           theme: AppTheme.appTheme,
-          initialRoute: RoutesName.splash,
+          initialRoute: RoutesName.login,
         );
       },
     );

@@ -3,8 +3,6 @@ import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/core/utils/widgets/grid_view_item.dart';
-import 'package:fitness_app/features/auth/register/presentation/widgets/blur_background.dart';
-import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:fitness_app/features/workOuts/presentation/view_model/cubit/work_outs_cubit.dart';
 import 'package:flutter/material.dart';
