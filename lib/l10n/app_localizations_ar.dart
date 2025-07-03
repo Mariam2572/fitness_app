@@ -196,28 +196,47 @@ class AppLocalizationsAr extends AppLocalizations {
   String get yes => 'نعم';
 
   @override
-  String get noResponse => 'لا يوجد رد';
+  String get no => 'لا';
 
   @override
-  String get editProfile => "تعديل الملف الشخصي";
+  String get editProfile => 'تعديل الملف الشخصي';
 
   @override
-  String get tapToEdit =>  "انقر للتعديل";
-  @override
-  String get yourActivityLevel => "مستوى نشاطك";
+  String get yourWeight => 'وزنك';
 
   @override
-  String get yourAge => "عمرك";
+  String get yourHeight => 'طولك';
 
   @override
-  String get yourGender =>"جنسك";
+  String get yourAge => 'عمرك';
 
   @override
-  String get yourGoal => "هدفك";
+  String get yourGender => 'جنسك';
 
   @override
-  String get yourHeight =>"طولك";
+  String get yourGoal => 'هدفك';
 
   @override
-  String get yourWeight => "وزنك";
+  String get yourActivityLevel => 'مستوى نشاطك';
+
+  @override
+  String get tapToEdit => 'انقر للتعديل';
+
+  @override
+  String get category => 'الفئة';
+
+  @override
+  String get recommendationsToday => 'التوصيات اليوم';
+
+  @override
+  String get upcomingWorkouts => 'التدريبات القادمة';
+
+  @override
+  String get seeAll => 'عرض الكل';
+
+  @override
+  String get recommendationsForYou => 'توصيات لك';
+
+  @override
+  String get popularTraining => 'التدريبات الشائعة';
 }

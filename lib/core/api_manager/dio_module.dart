@@ -14,13 +14,10 @@ abstract class DioModule {
   }
 
   @Singleton()
-  Dio provideDio(
-    LogInterceptor logInterceptor,
-    AppConfigProvider appConfigProvider,
-  ) {
+  Dio provideDio(LogInterceptor logInterceptor,AppConfigProvider appConfigProvider) {
     final dio = Dio(
       BaseOptions(
-        connectTimeout: const Duration(seconds: 200),
+        connectTimeout: const Duration(seconds: 60),
         baseUrl: Constants.baseUrl,
       ),
     );
@@ -31,10 +28,9 @@ abstract class DioModule {
           final token = await readSecureData(Constants.userToken);
 
           log("token : $token");
-          options.headers['Authorization'] =
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjg1MDE0NzFkYjY1MjAwNTE0NDE1OTM0IiwiaWF0IjoxNzUxMDcyMDMwfQ.2aIViNrJRFPfZGIBJUSkSWe9BO_lSPci1K9ADijaYVg';
+          options.headers['Authorization'] = 'Bearer $token';
           if (token != null && token.isNotEmpty) {
-            options.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjg1MDE0NzFkYjY1MjAwNTE0NDE1OTM0IiwiaWF0IjoxNzUxMDcyMDMwfQ.2aIViNrJRFPfZGIBJUSkSWe9BO_lSPci1K9ADijaYVg';
+            options.headers['Authorization'] = 'Bearer $token';
             log("token : $token");
           }
           options.headers['Accept-Language'] = appConfigProvider.appLanguage;
@@ -51,7 +47,6 @@ abstract class DioModule {
   ApiService provideApiService(Dio dio) {
     return ApiService(dio);
   }
-
   @Singleton()
   MealApiService provideMealApiService(Dio dio) {
     return MealApiService(dio);

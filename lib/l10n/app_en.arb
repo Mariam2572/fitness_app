@@ -56,13 +56,11 @@
   "confirmNewPassword": "Confirm New Password",
   "passwordChangedSuccessfully": "Password changed successfully!",
   "passwordsDoNotMatch": "New password and confirmation do not match",
-  "anErrorOccurred" : "An error occurred , Please try later",
   "noResponse" : " No Response",
   "logout_confirmation" : "Are you sure to close the Application ?",
   "logout" : "Logout",
   "yes" : "Yes",
-  "no": "No"
-  "anErrorOccurred" : "An error occurred , Please try later",
+  "no": "No",
   "editProfile":"Edit Profile",
   "yourWeight":"Your Weight",
   "yourHeight":"Your Height",
@@ -70,7 +68,13 @@
   "yourGender":"Your Gender",
   "yourGoal":"Your Goal",
   "yourActivityLevel":"Your Activity Level",
-  "tapToEdit":"tap To Edit"
+  "tapToEdit":"tap To Edit",
+  "category" :"Category",
+  "recommendationsToday" : "Recommendations Today",
+  "upcomingWorkouts" : "Upcoming Workouts",
+  "seeAll":"See All",
+  "recommendationsForYou" : "Recommendations For You",
+  "popularTraining": "Popular Training"
 
 
 }

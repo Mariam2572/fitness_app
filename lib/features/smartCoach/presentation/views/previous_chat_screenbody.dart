@@ -181,7 +181,7 @@ class PreviousChatScreenbody extends StatelessWidget {
           );
         } else {
           return const Center(
-            child: Text("🤷‍♂️ Unknown state"),
+            child: Text("🤷‍♂️Unknown state"),
           );
         }
       },

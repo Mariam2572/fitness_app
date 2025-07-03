@@ -1,4 +1,6 @@
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
+import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/home_state.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/home_viewModel.dart';
@@ -18,6 +20,7 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = context.loc;
     List<String> categories = [
       "Full Body",
       "Chest",
@@ -29,30 +32,39 @@ class HomeViewBody extends StatelessWidget {
 
     return Stack(
       children: [
-        const BlurredBackground(imagePath: "assets/images/HomeBg.jpg"),
+        Image.asset(
+          AppAssets.homeBackground,
+          fit: BoxFit.cover,
+          height: double.infinity,
+          width: double.infinity,
+        ),
         SafeArea(
           child: SingleChildScrollView(
-            padding:  REdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            padding: REdgeInsets.symmetric(horizontal: 16, vertical: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BlocBuilder<HomeViewModel,HomeState>(
+                    BlocBuilder<HomeViewModel, HomeState>(
                       builder: (context, state) {
-                        if(state is HomeLoading){
-                          return const Center(child: CircularProgressIndicator());
-                        }else if(state is HomeSuccess){
-                         return Text("Hi ${state.userName} ,\n Let's Start Your Day",style: AppTextStyle.instance.textStyle16.copyWith(
-                             fontWeight: FontWeight.w500
-                         ),
-                         );
-                        }else if(state is HomeError){
+                        if (state is HomeLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else if (state is HomeSuccess) {
+                          return Text(
+                            "Hi ${state.userName} ,\n Let's Start Your Day",
+                            style: AppTextStyle.instance.textStyle16.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          );
+                        } else if (state is HomeError) {
                           return Center(child: Text('Error: ${state.message}'));
                         }
                         return const SizedBox.shrink();
-                      }
+                      },
                     ),
 
                     const CircleAvatar(
@@ -62,105 +74,127 @@ class HomeViewBody extends StatelessWidget {
                   ],
                 ),
 
+                const SizedBox(height: 20),
 
-                const SizedBox(height: 20,),
-
-                Text("Category",style: AppTextStyle.instance.textStyle16.copyWith(
-                fontWeight: FontWeight.w600
-                ),),
+                Text(
+                  loc.category,
+                  style: AppTextStyle.instance.textStyle16.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
 
                 Category(),
 
-                Text("Recommendations Today",style: AppTextStyle.instance.textStyle16.copyWith(
-                    fontWeight: FontWeight.w600
-                ),),
+                Text(
+                  loc.recommendationsToday,
+                  style: AppTextStyle.instance.textStyle16.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
 
-                BlocBuilder<HomeViewModel,HomeState>(
+                BlocBuilder<HomeViewModel, HomeState>(
                   builder: (context, state) {
-                    if(state is HomeLoading){
+                    if (state is HomeLoading) {
                       return const Center(child: CircularProgressIndicator());
-                    }else if(state is HomeError){
-                      return Center(child: Text(state.message),);
-                    }else if(state is HomeSuccess){
-                      return WorkoutRecommendation(exercises: state.exercises??[]);
-                    }return const Center(child: Text("Error happened"));}
-                  ,
-
-
+                    } else if (state is HomeError) {
+                      return Center(child: Text(state.message));
+                    } else if (state is HomeSuccess) {
+                      return WorkoutRecommendation(
+                        exercises: state.exercises ?? [],
+                      );
+                    }
+                    return const Center(child: Text("Error happened"));
+                  },
                 ),
 
                 Row(
-                  children:[
+                  children: [
                     Expanded(
-                      child: Text("Upcoming Workouts",style: AppTextStyle.instance.textStyle16.copyWith(
-                        fontWeight: FontWeight.w600
-                                        ),
-                                        ),
+                      child: Text(
+                        loc.upcomingWorkouts,
+                        style: AppTextStyle.instance.textStyle16.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
 
                     TextButton(
-                        onPressed: (){Navigator.pushNamed(context, RoutesName.workouts);},
-                        child: Text("See All",style: AppTextStyle.instance.textStyle16.copyWith(
-                        color: Colors.deepOrange,
-
-                        ),
-                        )
-                    )
-                  ]
-                ),
-
-              UpcomingWorkoutsCategory(bodyParts:categories ) ,
-
-               BlocBuilder<HomeViewModel,HomeState>(
-                 builder: (context, state) {
-                   if(state is HomeError){
-                     return Center(child: Text(state.message),);
-                   }else if(state is HomeLoading){
-                     return const Center(child: CircularProgressIndicator());
-                   }else if(state is HomeSuccess){
-                     return UpcomingWorkout(exercises: state.allExercises??[]);
-                   }
-                   return const Center(child: Text("Error happened"));
-                 },
-               ),
-
-               const SizedBox(height: 20,),
-                Row(
-                    children:[
-                      Expanded(
-                        child: Text("Recommendations For You",style: AppTextStyle.instance.textStyle16.copyWith(
-                            fontWeight: FontWeight.w600
-                        ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, RoutesName.workouts);
+                      },
+                      child: Text(
+                        loc.seeAll,
+                        style: AppTextStyle.instance.textStyle16.copyWith(
+                          color: Colors.deepOrange,
                         ),
                       ),
-                      TextButton(
-                          onPressed: (){
-                            Navigator.pushNamed(context, RoutesName.food);
-                          },
-                          child: Text("See All",style: AppTextStyle.instance.textStyle16.copyWith(
-                            color: Colors.deepOrange,
-                          ),
-                          )
-                      )
-                    ]
+                    ),
+                  ],
                 ),
-                BlocBuilder<HomeViewModel,HomeState>(
+
+                UpcomingWorkoutsCategory(bodyParts: categories),
+
+                BlocBuilder<HomeViewModel, HomeState>(
                   builder: (context, state) {
-                    if(state is HomeError){
-                      return     Center(child: Text(state.message),);
-                    }else if (state is HomeLoading){
-                      return     Center(child:CircularProgressIndicator(),);
-                    }else if(state is HomeSuccess){
-                      return MealRecommendation(mealCategories: state.categories??[]);
+                    if (state is HomeError) {
+                      return Center(child: Text(state.message));
+                    } else if (state is HomeLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (state is HomeSuccess) {
+                      return UpcomingWorkout(
+                        exercises: state.allExercises ?? [],
+                      );
                     }
-                    return const Center(child: Text("Error happened"));                  },
+                    return const Center(child: Text("Error happened"));
+                  },
                 ),
-                const SizedBox(height: 20,),
-                Text("Popular Training",style: AppTextStyle.instance.textStyle16.copyWith(
-                    fontWeight: FontWeight.w600
+
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                       loc.recommendationsForYou,
+                        style: AppTextStyle.instance.textStyle16.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, RoutesName.food);
+                      },
+                      child: Text(
+                        loc.seeAll,
+                        style: AppTextStyle.instance.textStyle16.copyWith(
+                          color: Colors.deepOrange,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+                BlocBuilder<HomeViewModel, HomeState>(
+                  builder: (context, state) {
+                    if (state is HomeError) {
+                      return Center(child: Text(state.message));
+                    } else if (state is HomeLoading) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (state is HomeSuccess) {
+                      return MealRecommendation(
+                        mealCategories: state.categories ?? [],
+                      );
+                    }
+                    return const Center(child: Text("Error happened"));
+                  },
                 ),
-                const PopularTraining()
+                const SizedBox(height: 20),
+                Text(
+                  loc.popularTraining,
+                  style: AppTextStyle.instance.textStyle16.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const PopularTraining(),
               ],
             ),
           ),

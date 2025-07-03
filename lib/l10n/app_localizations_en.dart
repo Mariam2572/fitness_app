@@ -200,29 +200,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get no => 'No';
 
   @override
-  String get noResponse => ' No Response';
+  String get editProfile => 'Edit Profile';
 
   @override
-  String get editProfile => "Edit Profile";
+  String get yourWeight => 'Your Weight';
 
   @override
-  String get tapToEdit =>"tap To Edit";
+  String get yourHeight => 'Your Height';
 
   @override
-  String get yourActivityLevel => "Your Activity Level";
+  String get yourAge => 'Your Age';
 
   @override
-  String get yourAge => "Your Age";
+  String get yourGender => 'Your Gender';
 
   @override
-  String get yourGender => "Your Gender";
+  String get yourGoal => 'Your Goal';
 
   @override
-  String get yourGoal => "Your Goal";
+  String get yourActivityLevel => 'Your Activity Level';
 
   @override
-  String get yourHeight => "Your Height";
+  String get tapToEdit => 'tap To Edit';
 
   @override
-  String get yourWeight => "Your Weight";
+  String get category => 'Category';
+
+  @override
+  String get recommendationsToday => 'Recommendations Today';
+
+  @override
+  String get upcomingWorkouts => 'Upcoming Workouts';
+
+  @override
+  String get seeAll => 'See All';
+
+  @override
+  String get recommendationsForYou => 'Recommendations For You';
+
+  @override
+  String get popularTraining => 'Popular Training';
 }
