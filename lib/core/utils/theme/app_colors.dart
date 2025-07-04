@@ -21,6 +21,7 @@ class AppColors {
   // Dark Shades
   static const Color dark100 = Color(0xFF1A0000);
   static const Color dark90 = Color(0xFF330000);
+  static const Color dark85 = Color(0xFF2D2D2D);
   static const Color dark80 = Color(0xFF4D0000);
   static const Color dark70 = Color(0xFF660000);
   static const Color dark60 = Color(0xFF800000);

@@ -21,6 +21,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = context.loc;
+    final text = context.textTheme;
     List<String> categories = [
       "Full Body",
       "Chest",
@@ -56,7 +57,7 @@ class HomeViewBody extends StatelessWidget {
                         } else if (state is HomeSuccess) {
                           return Text(
                             "Hi ${state.userName} ,\n Let's Start Your Day",
-                            style: AppTextStyle.instance.textStyle16.copyWith(
+                            style: text.titleSmall?.copyWith(
                               fontWeight: FontWeight.w500,
                             ),
                           );
@@ -74,24 +75,20 @@ class HomeViewBody extends StatelessWidget {
                   ],
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 24),
 
                 Text(
                   loc.category,
-                  style: AppTextStyle.instance.textStyle16.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: text.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                 ),
-
+                const SizedBox(height: 8),
                 Category(),
-
+                const SizedBox(height: 24),
                 Text(
                   loc.recommendationsToday,
-                  style: AppTextStyle.instance.textStyle16.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: text.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
                 ),
-
+                const SizedBox(height: 8),
                 BlocBuilder<HomeViewModel, HomeState>(
                   builder: (context, state) {
                     if (state is HomeLoading) {
@@ -154,7 +151,7 @@ class HomeViewBody extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                       loc.recommendationsForYou,
+                        loc.recommendationsForYou,
                         style: AppTextStyle.instance.textStyle16.copyWith(
                           fontWeight: FontWeight.w600,
                         ),

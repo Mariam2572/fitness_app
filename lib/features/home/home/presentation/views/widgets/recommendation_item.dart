@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
@@ -26,11 +27,14 @@ class RecommendationItem extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             // Background image
-            Image.network(
-              image,
-              fit: BoxFit.cover,
+            CachedNetworkImage(
+              imageUrl: image,
+              fit: BoxFit.fill,
+              placeholder:
+                  (context, url) => const Center(
+                    child: CircularProgressIndicator(color: AppColors.mainRed),
+                  ),
             ),
-
             // Blurred footer background
             Positioned(
               bottom: 0,
@@ -41,8 +45,10 @@ class RecommendationItem extends StatelessWidget {
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                   child: Container(
-                    padding:  REdgeInsets.symmetric(horizontal: 6),
-                    color: Colors.black.withOpacity(0.3), // translucent background
+                    padding: REdgeInsets.symmetric(horizontal: 6),
+                    color: Colors.black.withOpacity(
+                      0.3,
+                    ), // translucent background
                     alignment: Alignment.center,
                     child: Text(
                       name,
