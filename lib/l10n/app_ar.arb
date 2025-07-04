@@ -60,8 +60,7 @@
   "logout_confirmation" : "هل تريد اغلاق التطبيق؟",
   "logout" : "تسجيل الخروج",
   "yes" : "نعم",
-  "no": "لا"
-  "anErrorOccurred" : "  . برجاء المحاولة لاحقا لقد حدث خطأ ما",
+  "no": "لا",
   "editProfile":"تعديل الملف الشخصي",
   "yourWeight":"وزنك",
   "yourHeight":"طولك",
