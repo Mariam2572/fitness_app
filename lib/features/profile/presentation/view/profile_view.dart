@@ -27,9 +27,11 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create:
-          (context) =>
-              ProfileCubit(getIt<GetProfileData>(), getIt<UploadPhoto>(), getIt<LogoutUseCase>())
-                ..doIntent(LoadProfileIntent()),
+          (context) => ProfileCubit(
+            getIt<GetProfileData>(),
+            getIt<UploadPhoto>(),
+            getIt<LogoutUseCase>(),
+          )..doIntent(LoadProfileIntent()),
       child: const _ProfileBody(),
     );
   }
@@ -58,7 +60,7 @@ class _ProfileBody extends StatelessWidget {
               builder: (context, state) {
                 if (state is ProfileLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state is ProfileSuccess ) {
+                } else if (state is ProfileSuccess) {
                   final user = state.user;
                   return Column(
                     children: [
@@ -82,7 +84,8 @@ class _ProfileBody extends StatelessWidget {
                       CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(
-                          user?.user!.photo ?? 'https://i.imgur.com/BoN9kdC.png',
+                          user?.user!.photo ??
+                              'https://i.imgur.com/BoN9kdC.png',
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -113,8 +116,7 @@ class _ProfileBody extends StatelessWidget {
                       _buildSettingsList(context),
                     ],
                   );
-                } 
-                else if (state is ProfileError) {
+                } else if (state is ProfileError) {
                   return Center(
                     child: Text(
                       'Error: ${state.message}',
@@ -147,7 +149,9 @@ class _ProfileBody extends StatelessWidget {
               BuildListTile(
                 icon: Icons.person,
                 title: 'Edit Profile',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesName.editProfile);
+                },
               ),
 
               BuildListTile(
@@ -180,8 +184,7 @@ class _ProfileBody extends StatelessWidget {
                 onTap: () {
                   showLogoutDialog(context, () async {
                     context.read<ProfileCubit>().doIntent(LogoutIntent());
-                          Navigator.pushReplacementNamed(context, RoutesName.login,);
-
+                    Navigator.pushReplacementNamed(context, RoutesName.login);
                   });
                 },
               ),

@@ -68,5 +68,11 @@
   "yourGender":"جنسك",
   "yourGoal":"هدفك",
   "yourActivityLevel":"مستوى نشاطك",
-  "tapToEdit":"انقر للتعديل"
+  "tapToEdit":"انقر للتعديل",
+  "category" :"الفئة",
+  "recommendationsToday": "التوصيات اليوم",
+  "upcomingWorkouts": "التدريبات القادمة",
+  "seeAll": "عرض الكل",
+  "recommendationsForYou": "توصيات لك",
+  "popularTraining": "التدريبات الشائعة"
 }

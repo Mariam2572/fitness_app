@@ -182,47 +182,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordsDoNotMatch => 'كلمة المرور الجديدة وتأكيدها غير متطابقين';
-  
-  @override
-  // TODO: implement logout
-  String get logout =>'تسجيل الخروج';
-  
-  @override
-  // TODO: implement logout_confirmation
-  String get logout_confirmation => 'هل تريد اغلاق التطبيق؟';
-  
-  @override
-  // TODO: implement no
-  String get no => 'لا';
-  
-  @override
-  // TODO: implement yes
-  String get yes => 'نعم';
-  
 
   @override
   String get noResponse => 'لا يوجد رد';
 
   @override
-  String get editProfile => "تعديل الملف الشخصي";
+  String get logout_confirmation => 'هل تريد اغلاق التطبيق؟';
 
   @override
-  String get tapToEdit =>  "انقر للتعديل";
-  @override
-  String get yourActivityLevel => "مستوى نشاطك";
+  String get logout => 'تسجيل الخروج';
 
   @override
-  String get yourAge => "عمرك";
+  String get yes => 'نعم';
 
   @override
-  String get yourGender =>"جنسك";
+  String get no => 'لا';
 
   @override
-  String get yourGoal => "هدفك";
+  String get editProfile => 'تعديل الملف الشخصي';
 
   @override
-  String get yourHeight =>"طولك";
+  String get yourWeight => 'وزنك';
 
   @override
-  String get yourWeight => "وزنك";
+  String get yourHeight => 'طولك';
+
+  @override
+  String get yourAge => 'عمرك';
+
+  @override
+  String get yourGender => 'جنسك';
+
+  @override
+  String get yourGoal => 'هدفك';
+
+  @override
+  String get yourActivityLevel => 'مستوى نشاطك';
+
+  @override
+  String get tapToEdit => 'انقر للتعديل';
+
+  @override
+  String get category => 'الفئة';
+
+  @override
+  String get recommendationsToday => 'التوصيات اليوم';
+
+  @override
+  String get upcomingWorkouts => 'التدريبات القادمة';
+
+  @override
+  String get seeAll => 'عرض الكل';
+
+  @override
+  String get recommendationsForYou => 'توصيات لك';
+
+  @override
+  String get popularTraining => 'التدريبات الشائعة';
 }

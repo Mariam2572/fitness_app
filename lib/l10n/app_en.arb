@@ -68,7 +68,13 @@
   "yourGender":"Your Gender",
   "yourGoal":"Your Goal",
   "yourActivityLevel":"Your Activity Level",
-  "tapToEdit":"tap To Edit"
+  "tapToEdit":"tap To Edit",
+  "category" :"Category",
+  "recommendationsToday" : "Recommendations Today",
+  "upcomingWorkouts" : "Upcoming Workouts",
+  "seeAll":"See All",
+  "recommendationsForYou" : "Recommendations For You",
+  "popularTraining": "Popular Training"
 
 
 }

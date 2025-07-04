@@ -164,6 +164,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get anErrorOccurred => 'An error occurred , Please try later';
+
   @override
   String get changePassword => 'Change Password';
 
@@ -182,39 +183,61 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passwordsDoNotMatch =>
       'New password and confirmation do not match';
-  @override
-  String get logout_confirmation => 'Are you sure to close the Application ?';
-  @override
-  String get logout => 'Logout';
-  @override
-  String get yes => 'Yes';
-  @override
-  String get no => 'No';
 
   @override
   String get noResponse => ' No Response';
 
   @override
-  String get editProfile => "Edit Profile";
+  String get logout_confirmation => 'Are you sure to close the Application ?';
 
   @override
-  String get tapToEdit =>"tap To Edit";
+  String get logout => 'Logout';
 
   @override
-  String get yourActivityLevel => "Your Activity Level";
+  String get yes => 'Yes';
 
   @override
-  String get yourAge => "Your Age";
+  String get no => 'No';
 
   @override
-  String get yourGender => "Your Gender";
+  String get editProfile => 'Edit Profile';
 
   @override
-  String get yourGoal => "Your Goal";
+  String get yourWeight => 'Your Weight';
 
   @override
-  String get yourHeight => "Your Height";
+  String get yourHeight => 'Your Height';
 
   @override
-  String get yourWeight => "Your Weight";
+  String get yourAge => 'Your Age';
+
+  @override
+  String get yourGender => 'Your Gender';
+
+  @override
+  String get yourGoal => 'Your Goal';
+
+  @override
+  String get yourActivityLevel => 'Your Activity Level';
+
+  @override
+  String get tapToEdit => 'tap To Edit';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get recommendationsToday => 'Recommendations Today';
+
+  @override
+  String get upcomingWorkouts => 'Upcoming Workouts';
+
+  @override
+  String get seeAll => 'See All';
+
+  @override
+  String get recommendationsForYou => 'Recommendations For You';
+
+  @override
+  String get popularTraining => 'Popular Training';
 }
