@@ -47,7 +47,7 @@ class EditProfileView extends StatelessWidget {
               child: BlocConsumer<EditProfileCubit, EditProfileState>(
                 listener: (context, state) {
                   if (state is UploadPhotoFailure) {
-                    showErrorSnackBar(context, "Photo Upload Fail");
+                    showErrorSnackBar(context,state.error);
                   } else if (state is UploadPhotoSuccess) {
                     showSnackBar(context, "Photo Upload Success");
                   } else if (state is EditProfileSuccess) {

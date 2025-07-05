@@ -62,6 +62,7 @@ class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
                     if (picked != null) {
                       setState(() {
                         selectedImage = File(picked.path);
+                        print("Image paaaathhh in Profile photo widget ${selectedImage!.path}");
                       });
                       showSnackBar(context, "Uploading...");
                       editProfileCubit.doIntent(UploadPhotoIntent(photo: selectedImage!));
