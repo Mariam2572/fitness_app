@@ -111,9 +111,7 @@ class HomeViewBody extends StatelessWidget {
                         )
                       else if (state is HomeError)
                         Center(child: Text(state.message)),
-                      
-
-                      const SizedBox(height: 24),
+                         const SizedBox(height: 24),
 
                   
                       Row(

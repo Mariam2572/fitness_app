@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/home_upcoming_workout_item.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/recommendation_item.dart';
@@ -19,6 +20,9 @@ class MealRecommendation extends StatelessWidget {
 
         itemBuilder: (context, index) {
           return RecommendationItem(
+            onTap: () {
+              Navigator.pushNamed(context, RoutesName.mealsDetailsScreen , arguments: mealCategories[index]);
+            },
             name: mealCategories[index].strCategory ?? "Name Not Found",
             image: mealCategories[index].strCategoryThumb ?? "Image Not Found",
           );

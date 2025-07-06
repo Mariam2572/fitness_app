@@ -10,63 +10,67 @@ import 'package:skeletonizer/skeletonizer.dart';
 class RecommendationItem extends StatelessWidget {
   final String name;
   final String image;
+  final  Function()? onTap;
 
   const RecommendationItem({
     super.key,
     required this.name,
-    required this.image,
+    required this.image, this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      width: 110,
-      margin: const EdgeInsets.only(right: 12),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            CachedNetworkImage(
-              imageUrl: image,
-              fit: BoxFit.fill,
-              placeholder:
-                  (context, url) =>  Skeletonizer(child: Container(color: AppColors.neutral90With50Opacity)),
-            ),
-
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: 35,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                  child: Container(
-                    padding: REdgeInsets.symmetric(horizontal: 6),
-                    decoration: BoxDecoration(
-                      color: AppColors.neutral90With50Opacity,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-
-                    alignment: Alignment.center,
-                    child: Text(
-                      name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: true,
-                      style: context.textTheme.bodyMedium?.copyWith(
-                        color: AppColors.baseWhite,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 110,
+        width: 110,
+        margin: const EdgeInsets.only(right: 12),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(25),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              CachedNetworkImage(
+                imageUrl: image,
+                fit: BoxFit.fill,
+                placeholder:
+                    (context, url) =>  Skeletonizer(child: Container(color: AppColors.neutral90With50Opacity)),
+              ),
+      
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: 35,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                    child: Container(
+                      padding: REdgeInsets.symmetric(horizontal: 6),
+                      decoration: BoxDecoration(
+                        color: AppColors.neutral90With50Opacity,
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      textAlign: TextAlign.center,
+      
+                      alignment: Alignment.center,
+                      child: Text(
+                        name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
+                        style: context.textTheme.bodyMedium?.copyWith(
+                          color: AppColors.baseWhite,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

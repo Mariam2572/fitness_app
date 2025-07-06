@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/recommendation_item.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,9 @@ class WorkoutRecommendation extends StatelessWidget {
                   ? getYouTubeThumbnail(videoUrl)
                   : "https://img.youtube.com/vi/default.jpg";
           return RecommendationItem(
+            onTap: () {
+              Navigator.pushNamed(context, RoutesName.exerciseView);
+            },
             name: exercises[index].exercise ?? "Exercise Not Found",
             image: image,
           );
