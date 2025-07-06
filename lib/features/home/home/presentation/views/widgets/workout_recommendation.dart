@@ -2,12 +2,14 @@ import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/recommendation_item.dart';
+import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WorkoutRecommendation extends StatelessWidget {
   final List<Exercises> exercises;
-  const WorkoutRecommendation({super.key, required this.exercises});
+  final GetAllMusclesByMuscleGroupIdReponse muscles;
+  const WorkoutRecommendation({super.key, required this.exercises, required this.muscles});
 
   @override
   Widget build(BuildContext context) {

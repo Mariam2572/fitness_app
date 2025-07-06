@@ -138,7 +138,7 @@ class _WorkOutsViewState extends State<WorkOutsView>
                               : state is WorkOutsByIdFailure
                               ? Center(child: Text(state.error))
                               : const Center(
-                                child: CircularProgressIndicator(),
+                                child: CircularProgressIndicator(color: AppColors.mainRed),
                               ),
                     ),
                   ],

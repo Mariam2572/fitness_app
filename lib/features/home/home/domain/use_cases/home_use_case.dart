@@ -22,6 +22,7 @@ class HomeUseCase{
   Future<ApiResult<FoodCategoriesResponse>> getMealsCategories()async{
     return await homeRepo.getMealsCategories();
   }
+  
   Future<ApiResult<ExercisesResponse>> getAllExercises()async{
     return await homeRepo.getAllExercises();
   }
