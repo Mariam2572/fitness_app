@@ -1,5 +1,5 @@
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
-import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +8,6 @@ class ExerciseCard extends StatelessWidget {
   final String taskCount;
   final String level;
   final String imagePath;
-  final bool isImageLeft;
 
   const ExerciseCard({
     Key? key,
@@ -16,26 +15,18 @@ class ExerciseCard extends StatelessWidget {
     required this.taskCount,
     required this.level,
     required this.imagePath,
-    required this.isImageLeft,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 180.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-      ),
+    final text = context.textTheme;
+    return SizedBox(
+      width: 200,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(20),
         child: Stack(
           children: [
-            Positioned.fill(
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-              ),
-            ),
+            Positioned.fill(child: Image.asset(imagePath, fit: BoxFit.cover)),
 
             Positioned.fill(
               child: Container(
@@ -44,61 +35,62 @@ class ExerciseCard extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black.withValues(alpha :0.3),
-                      Colors.black.withValues(alpha: 0.7),
+                      AppColors.baseBlack.withValues(alpha: 0.3),
+                      AppColors.baseBlack.withValues(alpha: 0.7),
                     ],
                   ),
                 ),
               ),
             ),
-
             Positioned.fill(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    // Title
-                    Text(
-                      title,
-                      style: AppTextStyle.instance.textStyle16.copyWith(
-                        fontWeight: FontWeight.w600
-                      )
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    textAlign: TextAlign.center,
+                    title,
+                    style: text.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
                     ),
-                    const SizedBox(height: 12),
+                  ),
 
-                    Row(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          padding: REdgeInsets.all(5),
-                          decoration:  BoxDecoration(
-                            color: AppColors.neutral90.withValues(alpha :0.7),
-                            borderRadius: const BorderRadius.all(Radius.circular(20))
+                          padding: REdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: AppColors.neutral90.withValues(alpha: 0.7),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(20),
+                            ),
                           ),
-                          child: Text(
-                            taskCount,
-                            style: AppTextStyle.instance.textStyle12
-                          ),
+                          child: Text(taskCount, style: text.bodySmall),
                         ),
                         Container(
-                          padding:  REdgeInsets.all(2),
+                          padding: REdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: AppColors.neutral90.withValues(alpha :0.7),
+                            color: AppColors.neutral90.withValues(alpha: 0.7),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
                             level,
-                              style: AppTextStyle.instance.textStyle12.copyWith(
-                              color: AppColors.mainRed
-                            )
+                            style: text.bodySmall?.copyWith(
+                              color: AppColors.mainRed,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

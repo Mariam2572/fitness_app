@@ -4,33 +4,35 @@ import 'package:fitness_app/features/home/home/presentation/views/widgets/Catego
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 class ExerciseCategoriesWidget extends StatelessWidget {
   final List<CategoryData> categories;
 
-  const ExerciseCategoriesWidget({
-    Key? key,
-    required this.categories,
-  }) : super(key: key);
+  const ExerciseCategoriesWidget({super.key, required this.categories});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  EdgeInsets.symmetric(horizontal: 12.h, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+      
       decoration: BoxDecoration(
         color: AppColors.neutral90,
-        borderRadius: BorderRadius.circular(45).r,
-
+        borderRadius: BorderRadius.circular(20).r,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: categories.map((category) =>
-            CategoryItem(
-              imagePath: category.imagePath,
-              label: category.label,
-            ),
-        ).toList(),
+      child: SizedBox(
+        height: 90,
+        width: double.infinity,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children:
+              categories
+                  .map(
+                    (category) => CategoryItem(
+                      imagePath: category.imagePath,
+                      label: category.label,
+                    ),
+                  )
+                  .toList(),
+        ),
       ),
     );
   }

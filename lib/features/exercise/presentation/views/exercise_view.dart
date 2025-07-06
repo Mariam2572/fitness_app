@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/config/di.dart';
+import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 import 'package:fitness_app/features/exercise/domain/use_cases/get_exercise_by_mover_and_difficulty_level.dart';
 import 'package:fitness_app/features/exercise/domain/use_cases/get_levels_by_prime_mover_muscles.dart';
 import 'package:fitness_app/features/exercise/presentation/view_model/cubit/exercise_cubit.dart';
@@ -15,6 +16,7 @@ class ExerciseView extends StatelessWidget {
   Widget build(BuildContext context) {
     final MusclesBean data =
         ModalRoute.of(context)!.settings.arguments as MusclesBean;
+       
     return BlocProvider(
       create:
           (context) => ExerciseCubit(
