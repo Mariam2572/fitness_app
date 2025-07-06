@@ -1,9 +1,11 @@
 import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
-import 'package:fitness_app/core/utils/theme/app_text_style.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class RecommendationItem extends StatelessWidget {
   final String name;
@@ -18,45 +20,44 @@ class RecommendationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 104,
-      width: 104,
+      height: 110,
+      width: 110,
       margin: const EdgeInsets.only(right: 12),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(25),
         child: Stack(
           fit: StackFit.expand,
           children: [
-            // Background image
             CachedNetworkImage(
               imageUrl: image,
               fit: BoxFit.fill,
               placeholder:
-                  (context, url) => const Center(
-                    child: CircularProgressIndicator(color: AppColors.mainRed),
-                  ),
+                  (context, url) =>  Skeletonizer(child: Container(color: AppColors.neutral90With50Opacity)),
             ),
-            // Blurred footer background
+
             Positioned(
               bottom: 0,
               left: 0,
               right: 0,
               height: 35,
-              child: ClipRect(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                   child: Container(
                     padding: REdgeInsets.symmetric(horizontal: 6),
-                    color: Colors.black.withOpacity(
-                      0.3,
-                    ), // translucent background
+                    decoration: BoxDecoration(
+                      color: AppColors.neutral90With50Opacity,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+
                     alignment: Alignment.center,
                     child: Text(
                       name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       softWrap: true,
-                      style: AppTextStyle.instance.textStyle14.copyWith(
-                        fontWeight: FontWeight.w400,
+                      style: context.textTheme.bodyMedium?.copyWith(
                         color: AppColors.baseWhite,
                       ),
                       textAlign: TextAlign.center,

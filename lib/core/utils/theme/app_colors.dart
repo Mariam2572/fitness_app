@@ -33,6 +33,7 @@ class AppColors {
   // Neutral Shades
   static const Color baseBlack = Color(0xFF000000);
   static const Color neutral90 = Color(0xFF242424);
+  static const Color neutral90With50Opacity = Color(0x80242424);
   static const Color neutral80 = Color(0xFF0B0B0B);
   static const Color neutral70 = Color(0xFF3A3A3A);
   static const Color neutral60 = Color(0xFF505050);
