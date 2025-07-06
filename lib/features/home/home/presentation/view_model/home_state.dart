@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
-import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 
 sealed class HomeState extends Equatable {
   @override
@@ -17,14 +16,13 @@ final class HomeSuccess extends HomeState {
   final List<Exercises>? exercises;
   final List<Exercises>? allExercises;
   final List<FoodCategory>? categories;
-  final GetAllMusclesByMuscleGroupIdReponse muscles;
   final String? userError;
   final String? exerciseError;
   final String? mealsError;
   final String? allExercisesError;
 
 
-  HomeSuccess(this.muscles, {
+  HomeSuccess({
     this.userName,
     this.exercises,
     this.categories,
