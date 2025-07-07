@@ -20,6 +20,7 @@ import 'package:fitness_app/features/food/domain/usecases/get_food_categories_us
     show GetFoodCategoriesUseCase;
 import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
 import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
+import 'package:fitness_app/features/food/presentation/view/food_recommendation_view.dart';
 import 'package:fitness_app/features/food/presentation/view/widgets/food_recommendation_view_body.dart.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
@@ -265,7 +266,7 @@ class RoutesGenerator {
         );
       case RoutesName.food:
         return MaterialPageRoute(
-          builder: (context) => const FoodRecommendationViewBody(),
+          builder: (context) => const FoodRecommendationView(),
           settings: settings,
         );
 

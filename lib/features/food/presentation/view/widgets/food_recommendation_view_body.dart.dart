@@ -10,8 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FoodRecommendationViewBody extends StatefulWidget {
-  const FoodRecommendationViewBody({super.key});
-
+  const FoodRecommendationViewBody({super.key, required this.currentCategory});
+  final String currentCategory;
   @override
   State<FoodRecommendationViewBody> createState() =>
       _FoodRecommendationViewBodyState();
@@ -69,6 +69,14 @@ class _FoodRecommendationViewBodyState extends State<FoodRecommendationViewBody>
                       });
 
                       WidgetsBinding.instance.addPostFrameCallback((_) {
+                        int initialIndex = 0;
+                        final currentSelectedIndex = _tabs.indexWhere(
+                          (tab) => tab.strCategory == widget.currentCategory,
+                        );
+                        if (currentSelectedIndex != -1) {
+                          initialIndex = currentSelectedIndex;
+                        }
+                        _tabController?.index = initialIndex;
                         _onTabChanged();
                       });
                     });
