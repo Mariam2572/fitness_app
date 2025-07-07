@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeUpcomingWorkoutItem extends StatelessWidget {
@@ -25,12 +27,21 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(25),
           child: Stack(
             children: [
-              Positioned.fill(child:  CachedNetworkImage(
-                imageUrl: image,
-                fit: BoxFit.fill,
-                placeholder:
-                    (context, url) =>  Skeletonizer(child: Container(color: AppColors.neutral90With50Opacity)),
-              ),),
+              Positioned.fill(
+                child: CachedNetworkImage(
+                  imageUrl: image,
+                  fit: BoxFit.fill,
+                  errorWidget:
+                      (context, url, error) =>
+                          SvgPicture.asset(AppAssets.noImage),
+                  placeholder:
+                      (context, url) => Skeletonizer(
+                        child: Container(
+                          color: AppColors.neutral90With50Opacity,
+                        ),
+                      ),
+                ),
+              ),
 
               Positioned(
                 bottom: 0,
