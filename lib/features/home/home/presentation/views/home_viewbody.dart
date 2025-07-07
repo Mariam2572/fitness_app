@@ -46,7 +46,7 @@ class HomeViewBody extends StatelessWidget {
           child: BlocBuilder<HomeViewModel, HomeState>(
             builder: (context, state) {
               final isLoading = state is HomeLoading;
-
+              
               return Skeletonizer(
                 enabled: isLoading,
                 effect: const ShimmerEffect(
@@ -140,16 +140,21 @@ class HomeViewBody extends StatelessWidget {
                       ),
 
                      
-                      UpcomingWorkoutsCategory(bodyParts: categories, isLoading: isLoading),
-                      const SizedBox(height: 8),
-                      if (state is HomeSuccess)
-                        UpcomingWorkout(
-                          exercises: state.allExercises ?? [],
+                     if (state is HomeSuccess)
+                        UpcomingWorkoutsCategory(bodyParts: state.musclesGroups?.musclesGroup ??[], 
+                         
                         )
                       else if (state is HomeError)
                         Center(child: Text(state.message)),
-                      // else
-                      //   UpcomingWorkout(exercises: []),
+                     
+                      const SizedBox(height: 8),
+                      if (state is HomeSuccess)
+                        UpcomingWorkout(
+                          exercises: state.exercises ?? [],
+                        )
+                      else if (state is HomeError)
+                        Center(child: Text(state.message)),
+                      
 
                       const SizedBox(height: 24),
 

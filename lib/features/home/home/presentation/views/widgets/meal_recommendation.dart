@@ -21,7 +21,7 @@ class MealRecommendation extends StatelessWidget {
         itemBuilder: (context, index) {
           return RecommendationItem(
             onTap: () {
-              Navigator.pushNamed(context, RoutesName.mealsDetailsScreen , arguments: mealCategories[index]);
+              Navigator.pushNamed(context, RoutesName.mealsDetailsScreen);
             },
             name: mealCategories[index].strCategory ?? "Name Not Found",
             image: mealCategories[index].strCategoryThumb ?? "Image Not Found",

@@ -262,8 +262,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()));
     gh.factory<_i401.LoginUsecase>(
         () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()));
-    gh.factory<_i204.HomeUseCase>(
-        () => _i204.HomeUseCase(gh<_i751.HomeRepo>()));
+    gh.factory<_i204.HomeUseCase>(() => _i204.HomeUseCase(
+          gh<_i751.HomeRepo>(),
+          gh<_i80.GetAllMusclesGroupsUseCase>(),
+          gh<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(),
+        ));
     gh.factory<_i793.ChangePasswordUseCase>(
         () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()));
     gh.factory<_i782.MealsDetailsCubit>(

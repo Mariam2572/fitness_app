@@ -28,6 +28,7 @@ class ExerciseRemoteDataSourceImpl implements ExerciseRemoteDataSource {
   getExerciseByMoverAndDifficultyLevel({
     required String primeMoverMuscleId,
     required String difficultyLevelId,
+    
   }) async {
     return apiExecuter<ExerciseByPrimeMoverAndDifficultyResponse>(
       () async => await _apiService.getExerciseByMoverAndDifficulty(

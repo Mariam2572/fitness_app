@@ -96,7 +96,7 @@ class ExerciseCubit extends Cubit<ExerciseState> {
   }
 }
 
-// class ExerciseFailure {}
+
 
 sealed class ExerciseIntent extends Equatable {
   @override
