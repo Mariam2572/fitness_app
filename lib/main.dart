@@ -5,6 +5,9 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/services/gemini_service.dart';
 import 'package:fitness_app/core/utils/simple_bloc_observer.dart';
 import 'package:fitness_app/core/utils/theme/app_theme.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
+import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ChatMessageHiveModel.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ConversationHiveModel.dart';
 import 'package:fitness_app/features/smartCoach/domain/use_case/send_message_use_case.dart';
@@ -23,13 +26,14 @@ Future<void> main() async {
   final geminiService = getIt<GeminiService>();
   await geminiService.initialize();
 
-
   await Hive.initFlutter();
   Hive.registerAdapter(ChatMessageHiveModelAdapter());
   Hive.registerAdapter(ConversationHiveModelAdapter());
   await Hive.openBox<ConversationHiveModel>('conversations');
 
-  final conversationBox = await Hive.openBox<ConversationHiveModel>('conversations');
+  final conversationBox = await Hive.openBox<ConversationHiveModel>(
+    'conversations',
+  );
   getIt.registerSingleton<Box<ConversationHiveModel>>(conversationBox);
   runApp(
     ChangeNotifierProvider(
@@ -51,8 +55,16 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return BlocProvider(
-          create: (context) => SmartCoachCubit(getIt<SendMessageUseCase>()),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => SmartCoachCubit(getIt<SendMessageUseCase>()),
+            ),
+            BlocProvider(create: (context) =>FoodCubit(
+                getIt.get<GetFoodCategoriesUseCase>(),
+                getIt.get<GetMealsByCategoryUseCase>(),
+              ),),
+          ],
           child: MaterialApp(
             locale: Locale(provider.appLanguage),
             localizationsDelegates: AppLocalizations.localizationsDelegates,

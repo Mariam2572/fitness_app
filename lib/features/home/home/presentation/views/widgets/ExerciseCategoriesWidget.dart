@@ -13,7 +13,7 @@ class ExerciseCategoriesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-      
+
       decoration: BoxDecoration(
         color: AppColors.neutral90,
         borderRadius: BorderRadius.circular(20).r,
@@ -21,17 +21,15 @@ class ExerciseCategoriesWidget extends StatelessWidget {
       child: SizedBox(
         height: 90,
         width: double.infinity,
-        child: ListView(
+        child: ListView.separated(
           scrollDirection: Axis.horizontal,
-          children:
-              categories
-                  .map(
-                    (category) => CategoryItem(
-                      imagePath: category.imagePath,
-                      label: category.label,
-                    ),
-                  )
-                  .toList(),
+          itemBuilder: (BuildContext context, int index) {
+           return CategoryItem(imagePath: categories[index].imagePath, label: categories[index].label);
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return const VerticalDivider(color: AppColors.dark85, thickness: 1);
+          },
+          itemCount: categories.length,
         ),
       ),
     );

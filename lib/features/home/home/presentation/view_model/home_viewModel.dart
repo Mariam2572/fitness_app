@@ -41,7 +41,7 @@ class HomeViewModel extends Cubit<HomeState>{
     } else if (exerciseResult is ApiError<RandomExerciseResponse>) {
       exerciseError = exerciseResult.message;
     }
-    // //All Exercises
+    //All Exercises
     List<Exercises>? allExercises;
     String? allExercisesError;
 
@@ -52,8 +52,6 @@ class HomeViewModel extends Cubit<HomeState>{
       allExercisesError = allResult.message;
     }
     
-    
-    //Get All muscles groups
 GetAllMusclesGroupsReponse ? getAllMusclesGroupsReponse;
 
     String? musclesGroupsError;

@@ -15,23 +15,23 @@ class CategoryData {
 class Category extends StatelessWidget {
 final categories = [
 const CategoryData(
-imagePath: 'assets/images/O15_31.png',
+imagePath: 'assets/images/gym.png',
 label: 'Gym',
 ),
 const CategoryData(
-imagePath: 'assets/images/O15_31.png',
+imagePath: 'assets/images/fitness.png',
 label: 'Fitness',
 ),
 const CategoryData(
-imagePath: 'assets/images/O15_31.png',
+imagePath: 'assets/images/yoga.png',
 label: 'Yoga',
 ),
 const CategoryData(
-imagePath: 'assets/images/O15_31.png',
+imagePath: 'assets/images/aerobics.png',
 label: 'Aerobics',
 ),
 const CategoryData(
-imagePath: 'assets/images/O15_31.png',
+imagePath: 'assets/images/trainer.png',
 label: 'Trainer',
 ),
 ];

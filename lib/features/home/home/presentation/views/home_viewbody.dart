@@ -25,15 +25,6 @@ class HomeViewBody extends StatelessWidget {
     final loc = context.loc;
     final text = context.textTheme;
 
-    final categories = [
-      "Full Body",
-      "Chest",
-      "Arm",
-      "Shoulder",
-      "Back",
-      "Legs",
-    ];
-
     return Stack(
       children: [
         Image.asset(

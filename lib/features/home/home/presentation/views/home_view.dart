@@ -1,4 +1,7 @@
 import 'package:fitness_app/core/config/di.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
+import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/home_viewModel.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_viewbody.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
@@ -24,6 +27,13 @@ class HomeView extends StatelessWidget {
                 getIt.get<GetAllMusclesGroupsUseCase>(),
                 getIt.get<GetAllMusclesByMuscleGroupIdUseCase>(),
               )..doIntent(GetAllMusclesGroupsIntent()),
+        ),
+        BlocProvider(
+          create:
+              (context) => FoodCubit(
+                getIt.get<GetFoodCategoriesUseCase>(),
+                getIt.get<GetMealsByCategoryUseCase>(),
+              ),
         ),
       ],
       child: const HomeViewBody(),

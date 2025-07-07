@@ -1,25 +1,26 @@
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
-import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
+import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
+import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
 import 'package:fitness_app/features/food/presentation/view%20model/food_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class FoodRecommendationPage extends StatefulWidget {
-  const FoodRecommendationPage({super.key});
+class FoodRecommendationViewBody extends StatefulWidget {
+  const FoodRecommendationViewBody({super.key});
 
   @override
-  State<FoodRecommendationPage> createState() => _FoodRecommendationPageState();
+  State<FoodRecommendationViewBody> createState() =>
+      _FoodRecommendationViewBodyState();
 }
 
-class _FoodRecommendationPageState extends State<FoodRecommendationPage>
+class _FoodRecommendationViewBodyState extends State<FoodRecommendationViewBody>
     with TickerProviderStateMixin {
   TabController? _tabController;
   List<FoodCategory> _tabs = [];
-
 
   @override
   void initState() {
@@ -38,10 +39,10 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black.withValues( alpha: 0.85),
+      backgroundColor: Colors.black.withValues(alpha: 0.85),
       body: Stack(
         children: [
-          Image.asset(AppAssets.homeBackground,),
+          Image.asset(AppAssets.homeBackground),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -96,13 +97,14 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
                     ),
                     const SizedBox(height: 10),
                     if (_tabs.isNotEmpty && _tabController != null)
-
                       AppTabBar(
                         controller: _tabController!,
                         tabs:
-
-                          _tabs.map((level) => Tab(text: level.strCategory ?? ''))
-                            .toList(),
+                            _tabs
+                                .map(
+                                  (level) => Tab(text: level.strCategory ?? ''),
+                                )
+                                .toList(),
                       ),
                     Expanded(
                       child:
@@ -152,12 +154,11 @@ class MealsByCategoryTab extends StatelessWidget {
               final meal = meals[index];
               return FoodItemCard(
                 onTap: () {
-                  Navigator.pushNamed(context, RoutesName.mealsDetailsScreen,
-                  arguments:{
-                    'id' :meal.id,
-                    'meals':meals
-
-                  } );
+                  Navigator.pushNamed(
+                    context,
+                    RoutesName.mealsDetailsScreen,
+                    arguments: {'id': meal.id, 'meals': meals},
+                  );
                 },
                 imageUrl: meal.thumbnail ?? '',
                 title: meal.name ?? '',
@@ -184,7 +185,12 @@ class FoodItemCard extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  const FoodItemCard({super.key, required this.imageUrl, required this.title, required this.onTap});
+  const FoodItemCard({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
