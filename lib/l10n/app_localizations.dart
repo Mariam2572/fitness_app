@@ -553,6 +553,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Popular Training'**
   String get popularTraining;
+
+  /// No description provided for @foodRecommendation.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Recommendation'**
+  String get foodRecommendation;
+
+  /// No description provided for @recommendation.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommendation'**
+  String get recommendation;
 }
 
 class _AppLocalizationsDelegate

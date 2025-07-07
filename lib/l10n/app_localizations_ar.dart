@@ -239,4 +239,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get popularTraining => 'التدريبات الشائعة';
+
+  @override
+  String get foodRecommendation => 'إقتراحات الطعام';
+
+  @override
+  String get recommendation => 'إقتراحات';
 }

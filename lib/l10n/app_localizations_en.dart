@@ -240,4 +240,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get popularTraining => 'Popular Training';
+
+  @override
+  String get foodRecommendation => 'Food Recommendation';
+
+  @override
+  String get recommendation => 'Recommendation';
 }

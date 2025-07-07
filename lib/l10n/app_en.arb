@@ -74,7 +74,9 @@
   "upcomingWorkouts" : "Upcoming Workouts",
   "seeAll":"See All",
   "recommendationsForYou" : "Recommendations For You",
-  "popularTraining": "Popular Training"
+  "popularTraining": "Popular Training",
+  "foodRecommendation" : "Food Recommendation",
+  "recommendation" : "Recommendation"
 
 
 }

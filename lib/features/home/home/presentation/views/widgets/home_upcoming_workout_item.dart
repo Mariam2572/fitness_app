@@ -32,8 +32,11 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
                   imageUrl: image,
                   fit: BoxFit.fill,
                   errorWidget:
-                      (context, url, error) =>
-                          SvgPicture.asset(AppAssets.noImage),
+                      (context, url, error) => const Icon(
+                        Icons.error,
+                        color: AppColors.neutral40,
+                        size: 45
+                      ),
                   placeholder:
                       (context, url) => Skeletonizer(
                         child: Container(

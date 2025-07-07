@@ -12,12 +12,13 @@ import 'package:skeletonizer/skeletonizer.dart';
 class RecommendationItem extends StatelessWidget {
   final String name;
   final String image;
-  final  Function()? onTap;
+  final Function()? onTap;
 
   const RecommendationItem({
     super.key,
     required this.name,
-    required this.image, this.onTap,
+    required this.image,
+    this.onTap,
   });
 
   @override
@@ -37,12 +38,14 @@ class RecommendationItem extends StatelessWidget {
                 imageUrl: image,
                 fit: BoxFit.fill,
                 errorWidget:
-                      (context, url, error) =>
-                          SvgPicture.asset(AppAssets.noImage),
+                    (context, url, error) =>
+                       const Icon(Icons.error, color: AppColors.neutral40, size: 45),
                 placeholder:
-                    (context, url) =>  Skeletonizer(child: Container(color: AppColors.neutral90With50Opacity)),
+                    (context, url) => Skeletonizer(
+                      child: Container(color: AppColors.neutral90With50Opacity),
+                    ),
               ),
-      
+
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -58,7 +61,7 @@ class RecommendationItem extends StatelessWidget {
                         color: AppColors.neutral90With50Opacity,
                         borderRadius: BorderRadius.circular(20),
                       ),
-      
+
                       alignment: Alignment.center,
                       child: Text(
                         name,

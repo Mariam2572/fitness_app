@@ -74,5 +74,7 @@
   "upcomingWorkouts": "التدريبات القادمة",
   "seeAll": "عرض الكل",
   "recommendationsForYou": "توصيات لك",
-  "popularTraining": "التدريبات الشائعة"
+  "popularTraining": "التدريبات الشائعة",
+  "foodRecommendation" : "إقتراحات الطعام",
+  "recommendation" : "إقتراحات"
 }
