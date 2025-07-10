@@ -8,7 +8,8 @@ abstract class HomeRepo{
 
   Future<ApiResult<String>> getCurrentUserName();
 
-  Future<ApiResult<RandomExerciseResponse>> getRandomExercises();
+  Future<ApiResult<RandomExerciseResponse>> getRandomExercises(
+    );
 
   Future<ApiResult<FoodCategoriesResponse>> getMealsCategories();
 

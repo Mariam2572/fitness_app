@@ -21,13 +21,7 @@ class HomeView extends StatelessWidget {
           create:
               (context) => getIt.get<HomeViewModel>()..doIntent(InitialLoad()),
         ),
-        BlocProvider(
-          create:
-              (context) => WorkOutsCubit(
-                getIt.get<GetAllMusclesGroupsUseCase>(),
-                getIt.get<GetAllMusclesByMuscleGroupIdUseCase>(),
-              )..doIntent(GetAllMusclesGroupsIntent()),
-        ),
+       
         BlocProvider(
           create:
               (context) => FoodCubit(
@@ -35,6 +29,7 @@ class HomeView extends StatelessWidget {
                 getIt.get<GetMealsByCategoryUseCase>(),
               ),
         ),
+        
       ],
       child: const HomeViewBody(),
     );

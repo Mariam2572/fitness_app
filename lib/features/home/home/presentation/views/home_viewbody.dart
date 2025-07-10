@@ -129,12 +129,9 @@ class HomeViewBody extends StatelessWidget {
                           ),
                         ],
                       ),
-
-                     
-                     if (state is HomeSuccess)
+                      if (state is HomeSuccess)
                         UpcomingWorkoutsCategory(bodyParts: state.musclesGroups?.musclesGroup ??[], 
-                         
-                        )
+                         )
                       else if (state is HomeError)
                         Center(child: Text(state.message)),
                      
@@ -206,46 +203,3 @@ class HomeViewBody extends StatelessWidget {
   }
 }
 
-// class SkeletonizerDummyWidgetForHome extends StatelessWidget {
-//   const SkeletonizerDummyWidgetForHome({super.key});
-
-//   @override
-// //   Widget build(BuildContext context) {
-// //     return Row(
-//       children: List.generate(
-//         3,
-//         (index) => Container(
-//           height: 110,
-//           width: 110,
-//           margin: const EdgeInsets.only(right: 12),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.end,
-//             children: [
-//               Skeleton.replace(
-//                 child: Container(
-//                   height: 110,
-//                   width: 110,
-//                   decoration: BoxDecoration(
-//                     color: AppColors.whiteSmoke,
-//                     borderRadius: BorderRadius.circular(25),
-//                   ),
-//                 ),
-//               ),
-//               const SizedBox(height: 8),
-//               Skeleton.replace(
-//                 child: Container(
-//                   height: 35,
-//                   width: double.infinity,
-//                   decoration: BoxDecoration(
-//                     color: AppColors.whiteSmoke,
-//                     borderRadius: BorderRadius.circular(20),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

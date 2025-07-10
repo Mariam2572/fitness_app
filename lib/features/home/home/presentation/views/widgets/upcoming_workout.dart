@@ -1,8 +1,6 @@
 import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
-import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/home_upcoming_workout_item.dart';
-import 'package:fitness_app/features/home/presentation/views/widgets/home_upcoming_workout_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

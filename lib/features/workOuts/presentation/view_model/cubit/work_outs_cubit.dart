@@ -10,9 +10,15 @@ part 'work_outs_state.dart';
 
 class WorkOutsCubit extends Cubit<WorkOutsState> {
   final GetAllMusclesGroupsUseCase _getAllMusclesGroupsUseCase;
-  final GetAllMusclesByMuscleGroupIdUseCase _getAllMusclesByMuscleGroupIdUseCase;
+  final GetAllMusclesByMuscleGroupIdUseCase
+  _getAllMusclesByMuscleGroupIdUseCase;
 
-  WorkOutsCubit(this._getAllMusclesGroupsUseCase,this._getAllMusclesByMuscleGroupIdUseCase) : super(WorkOutsInitial());
+  WorkOutsCubit(
+    this._getAllMusclesGroupsUseCase,
+    this._getAllMusclesByMuscleGroupIdUseCase,
+  ) : super(WorkOutsInitial());
+  GetAllMusclesGroupsReponse? allMuscles;
+   GetAllMusclesByMuscleGroupIdReponse? workOutsByMuscleGroupId;
   void doIntent(WorkOutsIntent intent) {
     switch (intent) {
       case GetAllMusclesGroupsIntent():
@@ -31,18 +37,29 @@ class WorkOutsCubit extends Cubit<WorkOutsState> {
       case ApiError<GetAllMusclesGroupsReponse>():
         emit(
           WorkOutsFailure(
-            response.failure?.errorMessage ?? 'An error occurred',          ),
+            response.failure?.errorMessage ?? 'An error occurred',
+          ),
         );
-      case ApiSuccess<GetAllMusclesGroupsReponse>():{
-        emit(WorkOutsSuccess(response.data!));
-      _getAllMusclesByMuscleGroupId(GetAllMusclesByMuscleGroupIdIntent(id: response.data!.musclesGroup![0].id!));
-      }
-      }
-
+      case ApiSuccess<GetAllMusclesGroupsReponse>():
+        {
+          allMuscles = response.data;
+          emit(WorkOutsSuccess(response.data!));
+          _getAllMusclesByMuscleGroupId(
+            GetAllMusclesByMuscleGroupIdIntent(
+              id: response.data!.musclesGroup![0].id!,
+            ),
+          );
+        }
+    }
   }
-  Future<void> _getAllMusclesByMuscleGroupId(GetAllMusclesByMuscleGroupIdIntent intent) async {
+
+  Future<void> _getAllMusclesByMuscleGroupId(
+    GetAllMusclesByMuscleGroupIdIntent intent,
+  ) async {
     emit(WorkOutsLoading());
-    final response = await _getAllMusclesByMuscleGroupIdUseCase.invoke(intent.id);
+    final response = await _getAllMusclesByMuscleGroupIdUseCase.invoke(
+      intent.id,
+    );
     switch (response) {
       case ApiError<GetAllMusclesByMuscleGroupIdReponse>():
         emit(
@@ -51,18 +68,16 @@ class WorkOutsCubit extends Cubit<WorkOutsState> {
           ),
         );
       case ApiSuccess<GetAllMusclesByMuscleGroupIdReponse>():
+        workOutsByMuscleGroupId = response.data;
         emit(WorkOutsByIdSuccess(response.data!));
-      }
-
+    }
   }
-
 }
 
 sealed class WorkOutsIntent {}
 
-class GetAllMusclesGroupsIntent extends WorkOutsIntent {
+class GetAllMusclesGroupsIntent extends WorkOutsIntent {}
 
-}
 class GetAllMusclesByMuscleGroupIdIntent extends WorkOutsIntent {
   String id;
   GetAllMusclesByMuscleGroupIdIntent({required this.id});
