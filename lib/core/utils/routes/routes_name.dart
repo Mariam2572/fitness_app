@@ -27,4 +27,10 @@ class RoutesName {
   static const String chatGetStarted = '/chatGetStarted';
   static const String changePassword = 'changePasswordScreen';
   static const String editProfile = '/editProfile';
+  static const String editActivityLevel = '/editActivityLevel';
+  static const String editGoals = '/editGoals';
+  static const String editHeight = '/editHeight';
+  static const String editWeight = '/editWeight';
+  static const String editAge = '/editAge';
+  static const String editGender = '/editGender';
 }

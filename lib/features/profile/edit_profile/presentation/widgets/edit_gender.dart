@@ -1,16 +1,15 @@
-import 'dart:ui';
-
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/choose_gender_container.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
-import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-
+import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChooseGenderScreenBody extends StatelessWidget {
+class EditGender extends StatelessWidget {
   
-  const ChooseGenderScreenBody({super.key});
+  const EditGender({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +40,30 @@ class ChooseGenderScreenBody extends StatelessWidget {
         ),
         const SizedBox(height: 16),
          ChooseGenderContainer(
-           isEditProfile: false,
-          //  selectedGender: RegisterCubit.selectedGender.name,
+           isEditProfile: true,
+          //  selectedGender: context.read<EditProfileCubit>().selectedGender.name,
            onTap: (gender) {
-             RegisterCubit.selectedGender = gender;
+             EditProfileCubit.selectedGender = gender;
+             final editProfileCubit = context.read<EditProfileCubit>();
+
+        editProfileCubit.doIntent(
+            EditProfileInfoIntent(
+              editProfileRequest: EditProfileRequest(
+                email: editProfileCubit.emailController.text,
+                height: editProfileCubit.height,
+                // activityLevel: 
+                // editProfileCubit.activityLevel,
+                age: editProfileCubit.age,
+                firstName: editProfileCubit.firstNameController.text,
+                gender: EditProfileCubit.selectedGender.name,
+                goal: editProfileCubit.goal,
+                lastName: editProfileCubit.lastNameController.text,
+                weight: editProfileCubit.weight,
+              ),
+            ),
+          );
+        Navigator.pop(context);
+        editProfileCubit.doIntent(GetLoggedUserDataIntent());
            },
          ),
       ],

@@ -17,8 +17,7 @@ class ExerciseViewBody extends StatefulWidget {
 
 class _ExerciseViewBodyState extends State<ExerciseViewBody>
     with TickerProviderStateMixin {
-      
- 
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +32,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
           if (cubit.levels.isNotEmpty) {
             cubit.tabController = TabController(
               length: cubit.levels.length,
-              vsync: this,
+            vsync: this,  
             );
             final firstId = cubit.levels[0].id;
             cubit.doIntent(
@@ -56,9 +55,6 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
           }
         });
   }
-
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

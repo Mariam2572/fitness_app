@@ -74,5 +74,17 @@
   "upcomingWorkouts": "التدريبات القادمة",
   "seeAll": "عرض الكل",
   "recommendationsForYou": "توصيات لك",
-  "popularTraining": "التدريبات الشائعة"
+  "popularTraining": "التدريبات الشائعة",
+  "whatsYourGoal": "ما هو هدفك؟",
+  "gainWeight": "زيادة الوزن",
+  "loseWeight": "فقدان الوزن",
+  "getFitter": "حصول على الصحة",
+  "gainMoreFlexibility": "زيادة الحركة",
+  "learnTheBasics": "تعلم الاساسيات",
+  "yourRegularPhysical": "نشاطك البدني المعتاد",
+  "activityLevel": "مستوى النشاط؟",
+  "registerSuccess": "تم التسجيل بنجاح!",
+  "bigenner": "مبتدئ",
+  "done": "تم"
+  
 }

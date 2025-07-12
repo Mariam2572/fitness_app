@@ -553,6 +553,13 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Popular Training'**
   String get popularTraining;
+  String get getwhatsYourGoal;
+  String get gainWeight;
+  String get loseWeight;
+  String get getFitter;
+  String get gainMoreFlexibility;
+  String get learnTheBasics;
+  String get done;
 }
 
 class _AppLocalizationsDelegate

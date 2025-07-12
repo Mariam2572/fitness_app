@@ -16,11 +16,6 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_a
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
-import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart'
-    show GetFoodCategoriesUseCase;
-import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
-import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
-import 'package:fitness_app/features/food/presentation/view/widgets/food.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
@@ -30,6 +25,12 @@ import 'package:fitness_app/features/profile/edit_profile/domain/use_cases/get_l
 import 'package:fitness_app/features/profile/edit_profile/domain/use_cases/upload_photo_use_case.dart';
 import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:fitness_app/features/profile/edit_profile/presentation/views/edit_profile_view.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_activity_level.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_age.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_gender.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_goals.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_heigth.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_weight.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/smart_coach_view.dart';
@@ -53,126 +54,125 @@ class RoutesGenerator {
         );
 
       case RoutesName.goals:
-        final args = settings.arguments as Map;
-
-        final cubit = args['registerCubit'] as RegisterCubit?;
-        final editProfileCubit = args['editProfileCubit'] as EditProfileCubit?;
-
+        final cubit = settings.arguments as RegisterCubit;
         return MaterialPageRoute(
           builder:
               (_) =>
-                  MultiBlocProvider(
-                      providers: [
-                        if (cubit != null)
-                          BlocProvider<RegisterCubit>.value(value: cubit),
-                        if (editProfileCubit != null)
-                          BlocProvider<EditProfileCubit>.value(value: editProfileCubit),
-                      ], child: const GoalsScreen()),
+                  BlocProvider.value(value: cubit, child: const GoalsScreen()),
           settings: settings,
         );
 
       case RoutesName.chooseGenderScreen:
-        final args = settings.arguments as Map;
-
-        final cubit = args['registerCubit'] as RegisterCubit?;
-        final editProfileCubit = args['editProfileCubit'] as EditProfileCubit?;
-
+        final cubit = settings.arguments as RegisterCubit;
         return MaterialPageRoute(
           builder:
-              (_) =>
-              MultiBlocProvider(
-                providers: [
-                  if (cubit != null)
-                    BlocProvider<RegisterCubit>.value(value: cubit),
-                  if (editProfileCubit != null)
-                    BlocProvider<EditProfileCubit>.value(value: editProfileCubit),
-                ],
+              (_) => BlocProvider.value(
+                value: cubit,
                 child: const ChooseGenderScreen(),
               ),
           settings: settings,
         );
 
       case RoutesName.chooseAgeScreen:
-        final args = settings.arguments as Map;
-
-        final cubit = args['registerCubit'] as RegisterCubit?;
-        final editProfileCubit = args['editProfileCubit'] as EditProfileCubit?;
-
+        final cubit = settings.arguments as RegisterCubit;
         return MaterialPageRoute(
           builder:
-              (_) =>
-              MultiBlocProvider(
-                providers: [
-                  if (cubit != null)
-                    BlocProvider<RegisterCubit>.value(value: cubit),
-                  if (editProfileCubit != null)
-                    BlocProvider<EditProfileCubit>.value(value: editProfileCubit),
-                ],
+              (_) => BlocProvider.value(
+                value: cubit,
                 child: const ChooseAgeScreen(),
               ),
           settings: settings,
         );
 
       case RoutesName.chooseWeightScreen:
-        final args = settings.arguments as Map;
-
-        final cubit = args['registerCubit'] as RegisterCubit?;
-        final editProfileCubit = args['editProfileCubit'] as EditProfileCubit?;
-
+        final cubit = settings.arguments as RegisterCubit;
         return MaterialPageRoute(
           builder:
-              (_) =>
-              MultiBlocProvider(
-                providers: [
-                  if (cubit != null)
-                    BlocProvider<RegisterCubit>.value(value: cubit),
-                  if (editProfileCubit != null)
-                    BlocProvider<EditProfileCubit>.value(value: editProfileCubit),
-                ],
+              (_) => BlocProvider.value(
+                value: cubit,
                 child: const ChooseWeightScreen(),
-          ),
+              ),
           settings: settings,
         );
 
-
       case RoutesName.chooseHeightScreen:
-        final args = settings.arguments as Map;
-
-        final cubit = args['registerCubit'] as RegisterCubit?;
-        final editProfileCubit = args['editProfileCubit'] as EditProfileCubit?;
-
+        final cubit = settings.arguments as RegisterCubit;
         return MaterialPageRoute(
           builder:
-              (_) =>
-              MultiBlocProvider(
-                providers: [
-                  if (cubit != null)
-                    BlocProvider<RegisterCubit>.value(value: cubit),
-                  if (editProfileCubit != null)
-                    BlocProvider<EditProfileCubit>.value(value: editProfileCubit),
-                ],
+              (_) => BlocProvider.value(
+                value: cubit,
                 child: const ChooseHeightScreen(),
               ),
           settings: settings,
         );
 
       case RoutesName.activities:
-        final args = settings.arguments as Map;
-
-        final cubit = args['registerCubit'] as RegisterCubit?;
-        final editProfileCubit = args['editProfileCubit'] as EditProfileCubit?;
-
+        final cubit = settings.arguments as RegisterCubit;
         return MaterialPageRoute(
           builder:
-              (_) =>
-              MultiBlocProvider(
-                providers: [
-                  if (cubit != null)
-                    BlocProvider<RegisterCubit>.value(value: cubit),
-                  if (editProfileCubit != null)
-                    BlocProvider<EditProfileCubit>.value(value: editProfileCubit),
-                ],
+              (_) => BlocProvider.value(
+                value: cubit,
                 child: const ActivtiesScreen(),
+              ),
+          settings: settings,
+        );
+      case RoutesName.editGender:
+        final cubit = settings.arguments as EditProfileCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const EditGender(),
+              ),
+          settings: settings,
+        );
+      case RoutesName.editActivityLevel:
+        final cubit = settings.arguments as EditProfileCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const EditActivityLevel(),
+              ),
+          settings: settings,
+        );
+      case RoutesName.editAge:
+        final cubit = settings.arguments as EditProfileCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const EditAge(),
+              ),
+          settings: settings,
+        );
+      case RoutesName.editGoals:
+        final cubit = settings.arguments as EditProfileCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const EditGoals(),
+              ),
+          settings: settings,
+        );
+      case RoutesName.editWeight:
+        final cubit = settings.arguments as EditProfileCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const EditWeight(),
+              ),
+          settings: settings,
+        );
+      case RoutesName.editHeight:
+        final cubit = settings.arguments as EditProfileCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(
+                value: cubit,
+                child: const EditHeigth(),
               ),
           settings: settings,
         );
@@ -273,33 +273,32 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
       case RoutesName.food:
         return MaterialPageRoute(
           builder:
               (context) => BlocProvider(
-            create:
-                (context) => EditProfileCubit(
-              getIt<EditProfileUseCase>(),
-                  getIt<GetLoggedUserDataUseCase>(),
-                  getIt<UploadPhotoUseCase>(),
-            )..doIntent(GetLoggedUserDataIntent()),
-            child: const EditProfileView(),
-          ),
+                create:
+                    (context) => EditProfileCubit(
+                      getIt<EditProfileUseCase>(),
+                      getIt<GetLoggedUserDataUseCase>(),
+                      getIt<UploadPhotoUseCase>(),
+                    )..doIntent(GetLoggedUserDataIntent()),
+                child: const EditProfileView(),
+              ),
           settings: settings,
         );
       case RoutesName.editProfile:
         return MaterialPageRoute(
           builder:
               (context) => BlocProvider(
-            create:
-                (context) => EditProfileCubit(
-              getIt<EditProfileUseCase>(),
-                  getIt<GetLoggedUserDataUseCase>(),
-                  getIt<UploadPhotoUseCase>(),
-            )..doIntent(GetLoggedUserDataIntent()),
-            child: const EditProfileView(),
-          ),
+                create:
+                    (context) => EditProfileCubit(
+                      getIt<EditProfileUseCase>(),
+                      getIt<GetLoggedUserDataUseCase>(),
+                      getIt<UploadPhotoUseCase>(),
+                    )..doIntent(GetLoggedUserDataIntent()),
+                child: const EditProfileView(),
+              ),
           settings: settings,
         );
       default:
