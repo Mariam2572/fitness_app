@@ -84,7 +84,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                             vertical: 24,
                           ),
                           width: double.infinity,
-                          height: context.height * 0.25,
+                          height: context.height * 0.3,
                           decoration: BoxDecoration(
                             color: AppColors.neutral90.withOpacity(.01),
                             borderRadius: BorderRadius.circular(50.0),
@@ -99,7 +99,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Form(
-                                  key: forgetPasswordCubit.formKey,
+                                  key: context.read<ForgetPasswordCubit>().formKey,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -107,46 +107,46 @@ class ForgetPasswordScreen extends StatelessWidget {
                                         key: const ValueKey('emailField'),
                                         validator:
                                             (value) =>
-                                                Validator.validateEmail(value),
+                                            Validator.validateEmail(value),
                                         controller:
-                                            context
-                                                .read<ForgetPasswordCubit>()
-                                                .emailController,
-                                        style: const TextStyle(
+                                        context
+                                            .read<ForgetPasswordCubit>()
+                                            .emailController,
+                                        style: TextStyle(
                                           color: AppColors.neutral10,
                                         ),
                                         decoration: InputDecoration(
                                           focusColor: AppColors.neutral10,
 
                                           focusedBorder:
-                                              const OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColors.neutral10,
-                                                  width: 0.5,
-                                                ),
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(50),
-                                                ),
-                                              ),
+                                          const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: AppColors.neutral10,
+                                              width: 0.5,
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(50),
+                                            ),
+                                          ),
                                           enabledBorder:
-                                              const OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColors.neutral10,
-                                                  width: 0.5,
-                                                ),
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(50),
-                                                ),
-                                              ),
+                                          const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: AppColors.neutral10,
+                                              width: 0.5,
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(50),
+                                            ),
+                                          ),
 
                                           labelText: context.loc.email,
                                           labelStyle: context
                                               .textTheme
                                               .bodySmall
                                               ?.copyWith(
-                                                fontWeight: FontWeight.w800,
-                                                color: AppColors.neutral10,
-                                              ),
+                                            fontWeight: FontWeight.w800,
+                                            color: AppColors.neutral10,
+                                          ),
                                           prefixIcon: Image.asset(
                                             AppAssets.mail,
                                             color: AppColors.neutral10,
@@ -178,6 +178,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                           backgroundColor: Colors.green,
                                         ),
                                       );
+                                        if (context.mounted) {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (context) => BlocProvider.value(
@@ -186,7 +187,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                                           ),
                                         ),
                                       );
-                                    }
+                                    }}
                                     if (state is ForgetPasswordError) {
                                       ScaffoldMessenger.of(
                                         context,
@@ -201,10 +202,10 @@ class ForgetPasswordScreen extends StatelessWidget {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       // Trigger the registration process
-
+                                      if(forgetPasswordCubit.formKey.currentState!.validate()){
                                       forgetPasswordCubit.doIntent(
                                         ForgetPasswordIntent(),
-                                      );
+                                      );}
                                       //Navigate to complete registration process
                                     },
                                     child: Text(

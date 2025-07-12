@@ -238,10 +238,10 @@ class ResetPasswordScreen extends StatelessWidget {
                                 child: ElevatedButton(
                                   onPressed: () {
                                     // Trigger the registration process
-
+                                    if(forgetPasswordCubit.formKeyResetPassword.currentState!.validate()){
                                     forgetPasswordCubit.doIntent(
                                       ResetPasswordIntent(),
-                                    );
+                                    );}
                                     //Navigate to complete registration process
                                   },
                                   child: Text(
