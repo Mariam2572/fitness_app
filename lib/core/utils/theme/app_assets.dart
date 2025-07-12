@@ -23,4 +23,14 @@ class AppAssets {
   static const String onBoardingOne = "assets/images/on_boarding1.png";
   static const String onBoardingTwo = "assets/images/on_boarding2.png";
   static const String onBoardingThree = "assets/images/on_boarding3.png";
+  static const String homeBackground = "assets/images/home_background.png";
+  static const String exerciseImage = "assets/images/exercise.png";
+  static const String exercise = 'assets/images/exercise_test.jpg';
+  static const String backButton = "assets/images/Back.png";
+  static const String mealsDetailsBackGround =
+      "assets/images/meals details back ground.png";
+  static const String homeBackGround = "assets/images/HomeBg.jpg";
+  static const String robot = "assets/images/Robot skipping with a rope.png";
+  static const String robotAvatar = "assets/images/Ellipse 7.png";
+  static const String noImage = "assets/images/No_image_available.svg";
 }

@@ -1,12 +1,12 @@
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
+import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'goals_screen_test.mocks.dart';
 

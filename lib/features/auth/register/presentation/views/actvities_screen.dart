@@ -9,6 +9,7 @@ import 'package:fitness_app/features/auth/register/presentation/view_model/cubit
 import 'package:fitness_app/features/auth/register/presentation/widgets/blur_background.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/register_indicator.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,10 +21,11 @@ class ActivtiesScreen extends StatefulWidget {
 }
 
 class _ActivtiesScreenState extends State<ActivtiesScreen> {
-  ActivityEnum? selectedActivity;
 
   @override
   Widget build(BuildContext context) {
+    ActivityEnum ?selectedActivity=context.read<EditProfileCubit?>()?.activityLevel;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -37,17 +39,28 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                   children: [
                     Row(
                       children: [
-                         CircleAvatar(
+                        CircleAvatar(
                           backgroundColor: Colors.red,
-                          child: IconButton( onPressed: () => Navigator.pop(context), icon:const Icon(  Icons.arrow_back, color: Colors.white)),
+                          child: IconButton(
+                            onPressed: () => Navigator.pop(context),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width * 0.25),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                        ),
                         Image.asset("assets/images/fit 1.png", width: 80),
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    const CircularPercentIndicatorWidget(currentStep: 6, totalSteps: 6)
-,                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                    const CircularPercentIndicatorWidget(
+                      currentStep: 6,
+                      totalSteps: 6,
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
                       'YOUR REGULAR PHYSICAL',
                       style: AppTextStyle.instance.textStyle20.copyWith(
@@ -78,64 +91,98 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                             child: Column(
                               children: [
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level1),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level1,
+                                  ),
                                   value: ActivityEnum.level1,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
                                       selectedActivity = value;
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level2),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level2,
+                                  ),
                                   value: ActivityEnum.level2,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
                                       selectedActivity = value;
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level3),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level3,
+                                  ),
                                   value: ActivityEnum.level3,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                       selectedActivity = value;
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level4),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level4,
+                                  ),
                                   value: ActivityEnum.level4,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                       selectedActivity = value;
                                     });
                                   },
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
                                 OptionItem<ActivityEnum>(
-                                  label: activityEnumToString(ActivityEnum.level5),
+                                  label: activityEnumToString(
+                                    ActivityEnum.level5,
+                                  ),
                                   value: ActivityEnum.level5,
                                   selectedValue: selectedActivity,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.activityLevel=value;
                                       selectedActivity = value;
                                     });
                                   },
                                 ),
-                                BlocListener<RegisterCubit, RegisterState>(
+                                context.read<EditProfileCubit>().isEditProfile?    SizedBox():  BlocListener<RegisterCubit, RegisterState>(
                                   listener: (context, state) {
                                     if (state is RegisterSuccess) {
-                                      showSnackBar(context, 'Registered successfully');
-                                      Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
+                                      showSnackBar(
+                                        context,
+                                        'Registered successfully',
+                                      );
+                                      Navigator.pushNamedAndRemoveUntil(
+                                        context,
+                                        RoutesName.layOut,
+                                        (route) => false,
+                                      );
                                     }
                                     if (state is RegisterFailure) {
                                       showErrorSnackBar(context, state.error);
@@ -143,25 +190,33 @@ class _ActivtiesScreenState extends State<ActivtiesScreen> {
                                   },
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      final cubit = context.read<RegisterCubit>();
-                                      cubit.activityLevel =
-                                          activityEnumToBackend(selectedActivity!);
+                                      final cubit =
+                                          context.read<RegisterCubit?>();
+                                      cubit?.activityLevel =
+                                          activityEnumToBackend(
+                                            selectedActivity!,
+                                          );
 
                                       final request = RegisterRequest(
-                                        firstName: cubit.firstNameController.text,
-                                        lastName: cubit.lastNameController.text,
-                                        email: cubit.emailController.text,
-                                        password: cubit.passwordController.text,
-                                        rePassword: cubit.rePasswordController.text,
-                                        height: cubit.height,
-                                        weight: cubit.weight,
-                                        age: cubit.age,
-                                        goal: cubit.goal,
-                                        activityLevel: cubit.activityLevel!,
-                                        gender: RegisterCubit.selectedGender.name,
+                                        firstName:
+                                            cubit?.firstNameController.text,
+                                        lastName: cubit?.lastNameController.text,
+                                        email: cubit?.emailController.text,
+                                        password: cubit?.passwordController.text,
+                                        rePassword:
+                                            cubit?.rePasswordController.text,
+                                        height: cubit?.height,
+                                        weight: cubit?.weight,
+                                        age: cubit?.age,
+                                        goal: cubit?.goal,
+                                        activityLevel: cubit?.activityLevel!,
+                                        gender:
+                                            RegisterCubit.selectedGender.name,
                                       );
 
-                                      cubit.doIntent(RegisterUserIntent(request: request));
+                                      cubit?.doIntent(
+                                        RegisterUserIntent(request: request),
+                                      );
                                       print(request.toJson());
                                     },
                                     child: const Text('Next'),

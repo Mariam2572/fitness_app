@@ -10,4 +10,6 @@ class AppConfigProvider extends ChangeNotifier {
     appLanguage = newLanguage;
     notifyListeners();
   }
+
+  Locale get currentLocale => Locale(appLanguage);
 }

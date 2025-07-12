@@ -7,6 +7,7 @@ import 'package:fitness_app/features/auth/register/presentation/screens/widgets/
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
 import 'package:fitness_app/features/auth/register/presentation/widgets/register_indicator.dart';
+import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,9 +19,11 @@ class GoalsScreen extends StatefulWidget {
 }
 
 class _GoalsScreenState extends State<GoalsScreen> {
-  String? selectedGoal = "";
   @override
   Widget build(BuildContext context) {
+    String? selectedGoal = context.read<EditProfileCubit?>()?.goal;
+
+    ;
     return Scaffold(
       body: Stack(
         children: [
@@ -65,7 +68,10 @@ class _GoalsScreenState extends State<GoalsScreen> {
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
 
-                const CircularPercentIndicatorWidget(currentStep: 5, totalSteps: 6),
+                    const CircularPercentIndicatorWidget(
+                      currentStep: 5,
+                      totalSteps: 6,
+                    ),
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
@@ -104,11 +110,13 @@ class _GoalsScreenState extends State<GoalsScreen> {
                             child: Column(
                               children: [
                                 OptionItem(
-                                  value: 'Gain Weight' ,
+                                  value: 'Gain Weight',
                                   label: 'Gain Weight',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
                                   },
@@ -118,11 +126,13 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 OptionItem(
-                                  value: 'Lose Weight' ,
+                                  value: 'Lose Weight',
                                   label: 'Lose Weight',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
                                   },
@@ -132,27 +142,29 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 OptionItem(
-                                
-                                  
-                                  
                                   label: 'Get Fitter',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
-                                  }, value :'Get Fitter' ,
+                                  },
+                                  value: 'Get Fitter',
                                 ),
                                 SizedBox(
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
                                 OptionItem(
-                                  value:'Gain More Flexible' ,
+                                  value: 'Gain More Flexible',
                                   label: 'Gain More Flexible',
                                   selectedValue: selectedGoal,
                                   onChanged: (value) {
                                     setState(() {
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                       selectedGoal = value!;
                                     });
                                   },
@@ -168,6 +180,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   onChanged: (value) {
                                     setState(() {
                                       selectedGoal = value!;
+                                      context.read<EditProfileCubit?>()?.goal =
+                                          value;
                                     });
                                   },
                                 ),
@@ -175,21 +189,30 @@ class _GoalsScreenState extends State<GoalsScreen> {
                                   height:
                                       MediaQuery.of(context).size.height * 0.02,
                                 ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    context.read<RegisterCubit>().goal =
-                                        selectedGoal;
-                                    Navigator.pushNamed(context, RoutesName.activities, arguments: context.read<RegisterCubit>(),);
-                                  },
-                                  child: Text(
-                                    'Next',
-                                    style: AppTextStyle.instance.textStyle14
-                                        .copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                        ),
-                                  ),
-                                ),
+                                context.read<EditProfileCubit>().isEditProfile
+                                    ? SizedBox()
+                                    : ElevatedButton(
+                                      onPressed: () {
+                                        context.read<RegisterCubit?>()?.goal =
+                                            selectedGoal;
+                                        Navigator.pushNamed(
+                                          context,
+                                          RoutesName.activities,
+                                          arguments: {
+                                            'registerCubit':
+                                                context.read<RegisterCubit>(),
+                                          },
+                                        );
+                                      },
+                                      child: Text(
+                                        'Next',
+                                        style: AppTextStyle.instance.textStyle14
+                                            .copyWith(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w800,
+                                            ),
+                                      ),
+                                    ),
                               ],
                             ),
                           ),

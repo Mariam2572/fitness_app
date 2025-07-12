@@ -201,4 +201,89 @@ class AppLocalizationsEn extends AppLocalizations {
   String get done => 'Done';
   @override
   String get email_sent_successfully => 'Email Sent Successfully!';
+
+  @override
+  String get anErrorOccurred => 'An error occurred , Please try later';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmNewPassword => 'Confirm New Password';
+
+  @override
+  String get passwordChangedSuccessfully => 'Password changed successfully!';
+
+  @override
+  String get passwordsDoNotMatch =>
+      'New password and confirmation do not match';
+
+  @override
+  String get noResponse => ' No Response';
+
+  @override
+  String get logout_confirmation => 'Are you sure to close the Application ?';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get yourWeight => 'Your Weight';
+
+  @override
+  String get yourHeight => 'Your Height';
+
+  @override
+  String get yourAge => 'Your Age';
+
+  @override
+  String get yourGender => 'Your Gender';
+
+  @override
+  String get yourGoal => 'Your Goal';
+
+  @override
+  String get yourActivityLevel => 'Your Activity Level';
+
+  @override
+  String get tapToEdit => 'tap To Edit';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get recommendationsToday => 'Recommendations Today';
+
+  @override
+  String get upcomingWorkouts => 'Upcoming Workouts';
+
+  @override
+  String get seeAll => 'See All';
+
+  @override
+  String get recommendationsForYou => 'Recommendations For You';
+
+  @override
+  String get popularTraining => 'Popular Training';
+
+  @override
+  String get foodRecommendation => 'Food Recommendation';
+
+  @override
+  String get recommendation => 'Recommendation';
 }

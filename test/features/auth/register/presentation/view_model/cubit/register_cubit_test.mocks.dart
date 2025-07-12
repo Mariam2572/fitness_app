@@ -39,16 +39,19 @@ class MockRegisterUseCase extends _i1.Mock implements _i2.RegisterUseCase {
 
   @override
   _i3.Future<_i4.ApiResult<_i5.RegisterResponse>> invoke(
-    _i6.RegisterRequest? registerRequest,
-  ) =>
+          _i6.RegisterRequest? registerRequest) =>
       (super.noSuchMethod(
-            Invocation.method(#invoke, [registerRequest]),
-            returnValue: _i3.Future<_i4.ApiResult<_i5.RegisterResponse>>.value(
-              _i7.dummyValue<_i4.ApiResult<_i5.RegisterResponse>>(
-                this,
-                Invocation.method(#invoke, [registerRequest]),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.ApiResult<_i5.RegisterResponse>>);
+        Invocation.method(
+          #invoke,
+          [registerRequest],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i5.RegisterResponse>>.value(
+            _i7.dummyValue<_i4.ApiResult<_i5.RegisterResponse>>(
+          this,
+          Invocation.method(
+            #invoke,
+            [registerRequest],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i5.RegisterResponse>>);
 }

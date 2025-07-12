@@ -202,4 +202,88 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get email_sent_successfully => 'تم ارسال البريد بنجاح!';
 
+
+  @override
+  String get anErrorOccurred => '  . برجاء المحاولة لاحقا لقد حدث خطأ ما';
+
+  @override
+  String get changePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get currentPassword => 'كلمة المرور الحالية';
+
+  @override
+  String get newPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get confirmNewPassword => 'تأكيد كلمة المرور الجديدة';
+
+  @override
+  String get passwordChangedSuccessfully => 'تم تغيير كلمة المرور بنجاح!';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمة المرور الجديدة وتأكيدها غير متطابقين';
+
+  @override
+  String get noResponse => 'لا يوجد رد';
+
+  @override
+  String get logout_confirmation => 'هل تريد اغلاق التطبيق؟';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get yes => 'نعم';
+
+  @override
+  String get no => 'لا';
+
+  @override
+  String get editProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get yourWeight => 'وزنك';
+
+  @override
+  String get yourHeight => 'طولك';
+
+  @override
+  String get yourAge => 'عمرك';
+
+  @override
+  String get yourGender => 'جنسك';
+
+  @override
+  String get yourGoal => 'هدفك';
+
+  @override
+  String get yourActivityLevel => 'مستوى نشاطك';
+
+  @override
+  String get tapToEdit => 'انقر للتعديل';
+
+  @override
+  String get category => 'الفئة';
+
+  @override
+  String get recommendationsToday => 'التوصيات اليوم';
+
+  @override
+  String get upcomingWorkouts => 'التدريبات القادمة';
+
+  @override
+  String get seeAll => 'عرض الكل';
+
+  @override
+  String get recommendationsForYou => 'توصيات لك';
+
+  @override
+  String get popularTraining => 'التدريبات الشائعة';
+
+  @override
+  String get foodRecommendation => 'إقتراحات الطعام';
+
+  @override
+  String get recommendation => 'إقتراحات';
 }

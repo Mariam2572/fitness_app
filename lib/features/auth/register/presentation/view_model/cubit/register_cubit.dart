@@ -35,22 +35,21 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> _register(RegisterUserIntent intent) async {
-      emit(RegisterLoading());
-      final response = await _registerUseCase.invoke(intent.request);
-      switch (response) {
-        case ApiError<RegisterResponse>():
-          emit(
-            RegisterFailure(
-              response.failure?.errorMessage ?? 'An error occurred',
-            ),
-          );
-        case ApiSuccess<RegisterResponse>():
-          emit(RegisterSuccess(response.data!));
-        default:
-          emit(const RegisterFailure('Unexpected error occurred'));
-          break;
-      }
-    
+    emit(RegisterLoading());
+    final response = await _registerUseCase.invoke(intent.request);
+    switch (response) {
+      case ApiError<RegisterResponse>():
+        emit(
+          RegisterFailure(
+            response.failure?.errorMessage ?? 'An error occurred',
+          ),
+        );
+      case ApiSuccess<RegisterResponse>():
+        emit(RegisterSuccess(response.data!));
+      default:
+        emit(const RegisterFailure('Unexpected error occurred'));
+        break;
+    }
   }
 
   dispose() {

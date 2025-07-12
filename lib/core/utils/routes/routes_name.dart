@@ -21,4 +21,13 @@ class RoutesName {
   static const String forgetPassword = '/forgetPassword';
   static const String verifyCode = '/verifyCode';
   static const String resetPaswword = '/resetPaswword';
+  static const String exerciseView = "/exerciseView";
+  static const String onBoardingTwo = '/onBoardingTwo';
+  static const String onBoardingThree = '/onBoardingThree';
+  static const String mealsDetailsScreen = '/mealsDetailsScreen';
+  static const String food = '/food';
+  static const String previousChatScreen = '/previousChats';
+  static const String chatGetStarted = '/chatGetStarted';
+  static const String changePassword = 'changePasswordScreen';
+  static const String editProfile = '/editProfile';
 }
