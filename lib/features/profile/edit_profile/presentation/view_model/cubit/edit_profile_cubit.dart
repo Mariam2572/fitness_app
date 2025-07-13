@@ -33,6 +33,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
    Gender selectedGender = Gender.female;
   bool isEdited=false;
   bool isEditProfile=false;
+  File? selectedImage;
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   void doIntent(EditProfileIntent intent) {
     switch (intent) {
@@ -102,23 +104,22 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       case ApiSuccess<GetUserDataReponse>():
         emit(EditProfileSuccess(response.data!));
     }
-_getProfile();
   }
   Future<void> _uploadPohot(UploadPhotoIntent intent) async {
 
-    emit(UploadPhotoLoading());
+    emit(EditProfileLoading());
     final response = await _uploadPhotoUseCase.invoke(intent.photo);
     switch (response) {
-      case ApiError<UploadPhotoResponse>():{
+      case ApiError<String>():{
         emit(
-          UploadPhotoFailure(
+          EditProfileFailure(
             response.failure?.errorMessage ?? 'An error occurred',
           ),
         );
-        _getProfile();}
-      case ApiSuccess<UploadPhotoResponse>():{
-        emit(UploadPhotoSuccess(response.data!));
-        _getProfile();}
+       }
+      case ApiSuccess<String>():{
+        emit(EditProfileSuccess(response.data));
+       }
     }
 
   }

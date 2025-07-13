@@ -97,9 +97,9 @@ abstract class ApiService {
 
   @PUT(Constants.editProfileEndPoint)
   Future<GetUserDataReponse> editProfile(@Body() EditProfileRequest editProfileRequest);
-  @PUT(Constants.uploadPhotoEndPoint)
-  @MultiPart()
-  Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File image);
+  // @PUT(Constants.uploadPhotoEndPoint)
+  // @MultiPart()
+  // Future<String> uploadPhoto(@Part(name: "photo",contentType: "image/jpeg") File image);
 
   @POST(Constants.forgotPassword)
   Future<ForgetPasswordResponse> forgotPassword(@Body()ForgetPasswordRequest forgetPasswordRequest);

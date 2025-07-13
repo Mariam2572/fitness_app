@@ -19,8 +19,16 @@ class ProfilePhotoWidget extends StatefulWidget {
 }
 
 class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
-  File ?selectedImage;
-  @override
+  Future<void> pickImage(EditProfileCubit editProfile) async {
+    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (picked != null) {
+      setState(() {
+        editProfile.selectedImage = File(picked.path);
+      });
+    } else {
+      editProfile.selectedImage = File(widget.userData.user?.photo ?? '');
+    }
+  }  @override
   Widget build(BuildContext context) {
     final editProfileCubit= context.read<EditProfileCubit>();
     return                     Center(
@@ -29,8 +37,8 @@ class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
           CircleAvatar(
             radius: 50,
             backgroundImage:
-            selectedImage != null
-                ? FileImage(selectedImage!)
+            editProfileCubit.selectedImage != null
+                ? FileImage(editProfileCubit.selectedImage!)
                 : (widget.userData.user?.photo != null
                 ? NetworkImage(widget.userData.user?.photo
                 ?? '')
@@ -57,19 +65,9 @@ class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
                   color: Colors.black,
                   size: 14,
                 ),
-                  onPressed: () async {
-                    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
-                    if (picked != null) {
-                      setState(() {
-                        selectedImage = File(picked.path);
-                        print("Image paaaathhh in Profile photo widget ${selectedImage!.path}");
-                      });
-                      showSnackBar(context, "Uploading...");
-                      editProfileCubit.doIntent(UploadPhotoIntent(photo: selectedImage!));
-                    } else {
-                      showErrorSnackBar(context, "Photo selection canceled.");
-                    }
-                  }
+                  onPressed:() {
+                    pickImage(editProfileCubit);
+                  },
 
 
               ),

@@ -9,5 +9,5 @@ abstract interface class EditProfileRepo {
 
   Future<ApiResult<GetUserDataReponse>> getLoggedUserData();
   Future<ApiResult<GetUserDataReponse>> editProfile(EditProfileRequest editProfileRequest);
-  Future<ApiResult<UploadPhotoResponse>>  uploadPhoto(File photo);
+  Future<ApiResult<String>>  uploadPhoto(File photo);
 }

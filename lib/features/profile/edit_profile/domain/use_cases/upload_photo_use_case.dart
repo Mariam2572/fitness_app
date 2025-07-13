@@ -12,7 +12,7 @@ import 'package:injectable/injectable.dart';
 class UploadPhotoUseCase {
   final EditProfileRepo _editProfileRepo;
   UploadPhotoUseCase(this._editProfileRepo);
-  Future<ApiResult<UploadPhotoResponse>>  invoke(File photo) async {
+  Future<ApiResult<String>>  invoke(File photo) async {
     return await _editProfileRepo.uploadPhoto(photo);
   }
 }

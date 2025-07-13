@@ -25,7 +25,7 @@ class EditProfileRepoImpl implements EditProfileRepo {
   }
 
   @override
-  Future<ApiResult<UploadPhotoResponse>> uploadPhoto(File photo) async {
+  Future<ApiResult<String>> uploadPhoto(File photo) async {
     return await _editProfileDataSource.uploadPhoto(photo);
   }
 

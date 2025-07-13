@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:fitness_app/core/utils/helper/extention.dart';
@@ -46,20 +47,12 @@ class EditProfileView extends StatelessWidget {
               filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
               child: BlocConsumer<EditProfileCubit, EditProfileState>(
                 listener: (context, state) {
-                  if (state is UploadPhotoFailure) {
-                    showErrorSnackBar(context,state.error);
-                  } else if (state is UploadPhotoSuccess) {
-                    showSnackBar(context, "Photo Upload Success");
-                  } else if (state is EditProfileSuccess) {
+               if (state is EditProfileSuccess) {
                     showSnackBar(context, "Profile Edit Success");
                   } else if (state is EditProfileFailure) {
                     showSnackBar(context, "Profile Edit Fail");
                   }
-                  if (state is UploadPhotoSuccess) {
-                    showSnackBar(context, "Upload success");
-                  } else if (state is UploadPhotoFailure) {
-                    showErrorSnackBar(context, "Upload failed");
-                  }
+
                 },
                 builder: (context, state) {
                   if (state is GetProfileSuccess) {
@@ -110,6 +103,10 @@ class EditProfileView extends StatelessWidget {
                                   onTap: () {
                                     if (editProfileCubit.formKey.currentState!
                                         .validate()) {
+                                      if (editProfileCubit.selectedImage != null) {
+                                         editProfileCubit.doIntent(UploadPhotoIntent(photo: editProfileCubit.selectedImage!));
+                                      }
+
                                       editProfileCubit.doIntent(
                                         EditProfileInfoIntent(
                                           editProfileRequest:
@@ -141,6 +138,7 @@ class EditProfileView extends StatelessWidget {
                                               ),
                                         ),
                                       );
+                                      Navigator.pop(context);
                                     }
                                   },
                                   child: Icon(
@@ -274,14 +272,6 @@ class EditProfileView extends StatelessWidget {
                     return const Center(
                       child: CircularProgressIndicator(color: Colors.white),
                     );
-                  } else if (state is UploadPhotoLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(color: Colors.white),
-                    );
-                  } else if (state is UploadPhotoSuccess) {
-                    return Center(child: Text("Succsss"));
-                  } else if (state is UploadPhotoFailure) {
-                    return Center(child: Text(state.error));
                   } else {
                     return Center(
                       child: TextButton(

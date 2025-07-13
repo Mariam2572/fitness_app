@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:fitness_app/core/api_manager/api_services.dart';
+import 'package:fitness_app/core/api_manager/upload_image_api_manager.dart';
 import 'package:fitness_app/core/base/api_excuter.dart';
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
@@ -12,8 +13,8 @@ import 'package:injectable/injectable.dart';
 @Injectable(as: EditProfileDataSource)
 class EditProfileImpl implements EditProfileDataSource {
   final ApiService _apiService;
-
-  EditProfileImpl(this._apiService);
+final UploadImageApiManager _imageApiManager;
+  EditProfileImpl(this._apiService,this._imageApiManager);
   @override
   Future<ApiResult<GetUserDataReponse>> editProfile(EditProfileRequest editProfileRequest) async {
     return await apiExecuter<GetUserDataReponse>(
@@ -30,11 +31,11 @@ class EditProfileImpl implements EditProfileDataSource {
   }
 
   @override
-  Future<ApiResult<UploadPhotoResponse>> uploadPhoto(File photo)  async {
+  Future<ApiResult<String>> uploadPhoto(File photo)  async {
 
-    return await apiExecuter<UploadPhotoResponse>(
+    return await apiExecuter<String>(
 
-          () async => await _apiService.uploadPhoto(photo),
+          () async => await _imageApiManager.uploadImage(photo),
       '',
     );
   }
