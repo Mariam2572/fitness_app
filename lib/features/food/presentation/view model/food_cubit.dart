@@ -10,17 +10,17 @@ import 'package:fitness_app/features/food/presentation/view%20model/food_status.
 class FoodCubit extends Cubit<FoodState> {
   final GetFoodCategoriesUseCase getCategoriesUseCase;
   final GetMealsByCategoryUseCase getMealsUseCase;
-
+List<FoodCategory> tabs = [];
   FoodCubit(this.getCategoriesUseCase, this.getMealsUseCase)
     : super(FoodInitial());
 
-  void doIntent(FoodIntent intent) {
+  Future<void> doIntent(FoodIntent intent) async {
     switch (intent) {
       case LoadFoodCategoriesIntent():
-        _getCategories();
+      await  _getCategories();
         break;
       case LoadMealsByCategoryIntent():
-        _getMeals(intent.category);
+      await  _getMeals(intent.category);
         break;
     }
   }
@@ -28,16 +28,17 @@ class FoodCubit extends Cubit<FoodState> {
   Future<void> _getCategories() async {
     emit(FoodLoading());
     final result = await getCategoriesUseCase.invoke();
-    switch (result) {
-      case ApiSuccess<FoodCategoriesResponse>():
+    if (result is ApiSuccess<FoodCategoriesResponse>) {
+        tabs = result.data?.categories ?? [];
         emit(FoodCategoriesSuccess(result.data!));
-        break;
-      case ApiError<FoodCategoriesResponse>():
+
+    } else if( result is ApiError<FoodCategoriesResponse>) {
         emit(FoodFailure(result.failure?.errorMessage ?? 'Error occurred'));
-        break;
-      default:
+    } else {
         emit(const FoodFailure('Unknown error'));
+      
     }
+    
   }
 
   Future<void> _getMeals(String category) async {

@@ -25,6 +25,17 @@ class _EditProfileFieldsSectionState extends State<EditProfileFieldsSection> {
       child: Column(
         children: [
           TextFormField(
+      
+            onFieldSubmitted: (value) {
+              editProfileCubit.firstNameController.text = value;
+              editProfileCubit.doIntent(EditProfileInfoIntent(
+                editProfileRequest: editProfileCubit.currentEditProfileRequest
+
+              ));
+              editProfileCubit.doIntent(GetLoggedUserDataIntent());
+            },
+            // onSaved: ,
+
             key: const ValueKey('editFirstNameField'),
             validator: (value) => Validator.validateName(value),
             controller: editProfileCubit.firstNameController,
@@ -42,6 +53,14 @@ class _EditProfileFieldsSectionState extends State<EditProfileFieldsSection> {
           responsiveHeight(context, 0.02),
           TextFormField(
             key: const ValueKey('editLastNameField'),
+              onFieldSubmitted: (value) {
+              editProfileCubit.lastNameController.text = value;
+              editProfileCubit.doIntent(EditProfileInfoIntent(
+                editProfileRequest: editProfileCubit.currentEditProfileRequest
+
+              ));
+              editProfileCubit.doIntent(GetLoggedUserDataIntent());
+            },
             validator: (value) => Validator.validateName(value),
             controller: editProfileCubit.lastNameController,
             decoration: InputDecoration(
@@ -58,6 +77,15 @@ class _EditProfileFieldsSectionState extends State<EditProfileFieldsSection> {
           responsiveHeight(context, 0.02),
           TextFormField(
             key: const ValueKey('editEmailField'),
+              onFieldSubmitted: (value) {
+              editProfileCubit.emailController.text = value;
+
+              editProfileCubit.doIntent(EditProfileInfoIntent(
+                editProfileRequest: editProfileCubit.currentEditProfileRequest
+
+              ));
+              editProfileCubit.doIntent(GetLoggedUserDataIntent());
+            },
             validator: (value) => Validator.validateEmail(value),
             controller: editProfileCubit.emailController,
             decoration: InputDecoration(

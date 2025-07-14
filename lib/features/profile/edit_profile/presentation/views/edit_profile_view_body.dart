@@ -97,20 +97,6 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                                   style: context.textTheme.headlineMedium
                                       ?.copyWith(fontWeight: FontWeight.w800),
                                 ),
-                                // This IconButton is used to save the changes made in the profile
-                                // GestureDetector(
-                                //   onTap: () {
-
-                                //   },
-                                //   child: Icon(
-                                //     Icons.check,
-                                //     color:
-                                //         editProfileCubit.isEdited
-                                //             ? Colors.green
-                                //             : AppColors.neutral40,
-                                //   ),
-                                // ),
-                              
                               ],
                             ),
                           ),

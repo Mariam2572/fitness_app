@@ -8,13 +8,27 @@ class EditGoals extends StatelessWidget {
   const EditGoals({super.key});
   @override
   Widget build(BuildContext context) {
-    return CompleteRegisterationAppBarAndBackgroundSection(
-      body: CustomGoalsScreen(
+    return 
+      CustomGoalsScreen(
         isEditProfile: true,
+        initialGoal: context.read<EditProfileCubit>().goal,
         onChanged: (val) {
           context.read<EditProfileCubit>().goal = val;
+        
+      
         },
-      ),
+        onPressed: () {
+          final editProfileCubit = context.read<EditProfileCubit>();
+
+          editProfileCubit.doIntent(
+            EditProfileInfoIntent(
+              editProfileRequest: editProfileCubit.currentEditProfileRequest
+            ),
+          );
+          Navigator.pop(context);
+          editProfileCubit.doIntent(GetLoggedUserDataIntent());
+        },
+      
     );
   }
 }

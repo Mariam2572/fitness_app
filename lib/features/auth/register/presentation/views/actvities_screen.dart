@@ -15,7 +15,6 @@ class ActivtiesScreen extends StatefulWidget {
 class _ActivtiesScreenState extends State<ActivtiesScreen> {
   @override
   Widget build(BuildContext context) {
-    // ActivityEnum ?selectedActivity=context.read<EditProfileCubit?>()?.activityLevel;
 
     return CustomActivtiesScreen(
       isEditProfile: false,

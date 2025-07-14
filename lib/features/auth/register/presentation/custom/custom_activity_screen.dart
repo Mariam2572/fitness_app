@@ -78,7 +78,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    const CircularPercentIndicatorWidget(
+                widget.isEditProfile ? const SizedBox() :     const CircularPercentIndicatorWidget(
                       currentStep: 6,
                       totalSteps: 6,
                     ),

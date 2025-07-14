@@ -16,9 +16,11 @@ import 'package:fitness_app/features/auth/register/presentation/view_model/cubit
 class CustomWeightScreen extends StatefulWidget {
   final int initialValue;
   final void Function(int)? onChanged;
+  final void Function()? onPressed;
   final bool isEditProfile;
   const CustomWeightScreen({
     super.key,
+    this.onPressed,
     this.initialValue = 20,
     this.onChanged,
     this.isEditProfile = true,
@@ -42,7 +44,7 @@ class _CustomWeightScreenState extends State<CustomWeightScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 133),
-        const CircularPercentIndicatorWidget(currentStep: 3, totalSteps: 6),
+    widget.isEditProfile ? const SizedBox() :     const CircularPercentIndicatorWidget(currentStep: 3, totalSteps: 6),
         const SizedBox(height: 18),
         Padding(
           padding: const EdgeInsets.only(left: 24),
@@ -91,21 +93,20 @@ class _CustomWeightScreenState extends State<CustomWeightScreen> {
               const SizedBox(height: 16),
               SvgPicture.asset(AppAssets.arrowUp),
               const SizedBox(height: 31),
-              if (!widget.isEditProfile)
-                // Show next button only if not editing profile
-                // const SizedBox(),
+          
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
-                  onPressed: () {
+                    onPressed: widget.isEditProfile ? widget.onPressed :() {
+
                     Navigator.pushNamed(
                       context,
-                      RoutesName.chooseHeightScreen,
+                      RoutesName.chooseWeightScreen,
                       arguments: context.read<RegisterCubit>(),
                     );
                   },
                   child: Text(
-                    context.loc.next,
+                    widget. isEditProfile ? context.loc.done :  context.loc.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w800,
                       color: AppColors.baseWhite,

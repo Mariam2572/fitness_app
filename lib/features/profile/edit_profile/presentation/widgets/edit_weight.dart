@@ -13,24 +13,17 @@ class EditWeight extends StatelessWidget {
     return CompleteRegisterationAppBarAndBackgroundSection(
       body: CustomWeightScreen(
         isEditProfile: true,
-        initialValue: 70, // Replace with the actual initial value if needed
+        initialValue: context.read<EditProfileCubit>().weight, // Replace with the actual initial value if needed
         onChanged: (val) {
         context.read<EditProfileCubit>().weight = val;
+        
+        },
+        onPressed: () {
           final editProfileCubit = context.read<EditProfileCubit>();
 
           editProfileCubit.doIntent(
             EditProfileInfoIntent(
-              editProfileRequest: EditProfileRequest(
-                email: editProfileCubit.emailController.text,
-                height: editProfileCubit.height,
-                activityLevel: editProfileCubit.activityLevel,
-                age: editProfileCubit.age,
-                firstName: editProfileCubit.firstNameController.text,
-                gender: EditProfileCubit.selectedGender.name,
-                goal: editProfileCubit.goal,
-                lastName: editProfileCubit.lastNameController.text,
-                weight: editProfileCubit.weight,
-              ),
+              editProfileRequest: editProfileCubit.currentEditProfileRequest
             ),
           );
           Navigator.pop(context);

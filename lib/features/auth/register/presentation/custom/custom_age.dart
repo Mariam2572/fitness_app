@@ -43,7 +43,7 @@ class _CustomAgeState extends State<CustomAge> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 133),
-        const CircularPercentIndicatorWidget(currentStep: 2, totalSteps: 6),
+    widget.isEditProfile ? const SizedBox() :     const CircularPercentIndicatorWidget(currentStep: 2, totalSteps: 6),
         const SizedBox(height: 18),
         Padding(
           padding: const EdgeInsets.only(left: 24),
@@ -93,8 +93,7 @@ class _CustomAgeState extends State<CustomAge> {
               const SizedBox(height: 16),
               SvgPicture.asset(AppAssets.arrowUp),
               const SizedBox(height: 31),
-              // if (!widget.isEditProfile) 
-              // const SizedBox(),
+            
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(

@@ -16,6 +16,10 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_a
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart';
+import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
+import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
+import 'package:fitness_app/features/food/presentation/view/food_recommendation_page.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
@@ -278,12 +282,8 @@ class RoutesGenerator {
           builder:
               (context) => BlocProvider(
                 create:
-                    (context) => EditProfileCubit(
-                      getIt<EditProfileUseCase>(),
-                      getIt<GetLoggedUserDataUseCase>(),
-                      getIt<UploadPhotoUseCase>(),
-                    )..doIntent(GetLoggedUserDataIntent()),
-                child: const EditProfileView(),
+                    (context) =>FoodCubit(getIt<GetFoodCategoriesUseCase>(), getIt<GetMealsByCategoryUseCase>()),
+                child: const FoodRecommendationPage(),
               ),
           settings: settings,
         );

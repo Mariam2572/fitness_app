@@ -20,10 +20,10 @@ class CustomGoalsScreen extends StatefulWidget {
   final void Function(String?) onChanged;
   final bool isEditProfile;
   final String? initialGoal;
-  // final void Function()? onPressed;
+  final void Function()? onPressed;
   const CustomGoalsScreen({
     super.key,
-    // required this.onPressed,
+     this.onPressed,
     required this.onChanged,
     required this.isEditProfile,
     this.initialGoal,
@@ -95,7 +95,7 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    const CircularPercentIndicatorWidget(
+            widget.isEditProfile ? const SizedBox() :         const CircularPercentIndicatorWidget(
                       currentStep: 5,
                       totalSteps: 6,
                     ),
@@ -144,8 +144,7 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                                     ],
                                   ),
                                 ),
-                                // if (!widget.isEditProfile)
-                                //  const SizedBox(),
+                              
                                 ElevatedButton(
                                   onPressed: () {
                                     if (selectedGoal == null) {
@@ -156,11 +155,9 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                                       return;
                                     }
                                     if (widget.isEditProfile) {
-                                      context.read<EditProfileCubit>().goal =
-                                          selectedGoal!;
-                                      Navigator.pop(context);
+                                      widget.onPressed?.call();
+                                      return;
                                     }
-
                                     context.read<RegisterCubit?>()?.goal =
                                         selectedGoal;
                                     Navigator.pushNamed(

@@ -13,9 +13,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomHeightScreen extends StatefulWidget {
   final bool isEditProfile;
   final int initialValue;
+  final void Function()? onPressed;
   final void Function(int)? onChanged;
 
   const CustomHeightScreen({
+    this.onPressed,
     super.key,
     this.isEditProfile = false,
     this.initialValue = 30,
@@ -40,9 +42,9 @@ class _CustomHeightScreenState extends State<CustomHeightScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (!widget.isEditProfile) ...[
+     ...[
           const SizedBox(height: 133),
-          const CircularPercentIndicatorWidget(currentStep: 4, totalSteps: 6),
+      widget.isEditProfile ? const SizedBox() :    const CircularPercentIndicatorWidget(currentStep: 4, totalSteps: 6),
           const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.only(left: 24),
@@ -90,27 +92,29 @@ class _CustomHeightScreenState extends State<CustomHeightScreen> {
               ),
               const SizedBox(height: 16),
               SvgPicture.asset(AppAssets.arrowUp),
-              const SizedBox(height: 31),
-              if (!widget.isEditProfile)
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        RoutesName.goals,
-                        arguments: context.read<RegisterCubit>(),
-                      );
-                    },
-                    child: Text(
-                      context.loc.next,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                            color: AppColors.baseWhite,
-                          ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ElevatedButton(
+                  onPressed:
+                      widget.isEditProfile
+                          ? widget.onPressed
+                          : () {
+                            Navigator.pushNamed(
+                              context,
+                              RoutesName.chooseWeightScreen,
+                              arguments: context.read<RegisterCubit>(),
+                            );
+                          },
+                  child: Text(
+                    widget.isEditProfile ? context.loc.done : context.loc.next,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.baseWhite,
                     ),
                   ),
                 ),
+              ),
             ],
           ),
         ),
