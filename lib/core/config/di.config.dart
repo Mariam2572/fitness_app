@@ -23,6 +23,20 @@ import '../../features/auth/change%20password/domain/repo/change_pssword_repo.da
     as _i760;
 import '../../features/auth/change%20password/domain/usecase/change_passwrod_usecase.dart'
     as _i793;
+import '../../features/auth/forget_password/data/data_source/forget_password_data_source_impl.dart'
+    as _i224;
+import '../../features/auth/forget_password/data/repos/forget_password_repo_impl.dart'
+    as _i769;
+import '../../features/auth/forget_password/domain/data_source/forget_password_data_source.dart'
+    as _i762;
+import '../../features/auth/forget_password/domain/repos/forget_password_repo.dart'
+    as _i488;
+import '../../features/auth/forget_password/domain/use_cases/forget_password_use_case.dart'
+    as _i913;
+import '../../features/auth/forget_password/domain/use_cases/reset_password_use_case.dart'
+    as _i22;
+import '../../features/auth/forget_password/domain/use_cases/verify_reset_use_case.dart'
+    as _i124;
 import '../../features/auth/login/data/data_source/login_remote_data_source.dart'
     as _i520;
 import '../../features/auth/login/data/data_source/login_remote_data_source_imp.dart'
@@ -149,6 +163,7 @@ import '../../features/workOuts/domain/use_cases/get_all_muscles_groups_use_case
     as _i80;
 import '../api_manager/api_services.dart' as _i785;
 import '../api_manager/dio_module.dart' as _i591;
+import '../api_manager/upload_image_api_manager.dart' as _i132;
 import '../provider/app_config_provider.dart' as _i291;
 import '../utils/services/gemini_service.dart' as _i92;
 import 'di.dart' as _i913;
@@ -186,6 +201,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => dioModule.provideApiService(gh<_i361.Dio>()));
     gh.singleton<_i785.MealApiService>(
         () => dioModule.provideMealApiService(gh<_i361.Dio>()));
+    gh.factory<_i132.UploadImageApiManager>(
+        () => _i132.UploadImageApiManager(gh<_i361.Dio>()));
     gh.factory<_i374.ConversationRepository>(() =>
         _i234.ConversationRepositoryImpl(
             gh<_i74.ConversationLocalDataSource>()));
@@ -208,8 +225,12 @@ extension GetItInjectableX on _i174.GetIt {
         _i274.MealsDetailsRepositoryImplementation(
             mealsDetailsRemoteDataSource:
                 gh<_i710.MealsDetailsRemoteDataSource>()));
-    gh.factory<_i843.EditProfileDataSource>(
-        () => _i688.EditProfileImpl(gh<_i785.ApiService>()));
+    gh.factory<_i843.EditProfileDataSource>(() => _i688.EditProfileImpl(
+          gh<_i785.ApiService>(),
+          gh<_i132.UploadImageApiManager>(),
+        ));
+    gh.factory<_i762.ForgetPasswordDataSource>(
+        () => _i224.ForgetPasswordDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i980.WorkOutsDataSource>(
         () => _i931.WorkOutsDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i998.GetPreviousConversationsUseCase>(() =>
@@ -246,6 +267,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i80.GetAllMusclesGroupsUseCase(gh<_i1002.WorkOutsRepo>()));
     gh.factory<_i760.ChangePasswordRepo>(() => _i756.ChangePasswordRepoImpl(
         gh<_i283.ChangePasswordRemoteDataSource>()));
+    gh.factory<_i488.ForgetPasswordRepo>(() => _i769.ForgetPasswordRepoImpl(
+        forgetPasswordDataSource: gh<_i762.ForgetPasswordDataSource>()));
     gh.factory<_i474.FoodRepo>(
         () => _i46.FoodRepoImpl(gh<_i910.FoodRemoteDataSource>()));
     gh.factory<_i514.EditProfileUseCase>(
@@ -276,6 +299,12 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i659.ExerciseRepo>()));
     gh.factory<_i292.GetLevelsByPrimeMoverMuscleUseCases>(() =>
         _i292.GetLevelsByPrimeMoverMuscleUseCases(gh<_i659.ExerciseRepo>()));
+    gh.factory<_i913.ForgetPasswordUseCase>(
+        () => _i913.ForgetPasswordUseCase(gh<_i488.ForgetPasswordRepo>()));
+    gh.factory<_i22.ResetPasswordUseCase>(
+        () => _i22.ResetPasswordUseCase(gh<_i488.ForgetPasswordRepo>()));
+    gh.factory<_i124.VerifyResetUseCase>(
+        () => _i124.VerifyResetUseCase(gh<_i488.ForgetPasswordRepo>()));
     gh.factory<_i589.GetFoodCategoriesUseCase>(
         () => _i589.GetFoodCategoriesUseCase(gh<_i474.FoodRepo>()));
     gh.factory<_i740.GetMealsByCategoryUseCase>(
