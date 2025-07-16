@@ -48,7 +48,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get howOldAreYou => 'How old are you?';
 
   @override
-  String get thisHelpsUsCreateYourPersonalizedPlan => 'This helps us create your personalized plan';
+  String get thisHelpsUsCreateYourPersonalizedPlan =>
+      'This helps us create your personalized plan';
 
   @override
   String get whatIsYourWeight => 'What is your weight?';
@@ -135,7 +136,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get disciplineQuote => 'the price of excellence \n is discipline';
 
   @override
-  String get onboardingText1 => 'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+  String get onboardingText1 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
 
   @override
   String get next => 'Next';
@@ -144,7 +146,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get funFitness => 'Fitness has never been so \n much fun';
 
   @override
-  String get onboardingText2 => 'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+  String get onboardingText2 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
 
   @override
   String get back => 'Back';
@@ -153,7 +156,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noMoreExcuses => 'NO MORE EXCUSES \n Do It Now';
 
   @override
-  String get onboardingText3 => 'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+  String get onboardingText3 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
 
   @override
   String get doIt => 'Do It';
@@ -177,7 +181,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordChangedSuccessfully => 'Password changed successfully!';
 
   @override
-  String get passwordsDoNotMatch => 'New password and confirmation do not match';
+  String get passwordsDoNotMatch =>
+      'New password and confirmation do not match';
 
   @override
   String get noResponse => ' No Response';
