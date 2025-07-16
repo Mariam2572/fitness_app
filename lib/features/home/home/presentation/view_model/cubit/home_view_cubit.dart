@@ -16,17 +16,17 @@ part 'home_view_state.dart';
 class HomeViewCubit extends Cubit<HomeViewState> {
   HomeViewCubit(this.homeUseCase) : super(HomeViewInitial());
   final HomeUseCase homeUseCase;
-  late TabController tabController;
+  // late TabController tabController;
   List<MusclesGroupBean> musclesGroupCat = [];
   List<MusclesBean>? workoutByMuscles = [];
 
-  void doIntent(HomeIntent intent) {
+  Future<void> doIntent(HomeIntent intent) async {
     switch (intent) {
       case GetMusclesByMuscleGroupIdIntent():
-        _getMusclesByMuscleGroupId(intent.id);
+      await  _getMusclesByMuscleGroupId(intent);
 
       case HomeViewDataIntent():
-        _getHomeData();
+      await  _getHomeData();
     }
   }
 
@@ -48,6 +48,7 @@ class HomeViewCubit extends Cubit<HomeViewState> {
           exercises: randomExercises.data?.exercises ?? [],
           mealsCategories: mealsCat.data?.categories ?? [],
           musclesGroups: musclesGroups.data!,
+
         ),
       );
     } else if (userName is ApiError<String> &&
@@ -102,18 +103,18 @@ class HomeViewCubit extends Cubit<HomeViewState> {
   //   }
   // }
 
-  Future<void> _getMusclesByMuscleGroupId(String id) async {
-    final result = await homeUseCase.getWorkoutsExercise(id);
+  Future<void> _getMusclesByMuscleGroupId(GetMusclesByMuscleGroupIdIntent initen) async {
+    final result = await homeUseCase.getWorkoutsExercise(initen.id);
     switch (result) {
       case ApiSuccess<GetAllMusclesByMuscleGroupIdReponse>():
         workoutByMuscles = result.data?.muscles;
         emit(
-          GetMusclesByMuscleGroupIdSuccess(musclesByMuscleGroupId: result.data),
+          HomeViewSuccess(workoutsByMuscleGroupId: result.data?.muscles),
         );
       case ApiError<GetAllMusclesByMuscleGroupIdReponse>():
         emit(
-          GetMusclesByMuscleGroupIdError(
-            errorMessage: result.failure?.errorMessage,
+          HomeViewError(
+          musclesByMuscleGroupIdError  : result.failure?.errorMessage,
           ),
         );
     }

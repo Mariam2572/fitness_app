@@ -17,13 +17,14 @@ final class HomeViewSuccess extends HomeViewState {
   final List<FoodCategory>? mealsCategories;
   final GetAllMusclesGroupsReponse? musclesGroups;
   final List<MusclesBean>? workoutsByMuscleGroupId;
-
+  // final GetAllMusclesByMuscleGroupIdReponse? musclesByMuscleGroupId;
   const HomeViewSuccess({
     this.userName,
     this.exercises,
     this.mealsCategories,
     this.musclesGroups,
     this.workoutsByMuscleGroupId,
+    // this.musclesByMuscleGroupId,
   });
 }
 // final class GetUserNameSuccess extends HomeViewState {
@@ -69,11 +70,12 @@ final class HomeViewError extends HomeViewState {
   final String? randomExercisesError;
   final String? mealsCategoriesError;
   final String? musclesGroupsError;
-
+  final String? musclesByMuscleGroupIdError;
   const HomeViewError({
     this.userNameError,
     this.randomExercisesError,
     this.mealsCategoriesError,
     this.musclesGroupsError,
+    this.musclesByMuscleGroupIdError,
   });
 }

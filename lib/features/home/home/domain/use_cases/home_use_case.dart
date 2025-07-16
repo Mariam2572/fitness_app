@@ -38,9 +38,4 @@ final GetAllMusclesByMuscleGroupIdUseCase getAllMusclesByMuscleGroupIdUseCase;
   Future<ApiResult<GetAllMusclesByMuscleGroupIdReponse>>  getWorkoutsExercise(String id) async {
     return await getAllMusclesByMuscleGroupIdUseCase.invoke(id);
   }
-
-  
-
-
-
 }

@@ -34,6 +34,8 @@ class HomeScreenBody extends StatelessWidget {
         SafeArea(
           child: BlocConsumer<HomeViewCubit, HomeViewState>(
             listener: (BuildContext context, HomeViewState state) {},
+            buildWhen: (previous, current) => 
+                previous != current && current is HomeViewSuccess,
             builder: (context, state) {
               final isLoading = state is HomeViewLoading;
 
@@ -135,10 +137,10 @@ class HomeScreenBody extends StatelessWidget {
                         ],
                       ),
                       if (state is HomeViewSuccess)
-                        // WorkoutExerciseInHomeView(musclesCroup: state.musclesGroups?.musclesGroup ?? []),
-                        UpcomingWorkoutsCategory(
-                          bodyParts: state.musclesGroups?.musclesGroup ?? [],
-                        ),
+                        WorkoutExerciseInHomeView(musclesCroup: state.musclesGroups?.musclesGroup ?? []),
+                        // UpcomingWorkoutsCategory(
+                        //   bodyParts: state.musclesGroups?.musclesGroup ?? [],
+                        // ),
 
                       // if (state is HomeViewError)
                       //   Center(

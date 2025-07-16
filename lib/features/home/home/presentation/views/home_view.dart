@@ -19,7 +19,14 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
+
       providers: [
+        BlocProvider(
+          create: (context) => WorkOutsCubit(
+            getIt<GetAllMusclesGroupsUseCase>(),
+            getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
+          )..doIntent(GetAllMusclesGroupsIntent()),
+        ),
         BlocProvider(
           create: (context) => HomeViewCubit( getIt<HomeUseCase>())..doIntent(HomeViewDataIntent())
     
