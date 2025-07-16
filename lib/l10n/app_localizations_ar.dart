@@ -48,8 +48,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howOldAreYou => 'كم عمرك؟';
 
   @override
-  String get thisHelpsUsCreateYourPersonalizedPlan =>
-      'هذا يساعدنا في إنشاء خطتك الشخصية';
+  String get thisHelpsUsCreateYourPersonalizedPlan => 'هذا يساعدنا في إنشاء خطتك الشخصية';
 
   @override
   String get whatIsYourWeight => 'ما هو وزنك؟';
@@ -136,8 +135,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get disciplineQuote => 'ثمن التميز \n هو الانضباط';
 
   @override
-  String get onboardingText1 =>
-      'لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا';
+  String get onboardingText1 => 'لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا';
 
   @override
   String get next => 'التالي';
@@ -146,8 +144,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get funFitness => 'اللياقة لم تكن يومًا \n ممتعة هكذا';
 
   @override
-  String get onboardingText2 =>
-      'لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا';
+  String get onboardingText2 => 'لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا';
 
   @override
   String get back => 'رجوع';
@@ -156,8 +153,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noMoreExcuses => 'لا مزيد من الأعذار \n افعلها الآن';
 
   @override
-  String get onboardingText3 =>
-      'لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا';
+  String get onboardingText3 => 'لوريم إيبسوم دولور سيت أميت كونسكتيتور. يو أورنا أوت جرافيـدا كويز إد بريتيوم بوروس. موريس ماسا';
 
   @override
   String get doIt => 'افعلها';
@@ -245,4 +241,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get recommendation => 'إقتراحات';
+
+  @override
+  String get hi => 'مرحباً';
+
+  @override
+  String get letsStartYourDay => 'لنبدأ يومك';
+
+  @override
+  String get unableToGetUserName => 'تعذر الحصول على اسم المستخدم';
+
+  @override
+  String get unknownError => 'حدث خطأ غير معروف، يرجى المحاولة لاحقًا';
 }

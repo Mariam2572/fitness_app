@@ -76,6 +76,10 @@
   "recommendationsForYou": "توصيات لك",
   "popularTraining": "التدريبات الشائعة",
   "foodRecommendation" : "إقتراحات الطعام",
-  "recommendation" : "إقتراحات"
+  "recommendation" : "إقتراحات",
+  "hi": "مرحباً",
+  "letsStartYourDay": "لنبدأ يومك",
+  "unableToGetUserName": "تعذر الحصول على اسم المستخدم",
+  "unknownError": "حدث خطأ غير معروف، يرجى المحاولة لاحقًا"
   
 }

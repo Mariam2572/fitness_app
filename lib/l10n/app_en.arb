@@ -76,7 +76,12 @@
   "recommendationsForYou" : "Recommendations For You",
   "popularTraining": "Popular Training",
   "foodRecommendation" : "Food Recommendation",
-  "recommendation" : "Recommendation"
+  "recommendation" : "Recommendation",
+  "hi" : "Hi",
+  "letsStartYourDay" : "Let's Start Your Day",
+  "unableToGetUserName" : "Unable to get user name",
+  "unknownError" : "unknownError occurred please try later"
+
   
 
 

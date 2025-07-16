@@ -81,8 +81,6 @@ import '../../features/home/home/data/repositories/home_repo_impl.dart'
     as _i362;
 import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
 import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
-import '../../features/home/home/presentation/view_model/home_viewModel.dart'
-    as _i1043;
 import '../../features/logout/data/datasources/logout_remote_data_source_impl.dart'
     as _i115;
 import '../../features/logout/data/datasources/logout_remote_datasource.dart'
@@ -286,8 +284,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
     gh.factory<_i118.RegisterUseCase>(
         () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()));
-    gh.factory<_i1043.HomeViewModel>(
-        () => _i1043.HomeViewModel(gh<_i204.HomeUseCase>()));
     return this;
   }
 }
