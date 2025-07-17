@@ -46,14 +46,15 @@ class _LayOutState extends State<LayOut> {
 
   void _setupConversationListener() {
     // Listen for conversation selection events from the previous conversation screen
-    _conversationSubscription = _previousViewModel.conversationSelectedStream?.listen((selectedMessages) {
-      _loadSelectedConversation(selectedMessages);
-    });
+    _conversationSubscription = _previousViewModel.conversationSelectedStream
+        ?.listen((selectedMessages) {
+          _loadSelectedConversation(selectedMessages);
+        });
   }
 
   void _initializeScreens() {
     _screens = [
-      const HomeView(),
+      const HomeScreen(),
       SmartCoachView(
         key: ValueKey('smart_coach_${DateTime.now().millisecondsSinceEpoch}'),
         messages: smartCoachMessages,
@@ -61,10 +62,11 @@ class _LayOutState extends State<LayOut> {
         previousConversationViewModel: _previousViewModel,
       ),
       BlocProvider(
-        create: (context) => WorkOutsCubit(
-          getIt<GetAllMusclesGroupsUseCase>(),
-          getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
-        )..doIntent(GetAllMusclesGroupsIntent()),
+        create:
+            (context) => WorkOutsCubit(
+              getIt<GetAllMusclesGroupsUseCase>(),
+              getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
+            )..doIntent(GetAllMusclesGroupsIntent()),
         child: const WorkOutsView(),
       ),
       const ProfileView(),
@@ -105,7 +107,9 @@ class _LayOutState extends State<LayOut> {
         );
 
         _previousViewModel.saveNewConversation(conversation);
-        print('Conversation saved with ${smartCoachMessages.length} messages'); // Debug log
+        print(
+          'Conversation saved with ${smartCoachMessages.length} messages',
+        ); // Debug log
 
         // Clear messages after saving
         smartCoachMessages.clear();
@@ -114,7 +118,6 @@ class _LayOutState extends State<LayOut> {
         setState(() {
           _initializeScreens();
         });
-
       } catch (e) {
         print('Error saving conversation: $e'); // Debug log
       }
@@ -140,7 +143,6 @@ class _LayOutState extends State<LayOut> {
     }
   }
 
-
   BottomNavigationBarItem _buildBarItem(String iconPath, String label) {
     return BottomNavigationBarItem(
       icon: Padding(
@@ -159,19 +161,23 @@ class _LayOutState extends State<LayOut> {
       key: _scaffoldKey,
       extendBody: true,
       body: _screens[_selectedIndex],
-      drawer: _selectedIndex == 1 ? null : Drawer(
-        child: BlocProvider.value(
-          value: _previousViewModel,
-          child: PreviousConversationsScreen(
-            onConversationSelected: _loadSelectedConversation,
-          ),
-        ),
-      ),
+      drawer:
+          _selectedIndex == 1
+              ? null
+              : Drawer(
+                child: BlocProvider.value(
+                  value: _previousViewModel,
+                  child: PreviousConversationsScreen(
+                    onConversationSelected: _loadSelectedConversation,
+                  ),
+                ),
+              ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 24, right: 32, left: 32),
         child: Container(
           decoration: BoxDecoration(
-            color: theme.bottomNavigationBarTheme.backgroundColor ?? Colors.white,
+            color:
+                theme.bottomNavigationBarTheme.backgroundColor ?? Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
           child: ClipRRect(

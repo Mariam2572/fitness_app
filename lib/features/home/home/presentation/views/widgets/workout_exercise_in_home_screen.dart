@@ -56,6 +56,7 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
                         .toList(),
                 controller: _tabController,
               ),
+             const SizedBox(height: 8),
               SizedBox(
                 height: 90,
                 child: ListView.builder(

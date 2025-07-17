@@ -6,14 +6,13 @@ import 'package:fitness_app/features/workOuts/presentation/views/work_outs_view.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-
 void main() {
   testWidgets('BottomNavigationBar switches between tabs', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const MaterialApp(home: LayOut()));
 
-    expect(find.byType(HomeView), findsOneWidget);
+    expect(find.byType(HomeScreen), findsOneWidget);
 
     await tester.tap(find.text('Smart Chat'));
     await tester.pumpAndSettle();

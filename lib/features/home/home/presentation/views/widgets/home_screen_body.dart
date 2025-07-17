@@ -139,24 +139,8 @@ class HomeScreenBody extends StatelessWidget {
                       ),
                       if (state is HomeViewSuccess)
                         WorkoutExerciseInHomeView(musclesCroup: state.musclesGroups?.musclesGroup ?? []),
-                        // UpcomingWorkoutsCategory(
-                        //   bodyParts: state.musclesGroups?.musclesGroup ?? [],
-                        // ),
-
-                      // if (state is HomeViewError)
-                      //   Center(
-                      //     child: Text(
-                      //       state.musclesGroupsError ?? loc.unknownError,
-                      //     ),
-                      //   ),
-                      const SizedBox(height: 8),
-                      // if (state is HomeViewSuccess)
-                      // UpcomingWorkout(
-                      //   muscles: state.musclesGroups.musclesGroup,
-                      // ),
-
-                      // else if (state is HomeError)
-                      //   Center(child: Text(state.message)),
+                        
+                     
                       const SizedBox(height: 24),
 
                       Row(

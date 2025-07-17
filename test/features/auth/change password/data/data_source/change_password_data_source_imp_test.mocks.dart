@@ -3,20 +3,31 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i16;
-import 'dart:io' as _i22;
+import 'dart:async' as _i18;
 
-import 'package:fitness_app/core/api_manager/api_services.dart' as _i15;
+import 'package:fitness_app/core/api_manager/api_services.dart' as _i17;
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_request.dart'
-    as _i19;
+    as _i21;
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_response.dart'
     as _i11;
+import 'package:fitness_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
+    as _i24;
+import 'package:fitness_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
+    as _i26;
+import 'package:fitness_app/features/auth/forget_password/data/models/request/verify_reset_request.dart'
+    as _i25;
+import 'package:fitness_app/features/auth/forget_password/data/models/response/forget_password_response.dart'
+    as _i13;
+import 'package:fitness_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
+    as _i15;
+import 'package:fitness_app/features/auth/forget_password/data/models/response/verify_reset_response.dart'
+    as _i14;
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart'
-    as _i17;
+    as _i19;
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart'
     as _i2;
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart'
-    as _i18;
+    as _i20;
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart'
     as _i3;
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart'
@@ -30,19 +41,17 @@ import 'package:fitness_app/features/home/home/data/models/RandomExerciseRespons
 import 'package:fitness_app/features/home/home/data/models/UserResponse.dart'
     as _i9;
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart'
-    as _i21;
+    as _i23;
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart'
     as _i12;
-import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart'
-    as _i13;
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart'
     as _i7;
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart'
     as _i6;
-import 'package:flutter/foundation.dart' as _i23;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i14;
+import 'package:flutter/foundation.dart' as _i27;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i16;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i20;
+import 'package:mockito/src/dummies.dart' as _i22;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -177,9 +186,9 @@ class _FakeGetUserDataReponse_10 extends _i1.SmartFake
         );
 }
 
-class _FakeUploadPhotoResponse_11 extends _i1.SmartFake
-    implements _i13.UploadPhotoResponse {
-  _FakeUploadPhotoResponse_11(
+class _FakeForgetPasswordResponse_11 extends _i1.SmartFake
+    implements _i13.ForgetPasswordResponse {
+  _FakeForgetPasswordResponse_11(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -188,8 +197,9 @@ class _FakeUploadPhotoResponse_11 extends _i1.SmartFake
         );
 }
 
-class _FakeIOSOptions_12 extends _i1.SmartFake implements _i14.IOSOptions {
-  _FakeIOSOptions_12(
+class _FakeVerifyResetResponse_12 extends _i1.SmartFake
+    implements _i14.VerifyResetResponse {
+  _FakeVerifyResetResponse_12(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -198,9 +208,9 @@ class _FakeIOSOptions_12 extends _i1.SmartFake implements _i14.IOSOptions {
         );
 }
 
-class _FakeAndroidOptions_13 extends _i1.SmartFake
-    implements _i14.AndroidOptions {
-  _FakeAndroidOptions_13(
+class _FakeResetPasswordResponse_13 extends _i1.SmartFake
+    implements _i15.ResetPasswordResponse {
+  _FakeResetPasswordResponse_13(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -209,8 +219,8 @@ class _FakeAndroidOptions_13 extends _i1.SmartFake
         );
 }
 
-class _FakeLinuxOptions_14 extends _i1.SmartFake implements _i14.LinuxOptions {
-  _FakeLinuxOptions_14(
+class _FakeIOSOptions_14 extends _i1.SmartFake implements _i16.IOSOptions {
+  _FakeIOSOptions_14(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -219,9 +229,9 @@ class _FakeLinuxOptions_14 extends _i1.SmartFake implements _i14.LinuxOptions {
         );
 }
 
-class _FakeWindowsOptions_15 extends _i1.SmartFake
-    implements _i14.WindowsOptions {
-  _FakeWindowsOptions_15(
+class _FakeAndroidOptions_15 extends _i1.SmartFake
+    implements _i16.AndroidOptions {
+  _FakeAndroidOptions_15(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -230,8 +240,8 @@ class _FakeWindowsOptions_15 extends _i1.SmartFake
         );
 }
 
-class _FakeWebOptions_16 extends _i1.SmartFake implements _i14.WebOptions {
-  _FakeWebOptions_16(
+class _FakeLinuxOptions_16 extends _i1.SmartFake implements _i16.LinuxOptions {
+  _FakeLinuxOptions_16(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -240,8 +250,29 @@ class _FakeWebOptions_16 extends _i1.SmartFake implements _i14.WebOptions {
         );
 }
 
-class _FakeMacOsOptions_17 extends _i1.SmartFake implements _i14.MacOsOptions {
-  _FakeMacOsOptions_17(
+class _FakeWindowsOptions_17 extends _i1.SmartFake
+    implements _i16.WindowsOptions {
+  _FakeWindowsOptions_17(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeWebOptions_18 extends _i1.SmartFake implements _i16.WebOptions {
+  _FakeWebOptions_18(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeMacOsOptions_19 extends _i1.SmartFake implements _i16.MacOsOptions {
+  _FakeMacOsOptions_19(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -253,47 +284,47 @@ class _FakeMacOsOptions_17 extends _i1.SmartFake implements _i14.MacOsOptions {
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i15.ApiService {
+class MockApiService extends _i1.Mock implements _i17.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i16.Future<_i2.LoginResponse> loginUser(_i17.LoginRequest? loginRequest) =>
+  _i18.Future<_i2.LoginResponse> loginUser(_i19.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #loginUser,
           [loginRequest],
         ),
-        returnValue: _i16.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
+        returnValue: _i18.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
           this,
           Invocation.method(
             #loginUser,
             [loginRequest],
           ),
         )),
-      ) as _i16.Future<_i2.LoginResponse>);
+      ) as _i18.Future<_i2.LoginResponse>);
 
   @override
-  _i16.Future<_i3.RegisterResponse> register(
-          _i18.RegisterRequest? registerRequest) =>
+  _i18.Future<_i3.RegisterResponse> register(
+          _i20.RegisterRequest? registerRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #register,
           [registerRequest],
         ),
         returnValue:
-            _i16.Future<_i3.RegisterResponse>.value(_FakeRegisterResponse_1(
+            _i18.Future<_i3.RegisterResponse>.value(_FakeRegisterResponse_1(
           this,
           Invocation.method(
             #register,
             [registerRequest],
           ),
         )),
-      ) as _i16.Future<_i3.RegisterResponse>);
+      ) as _i18.Future<_i3.RegisterResponse>);
 
   @override
-  _i16.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>
+  _i18.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>
       getExerciseByMoverAndDifficulty(
     String? primeMoverMuscleId,
     String? difficultyLevelId,
@@ -306,7 +337,7 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
                 difficultyLevelId,
               ],
             ),
-            returnValue: _i16
+            returnValue: _i18
                 .Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>.value(
                 _FakeExerciseByPrimeMoverAndDifficultyResponse_2(
               this,
@@ -318,17 +349,17 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
                 ],
               ),
             )),
-          ) as _i16.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>);
+          ) as _i18.Future<_i4.ExerciseByPrimeMoverAndDifficultyResponse>);
 
   @override
-  _i16.Future<_i5.LevelsByMusclesModel> getLevelsByMuscles(
+  _i18.Future<_i5.LevelsByMusclesModel> getLevelsByMuscles(
           String? primeMoverMuscleId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getLevelsByMuscles,
           [primeMoverMuscleId],
         ),
-        returnValue: _i16.Future<_i5.LevelsByMusclesModel>.value(
+        returnValue: _i18.Future<_i5.LevelsByMusclesModel>.value(
             _FakeLevelsByMusclesModel_3(
           this,
           Invocation.method(
@@ -336,16 +367,16 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             [primeMoverMuscleId],
           ),
         )),
-      ) as _i16.Future<_i5.LevelsByMusclesModel>);
+      ) as _i18.Future<_i5.LevelsByMusclesModel>);
 
   @override
-  _i16.Future<_i6.GetAllMusclesGroupsReponse> getAllMusclesGroups() =>
+  _i18.Future<_i6.GetAllMusclesGroupsReponse> getAllMusclesGroups() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllMusclesGroups,
           [],
         ),
-        returnValue: _i16.Future<_i6.GetAllMusclesGroupsReponse>.value(
+        returnValue: _i18.Future<_i6.GetAllMusclesGroupsReponse>.value(
             _FakeGetAllMusclesGroupsReponse_4(
           this,
           Invocation.method(
@@ -353,17 +384,17 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             [],
           ),
         )),
-      ) as _i16.Future<_i6.GetAllMusclesGroupsReponse>);
+      ) as _i18.Future<_i6.GetAllMusclesGroupsReponse>);
 
   @override
-  _i16.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>
+  _i18.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>
       getAllMusclesByMuscleGroupId(String? id) => (super.noSuchMethod(
             Invocation.method(
               #getAllMusclesByMuscleGroupId,
               [id],
             ),
             returnValue:
-                _i16.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>.value(
+                _i18.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>.value(
                     _FakeGetAllMusclesByMuscleGroupIdReponse_5(
               this,
               Invocation.method(
@@ -371,42 +402,42 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
                 [id],
               ),
             )),
-          ) as _i16.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>);
+          ) as _i18.Future<_i7.GetAllMusclesByMuscleGroupIdReponse>);
 
   @override
-  _i16.Future<_i8.ExercisesResponse> getAllExercises() => (super.noSuchMethod(
+  _i18.Future<_i8.ExercisesResponse> getAllExercises() => (super.noSuchMethod(
         Invocation.method(
           #getAllExercises,
           [],
         ),
         returnValue:
-            _i16.Future<_i8.ExercisesResponse>.value(_FakeExercisesResponse_6(
+            _i18.Future<_i8.ExercisesResponse>.value(_FakeExercisesResponse_6(
           this,
           Invocation.method(
             #getAllExercises,
             [],
           ),
         )),
-      ) as _i16.Future<_i8.ExercisesResponse>);
+      ) as _i18.Future<_i8.ExercisesResponse>);
 
   @override
-  _i16.Future<_i9.UserResponse> getUserData(String? userToken) =>
+  _i18.Future<_i9.UserResponse> getUserData(String? userToken) =>
       (super.noSuchMethod(
         Invocation.method(
           #getUserData,
           [userToken],
         ),
-        returnValue: _i16.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
+        returnValue: _i18.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
           this,
           Invocation.method(
             #getUserData,
             [userToken],
           ),
         )),
-      ) as _i16.Future<_i9.UserResponse>);
+      ) as _i18.Future<_i9.UserResponse>);
 
   @override
-  _i16.Future<_i10.RandomExerciseResponse> getRandomExercises(
+  _i18.Future<_i10.RandomExerciseResponse> getRandomExercises(
     String? targetMuscleGroupId,
     String? difficultyLevelId,
     int? limit,
@@ -420,7 +451,7 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             limit,
           ],
         ),
-        returnValue: _i16.Future<_i10.RandomExerciseResponse>.value(
+        returnValue: _i18.Future<_i10.RandomExerciseResponse>.value(
             _FakeRandomExerciseResponse_8(
           this,
           Invocation.method(
@@ -432,26 +463,26 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             ],
           ),
         )),
-      ) as _i16.Future<_i10.RandomExerciseResponse>);
+      ) as _i18.Future<_i10.RandomExerciseResponse>);
 
   @override
-  _i16.Future<_i9.UserResponse> getProfileData() => (super.noSuchMethod(
+  _i18.Future<_i9.UserResponse> getProfileData() => (super.noSuchMethod(
         Invocation.method(
           #getProfileData,
           [],
         ),
-        returnValue: _i16.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
+        returnValue: _i18.Future<_i9.UserResponse>.value(_FakeUserResponse_7(
           this,
           Invocation.method(
             #getProfileData,
             [],
           ),
         )),
-      ) as _i16.Future<_i9.UserResponse>);
+      ) as _i18.Future<_i9.UserResponse>);
 
   @override
-  _i16.Future<_i11.ChangePasswordResponse> changePassword(
-    _i19.ChangePasswordRequest? ChangePasswordRequest,
+  _i18.Future<_i11.ChangePasswordResponse> changePassword(
+    _i21.ChangePasswordRequest? ChangePasswordRequest,
     String? userToken,
   ) =>
       (super.noSuchMethod(
@@ -462,7 +493,7 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             userToken,
           ],
         ),
-        returnValue: _i16.Future<_i11.ChangePasswordResponse>.value(
+        returnValue: _i18.Future<_i11.ChangePasswordResponse>.value(
             _FakeChangePasswordResponse_9(
           this,
           Invocation.method(
@@ -473,31 +504,31 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             ],
           ),
         )),
-      ) as _i16.Future<_i11.ChangePasswordResponse>);
+      ) as _i18.Future<_i11.ChangePasswordResponse>);
 
   @override
-  _i16.Future<String> logout() => (super.noSuchMethod(
+  _i18.Future<String> logout() => (super.noSuchMethod(
         Invocation.method(
           #logout,
           [],
         ),
-        returnValue: _i16.Future<String>.value(_i20.dummyValue<String>(
+        returnValue: _i18.Future<String>.value(_i22.dummyValue<String>(
           this,
           Invocation.method(
             #logout,
             [],
           ),
         )),
-      ) as _i16.Future<String>);
+      ) as _i18.Future<String>);
 
   @override
-  _i16.Future<_i12.GetUserDataReponse> getLoggedProfileData() =>
+  _i18.Future<_i12.GetUserDataReponse> getLoggedProfileData() =>
       (super.noSuchMethod(
         Invocation.method(
           #getLoggedProfileData,
           [],
         ),
-        returnValue: _i16.Future<_i12.GetUserDataReponse>.value(
+        returnValue: _i18.Future<_i12.GetUserDataReponse>.value(
             _FakeGetUserDataReponse_10(
           this,
           Invocation.method(
@@ -505,17 +536,17 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             [],
           ),
         )),
-      ) as _i16.Future<_i12.GetUserDataReponse>);
+      ) as _i18.Future<_i12.GetUserDataReponse>);
 
   @override
-  _i16.Future<_i12.GetUserDataReponse> editProfile(
-          _i21.EditProfileRequest? editProfileRequest) =>
+  _i18.Future<_i12.GetUserDataReponse> editProfile(
+          _i23.EditProfileRequest? editProfileRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [editProfileRequest],
         ),
-        returnValue: _i16.Future<_i12.GetUserDataReponse>.value(
+        returnValue: _i18.Future<_i12.GetUserDataReponse>.value(
             _FakeGetUserDataReponse_10(
           this,
           Invocation.method(
@@ -523,93 +554,130 @@ class MockApiService extends _i1.Mock implements _i15.ApiService {
             [editProfileRequest],
           ),
         )),
-      ) as _i16.Future<_i12.GetUserDataReponse>);
+      ) as _i18.Future<_i12.GetUserDataReponse>);
 
   @override
-  _i16.Future<_i13.UploadPhotoResponse> uploadPhoto(_i22.File? image) =>
+  _i18.Future<_i13.ForgetPasswordResponse> forgotPassword(
+          _i24.ForgetPasswordRequest? forgetPasswordRequest) =>
       (super.noSuchMethod(
         Invocation.method(
-          #uploadPhoto,
-          [image],
+          #forgotPassword,
+          [forgetPasswordRequest],
         ),
-        returnValue: _i16.Future<_i13.UploadPhotoResponse>.value(
-            _FakeUploadPhotoResponse_11(
+        returnValue: _i18.Future<_i13.ForgetPasswordResponse>.value(
+            _FakeForgetPasswordResponse_11(
           this,
           Invocation.method(
-            #uploadPhoto,
-            [image],
+            #forgotPassword,
+            [forgetPasswordRequest],
           ),
         )),
-      ) as _i16.Future<_i13.UploadPhotoResponse>);
+      ) as _i18.Future<_i13.ForgetPasswordResponse>);
+
+  @override
+  _i18.Future<_i14.VerifyResetResponse> verifyResetCode(
+          _i25.VerifyResetRequest? verifyResetRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #verifyResetCode,
+          [verifyResetRequest],
+        ),
+        returnValue: _i18.Future<_i14.VerifyResetResponse>.value(
+            _FakeVerifyResetResponse_12(
+          this,
+          Invocation.method(
+            #verifyResetCode,
+            [verifyResetRequest],
+          ),
+        )),
+      ) as _i18.Future<_i14.VerifyResetResponse>);
+
+  @override
+  _i18.Future<_i15.ResetPasswordResponse> resetPassword(
+          _i26.ResetPasswordRequest? resetPassword) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #resetPassword,
+          [resetPassword],
+        ),
+        returnValue: _i18.Future<_i15.ResetPasswordResponse>.value(
+            _FakeResetPasswordResponse_13(
+          this,
+          Invocation.method(
+            #resetPassword,
+            [resetPassword],
+          ),
+        )),
+      ) as _i18.Future<_i15.ResetPasswordResponse>);
 }
 
 /// A class which mocks [FlutterSecureStorage].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFlutterSecureStorage extends _i1.Mock
-    implements _i14.FlutterSecureStorage {
+    implements _i16.FlutterSecureStorage {
   MockFlutterSecureStorage() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i14.IOSOptions get iOptions => (super.noSuchMethod(
+  _i16.IOSOptions get iOptions => (super.noSuchMethod(
         Invocation.getter(#iOptions),
-        returnValue: _FakeIOSOptions_12(
+        returnValue: _FakeIOSOptions_14(
           this,
           Invocation.getter(#iOptions),
         ),
-      ) as _i14.IOSOptions);
+      ) as _i16.IOSOptions);
 
   @override
-  _i14.AndroidOptions get aOptions => (super.noSuchMethod(
+  _i16.AndroidOptions get aOptions => (super.noSuchMethod(
         Invocation.getter(#aOptions),
-        returnValue: _FakeAndroidOptions_13(
+        returnValue: _FakeAndroidOptions_15(
           this,
           Invocation.getter(#aOptions),
         ),
-      ) as _i14.AndroidOptions);
+      ) as _i16.AndroidOptions);
 
   @override
-  _i14.LinuxOptions get lOptions => (super.noSuchMethod(
+  _i16.LinuxOptions get lOptions => (super.noSuchMethod(
         Invocation.getter(#lOptions),
-        returnValue: _FakeLinuxOptions_14(
+        returnValue: _FakeLinuxOptions_16(
           this,
           Invocation.getter(#lOptions),
         ),
-      ) as _i14.LinuxOptions);
+      ) as _i16.LinuxOptions);
 
   @override
-  _i14.WindowsOptions get wOptions => (super.noSuchMethod(
+  _i16.WindowsOptions get wOptions => (super.noSuchMethod(
         Invocation.getter(#wOptions),
-        returnValue: _FakeWindowsOptions_15(
+        returnValue: _FakeWindowsOptions_17(
           this,
           Invocation.getter(#wOptions),
         ),
-      ) as _i14.WindowsOptions);
+      ) as _i16.WindowsOptions);
 
   @override
-  _i14.WebOptions get webOptions => (super.noSuchMethod(
+  _i16.WebOptions get webOptions => (super.noSuchMethod(
         Invocation.getter(#webOptions),
-        returnValue: _FakeWebOptions_16(
+        returnValue: _FakeWebOptions_18(
           this,
           Invocation.getter(#webOptions),
         ),
-      ) as _i14.WebOptions);
+      ) as _i16.WebOptions);
 
   @override
-  _i14.MacOsOptions get mOptions => (super.noSuchMethod(
+  _i16.MacOsOptions get mOptions => (super.noSuchMethod(
         Invocation.getter(#mOptions),
-        returnValue: _FakeMacOsOptions_17(
+        returnValue: _FakeMacOsOptions_19(
           this,
           Invocation.getter(#mOptions),
         ),
-      ) as _i14.MacOsOptions);
+      ) as _i16.MacOsOptions);
 
   @override
   void registerListener({
     required String? key,
-    required _i23.ValueChanged<String?>? listener,
+    required _i27.ValueChanged<String?>? listener,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -626,7 +694,7 @@ class MockFlutterSecureStorage extends _i1.Mock
   @override
   void unregisterListener({
     required String? key,
-    required _i23.ValueChanged<String?>? listener,
+    required _i27.ValueChanged<String?>? listener,
   }) =>
       super.noSuchMethod(
         Invocation.method(
@@ -661,15 +729,15 @@ class MockFlutterSecureStorage extends _i1.Mock
       );
 
   @override
-  _i16.Future<void> write({
+  _i18.Future<void> write({
     required String? key,
     required String? value,
-    _i14.IOSOptions? iOptions,
-    _i14.AndroidOptions? aOptions,
-    _i14.LinuxOptions? lOptions,
-    _i14.WebOptions? webOptions,
-    _i14.MacOsOptions? mOptions,
-    _i14.WindowsOptions? wOptions,
+    _i16.IOSOptions? iOptions,
+    _i16.AndroidOptions? aOptions,
+    _i16.LinuxOptions? lOptions,
+    _i16.WebOptions? webOptions,
+    _i16.MacOsOptions? mOptions,
+    _i16.WindowsOptions? wOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -686,19 +754,19 @@ class MockFlutterSecureStorage extends _i1.Mock
             #wOptions: wOptions,
           },
         ),
-        returnValue: _i16.Future<void>.value(),
-        returnValueForMissingStub: _i16.Future<void>.value(),
-      ) as _i16.Future<void>);
+        returnValue: _i18.Future<void>.value(),
+        returnValueForMissingStub: _i18.Future<void>.value(),
+      ) as _i18.Future<void>);
 
   @override
-  _i16.Future<String?> read({
+  _i18.Future<String?> read({
     required String? key,
-    _i14.IOSOptions? iOptions,
-    _i14.AndroidOptions? aOptions,
-    _i14.LinuxOptions? lOptions,
-    _i14.WebOptions? webOptions,
-    _i14.MacOsOptions? mOptions,
-    _i14.WindowsOptions? wOptions,
+    _i16.IOSOptions? iOptions,
+    _i16.AndroidOptions? aOptions,
+    _i16.LinuxOptions? lOptions,
+    _i16.WebOptions? webOptions,
+    _i16.MacOsOptions? mOptions,
+    _i16.WindowsOptions? wOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -714,18 +782,18 @@ class MockFlutterSecureStorage extends _i1.Mock
             #wOptions: wOptions,
           },
         ),
-        returnValue: _i16.Future<String?>.value(),
-      ) as _i16.Future<String?>);
+        returnValue: _i18.Future<String?>.value(),
+      ) as _i18.Future<String?>);
 
   @override
-  _i16.Future<bool> containsKey({
+  _i18.Future<bool> containsKey({
     required String? key,
-    _i14.IOSOptions? iOptions,
-    _i14.AndroidOptions? aOptions,
-    _i14.LinuxOptions? lOptions,
-    _i14.WebOptions? webOptions,
-    _i14.MacOsOptions? mOptions,
-    _i14.WindowsOptions? wOptions,
+    _i16.IOSOptions? iOptions,
+    _i16.AndroidOptions? aOptions,
+    _i16.LinuxOptions? lOptions,
+    _i16.WebOptions? webOptions,
+    _i16.MacOsOptions? mOptions,
+    _i16.WindowsOptions? wOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -741,18 +809,18 @@ class MockFlutterSecureStorage extends _i1.Mock
             #wOptions: wOptions,
           },
         ),
-        returnValue: _i16.Future<bool>.value(false),
-      ) as _i16.Future<bool>);
+        returnValue: _i18.Future<bool>.value(false),
+      ) as _i18.Future<bool>);
 
   @override
-  _i16.Future<void> delete({
+  _i18.Future<void> delete({
     required String? key,
-    _i14.IOSOptions? iOptions,
-    _i14.AndroidOptions? aOptions,
-    _i14.LinuxOptions? lOptions,
-    _i14.WebOptions? webOptions,
-    _i14.MacOsOptions? mOptions,
-    _i14.WindowsOptions? wOptions,
+    _i16.IOSOptions? iOptions,
+    _i16.AndroidOptions? aOptions,
+    _i16.LinuxOptions? lOptions,
+    _i16.WebOptions? webOptions,
+    _i16.MacOsOptions? mOptions,
+    _i16.WindowsOptions? wOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -768,18 +836,18 @@ class MockFlutterSecureStorage extends _i1.Mock
             #wOptions: wOptions,
           },
         ),
-        returnValue: _i16.Future<void>.value(),
-        returnValueForMissingStub: _i16.Future<void>.value(),
-      ) as _i16.Future<void>);
+        returnValue: _i18.Future<void>.value(),
+        returnValueForMissingStub: _i18.Future<void>.value(),
+      ) as _i18.Future<void>);
 
   @override
-  _i16.Future<Map<String, String>> readAll({
-    _i14.IOSOptions? iOptions,
-    _i14.AndroidOptions? aOptions,
-    _i14.LinuxOptions? lOptions,
-    _i14.WebOptions? webOptions,
-    _i14.MacOsOptions? mOptions,
-    _i14.WindowsOptions? wOptions,
+  _i18.Future<Map<String, String>> readAll({
+    _i16.IOSOptions? iOptions,
+    _i16.AndroidOptions? aOptions,
+    _i16.LinuxOptions? lOptions,
+    _i16.WebOptions? webOptions,
+    _i16.MacOsOptions? mOptions,
+    _i16.WindowsOptions? wOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -794,17 +862,17 @@ class MockFlutterSecureStorage extends _i1.Mock
             #wOptions: wOptions,
           },
         ),
-        returnValue: _i16.Future<Map<String, String>>.value(<String, String>{}),
-      ) as _i16.Future<Map<String, String>>);
+        returnValue: _i18.Future<Map<String, String>>.value(<String, String>{}),
+      ) as _i18.Future<Map<String, String>>);
 
   @override
-  _i16.Future<void> deleteAll({
-    _i14.IOSOptions? iOptions,
-    _i14.AndroidOptions? aOptions,
-    _i14.LinuxOptions? lOptions,
-    _i14.WebOptions? webOptions,
-    _i14.MacOsOptions? mOptions,
-    _i14.WindowsOptions? wOptions,
+  _i18.Future<void> deleteAll({
+    _i16.IOSOptions? iOptions,
+    _i16.AndroidOptions? aOptions,
+    _i16.LinuxOptions? lOptions,
+    _i16.WebOptions? webOptions,
+    _i16.MacOsOptions? mOptions,
+    _i16.WindowsOptions? wOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -819,16 +887,16 @@ class MockFlutterSecureStorage extends _i1.Mock
             #wOptions: wOptions,
           },
         ),
-        returnValue: _i16.Future<void>.value(),
-        returnValueForMissingStub: _i16.Future<void>.value(),
-      ) as _i16.Future<void>);
+        returnValue: _i18.Future<void>.value(),
+        returnValueForMissingStub: _i18.Future<void>.value(),
+      ) as _i18.Future<void>);
 
   @override
-  _i16.Future<bool?> isCupertinoProtectedDataAvailable() => (super.noSuchMethod(
+  _i18.Future<bool?> isCupertinoProtectedDataAvailable() => (super.noSuchMethod(
         Invocation.method(
           #isCupertinoProtectedDataAvailable,
           [],
         ),
-        returnValue: _i16.Future<bool?>.value(),
-      ) as _i16.Future<bool?>);
+        returnValue: _i18.Future<bool?>.value(),
+      ) as _i18.Future<bool?>);
 }

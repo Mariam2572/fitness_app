@@ -1,5 +1,3 @@
-import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
-import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/home_upcoming_workout_item.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +21,7 @@ class UpcomingWorkout extends StatelessWidget {
           return HomeUpcomingWorkoutItem(
             name: muscles[index].name ?? "Exercise Name Not Found",
             image:muscles[index].image ?? "Image Not Found", muscle: muscles[index],
-                // getYouTubeThumbnail(
-                //   exercises[index].shortYoutubeDemonstrationLink ?? '',
-                // ) ??
-                // "https://img.youtube.com/vi/DEFAULT_THUMBNAIL/hqdefault.jpg",
+                
           );
         },
       ),
