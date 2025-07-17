@@ -82,12 +82,15 @@ class _WorkOutsViewState extends State<WorkOutsView>
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      context.loc.workOuts,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyle.instance.textStyle24.copyWith(
-                        color: AppColors.baseWhite,
-                        fontWeight: FontWeight.w600,
+                    Padding(
+                      padding:  EdgeInsets.only(top:15),
+                      child: Text(
+                        context.loc.workOuts,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.instance.textStyle24.copyWith(
+                          color: AppColors.baseWhite,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                     if (context.read<WorkOutsCubit>().groups.isNotEmpty &&

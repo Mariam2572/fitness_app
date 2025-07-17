@@ -35,7 +35,7 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
           final index = _tabController!.index;
         if (!_tabController!.indexIsChanging) {
           final category = cubit.tabs[index].strCategory ?? '';
-    context.read<FoodCubit>().doIntent(
+    cubit.doIntent(
       LoadMealsByCategoryIntent(category: category),
       );}
       });
@@ -97,9 +97,8 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
                       ),
                     Expanded(
                       child:
-                          context.read<FoodCubit>().tabs.isEmpty
-                              ? const Center(child: CircularProgressIndicator())
-                              : TabBarView(
+                          
+                             TabBarView(
                                 controller: _tabController,
                                 children:
                                     context.read<FoodCubit>().tabs
