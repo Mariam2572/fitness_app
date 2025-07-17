@@ -63,54 +63,57 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
   Widget build(BuildContext context) {
     // final workoutExercise = context.read<HomeViewCubit>().workoutByMuscles;
     return BlocBuilder<HomeViewCubit, HomeViewState>(
-      buildWhen: (previous, current) =>   previous != current && current is HomeViewSuccess,
+      buildWhen:
+          (previous, current) =>
+              previous != current && current is GetMusclesByMuscleGroupIdSuccess,
       builder: (context, state) {
-        
-        
-      if (state is HomeViewSuccess) {
-        return     Column(
-          children: [
-            AppTabBar(
-              tabs:
-                  widget.musclesCroup
-                      .map((item) => Tab(text: item.name ?? ''))
-                      .toList(),
-              controller: _tabController,
-            ),
-            SizedBox(
-              height: 90,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: state.workoutsByMuscleGroupId?.length,
-                //  workoutExercise != null ? workoutExercise.length : 0,
-
-                itemBuilder: (context, index) {
-                  return HomeUpcomingWorkoutItem(
-                    name:
-                        state.workoutsByMuscleGroupId?[index].name ??
-                        "Exercise Name Not Found",
-                    image: state.workoutsByMuscleGroupId?[index].image ?? "Image Not Found",
-                    // getYouTubeThumbnail(
-                    //   exercises[index].shortYoutubeDemonstrationLink ?? '',
-                    // ) ??
-                    // "https://img.youtube.com/vi/DEFAULT_THUMBNAIL/hqdefault.jpg",
-                  );
-                },
+        if (state is GetMusclesByMuscleGroupIdSuccess) {
+          return Column(
+            children: [
+              AppTabBar(
+                tabs:
+                    widget.musclesCroup
+                        .map((item) => Tab(text: item.name ?? ''))
+                        .toList(),
+                controller: _tabController,
               ),
+              SizedBox(
+                height: 90,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: state.workoutsByMuscleGroupId?.length,
+
+                  //  workoutExercise != null ? workoutExercise.length : 0,
+                  itemBuilder: (context, index) {
+                    return HomeUpcomingWorkoutItem(
+                      name:
+                          state.workoutsByMuscleGroupId?[index].name ??
+                          "Exercise Name Not Found",
+                      image:
+                          state.workoutsByMuscleGroupId?[index].image ??
+                          "Image Not Found",
+                      // getYouTubeThumbnail(
+                      //   exercises[index].shortYoutubeDemonstrationLink ?? '',
+                      // ) ??
+                      // "https://img.youtube.com/vi/DEFAULT_THUMBNAIL/hqdefault.jpg",
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
+        } else if (state is HomeViewError) {
+          return Center(
+            child: Text(
+              state.musclesByMuscleGroupIdError ?? "Unable to get muscles",
+              style: context.textTheme.bodyMedium,
             ),
-          ],
-        );
-      } else if (state is HomeViewError) {
-        return Center(
-          child: Text(
-            state.musclesByMuscleGroupIdError ?? "Unable to get muscles",
-            style: context.textTheme.bodyMedium,
-          ),
-        );
-      }    else{
-        return const Center(child: CircularProgressIndicator(color: AppColors.mainRed,));
-      }
-      
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.mainRed),
+          );
+        }
       },
     );
   }

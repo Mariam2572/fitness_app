@@ -109,7 +109,7 @@ class HomeViewCubit extends Cubit<HomeViewState> {
       case ApiSuccess<GetAllMusclesByMuscleGroupIdReponse>():
         workoutByMuscles = result.data?.muscles;
         emit(
-          HomeViewSuccess(workoutsByMuscleGroupId: result.data?.muscles),
+          GetMusclesByMuscleGroupIdSuccess(workoutsByMuscleGroupId:workoutByMuscles ),
         );
       case ApiError<GetAllMusclesByMuscleGroupIdReponse>():
         emit(

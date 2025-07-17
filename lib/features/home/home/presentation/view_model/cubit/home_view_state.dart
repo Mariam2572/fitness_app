@@ -52,10 +52,9 @@ final class HomeViewSuccess extends HomeViewState {
 // }
 
 final class GetMusclesByMuscleGroupIdSuccess extends HomeViewState {
-  final GetAllMusclesByMuscleGroupIdReponse? musclesByMuscleGroupId;
-
+  final List<MusclesBean>? workoutsByMuscleGroupId;
   const GetMusclesByMuscleGroupIdSuccess({
-    required this.musclesByMuscleGroupId,
+    required this.workoutsByMuscleGroupId,
   });
 }
 
