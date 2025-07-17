@@ -573,7 +573,6 @@ abstract class AppLocalizations {
   String get getFitter;
   String get gainMoreFlexibility;
   String get learnTheBasics;
-  String get done;
 
   /// No description provided for @foodRecommendation.
   ///

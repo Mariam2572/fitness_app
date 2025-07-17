@@ -56,20 +56,20 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
               child: BlocConsumer<EditProfileCubit, ProfileState>(
                 listener: (context, state) {
-                  if (state is UploadPhotoFailure) {
-                    showErrorSnackBar(context, state.error);
-                  } else if (state is UploadPhotoSuccess) {
-                    showSnackBar(context, "Photo Upload Success");
-                  } else if (state is ProfileSuccess) {
-                    showSnackBar(context, "Profile Edit Success");
-                  } else if (state is ProfileFailure) {
-                    showSnackBar(context, state.error);
-                  }
-                  if (state is UploadPhotoSuccess) {
-                    showSnackBar(context, "Upload success");
-                  } else if (state is UploadPhotoFailure) {
-                    showErrorSnackBar(context, state.error);
-                  }
+                  // if (state is UploadPhotoFailure) {
+                  //   showErrorSnackBar(context, state.error);
+                  // } else if (state is UploadPhotoSuccess) {
+                  //   showSnackBar(context, "Photo Upload Success");
+                  // } else if (state is ProfileSuccess) {
+                  //   showSnackBar(context, "Profile Edit Success");
+                  // } else if (state is ProfileFailure) {
+                  //   showSnackBar(context, state.error);
+                  // }
+                  // if (state is UploadPhotoSuccess) {
+                  //   showSnackBar(context, "Upload success");
+                  // } else if (state is UploadPhotoFailure) {
+                  //   showErrorSnackBar(context, state.error);
+                  // }
                 },
                 builder: (context, state) {
                   if (state is ProfileSuccess) {
@@ -210,11 +210,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     return const Center(
                       child: CircularProgressIndicator(color: Colors.white),
                     );
-                  } else if (state is UploadPhotoSuccess) {
-                    return const Center(child: Text("Succsss"));
-                  } else if (state is UploadPhotoFailure) {
-                    return Center(child: Text(state.error));
-                  } else {
+                  } 
+                  // else if (state is UploadPhotoSuccess) {
+                  //   return const Center(child: Text("Succsss"));
+                  // } else if (state is UploadPhotoFailure) {
+                  //   return Center(child: Text(state.error));
+                  // } 
+                  else {
                     return Center(
                       child: TextButton(
                         onPressed: () {

@@ -292,8 +292,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get gainMoreFlexibility => 'زيادة المرونة';
   @override
   String get learnTheBasics => 'تعلم الأساسيات';
-  @override
-  String get done => 'تم';
+
 
 
   @override

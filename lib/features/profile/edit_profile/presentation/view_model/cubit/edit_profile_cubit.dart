@@ -45,7 +45,7 @@ static  Gender selectedGender = Gender.female;
         _editProfile(intent);
         break;
       case UploadPhotoIntent():
-        _uploadPohot(intent);
+        // _uploadPohot(intent);
         break;
     }
   }
@@ -103,24 +103,24 @@ static  Gender selectedGender = Gender.female;
     }
 // _Profile();
   }
-  Future<void> _uploadPohot(UploadPhotoIntent intent) async {
+  // Future<void> _uploadPohot(UploadPhotoIntent intent) async {
 
-    emit(EditProfileLoading());
-    final response = await _uploadPhotoUseCase.invoke(intent.photo);
-    switch (response) {
-      case ApiError<String>():{
-        emit(
-          EditProfileFailure(
-            response.failure?.errorMessage ?? 'An error occurred',
-          ),
-        );
-       }
-      case ApiSuccess<String>():{
-        emit(EditProfileSuccess(response.data));
-       }
-    }
+  //   emit(ProfileLoading());
+  //   final response = await _uploadPhotoUseCase.invoke(intent.photo);
+  //   switch (response) {
+  //     case ApiError<String>():{
+  //       emit(
+  //         ProfileFailure(
+  //           response.failure?.errorMessage ?? 'An error occurred',
+  //         ),
+  //       );
+  //      }
+  //     case ApiSuccess<String>():{
+  //       emit(ProfileSuccess(response.data));
+  //      }
+  //   }
 
-  }
+  // }
 
 }
 

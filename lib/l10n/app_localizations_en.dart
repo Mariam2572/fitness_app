@@ -292,8 +292,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get learnTheBasics => 'Learn The Basics';
   
   
-  @override
-  String get done => 'Done';
+
   // TODO: implement getwhatsYourGoal
 String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
   

@@ -22,8 +22,8 @@ import 'package:fitness_app/features/exercise/presentation/views/exercise_view.d
 import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
 import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
+import 'package:fitness_app/features/food/presentation/view/food_recommendation_page.dart';
 import 'package:fitness_app/features/food/presentation/view/food_recommendation_view.dart';
-import 'package:fitness_app/features/food/presentation/view/food_recommendation_view_body.dart_recommendation_page.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
