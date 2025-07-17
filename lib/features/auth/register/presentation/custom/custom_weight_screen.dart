@@ -101,7 +101,7 @@ class _CustomWeightScreenState extends State<CustomWeightScreen> {
 
                     Navigator.pushNamed(
                       context,
-                      RoutesName.chooseWeightScreen,
+                      RoutesName.chooseHeightScreen,
                       arguments: context.read<RegisterCubit>(),
                     );
                   },

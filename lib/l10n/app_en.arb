@@ -63,7 +63,6 @@
   "create_new_password":"Create New Password",
   "done":"Done",
   "email_sent_successfully":"Email Sent Successfully!",
-  "doIt": "Do It",
   "anErrorOccurred": "An error occurred , Please try later",
   "changePassword": "Change Password",
   "currentPassword": "Current Password",
@@ -103,8 +102,6 @@
   "registerSuccess": "Registered Successefully!",
   "bigenner": "Beginner",
   "trueBeast": "True Beast",
-  "done":"Done"
-"hi" : "Hi",
   "letsStartYourDay" : "Let's Start Your Day",
   "unableToGetUserName" : "Unable to get user name",
   "unknownError" : "unknownError occurred please try later"

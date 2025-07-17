@@ -21,17 +21,17 @@ abstract class DioModule {
         baseUrl: Constants.baseUrl,
       ),
     );
-    dio.options.headers["Content-Type"]="multipart/form-data";
-    dio.options.contentType="multipart/form-data";
+    // dio.options.headers["Content-Type"]="multipart/form-data";
+    // dio.options.contentType="multipart/form-data";
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = await readSecureData(Constants.userToken);
 
           log("token : $token");
-          options.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjg1NTgyZDVkYjY1MjAwNTE0NDE2N2QxIiwiaWF0IjoxNzUyNDMxNDcxfQ.sEeuU8Ifkm7HEh4-oRyL9xouiUYw6G8ZZ2EDdh5FL54';
+          options.headers['Authorization'] = 'Bearer $token';
           if (token != null && token.isNotEmpty) {
-            options.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjg1NTgyZDVkYjY1MjAwNTE0NDE2N2QxIiwiaWF0IjoxNzUyNDMxNDcxfQ.sEeuU8Ifkm7HEh4-oRyL9xouiUYw6G8ZZ2EDdh5FL54';
+            options.headers['Authorization'] = 'Bearer $token';
             log("token : $token");
           }
           options.headers['Accept-Language'] = appConfigProvider.appLanguage;

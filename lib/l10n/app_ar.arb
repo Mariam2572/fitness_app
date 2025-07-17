@@ -63,8 +63,6 @@
   "create_new_password": "إنشاء كلمة مرور جديدة",
   "done": "تم",
   "email_sent_successfully":"تم ارسال البريد بنجاح!",
-
-  "doIt": "افعلها",
   "anErrorOccurred": "  . برجاء المحاولة لاحقا لقد حدث خطأ ما",
   "noResponse" : "لا يوجد رد",
   "changePassword": "تغيير كلمة المرور",
@@ -103,9 +101,6 @@
   "activityLevel": "مستوى النشاط؟",
   "registerSuccess": "تم التسجيل بنجاح!",
   "bigenner": "مبتدئ",
-  "done": "تم"
-  
-  "recommendation" : "إقتراحات",
   "hi": "مرحباً",
   "letsStartYourDay": "لنبدأ يومك",
   "unableToGetUserName": "تعذر الحصول على اسم المستخدم",
