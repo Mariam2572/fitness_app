@@ -16,9 +16,9 @@ part 'home_view_state.dart';
 class HomeViewCubit extends Cubit<HomeViewState> {
   HomeViewCubit(this.homeUseCase) : super(HomeViewInitial());
   final HomeUseCase homeUseCase;
-  // late TabController tabController;
+  
   List<MusclesGroupBean> musclesGroupCat = [];
-  // List<MusclesBean>? workoutByMuscles = [];
+
 
   Future<void> doIntent(HomeIntent intent) async {
     switch (intent) {
@@ -72,7 +72,7 @@ class HomeViewCubit extends Cubit<HomeViewState> {
     final result = await homeUseCase.getWorkoutsExercise(initen.id);
     switch (result) {
       case ApiSuccess<GetAllMusclesByMuscleGroupIdReponse>():
-        // workoutByMuscles = result.data?.muscles;
+       
         emit(
           GetMusclesByMuscleGroupIdSuccess(
             workoutsByMuscleGroupId: result.data?.muscles,

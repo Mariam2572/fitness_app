@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/cubit/home_view_cubit.dart';
@@ -35,23 +36,9 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
     super.initState();
   }
 
-  void handleApiCallWhenTabChanges(HomeViewCubit homeCubit) {
-    final firstId = homeCubit.musclesGroupCat[0].id;
-    homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: firstId ?? ""));
-    _tabController.addListener(() {
-      if (!_tabController.indexIsChanging) {
-        final id = homeCubit.musclesGroupCat[_tabController.index].id;
-        homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: id ?? ""));
-      }
-    });
-  }
+  
 
-  void _initTabController(HomeViewCubit homeCubit) {
-    _tabController = TabController(
-      length: homeCubit.musclesGroupCat.length,
-      vsync: this,
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +64,15 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
 
                   itemBuilder: (context, index) {
                     return HomeUpcomingWorkoutItem(
+                      onTap: () {
+                         Navigator.pushNamed(context, RoutesName.exerciseView,arguments: state.workoutsByMuscleGroupId![index]);
+                      },
                       name:
                           state.workoutsByMuscleGroupId?[index].name ??
                           "Exercise Name Not Found",
                       image:
                           state.workoutsByMuscleGroupId?[index].image ??
-                          "Image Not Found",
+                          "Image Not Found", muscle: state.workoutsByMuscleGroupId![index],
                     );
                   },
                 ),
@@ -103,5 +93,21 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
         }
       },
     );
+  }
+  void _initTabController(HomeViewCubit homeCubit) {
+    _tabController = TabController(
+      length: homeCubit.musclesGroupCat.length,
+      vsync: this,
+    );
+  }
+  void handleApiCallWhenTabChanges(HomeViewCubit homeCubit) {
+    final firstId = homeCubit.musclesGroupCat[0].id;
+    homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: firstId ?? ""));
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
+        final id = homeCubit.musclesGroupCat[_tabController.index].id;
+        homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: id ?? ""));
+      }
+    });
   }
 }
