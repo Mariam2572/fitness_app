@@ -18,15 +18,15 @@ class HomeViewCubit extends Cubit<HomeViewState> {
   final HomeUseCase homeUseCase;
   // late TabController tabController;
   List<MusclesGroupBean> musclesGroupCat = [];
-  List<MusclesBean>? workoutByMuscles = [];
+  // List<MusclesBean>? workoutByMuscles = [];
 
   Future<void> doIntent(HomeIntent intent) async {
     switch (intent) {
       case GetMusclesByMuscleGroupIdIntent():
-      await  _getMusclesByMuscleGroupId(intent);
+        await _getMusclesByMuscleGroupId(intent);
 
       case HomeViewDataIntent():
-      await  _getHomeData();
+        await _getHomeData();
     }
   }
 
@@ -48,7 +48,6 @@ class HomeViewCubit extends Cubit<HomeViewState> {
           exercises: randomExercises.data?.exercises ?? [],
           mealsCategories: mealsCat.data?.categories ?? [],
           musclesGroups: musclesGroups.data!,
-
         ),
       );
     } else if (userName is ApiError<String> &&
@@ -66,70 +65,27 @@ class HomeViewCubit extends Cubit<HomeViewState> {
     }
   }
 
-  // Future<void> _getUserName() async {
-  //   final result = await homeUseCase.getUserName();
-
-  //   switch (result) {
-  //     case ApiSuccess<String>():
-  //       log("user Name in HomeViewCubit ${result.data} ");
-  //       emit(GetUserNameSuccess(userName: result.data ?? "Unknown User"));
-
-  //     case ApiError<String>():
-  //       emit(HomeViewError(result.failure!.errorMessage));
-  //   }
-  // }
-
-  // Future<void> _getRandomExercise() async {
-  //   final result = await homeUseCase.getRandomExercise();
-  //   switch (result) {
-  //     case ApiSuccess<RandomExerciseResponse>():
-  //       log("random erxercise in HomeViewCubit ${result.data?.exercises} ");
-  //       emit(
-  //         GetRandomExercisesSuccess(exercises: result.data?.exercises ?? []),
-  //       );
-  //     case ApiError<RandomExerciseResponse>():
-  //       emit(HomeViewError(result.failure!.errorMessage));
-  //   }
-  // }
-
-  // Future<void> _getMusclesGroup() async {
-  //   final result = await homeUseCase.getAllMusclesGroups();
-  //   switch (result) {
-  //     case ApiSuccess<GetAllMusclesGroupsReponse>():
-  //       log("muscles groups in HomeViewCubit ${result.data?.musclesGroup} ");
-  //       emit(GetAllMusclesGroupsSuccess(musclesGroups: result.data));
-  //     case ApiError<GetAllMusclesGroupsReponse>():
-  //       emit(HomeViewError(result.failure!.errorMessage));
-  //   }
-  // }
-
-  Future<void> _getMusclesByMuscleGroupId(GetMusclesByMuscleGroupIdIntent initen) async {
+  Future<void> _getMusclesByMuscleGroupId(
+    GetMusclesByMuscleGroupIdIntent initen,
+  ) async {
+    emit(HomeViewLoading());
     final result = await homeUseCase.getWorkoutsExercise(initen.id);
     switch (result) {
       case ApiSuccess<GetAllMusclesByMuscleGroupIdReponse>():
-        workoutByMuscles = result.data?.muscles;
+        // workoutByMuscles = result.data?.muscles;
         emit(
-          GetMusclesByMuscleGroupIdSuccess(workoutsByMuscleGroupId:workoutByMuscles ),
+          GetMusclesByMuscleGroupIdSuccess(
+            workoutsByMuscleGroupId: result.data?.muscles,
+          ),
         );
       case ApiError<GetAllMusclesByMuscleGroupIdReponse>():
         emit(
           HomeViewError(
-          musclesByMuscleGroupIdError  : result.failure?.errorMessage,
+            musclesByMuscleGroupIdError: result.failure?.errorMessage,
           ),
         );
     }
   }
-
-  // Future<void> _getMealsCategories() async {
-  //   final result = await homeUseCase.getMealsCategories();
-  //   switch (result) {
-  //     case ApiSuccess<FoodCategoriesResponse>():
-  //       log("meales categories in HomeViewCubit ${result.data?.categories} ");
-  //       emit(GetFoodCategorySuccess(categories: result.data?.categories ?? []));
-  //     case ApiError<FoodCategoriesResponse>():
-  //       emit(HomeViewError(result.failure!.errorMessage));
-  //   }
-  // }
 }
 
 sealed class HomeIntent {}

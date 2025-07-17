@@ -27,45 +27,37 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
     final homeCubit = context.read<HomeViewCubit>();
     homeCubit.doIntent(HomeViewDataIntent()).then((value) {
       if (homeCubit.musclesGroupCat.isNotEmpty) {
-        _tabController = TabController(
-          length: homeCubit.musclesGroupCat.length,
-          vsync: this,
-        );
-        final firstId = homeCubit.musclesGroupCat[0].id;
-        homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: firstId ?? ""));
-        _tabController.addListener(() {
-          if (!_tabController.indexIsChanging) {
-            final id = homeCubit.musclesGroupCat[_tabController.index].id;
-            homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: id ?? ""));
-          }
-        });
+        _initTabController(homeCubit);
+        handleApiCallWhenTabChanges(homeCubit);
       }
     });
-    // if (homeCubit.musclesGroupCat.isNotEmpty) {
-    //   _tabController = TabController(
-    //     length: homeCubit.musclesGroupCat.length,
-    //     vsync: this,
-    //   );
-    //   final firstId = homeCubit.musclesGroupCat[0].id;
-    //   homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: firstId ?? ""));
-    //   homeCubit.tabController.addListener(() {
-    //     if (!homeCubit.tabController.indexIsChanging) {
-    //       final id =
-    //           homeCubit.musclesGroupCat[homeCubit.tabController.index].id;
-    //       homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: id ?? ""));
-    //     }
-    //   });
-    // }
+
     super.initState();
+  }
+
+  void handleApiCallWhenTabChanges(HomeViewCubit homeCubit) {
+    final firstId = homeCubit.musclesGroupCat[0].id;
+    homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: firstId ?? ""));
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
+        final id = homeCubit.musclesGroupCat[_tabController.index].id;
+        homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: id ?? ""));
+      }
+    });
+  }
+
+  void _initTabController(HomeViewCubit homeCubit) {
+    _tabController = TabController(
+      length: homeCubit.musclesGroupCat.length,
+      vsync: this,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // final workoutExercise = context.read<HomeViewCubit>().workoutByMuscles;
     return BlocBuilder<HomeViewCubit, HomeViewState>(
       buildWhen:
-          (previous, current) =>
-              previous != current && current is GetMusclesByMuscleGroupIdSuccess,
+          (previous, current) => current is GetMusclesByMuscleGroupIdSuccess,
       builder: (context, state) {
         if (state is GetMusclesByMuscleGroupIdSuccess) {
           return Column(
@@ -83,7 +75,6 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
                   scrollDirection: Axis.horizontal,
                   itemCount: state.workoutsByMuscleGroupId?.length,
 
-                  //  workoutExercise != null ? workoutExercise.length : 0,
                   itemBuilder: (context, index) {
                     return HomeUpcomingWorkoutItem(
                       name:
@@ -92,10 +83,6 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
                       image:
                           state.workoutsByMuscleGroupId?[index].image ??
                           "Image Not Found",
-                      // getYouTubeThumbnail(
-                      //   exercises[index].shortYoutubeDemonstrationLink ?? '',
-                      // ) ??
-                      // "https://img.youtube.com/vi/DEFAULT_THUMBNAIL/hqdefault.jpg",
                     );
                   },
                 ),
