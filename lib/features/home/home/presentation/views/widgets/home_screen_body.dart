@@ -59,20 +59,21 @@ class HomeScreenBody extends StatelessWidget {
                               style: text.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
-                            ),
-                          if (state is HomeViewError)
+                            )
+                          else if (state is HomeViewError)
                             Center(
                               child: Text(
                                 state.userNameError ?? loc.unableToGetUserName,
                               ),
+                            )
+                          else
+                            Text(
+                              "${loc.hi} User,\n${loc.letsStartYourDay}",
+                              style: text.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          // else
-                          //   Text(
-                          //     "Hi User,\nLet's Start Your Day",
-                          //     style: text.titleSmall?.copyWith(
-                          //       fontWeight: FontWeight.w500,
-                          //     ),
-                          //   ),
+                            
                           const CircleAvatar(
                             radius: 24,
                             backgroundImage: AssetImage(
