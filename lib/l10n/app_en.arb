@@ -91,7 +91,19 @@
   "recommendationsForYou" : "Recommendations For You",
   "popularTraining": "Popular Training",
   "foodRecommendation" : "Food Recommendation",
-  "recommendation" : "Recommendation"
+  "recommendation" : "Recommendation",
+  "whatsYourGoal": "WHAT IS YOUR GOAL ?",
+  "gainWeight": "Gain Weight",
+  "loseWeight": "Lose Weight",
+  "getFitter": "Get Fitter",
+  "gainMoreFlexibility": "Gain More Flexibility",
+  "learnTheBasics": "Learn The Basics",
+  "yourRegularPhysical": "YOUR REGULAR PHYSICAL",
+  "activityLevel": "ACTIVITY LEVEL?",
+  "registerSuccess": "Registered Successefully!",
+  "bigenner": "Beginner",
+  "trueBeast": "True Beast",
+  "done":"Done"
 
 
 }

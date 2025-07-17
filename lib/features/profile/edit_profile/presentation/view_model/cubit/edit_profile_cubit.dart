@@ -15,12 +15,12 @@ import 'package:flutter/material.dart';
 
 part 'edit_profile_state.dart';
 
-class EditProfileCubit extends Cubit<EditProfileState> {
+class EditProfileCubit extends Cubit<ProfileState> {
   final EditProfileUseCase _editProfileUseCase;
   final GetLoggedUserDataUseCase _getLoggedUserDataUseCase;
   final UploadPhotoUseCase _uploadPhotoUseCase;
 
-  EditProfileCubit(this._editProfileUseCase,this._getLoggedUserDataUseCase,this._uploadPhotoUseCase) : super(GetProfileInitial());
+  EditProfileCubit(this._editProfileUseCase,this._getLoggedUserDataUseCase,this._uploadPhotoUseCase) : super(ProfileInitial());
 
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -29,8 +29,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   int weight = 40;
   int age = 19;
   String? goal;
-  ActivityEnum? activityLevel;
-   Gender selectedGender = Gender.female;
+  String? activityLevel;
+static  Gender selectedGender = Gender.female;
   bool isEdited=false;
   bool isEditProfile=false;
   File? selectedImage;
@@ -51,12 +51,12 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   }
 
   Future<void> _getProfile() async {
-    emit(GetProfileLoading());
+    emit(ProfileLoading());
     final response = await _getLoggedUserDataUseCase.invoke();
     switch (response) {
       case ApiError<GetUserDataReponse>():
         emit(
-          GetProfileFailure(
+          ProfileFailure(
             response.failure?.errorMessage ?? 'An error occurred',          ),
         );
       case ApiSuccess<GetUserDataReponse>():{
@@ -67,43 +67,41 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         weight=response.data?.user?.weight??0;
         age=response.data?.user?.age??0;
         goal=response.data?.user?.goal??"";
-
-
-        final activity = response.data?.user?.activityLevel;
-
-        if (activity == "level1") {
-          activityLevel = ActivityEnum.level1;
-        } else if (activity == "level2") {
-          activityLevel = ActivityEnum.level2;
-        } else if (activity == "level3") {
-          activityLevel = ActivityEnum.level3;
-        } else if (activity == "level4") {
-          activityLevel = ActivityEnum.level4;
-        } else if (activity == "level5") {
-          activityLevel = ActivityEnum.level5;
-        } else {
-          activityLevel = ActivityEnum.level1; // fallback
-        }
-
+        activityLevel = response.data?.user?.activityLevel;
+   
         selectedGender=response.data?.user?.gender=="male"?Gender.male:Gender.female;
-        emit(GetProfileSuccess(response.data!));
+        emit(ProfileSuccess(response.data!));
       }
       }
 
-  }
+  }EditProfileRequest get currentEditProfileRequest {
+  return EditProfileRequest(
+    email: emailController.text,
+    height: height,
+    activityLevel: activityEnumToBackend(stringToActivityEnum(activityLevel)) ?? "level1", // fallback
+    age: age,
+    firstName: firstNameController.text,
+    gender: EditProfileCubit.selectedGender.name,
+    goal: goal,
+    lastName: lastNameController.text,
+    weight: weight,
+  );
+}
+
   Future<void> _editProfile(EditProfileInfoIntent intent) async {
-    emit(EditProfileLoading());
+    emit(ProfileLoading());
     final response = await _editProfileUseCase.invoke(intent.editProfileRequest);
     switch (response) {
       case ApiError<GetUserDataReponse>():
         emit(
-          EditProfileFailure(
+          ProfileFailure(
             response.failure?.errorMessage ?? 'An error occurred',
           ),
         );
       case ApiSuccess<GetUserDataReponse>():
-        emit(EditProfileSuccess(response.data!));
+        emit(ProfileSuccess(response.data!));
     }
+// _Profile();
   }
   Future<void> _uploadPohot(UploadPhotoIntent intent) async {
 

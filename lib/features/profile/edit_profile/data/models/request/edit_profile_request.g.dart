@@ -16,8 +16,7 @@ EditProfileRequest _$EditProfileRequestFromJson(Map<String, dynamic> json) =>
       weight: (json['weight'] as num?)?.toInt(),
       age: (json['age'] as num?)?.toInt(),
       goal: json['goal'] as String?,
-      activityLevel: json['activityLevel'] as String?,
-    );
+    )..activityLevel = json['activityLevel'] as String?;
 
 Map<String, dynamic> _$EditProfileRequestToJson(EditProfileRequest instance) =>
     <String, dynamic>{

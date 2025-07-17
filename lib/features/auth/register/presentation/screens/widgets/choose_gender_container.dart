@@ -1,4 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fitness_app/core/utils/enums/gender.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
@@ -7,28 +11,40 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/widgets/choose_age_screen_body.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/gender_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChooseGenderContainer extends StatefulWidget {
-  const ChooseGenderContainer({super.key});
+  final String? selectedGender;
+  final bool isEditProfile;
+  final Function(Gender gender)? onTap;
+  const ChooseGenderContainer({
+    super.key,
+     this.selectedGender,
+    this.isEditProfile = false,
+    this.onTap,
+  });
 
   @override
   State<ChooseGenderContainer> createState() => _ChooseGenderContainerState();
 }
 
 class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
-
+    late String? selectedGender;
+@override
+  void initState() {
+    selectedGender = widget.selectedGender;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    String? selectedGender=
-        context.read<EditProfileCubit?>()?.selectedGender.name
-    ;
+
+    onGenderSelected(Gender gender) {
+      setState(() {
+        selectedGender = gender.name;
+      });
+      widget.onTap?.call(gender);
+    }
     return CustomGlassContainer(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 24),
@@ -40,32 +56,19 @@ class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
               title: context.loc.male,
 
               isSelected: selectedGender == Gender.male.name,
-              onTap: () {
-                selectedGender = Gender.male.name;
-                RegisterCubit.selectedGender = Gender.male;
-                context.read<EditProfileCubit>().selectedGender=Gender.male;
-
-                //  print("--------------------${RegisterCubit.selectedGender}");
-                setState(() {});
-              },
+              onTap:()=> onGenderSelected(Gender.male),
             ),
             GenderWidget(
               image: AppAssets.femaleIcon,
               title: context.loc.female,
 
               isSelected: selectedGender == Gender.female.name,
-              onTap: () {
-                setState(() {
-                  selectedGender = Gender.female.name;
-                  RegisterCubit.selectedGender = Gender.female;
-                  context.read<EditProfileCubit>().selectedGender=Gender.female;
-
-                  print("--------------------${RegisterCubit.selectedGender}");
-                  setState(() {});
-                });
-              },
+              onTap:()=> onGenderSelected(Gender.female)
+              
             ),
-            context.read<EditProfileCubit>().isEditProfile?   SizedBox():  Padding(
+            if(!widget.isEditProfile) 
+              // const SizedBox(),
+                Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -77,9 +80,8 @@ class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
                     Navigator.pushNamed(
                       context,
                       RoutesName.chooseAgeScreen,
-                      arguments:   {
-                        'registerCubit': context.read<RegisterCubit>(),
-                      },                    );
+                      arguments:   context.read<RegisterCubit>(),
+                                        );
                   } else {
                     showSnackBar(context, context.loc.pleaseSelectYourGender);
                   }

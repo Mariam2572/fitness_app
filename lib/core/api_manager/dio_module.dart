@@ -29,9 +29,9 @@ abstract class DioModule {
           final token = await readSecureData(Constants.userToken);
 
           log("token : $token");
-          options.headers['Authorization'] = 'Bearer $token';
+          options.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjg1NTgyZDVkYjY1MjAwNTE0NDE2N2QxIiwiaWF0IjoxNzUyNDMxNDcxfQ.sEeuU8Ifkm7HEh4-oRyL9xouiUYw6G8ZZ2EDdh5FL54';
           if (token != null && token.isNotEmpty) {
-            options.headers['Authorization'] = 'Bearer $token';
+            options.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjg1NTgyZDVkYjY1MjAwNTE0NDE2N2QxIiwiaWF0IjoxNzUyNDMxNDcxfQ.sEeuU8Ifkm7HEh4-oRyL9xouiUYw6G8ZZ2EDdh5FL54';
             log("token : $token");
           }
           options.headers['Accept-Language'] = appConfigProvider.appLanguage;

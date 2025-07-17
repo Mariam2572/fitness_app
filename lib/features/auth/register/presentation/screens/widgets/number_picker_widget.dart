@@ -23,7 +23,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
   late int currentValue;
   @override
   void initState() {
-    currentValue = widget.initialValue;
+    currentValue = widget.initialValue.clamp(widget.minValue, widget.maxValue);
     super.initState();
   }
 
@@ -32,6 +32,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
     return Column(
       children: [
         NumberPicker(
+          
           textStyle: context.textTheme.displayLarge?.copyWith(
             color: AppColors.baseWhite,
             fontSize: 33,

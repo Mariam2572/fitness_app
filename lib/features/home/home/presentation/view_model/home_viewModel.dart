@@ -17,7 +17,7 @@ class HomeViewModel extends Cubit<HomeState>{
 
   Future<void> doIntent(HomeIntent intent) async {
     if (intent is InitialLoad) {
-      await _fetchUserNameAndExercises();
+       await _fetchUserNameAndExercises();
     }
   }
 

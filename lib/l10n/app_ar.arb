@@ -92,5 +92,17 @@
   "recommendationsForYou": "توصيات لك",
   "popularTraining": "التدريبات الشائعة",
   "foodRecommendation" : "إقتراحات الطعام",
-  "recommendation" : "إقتراحات"
+  "recommendation" : "إقتراحات",
+  "whatsYourGoal": "ما هو هدفك؟",
+  "gainWeight": "زيادة الوزن",
+  "loseWeight": "فقدان الوزن",
+  "getFitter": "حصول على الصحة",
+  "gainMoreFlexibility": "زيادة الحركة",
+  "learnTheBasics": "تعلم الاساسيات",
+  "yourRegularPhysical": "نشاطك البدني المعتاد",
+  "activityLevel": "مستوى النشاط؟",
+  "registerSuccess": "تم التسجيل بنجاح!",
+  "bigenner": "مبتدئ",
+  "done": "تم"
+  
 }

@@ -280,6 +280,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get popularTraining => 'Popular Training';
+  @override
+  String get gainWeight => 'Gain Weight';
+  @override
+  String get loseWeight => 'Lose Weight';
+  @override
+  String get getFitter => 'Get Fitter';
+  @override
+  String get gainMoreFlexibility => 'Gain More Flexibility';
+  @override
+  String get learnTheBasics => 'Learn The Basics';
+  
+  
+  @override
+  String get done => 'Done';
+  // TODO: implement getwhatsYourGoal
+String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
+  
 
   @override
   String get foodRecommendation => 'Food Recommendation';
