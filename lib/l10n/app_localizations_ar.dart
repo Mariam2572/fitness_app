@@ -286,4 +286,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get recommendation => 'إقتراحات';
+
+  @override
+  String get hi => 'مرحباً';
+
+  @override
+  String get letsStartYourDay => 'لنبدأ يومك';
+
+  @override
+  String get unableToGetUserName => 'تعذر الحصول على اسم المستخدم';
+
+  @override
+  String get unknownError => 'حدث خطأ غير معروف، يرجى المحاولة لاحقًا';
 }

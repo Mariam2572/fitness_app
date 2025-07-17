@@ -579,6 +579,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Recommendation'**
   String get recommendation;
+
+  /// No description provided for @hi.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi'**
+  String get hi;
+
+  /// No description provided for @letsStartYourDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Start Your Day'**
+  String get letsStartYourDay;
+
+  /// No description provided for @unableToGetUserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to get user name'**
+  String get unableToGetUserName;
+
+  /// No description provided for @unknownError.
+  ///
+  /// In en, this message translates to:
+  /// **'unknownError occurred please try later'**
+  String get unknownError;
 }
 
 class _AppLocalizationsDelegate

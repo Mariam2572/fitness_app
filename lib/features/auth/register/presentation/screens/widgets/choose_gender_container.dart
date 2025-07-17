@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fitness_app/core/utils/enums/gender.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
@@ -7,8 +5,6 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/screens/widgets/choose_age_screen_body.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/gender_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';

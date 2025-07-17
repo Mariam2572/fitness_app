@@ -1,10 +1,6 @@
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
-import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class UpcomingWorkoutsCategory extends StatefulWidget {
   final List<MusclesGroupBean> bodyParts;

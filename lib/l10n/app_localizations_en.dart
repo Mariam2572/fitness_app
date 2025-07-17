@@ -286,4 +286,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get recommendation => 'Recommendation';
+
+  @override
+  String get hi => 'Hi';
+
+  @override
+  String get letsStartYourDay => 'Let\'s Start Your Day';
+
+  @override
+  String get unableToGetUserName => 'Unable to get user name';
+
+  @override
+  String get unknownError => 'unknownError occurred please try later';
 }
