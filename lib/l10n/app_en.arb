@@ -104,6 +104,10 @@
   "bigenner": "Beginner",
   "trueBeast": "True Beast",
   "done":"Done"
+"hi" : "Hi",
+  "letsStartYourDay" : "Let's Start Your Day",
+  "unableToGetUserName" : "Unable to get user name",
+  "unknownError" : "unknownError occurred please try later"
 
 
 }

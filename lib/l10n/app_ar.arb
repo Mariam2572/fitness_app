@@ -105,4 +105,10 @@
   "bigenner": "مبتدئ",
   "done": "تم"
   
+  "recommendation" : "إقتراحات",
+  "hi": "مرحباً",
+  "letsStartYourDay": "لنبدأ يومك",
+  "unableToGetUserName": "تعذر الحصول على اسم المستخدم",
+  "unknownError": "حدث خطأ غير معروف، يرجى المحاولة لاحقًا"
+  
 }

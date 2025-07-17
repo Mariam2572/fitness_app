@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/food/presentation/view/food_recommendation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fitness_app/features/food/presentation/view/food_recommendation_page.dart';
@@ -5,7 +6,7 @@ import 'package:fitness_app/features/food/presentation/view/food_recommendation_
 void main() {
   Future<void> pumpFoodWidget(WidgetTester tester) async {
     await tester.pumpWidget(
-      const MaterialApp(home: Scaffold(body: FoodRecommendationViewBody())),
+      const MaterialApp(home: Scaffold(body: FoodRecommendationView())),
     );
   }
 

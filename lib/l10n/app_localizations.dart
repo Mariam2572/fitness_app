@@ -397,19 +397,89 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Do It'**
   String get doIt;
+
+  /// No description provided for @enter_your_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
   String get enter_your_email;
+
+  /// No description provided for @forget_password_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget password'**
   String get forget_password_title;
+
+  /// No description provided for @send_otp.
+  ///
+  /// In en, this message translates to:
+  /// **'Send OTP'**
   String get send_otp;
+
+  /// No description provided for @otp_code.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP CODE'**
   String get otp_code;
+
+  /// No description provided for @enter_your_otp_check_your_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Your OTP Check Your Email'**
   String get enter_your_otp_check_your_email;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
   String get confirm;
+
+  /// No description provided for @didnt_receive_verficcation_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t Receive Verification Code?'**
   String get didnt_receive_verficcation_code;
+
+  /// No description provided for @resend_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend Code?'**
   String get resend_code;
+
+  /// No description provided for @resend_code_in.
+  ///
+  /// In en, this message translates to:
+  /// **'resend code in'**
   String get resend_code_in;
+
+  /// No description provided for @seconds.
+  ///
+  /// In en, this message translates to:
+  /// **'seconds'**
   String get seconds;
+
+  /// No description provided for @password_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'make sure its 8 characters or more'**
   String get password_characters;
+
+  /// No description provided for @create_new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Password'**
   String get create_new_password;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
   String get done;
+
+  /// No description provided for @email_sent_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Sent Successfully!'**
   String get email_sent_successfully;
 
   /// No description provided for @anErrorOccurred.
@@ -585,6 +655,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Recommendation'**
   String get recommendation;
+
+  /// No description provided for @hi.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi'**
+  String get hi;
+
+  /// No description provided for @letsStartYourDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Start Your Day'**
+  String get letsStartYourDay;
+
+  /// No description provided for @unableToGetUserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to get user name'**
+  String get unableToGetUserName;
+
+  /// No description provided for @unknownError.
+  ///
+  /// In en, this message translates to:
+  /// **'unknownError occurred please try later'**
+  String get unknownError;
 }
 
 class _AppLocalizationsDelegate

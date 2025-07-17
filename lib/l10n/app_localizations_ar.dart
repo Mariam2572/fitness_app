@@ -161,11 +161,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get doIt => 'افعلها';
+
   @override
   String get enter_your_email => 'ادخل بريدك الالكتروني';
 
   @override
-  String get forget_password_title => 'نسيت كلمة المرور';
+  String get forget_password_title => 'نسيت كلمط المرور';
 
   @override
   String get send_otp => 'ارسال رمز التحقق';
@@ -192,16 +193,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get seconds => 'ثانية';
 
   @override
-  String get password_characters => 'تأكد من أن كلمة المرور 8 أحرف أو أكثر\nأنشئ كلمة مرور جديدة';
+  String get password_characters =>
+      'تأكد من أن كلمة المرور 8 أحرف أو أكثر\nأنشئ كلمة مرور جديدة';
 
   @override
   String get create_new_password => 'إنشاء كلمة مرور جديدة';
 
   @override
   String get done => 'تم';
+
   @override
   String get email_sent_successfully => 'تم ارسال البريد بنجاح!';
-
 
   @override
   String get anErrorOccurred => '  . برجاء المحاولة لاحقا لقد حدث خطأ ما';
@@ -300,4 +302,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get recommendation => 'إقتراحات';
+
+  @override
+  String get hi => 'مرحباً';
+
+  @override
+  String get letsStartYourDay => 'لنبدأ يومك';
+
+  @override
+  String get unableToGetUserName => 'تعذر الحصول على اسم المستخدم';
+
+  @override
+  String get unknownError => 'حدث خطأ غير معروف، يرجى المحاولة لاحقًا';
 }

@@ -53,39 +53,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RoutesGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
     switch (settings.name) {
-    
-  
-    case RoutesName.register:
-      final cubit = RegisterCubit(getIt<RegisterUseCase>());
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child:  RegisterScreen(),
-        ),
-        settings: settings,
-      );
+      case RoutesName.register:
+        final cubit = RegisterCubit(getIt<RegisterUseCase>());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider.value(value: cubit, child: RegisterScreen()),
+          settings: settings,
+        );
       case RoutesName.forgetPassword:
         return MaterialPageRoute(
           builder: (context) => ForgetPasswordScreen(),
           settings: settings,
-        );case RoutesName.verifyCode:
-      return MaterialPageRoute(
-        builder: (context) => VerificationScreen(),
-        settings: settings,
-      );case RoutesName.resetPaswword:
-      return MaterialPageRoute(
-        builder: (context) => ResetPasswordScreen(),
-        settings: settings,
-      );
-    case RoutesName.goals:
-      final cubit = settings.arguments as RegisterCubit;
-      return MaterialPageRoute(
-        builder: (_) => BlocProvider.value(
-          value: cubit,
-          child: const GoalsScreen(),
-        ),
-        settings: settings,
-      );
+        );
+      case RoutesName.verifyCode:
+        return MaterialPageRoute(
+          builder: (context) => VerificationScreen(),
+          settings: settings,
+        );
+      case RoutesName.resetPaswword:
+        return MaterialPageRoute(
+          builder: (context) => ResetPasswordScreen(),
+          settings: settings,
+        );
+      case RoutesName.goals:
+        final cubit = settings.arguments as RegisterCubit;
+        return MaterialPageRoute(
+          builder:
+              (_) =>
+                  BlocProvider.value(value: cubit, child: const GoalsScreen()),
+          settings: settings,
+        );
       case RoutesName.register:
         final cubit = RegisterCubit(getIt<RegisterUseCase>());
         return MaterialPageRoute(
@@ -247,7 +244,7 @@ class RoutesGenerator {
 
       case RoutesName.home:
         return MaterialPageRoute(
-          builder: (context) => const HomeView(),
+          builder: (context) => const HomeScreen(),
           settings: settings,
         );
 
