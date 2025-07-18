@@ -107,5 +107,17 @@
   "unknownError": "unknownError occurred please try later",
   "security": "Security",
   "privacyPolicy": "Privacy Policy",
-  "help": "Help"
+  "help": "Help",
+  "smartCoach": "Smart Coach",
+  "tryAgain": "Try Again",
+  "savedSuccessfully": "Saved Successfully",
+  "pleaseSelectActivity": "Please Select Activity",
+  "registeredSuccessfully": "Registered Successfully",
+  "pleaseSelectYourGoal": "Please Select Your Goal",
+  "thePriceOfExcellence": "The price of excellence \n is discipline",
+  "onBoardingText1": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
+  "fitnessFun": "Fitness has never been so \n much fun",
+  "onBoardingText2": "Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa",
+  "skip": "Skip",
+  "gotIt": "Got It"
 }

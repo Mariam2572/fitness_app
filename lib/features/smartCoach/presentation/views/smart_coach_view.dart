@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/features/smartCoach/data/message_model.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
@@ -5,7 +6,6 @@ import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousC
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class SmartCoachView extends StatefulWidget {
   const SmartCoachView({
@@ -104,7 +104,7 @@ class _SmartCoachViewState extends State<SmartCoachView> {
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text("Smart Coach"),
+        title: Text(context.loc.smartCoach),
         // actions: [
         //   if (_messages.isNotEmpty)
         //     IconButton(

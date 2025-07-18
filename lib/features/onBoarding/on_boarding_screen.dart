@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
@@ -96,7 +97,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: InkWell(
                   onTap: _skip,
                   child: Text(
-                    'Skip',
+                    context.loc.skip,
                     style: AppTextStyle.instance.textStyle14.copyWith(
                       color: Colors.white,
                     ),

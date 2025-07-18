@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class OnBoardingNavigation extends StatelessWidget {
       return ElevatedButton(
         onPressed: onNext,
         child: Text(
-          'Next',
+          context.loc.next,
           style: AppTextStyle.instance.textStyle14.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -36,7 +37,7 @@ class OnBoardingNavigation extends StatelessWidget {
           child: OutlinedButton(
             onPressed: onBack,
             child: Text(
-              'Back',
+              context.loc.back,
               style: AppTextStyle.instance.textStyle14.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -50,7 +51,7 @@ class OnBoardingNavigation extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onNext,
             child: Text(
-              currentIndex == total - 1 ? 'Got It' : 'Next',
+              currentIndex == total - 1 ? context.loc.gotIt : context.loc.next,
               style: AppTextStyle.instance.textStyle14.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

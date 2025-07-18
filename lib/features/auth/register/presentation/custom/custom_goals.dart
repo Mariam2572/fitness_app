@@ -23,7 +23,7 @@ class CustomGoalsScreen extends StatefulWidget {
   final void Function()? onPressed;
   const CustomGoalsScreen({
     super.key,
-     this.onPressed,
+    this.onPressed,
     required this.onChanged,
     required this.isEditProfile,
     this.initialGoal,
@@ -95,13 +95,15 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-            widget.isEditProfile ? const SizedBox() :         const CircularPercentIndicatorWidget(
-                      currentStep: 5,
-                      totalSteps: 6,
-                    ),
+                    widget.isEditProfile
+                        ? const SizedBox()
+                        : const CircularPercentIndicatorWidget(
+                          currentStep: 5,
+                          totalSteps: 6,
+                        ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
-                      'context.loc.whatsYourGoal',
+                      context.loc.whatsYourGoal,
                       style: AppTextStyle.instance.textStyle20.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
@@ -144,13 +146,13 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                                     ],
                                   ),
                                 ),
-                              
+
                                 ElevatedButton(
                                   onPressed: () {
                                     if (selectedGoal == null) {
                                       showSnackBar(
                                         context,
-                                        'Please Select Your Goal',
+                                        context.loc.pleaseSelectYourGoal,
                                       );
                                       return;
                                     }

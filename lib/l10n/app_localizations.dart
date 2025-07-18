@@ -682,6 +682,19 @@ abstract class AppLocalizations {
   String get security;
   String get privacyPolicy;
   String get help;
+  String get smartCoach;
+  String get tryAgain;
+  String get savedSuccessfully;
+  String get pleaseSelectActivity;
+  String get registeredSuccessfully;
+  String get whatsYourGoal;
+  String get pleaseSelectYourGoal;
+  String get thePriceOfExcellence;
+  String get onBoardingText1;
+  String get fitnessFun;
+  String get onBoardingText2;
+  String get skip;
+  String get gotIt;
 }
 
 class _AppLocalizationsDelegate

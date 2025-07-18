@@ -64,13 +64,13 @@ class _ProfileBody extends StatelessWidget {
                   final user = state.user;
                   return Column(
                     children: [
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           BuildBackButton(),
                           SizedBox(width: 80),
                           Text(
-                            'Profile',
+                            context.loc.profile,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
