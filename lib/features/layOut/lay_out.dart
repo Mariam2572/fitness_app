@@ -8,6 +8,7 @@ import 'package:fitness_app/features/smartCoach/data/models/ConversationModel.da
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousConversationViewModel.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/smart_coach_view.dart';
+import 'package:fitness_app/features/smartCoach/presentation/views/get_start_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
 import 'package:fitness_app/features/workOuts/presentation/view_model/cubit/work_outs_cubit.dart';
@@ -54,8 +55,8 @@ class _LayOutState extends State<LayOut> {
   void _initializeScreens() {
     _screens = [
       const HomeView(),
-      SmartCoachView(
-        key: ValueKey('smart_coach_${DateTime.now().millisecondsSinceEpoch}'),
+      GetStartView(
+        userName: "Ahmed", // or get from user profile
         messages: smartCoachMessages,
         onSessionEnd: _handleSessionEnd,
         previousConversationViewModel: _previousViewModel,
