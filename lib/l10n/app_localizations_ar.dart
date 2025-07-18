@@ -295,8 +295,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get learnTheBasics => 'تعلم الأساسيات';
 
-
-
   @override
   String get foodRecommendation => 'إقتراحات الطعام';
 
@@ -314,4 +312,44 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unknownError => 'حدث خطأ غير معروف، يرجى المحاولة لاحقًا';
+
+  @override
+  String get security => 'الأمان';
+  @override
+  String get privacyPolicy => 'سياسة الخصوصية';
+  @override
+  String get help => 'المساعدة';
+
+  @override
+  String get smartCoach => 'المدرب الذكي';
+
+  @override
+  String get tryAgain => 'حاول مرة أخرى';
+
+  @override
+  String get savedSuccessfully => 'تم الحفظ بنجاح';
+  @override
+  String get pleaseSelectActivity => 'يرجى اختيار النشاط';
+  @override
+  String get registeredSuccessfully => 'تم التسجيل بنجاح';
+  @override
+  String get whatsYourGoal => 'ما هو هدفك';
+  @override
+  String get pleaseSelectYourGoal => 'يرجى اختيار هدفك';
+  @override
+  String get thePriceOfExcellence => 'ثمن التميز \n هو الانضباط';
+  @override
+  String get onBoardingText1 =>
+      'لوريم ايبسوم دولور سيت أميت كونسكتاتور. يورنا أوت جرافيدا كويز آي بريتيم بوروس. موريس ماسا';
+  @override
+  String get fitnessFun => 'لم يكن اللياقة ممتعة \n إلى هذا الحد من قبل';
+  @override
+  String get onBoardingText2 =>
+      'لوريم ايبسوم دولور سيت أميت كونسكتاتور. يورنا أوت جرافيدا كويز آي بريتيم بوروس. موريس ماسا';
+
+  @override
+  String get skip => 'تخطي';
+
+  @override
+  String get gotIt => 'فهمت';
 }

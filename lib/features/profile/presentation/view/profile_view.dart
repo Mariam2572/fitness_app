@@ -38,7 +38,7 @@ class _ProfileViewState extends State<ProfileView> {
 }
 
 class _ProfileBody extends StatelessWidget {
-  const _ProfileBody({super.key});
+  const _ProfileBody();
 
   @override
   Widget build(BuildContext context) {
@@ -64,13 +64,13 @@ class _ProfileBody extends StatelessWidget {
                   final user = state.user;
                   return Column(
                     children: [
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           BuildBackButton(),
                           SizedBox(width: 80),
                           Text(
-                            'Profile',
+                            context.loc.profile,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
@@ -148,7 +148,7 @@ class _ProfileBody extends StatelessWidget {
             children: [
               BuildListTile(
                 icon: Icons.person,
-                title: 'Edit Profile',
+                title: context.loc.editProfile,
                 onTap: () {
                   Navigator.pushNamed(context, RoutesName.editProfile);
                 },
@@ -164,17 +164,17 @@ class _ProfileBody extends StatelessWidget {
               const Languge(),
               BuildListTile(
                 icon: Icons.security,
-                title: 'Security',
+                title: context.loc.security,
                 onTap: () {},
               ),
               BuildListTile(
                 icon: Icons.privacy_tip_outlined,
-                title: 'Privacy Policy',
+                title: context.loc.privacyPolicy,
                 onTap: () {},
               ),
               BuildListTile(
                 icon: Icons.help_outline_outlined,
-                title: 'Help',
+                title: context.loc.help,
                 onTap: () {},
               ),
               BuildListTile(

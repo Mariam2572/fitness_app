@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:fitness_app/core/config/di.dart';
+import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/data/message_model.dart';
@@ -188,10 +189,16 @@ class _LayOutState extends State<LayOut> {
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,
               items: [
-                _buildBarItem("assets/images/home.png", "Home"),
-                _buildBarItem("assets/images/smart chat.png", "Smart Chat"),
-                _buildBarItem("assets/images/work outs.png", "Work Outs"),
-                _buildBarItem("assets/images/profile.png", "Profile"),
+                _buildBarItem("assets/images/home.png", context.loc.home),
+                _buildBarItem(
+                  "assets/images/smart chat.png",
+                  context.loc.smartChat,
+                ),
+                _buildBarItem(
+                  "assets/images/work outs.png",
+                  context.loc.workOuts,
+                ),
+                _buildBarItem("assets/images/profile.png", context.loc.profile),
               ],
             ),
           ),

@@ -60,10 +60,13 @@ class MyApp extends StatelessWidget {
             BlocProvider(
               create: (context) => SmartCoachCubit(getIt<SendMessageUseCase>()),
             ),
-            BlocProvider(create: (context) =>FoodCubit(
-                getIt.get<GetFoodCategoriesUseCase>(),
-                getIt.get<GetMealsByCategoryUseCase>(),
-              ),),
+            BlocProvider(
+              create:
+                  (context) => FoodCubit(
+                    getIt.get<GetFoodCategoriesUseCase>(),
+                    getIt.get<GetMealsByCategoryUseCase>(),
+                  ),
+            ),
           ],
           child: MaterialApp(
             locale: Locale(provider.appLanguage),
@@ -72,7 +75,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RoutesGenerator.onGenerator,
             theme: AppTheme.appTheme,
-            initialRoute: RoutesName.login,
+            initialRoute: RoutesName.onBoardingOne,
           ),
         );
       },

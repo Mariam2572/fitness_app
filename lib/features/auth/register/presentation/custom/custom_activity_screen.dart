@@ -36,9 +36,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
   @override
   void initState() {
     super.initState();
-    selectedActivity = 
-      widget.initialActivity;
-    
+    selectedActivity = widget.initialActivity;
   }
 
   void _onActivitySelected(ActivityEnum? value) {
@@ -78,10 +76,12 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                widget.isEditProfile ? const SizedBox() :     const CircularPercentIndicatorWidget(
-                      currentStep: 6,
-                      totalSteps: 6,
-                    ),
+                    widget.isEditProfile
+                        ? const SizedBox()
+                        : const CircularPercentIndicatorWidget(
+                          currentStep: 6,
+                          totalSteps: 6,
+                        ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
                       context.loc.your_regular,
@@ -174,7 +174,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                                       if (state is RegisterSuccess) {
                                         showSnackBar(
                                           context,
-                                          'registeredSuccessfully',
+                                          context.loc.registeredSuccessfully,
                                         );
                                         Navigator.pushReplacementNamed(
                                           context,
@@ -191,7 +191,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                                         if (selectedActivity == null) {
                                           showSnackBar(
                                             context,
-                                            ' context.loc.pleaseSelectActivity',
+                                            context.loc.pleaseSelectActivity,
                                           );
                                           return;
                                         }
@@ -233,7 +233,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                                       if (selectedActivity == null) {
                                         showSnackBar(
                                           context,
-                                          'context.loc.pleaseSelectActivity',
+                                          context.loc.pleaseSelectActivity,
                                         );
                                         return;
                                       }
@@ -246,7 +246,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                                       // Navigator.pop(context);
                                       showSnackBar(
                                         context,
-                                        'context.loc.savedSuccessfully',
+                                        context.loc.savedSuccessfully,
                                       );
                                     },
                                     child: Text(context.loc.done),

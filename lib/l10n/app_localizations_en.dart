@@ -294,12 +294,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gainMoreFlexibility => 'Gain More Flexibility';
   @override
   String get learnTheBasics => 'Learn The Basics';
-  
-  
 
   // TODO: implement getwhatsYourGoal
-String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
-  
+  String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
 
   @override
   String get foodRecommendation => 'Food Recommendation';
@@ -318,4 +315,46 @@ String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
 
   @override
   String get unknownError => 'unknownError occurred please try later';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get smartCoach => 'Smart Coach';
+
+  @override
+  String get tryAgain => 'Try Again';
+
+  @override
+  String get savedSuccessfully => 'Saved Successfully';
+  @override
+  String get pleaseSelectActivity => 'Please Select Activity';
+  @override
+  String get registeredSuccessfully => 'Registered Successfully';
+  @override
+  String get whatsYourGoal => "What's Your Goal";
+  @override
+  String get pleaseSelectYourGoal => 'Please Select Your Goal';
+  @override
+  String get thePriceOfExcellence => 'The price of excellence \n is discipline';
+  @override
+  String get onBoardingText1 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+  @override
+  String get fitnessFun => 'Fitness has never been so \n much fun';
+  @override
+  String get onBoardingText2 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+
+  @override
+  String get skip => 'Skip';
+
+  @override
+  String get gotIt => 'Got It';
 }

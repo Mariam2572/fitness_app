@@ -73,7 +73,6 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 },
                 builder: (context, state) {
                   if (state is ProfileSuccess) {
-            
                     return SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -184,7 +183,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                               );
                             },
                             title: context.loc.yourActivityLevel,
-                            value: parseLevelsToActivity(editProfileCubit.activityLevel??""),
+                            value: parseLevelsToActivity(
+                              editProfileCubit.activityLevel ?? "",
+                            ),
                           ),
                           responsiveHeight(context, 0.010),
                           TapToEditWidget(
@@ -210,20 +211,20 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     return const Center(
                       child: CircularProgressIndicator(color: Colors.white),
                     );
-                  } 
+                  }
                   // else if (state is UploadPhotoSuccess) {
                   //   return const Center(child: Text("Succsss"));
                   // } else if (state is UploadPhotoFailure) {
                   //   return Center(child: Text(state.error));
-                  // } 
+                  // }
                   else {
                     return Center(
                       child: TextButton(
                         onPressed: () {
                           editProfileCubit.doIntent(GetLoggedUserDataIntent());
                         },
-                        child: const Text(
-                          "try again",
+                        child: Text(
+                          context.loc.tryAgain,
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
