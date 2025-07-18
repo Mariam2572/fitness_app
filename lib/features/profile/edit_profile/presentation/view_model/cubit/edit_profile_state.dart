@@ -38,19 +38,10 @@ final class ProfileFailure extends ProfileState {
   List<Object> get props => [error];
 }
 
-final class UploadPhotoInitial extends ProfileState {}
-final class UploadPhotoLoading extends ProfileState {}
-// final class UploadPhotoSuccess extends ProfileState {
-//   final UploadPhotoResponse response;
-//   const UploadPhotoSuccess(this.response);
-//   @override
-//   List<Object> get props => [response];
-// }
-final class UploadPhotoFailure extends ProfileState {
-  final String error;
-  const UploadPhotoFailure(this.error);
+final class UploadPhotoSuccess extends ProfileState {
+  final String response;
+  const UploadPhotoSuccess(this.response);
   @override
-  List<Object> get props => [error];
+  List<Object> get props => [response];
 }
-
 
