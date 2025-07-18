@@ -679,6 +679,9 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'unknownError occurred please try later'**
   String get unknownError;
+  String get security;
+  String get privacyPolicy;
+  String get help;
 }
 
 class _AppLocalizationsDelegate

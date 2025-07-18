@@ -295,8 +295,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get learnTheBasics => 'تعلم الأساسيات';
 
-
-
   @override
   String get foodRecommendation => 'إقتراحات الطعام';
 
@@ -314,4 +312,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unknownError => 'حدث خطأ غير معروف، يرجى المحاولة لاحقًا';
+
+  @override
+  String get security => 'الأمان';
+  @override
+  String get privacyPolicy => 'سياسة الخصوصية';
+  @override
+  String get help => 'المساعدة';
 }

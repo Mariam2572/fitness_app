@@ -294,12 +294,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gainMoreFlexibility => 'Gain More Flexibility';
   @override
   String get learnTheBasics => 'Learn The Basics';
-  
-  
 
   // TODO: implement getwhatsYourGoal
-String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
-  
+  String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
 
   @override
   String get foodRecommendation => 'Food Recommendation';
@@ -318,4 +315,13 @@ String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
 
   @override
   String get unknownError => 'unknownError occurred please try later';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get help => 'Help';
 }
