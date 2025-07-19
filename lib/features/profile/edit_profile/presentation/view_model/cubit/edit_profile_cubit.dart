@@ -20,7 +20,11 @@ class EditProfileCubit extends Cubit<ProfileState> {
   final GetLoggedUserDataUseCase _getLoggedUserDataUseCase;
   final UploadPhotoUseCase _uploadPhotoUseCase;
 
-  EditProfileCubit(this._editProfileUseCase,this._getLoggedUserDataUseCase,this._uploadPhotoUseCase) : super(ProfileInitial());
+  EditProfileCubit(
+    this._editProfileUseCase,
+    this._getLoggedUserDataUseCase,
+    this._uploadPhotoUseCase,
+  ) : super(ProfileInitial());
 
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -30,12 +34,13 @@ class EditProfileCubit extends Cubit<ProfileState> {
   int age = 19;
   String? goal;
   String? activityLevel;
-static  Gender selectedGender = Gender.female;
-  bool isEdited=false;
-  bool isEditProfile=false;
+  static Gender selectedGender = Gender.female;
+  bool isEdited = false;
+  bool isEditProfile = false;
   File? selectedImage;
-
+String? profilePhoto;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   void doIntent(EditProfileIntent intent) {
     switch (intent) {
       case GetLoggedUserDataIntent():
@@ -45,7 +50,7 @@ static  Gender selectedGender = Gender.female;
         _editProfile(intent);
         break;
       case UploadPhotoIntent():
-        // _uploadPohot(intent);
+        _uploadPohot(intent);
         break;
     }
   }
@@ -56,84 +61,95 @@ static  Gender selectedGender = Gender.female;
     switch (response) {
       case ApiError<GetUserDataReponse>():
         emit(
-          ProfileFailure(
-            response.failure?.errorMessage ?? 'An error occurred',          ),
+          ProfileFailure(response.failure?.errorMessage ?? 'An error occurred'),
         );
-      case ApiSuccess<GetUserDataReponse>():{
-        firstNameController.text=response.data?.user?.firstName??"";
-        lastNameController.text=response.data?.user?.lastName??"";
-        emailController.text=response.data?.user?.email??"";
-        height=response.data?.user?.height??0;
-        weight=response.data?.user?.weight??0;
-        age=response.data?.user?.age??0;
-        goal=response.data?.user?.goal??"";
-        activityLevel = response.data?.user?.activityLevel;
-   
-        selectedGender=response.data?.user?.gender=="male"?Gender.male:Gender.female;
-        emit(ProfileSuccess(response.data!));
-      }
-      }
+      case ApiSuccess<GetUserDataReponse>():
+        {
+          profilePhoto=response.data?.user?.photo??"";
+          firstNameController.text = response.data?.user?.firstName ?? "";
+          lastNameController.text = response.data?.user?.lastName ?? "";
+          emailController.text = response.data?.user?.email ?? "";
+          height = response.data?.user?.height ?? 0;
+          weight = response.data?.user?.weight ?? 0;
+          age = response.data?.user?.age ?? 0;
+          goal = response.data?.user?.goal ?? "";
+          activityLevel = response.data?.user?.activityLevel;
 
-  }EditProfileRequest get currentEditProfileRequest {
-  return EditProfileRequest(
-    email: emailController.text,
-    height: height,
-    activityLevel: activityEnumToBackend(stringToActivityEnum(activityLevel)) ?? "level1", // fallback
-    age: age,
-    firstName: firstNameController.text,
-    gender: EditProfileCubit.selectedGender.name,
-    goal: goal,
-    lastName: lastNameController.text,
-    weight: weight,
-  );
-}
+          selectedGender =
+              response.data?.user?.gender == "male"
+                  ? Gender.male
+                  : Gender.female;
+          emit(ProfileSuccess(response.data!));
+        }
+    }
+  }
+
+  EditProfileRequest get currentEditProfileRequest {
+    return EditProfileRequest(
+      email: emailController.text,
+      height: height,
+      activityLevel:
+          activityEnumToBackend(stringToActivityEnum(activityLevel)) ??
+          "level1",
+      // fallback
+      age: age,
+      firstName: firstNameController.text,
+      gender: EditProfileCubit.selectedGender.name,
+      goal: goal,
+      lastName: lastNameController.text,
+      weight: weight,
+    );
+  }
 
   Future<void> _editProfile(EditProfileInfoIntent intent) async {
     emit(ProfileLoading());
-    final response = await _editProfileUseCase.invoke(intent.editProfileRequest);
+    final response = await _editProfileUseCase.invoke(
+      intent.editProfileRequest,
+    );
     switch (response) {
       case ApiError<GetUserDataReponse>():
+        emit(
+          ProfileFailure(response.failure?.errorMessage ?? 'An error occurred'),
+        );
+      case ApiSuccess<GetUserDataReponse>():
+        emit(ProfileSuccess(response.data!));
+    }
+    // _Profile();
+  }
+  Future<void> _uploadPohot(UploadPhotoIntent intent) async {
+
+    emit(ProfileLoading());
+    final response = await _uploadPhotoUseCase.invoke(intent.photo);
+    switch (response) {
+      case ApiError<String>():{
         emit(
           ProfileFailure(
             response.failure?.errorMessage ?? 'An error occurred',
           ),
         );
-      case ApiSuccess<GetUserDataReponse>():
-        emit(ProfileSuccess(response.data!));
+      }
+      case ApiSuccess<String>():{
+        emit(UploadPhotoSuccess(response.data??""));
+        _getProfile();
+      }
     }
-// _Profile();
+
   }
-  // Future<void> _uploadPohot(UploadPhotoIntent intent) async {
-
-  //   emit(ProfileLoading());
-  //   final response = await _uploadPhotoUseCase.invoke(intent.photo);
-  //   switch (response) {
-  //     case ApiError<String>():{
-  //       emit(
-  //         ProfileFailure(
-  //           response.failure?.errorMessage ?? 'An error occurred',
-  //         ),
-  //       );
-  //      }
-  //     case ApiSuccess<String>():{
-  //       emit(ProfileSuccess(response.data));
-  //      }
-  //   }
-
-  // }
 
 }
 
 sealed class EditProfileIntent {}
 
-class GetLoggedUserDataIntent extends EditProfileIntent {
+class GetLoggedUserDataIntent extends EditProfileIntent {}
 
-}
 class EditProfileInfoIntent extends EditProfileIntent {
   EditProfileRequest editProfileRequest;
+
   EditProfileInfoIntent({required this.editProfileRequest});
 }
+
 class UploadPhotoIntent extends EditProfileIntent {
   File photo;
+
   UploadPhotoIntent({required this.photo});
 }

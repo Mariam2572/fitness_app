@@ -101,7 +101,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                             ),
                           ),
                           responsiveHeight(context, 0.02),
-                          ProfilePhotoWidget(userData: state.response),
+                          ProfilePhotoWidget(),
                           responsiveHeight(context, 0.02),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -206,11 +206,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     return const Center(
                       child: CircularProgressIndicator(color: Colors.white),
                     );
-                  } else if (state is UploadPhotoLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(color: Colors.white),
-                    );
-                  } 
+                  }
                   // else if (state is UploadPhotoSuccess) {
                   //   return const Center(child: Text("Succsss"));
                   // } else if (state is UploadPhotoFailure) {

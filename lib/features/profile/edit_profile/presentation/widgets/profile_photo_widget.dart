@@ -9,27 +9,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProfilePhotoWidget extends StatefulWidget {
-  final GetUserDataReponse userData;
+class ProfilePhotoWidget extends StatelessWidget {
 
-  const ProfilePhotoWidget({super.key,required this.userData});
+  const ProfilePhotoWidget({super.key});
 
-  @override
-  State<ProfilePhotoWidget> createState() => _ProfilePhotoWidgetState();
-}
-
-class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
   Future<void> pickImage(EditProfileCubit editProfile) async {
     final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (picked != null) {
-      setState(() {
-        editProfile.selectedImage = File(picked.path);
-      });
+      editProfile.selectedImage = File(picked.path);
+      editProfile.doIntent(UploadPhotoIntent(photo: editProfile.selectedImage!));
+      // editProfile.doIntent(GetLoggedUserDataIntent());
+
     } else {
-      editProfile.selectedImage = File(widget.userData.user?.photo ?? '');
+      editProfile.selectedImage = File(editProfile.profilePhoto ?? '');
     }
-  }  @override
+  }
+  @override
   Widget build(BuildContext context) {
+
     final editProfileCubit= context.read<EditProfileCubit>();
     return                     Center(
       child: Stack(
@@ -39,8 +36,8 @@ class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
             backgroundImage:
             editProfileCubit.selectedImage != null
                 ? FileImage(editProfileCubit.selectedImage!)
-                : (widget.userData.user?.photo != null
-                ? NetworkImage(widget.userData.user?.photo
+                : (editProfileCubit.profilePhoto != null
+                ? NetworkImage(editProfileCubit.profilePhoto
                 ?? '')
                 : const AssetImage(AppAssets.profile))
             as ImageProvider,
@@ -67,6 +64,8 @@ class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
                 ),
                   onPressed:() {
                     pickImage(editProfileCubit);
+
+
                   },
 
 
@@ -76,6 +75,4 @@ class _ProfilePhotoWidgetState extends State<ProfilePhotoWidget> {
         ],
       ),
     );
-  }
-
-}
+  }}
