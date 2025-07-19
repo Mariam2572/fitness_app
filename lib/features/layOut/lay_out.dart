@@ -2,13 +2,15 @@ import 'dart:async';
 
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_screen.dart';
-
+import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
+import 'package:fitness_app/features/profile/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/data/message_model.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ConversationModel.dart';
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousConversationViewModel.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/smart_coach_view.dart';
+import 'package:fitness_app/features/smartCoach/presentation/views/get_start_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
 import 'package:fitness_app/features/workOuts/presentation/view_model/cubit/work_outs_cubit.dart';
@@ -47,27 +49,25 @@ class _LayOutState extends State<LayOut> {
 
   void _setupConversationListener() {
     // Listen for conversation selection events from the previous conversation screen
-    _conversationSubscription = _previousViewModel.conversationSelectedStream
-        ?.listen((selectedMessages) {
-          _loadSelectedConversation(selectedMessages);
-        });
+    _conversationSubscription = _previousViewModel.conversationSelectedStream?.listen((selectedMessages) {
+      _loadSelectedConversation(selectedMessages);
+    });
   }
 
   void _initializeScreens() {
     _screens = [
       const HomeScreen(),
-      SmartCoachView(
-        key: ValueKey('smart_coach_${DateTime.now().millisecondsSinceEpoch}'),
+      GetStartView(
+        userName: "Ahmed", // or get from user profile
         messages: smartCoachMessages,
         onSessionEnd: _handleSessionEnd,
         previousConversationViewModel: _previousViewModel,
       ),
       BlocProvider(
-        create:
-            (context) => WorkOutsCubit(
-              getIt<GetAllMusclesGroupsUseCase>(),
-              getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
-            )..doIntent(GetAllMusclesGroupsIntent()),
+        create: (context) => WorkOutsCubit(
+          getIt<GetAllMusclesGroupsUseCase>(),
+          getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
+        )..doIntent(GetAllMusclesGroupsIntent()),
         child: const WorkOutsView(),
       ),
       const ProfileView(),
@@ -97,9 +97,13 @@ class _LayOutState extends State<LayOut> {
     // Just sync the messages, don't save here to avoid duplicate saves
     smartCoachMessages.clear();
     smartCoachMessages.addAll(messages);
+
+    // Save the conversation when the session ends
+    _saveCurrentConversation();
   }
 
   void _saveCurrentConversation() {
+    print('Attempting to save conversation, messages: ${smartCoachMessages.length}');
     if (smartCoachMessages.isNotEmpty) {
       try {
         final conversation = ConversationModel(
@@ -108,9 +112,7 @@ class _LayOutState extends State<LayOut> {
         );
 
         _previousViewModel.saveNewConversation(conversation);
-        print(
-          'Conversation saved with ${smartCoachMessages.length} messages',
-        ); // Debug log
+        print('Conversation saved with ${smartCoachMessages.length} messages'); // Debug log
 
         // Clear messages after saving
         smartCoachMessages.clear();
@@ -119,6 +121,7 @@ class _LayOutState extends State<LayOut> {
         setState(() {
           _initializeScreens();
         });
+
       } catch (e) {
         print('Error saving conversation: $e'); // Debug log
       }
@@ -126,10 +129,10 @@ class _LayOutState extends State<LayOut> {
   }
 
   void _onItemTapped(int index) {
+    print('Tab tapped: $index, current: $_selectedIndex');
     bool navigatingAwayFromSmartCoach = _selectedIndex == 1 && index != 1;
 
     if (navigatingAwayFromSmartCoach) {
-      _saveCurrentConversation();
       smartCoachMessages.clear();
     }
 
@@ -143,6 +146,7 @@ class _LayOutState extends State<LayOut> {
       _initializeScreens();
     }
   }
+
 
   BottomNavigationBarItem _buildBarItem(String iconPath, String label) {
     return BottomNavigationBarItem(
@@ -162,23 +166,19 @@ class _LayOutState extends State<LayOut> {
       key: _scaffoldKey,
       extendBody: true,
       body: _screens[_selectedIndex],
-      drawer:
-          _selectedIndex == 1
-              ? null
-              : Drawer(
-                child: BlocProvider.value(
-                  value: _previousViewModel,
-                  child: PreviousConversationsScreen(
-                    onConversationSelected: _loadSelectedConversation,
-                  ),
-                ),
-              ),
+      drawer: _selectedIndex == 1 ? null : Drawer(
+        child: BlocProvider.value(
+          value: _previousViewModel,
+          child: PreviousConversationsScreen(
+            onConversationSelected: _loadSelectedConversation,
+          ),
+        ),
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 24, right: 32, left: 32),
         child: Container(
           decoration: BoxDecoration(
-            color:
-                theme.bottomNavigationBarTheme.backgroundColor ?? Colors.white,
+            color: theme.bottomNavigationBarTheme.backgroundColor ?? Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
           child: ClipRRect(
