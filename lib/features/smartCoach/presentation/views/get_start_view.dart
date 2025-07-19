@@ -28,7 +28,29 @@ class _GetStartViewState extends State<GetStartView> {
     return Scaffold(
 
 
-
+      endDrawer: Drawer(
+        backgroundColor: Colors.transparent,
+        child: BlocProvider.value(
+          value: widget.previousConversationViewModel,
+          child: PreviousConversationsScreen(
+            onConversationSelected: (messages) {
+              Navigator.pop(context);
+              // Delay the push until after the drawer is closed
+              Future.delayed(const Duration(milliseconds: 300), () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SmartCoachView(
+                      messages: messages,
+                      onSessionEnd: widget.onSessionEnd,
+                      previousConversationViewModel: widget.previousConversationViewModel,
+                    ),
+                  ),
+                );
+              });
+            },
+          ),
+        ),
+      ),
       backgroundColor: Colors.black87,
       body: Stack(
         children: [
@@ -59,14 +81,16 @@ class _GetStartViewState extends State<GetStartView> {
                           height: 40,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Scaffold.of(context).openEndDrawer();
-                        },
-                        child: Image.asset(
-                          AppAssets.drawerIcon,
-                          width: 32,
-                          height: 32,
+                      Builder(
+                        builder: (context) => InkWell(
+                          onTap: () {
+                            Scaffold.of(context).openEndDrawer();
+                          },
+                          child: Image.asset(
+                            AppAssets.drawerIcon,
+                            width: 32,
+                            height: 32,
+                          ),
                         ),
                       ),
                     ],

@@ -100,6 +100,7 @@ class _SmartCoachViewState extends State<SmartCoachView> {
               height: 32,
             ),
             onPressed: () {
+              deactivate();
               Navigator.pushNamed(context, RoutesName.layOut);
             },
           ),

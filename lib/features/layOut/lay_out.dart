@@ -95,9 +95,13 @@ class _LayOutState extends State<LayOut> {
     // Just sync the messages, don't save here to avoid duplicate saves
     smartCoachMessages.clear();
     smartCoachMessages.addAll(messages);
+
+    // Save the conversation when the session ends
+    _saveCurrentConversation();
   }
 
   void _saveCurrentConversation() {
+    print('Attempting to save conversation, messages: ${smartCoachMessages.length}');
     if (smartCoachMessages.isNotEmpty) {
       try {
         final conversation = ConversationModel(
@@ -123,10 +127,10 @@ class _LayOutState extends State<LayOut> {
   }
 
   void _onItemTapped(int index) {
+    print('Tab tapped: $index, current: $_selectedIndex');
     bool navigatingAwayFromSmartCoach = _selectedIndex == 1 && index != 1;
 
     if (navigatingAwayFromSmartCoach) {
-      _saveCurrentConversation();
       smartCoachMessages.clear();
     }
 
