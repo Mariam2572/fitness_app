@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RoutesGenerator.onGenerator,
             theme: AppTheme.appTheme,
-            initialRoute: RoutesName.login,
+            initialRoute: RoutesName.onBoardingOne,
           ),
         );
       },

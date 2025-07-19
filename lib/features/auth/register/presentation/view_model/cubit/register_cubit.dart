@@ -14,11 +14,11 @@ class RegisterCubit extends Cubit<RegisterState> {
   final RegisterUseCase _registerUseCase;
 
   RegisterCubit(this._registerUseCase) : super(RegisterInitial());
-  TextEditingController firstNameController = TextEditingController(text: 'MMMM');
-  TextEditingController lastNameController = TextEditingController(text: 'MMMM');
-  TextEditingController emailController = TextEditingController(text: 'email@gmail.com');
-  TextEditingController passwordController = TextEditingController(text: 'Marathon@123');
-  TextEditingController rePasswordController = TextEditingController(text: 'Marathon@123');
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController rePasswordController = TextEditingController();
   int height = 15;
   int weight = 15;
   int age = 15;
