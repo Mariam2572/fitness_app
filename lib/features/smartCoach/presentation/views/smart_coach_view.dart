@@ -1,18 +1,21 @@
-import 'package:fitness_app/core/utils/theme/app_assets.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/smartCoach/data/message_model.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousConversationViewModel.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:ui';
+import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:fitness_app/core/utils/theme/app_assets.dart';
 
 class SmartCoachView extends StatefulWidget {
   const SmartCoachView({
     super.key,
     required this.messages,
     required this.onSessionEnd,
-    required this.previousConversationViewModel,
+    required this.previousConversationViewModel
   });
 
   final List<ChatMessage> messages;
@@ -32,9 +35,7 @@ class _SmartCoachViewState extends State<SmartCoachView> {
     super.initState();
     // Initialize messages - use passed messages if available, otherwise start fresh
     _messages = List.from(widget.messages);
-    print(
-      'SmartCoachView initialized with ${_messages.length} messages',
-    ); // Debug log
+    print('SmartCoachView initialized with ${_messages.length} messages'); // Debug log
   }
 
   @override
@@ -45,9 +46,7 @@ class _SmartCoachViewState extends State<SmartCoachView> {
       setState(() {
         _messages = List.from(widget.messages);
       });
-      print(
-        'SmartCoachView updated with ${_messages.length} messages',
-      ); // Debug log
+      print('SmartCoachView updated with ${_messages.length} messages'); // Debug log
     }
   }
 
@@ -81,122 +80,153 @@ class _SmartCoachViewState extends State<SmartCoachView> {
     _addMessage(userMessage);
     _controller.clear();
 
-    context.read<SmartCoachCubit>().doIntent(GetSmartCoachIntent(prompt: text));
+    context.read<SmartCoachCubit>().doIntent(
+      GetSmartCoachIntent(prompt: text),
+    );
   }
 
-  // void _clearChat() {
-  //   setState(() {
-  //     _messages.clear();
-  //   });
-  //   widget.messages.clear();
 
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     const SnackBar(
-  //       content: Text('Chat cleared'),
-  //       duration: Duration(seconds: 2),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Image.asset(
+              AppAssets.backButton, // Make sure this exists, or use another asset path
+              width: 32,
+              height: 32,
+            ),
+            onPressed: () {
+              deactivate();
+              Navigator.pushNamed(context, RoutesName.layOut);
+            },
+          ),
+        ),
         backgroundColor: Colors.transparent,
+        elevation: 0,
         title: const Text("Smart Coach"),
-        // actions: [
-        //   if (_messages.isNotEmpty)
-        //     IconButton(
-        //       icon: const Icon(Icons.clear_all),
-        //       onPressed: _clearChat,
-        //       tooltip: 'Clear Chat',
-        //     ),
-        // ],
+        actions: [
+          Builder(
+            builder: (context) => IconButton(
+              icon: Image.asset(
+                AppAssets.drawerIcon,
+                width: 32,
+                height: 32,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+            ),
+          ),
+        ],
       ),
+      extendBodyBehindAppBar: true,
       endDrawer: Drawer(
+        backgroundColor: Colors.transparent,
         child: BlocProvider.value(
           value: widget.previousConversationViewModel,
           child: PreviousConversationsScreen(
             onConversationSelected: (messages) {
-              // When a conversation is selected from the drawer, update the current chat
               setState(() {
                 _messages.clear();
                 _messages.addAll(messages);
               });
-              // Update the parent's message list
               widget.messages.clear();
               widget.messages.addAll(messages);
-
-              print(
-                'Conversation loaded in SmartCoachView with ${_messages.length} messages',
-              );
+              print('Conversation loaded in SmartCoachView with ${_messages.length} messages');
             },
           ),
         ),
       ),
       body: Stack(
         children: [
+          // Blurred background image
           Positioned.fill(
             child: Image.asset(
-              AppAssets.homeBackground,
+              AppAssets.authBackGround,
               fit: BoxFit.cover,
-              height: double.infinity,
-              width: double.infinity,
+            ),
+          ),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+              child: Container(color: AppColors.baseBlack.withOpacity(0.5)),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 70),
+            padding: const EdgeInsets.only(top: 70),
             child: Column(
               children: [
                 Expanded(
-                  child:
-                      _messages.isEmpty
-                          ? const Center(
-                            child: Text(
-                              "Start a conversation with your Smart Coach!",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                              ),
+                  child: _messages.isEmpty
+                      ? const Center(
+                          child: Text(
+                            "Start a conversation with your Smart Coach!",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
                             ),
-                          )
-                          : ListView.builder(
-                            padding: const EdgeInsets.all(16),
-                            itemCount: _messages.length,
-                            itemBuilder: (_, index) {
-                              final msg = _messages[index];
-                              final isUser = msg.role == 'user';
-                              return Align(
-                                alignment:
-                                    isUser
-                                        ? Alignment.centerRight
-                                        : Alignment.centerLeft,
-                                child: Container(
-                                  padding: const EdgeInsets.all(12),
-                                  margin: const EdgeInsets.symmetric(
-                                    vertical: 4,
+                          ),
+                        )
+                      : ListView.builder(
+                          padding: const EdgeInsets.all(16),
+                          itemCount: _messages.length,
+                          itemBuilder: (_, index) {
+                            final msg = _messages[index];
+                            final isUser = msg.role == 'user';
+                            return Row(
+                              mainAxisAlignment: isUser
+                                  ? MainAxisAlignment.end
+                                  : MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                if (!isUser) ...[
+                                  CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    backgroundImage: AssetImage(AppAssets.chatRobot),
+                                    radius: 18,
                                   ),
-                                  constraints: BoxConstraints(
-                                    maxWidth:
-                                        MediaQuery.of(context).size.width * 0.8,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color:
-                                        isUser ? Colors.blue : Colors.grey[300],
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: Text(
-                                    msg.text,
-                                    style: TextStyle(
-                                      color:
-                                          isUser ? Colors.white : Colors.black,
+                                  const SizedBox(width: 8),
+                                ],
+                                Flexible(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(12),
+                                    margin: const EdgeInsets.symmetric(vertical: 4),
+                                    decoration: BoxDecoration(
+                                      color: isUser
+                                          ? AppColors.mainRed
+                                          : AppColors.neutral90.withOpacity(0.85),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: const Radius.circular(16),
+                                        topRight: const Radius.circular(16),
+                                        bottomLeft: Radius.circular(isUser ? 16 : 0),
+                                        bottomRight: Radius.circular(isUser ? 0 : 16),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      msg.text,
+                                      style: TextStyle(
+                                        color: AppColors.baseWhite,
+                                        fontSize: 15,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          ),
+                                if (isUser) ...[
+                                  const SizedBox(width: 8),
+                                  CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    backgroundImage: AssetImage(AppAssets.user),
+                                    radius: 18,
+                                  ),
+                                ],
+                              ],
+                            );
+                          },
+                        ),
                 ),
                 BlocConsumer<SmartCoachCubit, SmartCoachState>(
                   listener: (context, state) {
@@ -206,45 +236,43 @@ class _SmartCoachViewState extends State<SmartCoachView> {
                       );
                     }
                     if (state is SmartCoachSuccess) {
-                      final aiMessage = ChatMessage(
-                        role: 'ai',
-                        text: state.response,
-                      );
+                      final aiMessage = ChatMessage(role: 'ai', text: state.response);
                       _addMessage(aiMessage);
                     }
                   },
                   builder: (context, state) {
-                    return Column(
-                      children: [
-                        if (state is SmartCoachLoading)
-                          const LinearProgressIndicator(),
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  controller: _controller,
-                                  decoration: const InputDecoration(
-                                    hintText: "Ask your coach...",
-                                    border: OutlineInputBorder(),
-                                  ),
-                                  onSubmitted: (_) => _sendMessage(),
-                                  enabled: state is! SmartCoachLoading,
+                    return Container(
+                      color: AppColors.neutral90.withOpacity(0.7),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _controller,
+                              decoration: InputDecoration(
+                                hintText: "Ask your coach...",
+                                hintStyle: TextStyle(color: AppColors.neutral30),
+                                filled: true,
+                                fillColor: AppColors.neutral80.withOpacity(0.7),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                  borderSide: BorderSide.none,
                                 ),
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                               ),
-                              const SizedBox(width: 8),
-                              IconButton(
-                                icon: const Icon(Icons.send),
-                                onPressed:
-                                    state is SmartCoachLoading
-                                        ? null
-                                        : _sendMessage,
-                              ),
-                            ],
+                              style: TextStyle(color: AppColors.baseWhite),
+                              onSubmitted: (_) => _sendMessage(),
+                              enabled: state is! SmartCoachLoading,
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(width: 8),
+
+                          IconButton(
+                            icon: Icon(Icons.send, color: AppColors.mainRed),
+                            onPressed: state is SmartCoachLoading ? null : _sendMessage,
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),

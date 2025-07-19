@@ -4,6 +4,8 @@ import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousC
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/previous_conversation_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fitness_app/core/utils/theme/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PreviousChatScreenbody extends StatelessWidget {
   const PreviousChatScreenbody({
@@ -113,64 +115,44 @@ class PreviousChatScreenbody extends StatelessWidget {
             ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
 
           return ListView.separated(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 0),
             itemCount: sortedConversations.length,
-            separatorBuilder: (_, __) => const Divider(
-              thickness: 1,
-              color: Colors.grey,
-              height: 20,
+            separatorBuilder: (_, __) => Divider(
+              thickness: 0.7,
+              color: AppColors.neutral30.withOpacity(0.2),
+              height: 0,
             ),
             itemBuilder: (context, index) {
               final convo = sortedConversations[index];
               final preview = _getConversationPreview(convo.messages);
-              final timeAgo = _formatTimestamp(convo.timestamp);
-
-              return Card(
-                elevation: 2,
-                margin: const EdgeInsets.symmetric(vertical: 4),
-                child: ListTile(
-                  leading: const CircleAvatar(
-                    backgroundColor: Colors.blue,
-                    child: Icon(
-                      Icons.chat,
-                      color: Colors.white,
-                      size: 20,
-                    ),
+              return InkWell(
+                borderRadius: BorderRadius.circular(8),
+                onTap: () => _navigateToSmartCoach(context, convo.messages),
+                splashColor: AppColors.mainRed.withOpacity(0.08),
+                highlightColor: AppColors.mainRed.withOpacity(0.10),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
                   ),
-                  title: Text(
-                    preview,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
                     children: [
-                      const SizedBox(height: 4),
-                      Text(
-                        timeAgo,
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 12,
-                        ),
-                      ),
-                      Text(
-                        '${convo.messages.length} message${convo.messages.length > 1 ? 's' : ''}',
-                        style: TextStyle(
-                          color: Colors.grey[500],
-                          fontSize: 11,
+                      Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.mainRed, size: 18),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          preview,
+                          style: TextStyle(
+                            color: AppColors.baseWhite,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
                   ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: Colors.grey,
-                  ),
-                  onTap: () => _navigateToSmartCoach(context, convo.messages),
                 ),
               );
             },
