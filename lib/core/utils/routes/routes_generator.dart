@@ -26,7 +26,7 @@ import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.d
 import 'package:fitness_app/features/food/presentation/view/food_recommendation_view.dart';
 import 'package:fitness_app/features/food/presentation/view/widgets/food_recommendation_view_body.dart.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
-import 'package:fitness_app/features/home/home/presentation/views/home_view.dart';
+import 'package:fitness_app/features/home/home/presentation/views/home_screen.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/edit_profile/domain/use_cases/edit_profile_use_case.dart';
