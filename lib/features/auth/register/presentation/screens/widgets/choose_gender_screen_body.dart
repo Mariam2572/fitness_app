@@ -4,10 +4,12 @@ import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/choose_gender_container.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
+import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 
 import 'package:flutter/material.dart';
 
 class ChooseGenderScreenBody extends StatelessWidget {
+  
   const ChooseGenderScreenBody({super.key});
 
   @override
@@ -38,7 +40,13 @@ class ChooseGenderScreenBody extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        const ChooseGenderContainer(),
+         ChooseGenderContainer(
+           isEditProfile: false,
+          //  selectedGender: RegisterCubit.selectedGender.name,
+           onTap: (gender) {
+             RegisterCubit.selectedGender = gender;
+           },
+         ),
       ],
     );
   }

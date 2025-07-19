@@ -63,7 +63,6 @@
   "create_new_password":"Create New Password",
   "done":"Done",
   "email_sent_successfully":"Email Sent Successfully!",
-  "doIt": "Do It",
   "anErrorOccurred": "An error occurred , Please try later",
   "changePassword": "Change Password",
   "currentPassword": "Current Password",
@@ -92,12 +91,20 @@
   "popularTraining": "Popular Training",
   "foodRecommendation" : "Food Recommendation",
   "recommendation" : "Recommendation",
-  "hi" : "Hi",
+  "whatsYourGoal": "WHAT IS YOUR GOAL ?",
+  "gainWeight": "Gain Weight",
+  "loseWeight": "Lose Weight",
+  "getFitter": "Get Fitter",
+  "gainMoreFlexibility": "Gain More Flexibility",
+  "learnTheBasics": "Learn The Basics",
+  "yourRegularPhysical": "YOUR REGULAR PHYSICAL",
+  "activityLevel": "ACTIVITY LEVEL?",
+  "registerSuccess": "Registered Successefully!",
+  "bigenner": "Beginner",
+  "trueBeast": "True Beast",
   "letsStartYourDay" : "Let's Start Your Day",
   "unableToGetUserName" : "Unable to get user name",
   "unknownError" : "unknownError occurred please try later"
-
-  
 
 
 }

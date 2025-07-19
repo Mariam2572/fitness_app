@@ -21,17 +21,17 @@ class TapToEditWidget extends StatelessWidget {
           ),
           TextButton(
             onPressed: onPressed,
+            style: const ButtonStyle(
+              padding: WidgetStatePropertyAll(
+                EdgeInsets.zero,
+              ),
+            ),
             child: Text(
               context.loc.tapToEdit,
               style: context.textTheme.bodyMedium
                   ?.copyWith(
                 fontWeight: FontWeight.w600,
                 color: AppColors.mainRed,
-              ),
-            ),
-            style: ButtonStyle(
-              padding: WidgetStatePropertyAll(
-                EdgeInsets.zero,
               ),
             ),
           ),
@@ -48,22 +48,22 @@ class TapToEditWidget extends StatelessWidget {
           horizontal: 16,
         ),
         width: double.infinity,
-        child: Text(
-          value,
-          style: context.textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
-        ),
         decoration: BoxDecoration(
           color: AppColors.neutral0.withValues(
             alpha: 0.2,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
           border: Border.all(
             color: AppColors.neutral5,
             width: 1,
+          ),
+        ),
+        child: Text(
+          value,
+          style: context.textTheme.bodyMedium?.copyWith(
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),

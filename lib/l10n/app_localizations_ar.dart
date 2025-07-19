@@ -282,6 +282,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get popularTraining => 'التدريبات الشائعة';
+  @override
+  String get getwhatsYourGoal => 'ما هو هدفك؟';
+  @override
+  String get gainWeight => 'زيادة الوزن';
+  @override
+  String get loseWeight => 'فقدان الوزن';
+  @override
+  String get getFitter => 'تحسين اللياقة البدنية';
+  @override
+  String get gainMoreFlexibility => 'زيادة المرونة';
+  @override
+  String get learnTheBasics => 'تعلم الأساسيات';
+
+
 
   @override
   String get foodRecommendation => 'إقتراحات الطعام';

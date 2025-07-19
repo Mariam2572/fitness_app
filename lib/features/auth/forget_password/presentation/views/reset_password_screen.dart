@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper/sized_box_helper.dart';
+import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/validator.dart';
@@ -66,7 +67,7 @@ class ResetPasswordScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      responsiveHeight(context, 0.01),
+                      responsiveHeight(context, 0.02),
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 16,
@@ -146,7 +147,9 @@ class ResetPasswordScreen extends StatelessWidget {
                                       ),
                                       obscureText: true,
                                     ),
-                                    responsiveHeight(context, 0.01),
+                                    SizedBox(
+                                      height: 24,
+                                    ),
                                     TextFormField(obscureText: true,
                                       key: const ValueKey('confirmPasswordField'),
                                       validator:
@@ -221,6 +224,10 @@ class ResetPasswordScreen extends StatelessWidget {
                                         ),
                                         backgroundColor: Colors.green,
                                       ),
+                                    );
+                                    Navigator.pushReplacementNamed(
+                                      context,
+                                      RoutesName.login,
                                     );
 
                                   }

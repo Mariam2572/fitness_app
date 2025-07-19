@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/src/material/tab_controller.dart';
-
 import 'package:fitness_app/core/base/api_result.dart';
-import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
 import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
 import 'package:fitness_app/features/exercise/domain/use_cases/get_exercise_by_mover_and_difficulty_level.dart';
@@ -88,8 +86,7 @@ class ExerciseCubit extends Cubit<ExerciseState> {
     }
   }
   void dispose() {
-    // TODO: implement dispose
-   
+  
     tabController.dispose();
     tabController.removeListener(() {});
     super.close();

@@ -9,8 +9,8 @@ part of 'change_password_request.dart';
 ChangePasswordRequest _$ChangePasswordRequestFromJson(
         Map<String, dynamic> json) =>
     ChangePasswordRequest(
-      password: json['password'] as String?,
-      newPassword: json['newPassword'] as String?,
+      password: json['password'] as String,
+      newPassword: json['newPassword'] as String,
     );
 
 Map<String, dynamic> _$ChangePasswordRequestToJson(

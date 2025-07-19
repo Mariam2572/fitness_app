@@ -21,8 +21,8 @@ abstract class DioModule {
         baseUrl: Constants.baseUrl,
       ),
     );
-    dio.options.headers["Content-Type"]="multipart/form-data";
-    dio.options.contentType="multipart/form-data";
+    // dio.options.headers["Content-Type"]="multipart/form-data";
+    // dio.options.contentType="multipart/form-data";
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {

@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/utils/helper_func/handle_tabs.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/custom_glass_container.dart';
@@ -17,12 +18,13 @@ class ExerciseViewBody extends StatefulWidget {
 
 class _ExerciseViewBodyState extends State<ExerciseViewBody>
     with TickerProviderStateMixin {
-      
- 
+  
+    
+  
   @override
   void initState() {
     super.initState();
-    final cubit = context.read<ExerciseCubit>();
+  final cubit = context.read<ExerciseCubit>();
     cubit
         .doIntent(
           GetLevelsByPrimeMoverMusclesIntent(
@@ -33,7 +35,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
           if (cubit.levels.isNotEmpty) {
             cubit.tabController = TabController(
               length: cubit.levels.length,
-              vsync: this,
+            vsync: this,  
             );
             final firstId = cubit.levels[0].id;
             cubit.doIntent(
@@ -42,23 +44,25 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody>
                 difficultyLevelId: firstId ?? '',
               ),
             );
-            cubit.tabController.addListener(() {
-              if (!cubit.tabController.indexIsChanging) {
-                final id = cubit.levels[cubit.tabController.index].id;
-                cubit.doIntent(
-                  GetExerciseByMoverAndDifficulty(
-                    primeMoverMuscleId: widget.muscle.id!,
-                    difficultyLevelId: id ?? '',
-                  ),
-                );
-              }
-            });
+            changeTabs(cubit);
           }
-        });
+        });  
   }
 
   
-
+  void changeTabs(ExerciseCubit cubit) {
+      cubit.tabController.addListener(() {
+      if (!cubit.tabController.indexIsChanging) {
+        final id = cubit.levels[cubit.tabController.index].id;
+        cubit.doIntent(
+          GetExerciseByMoverAndDifficulty(
+            primeMoverMuscleId: widget.muscle.id!,
+            difficultyLevelId: id ?? '',
+          ),
+        );
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
