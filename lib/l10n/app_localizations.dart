@@ -637,12 +637,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Popular Training'**
   String get popularTraining;
-  String get getwhatsYourGoal;
-  String get gainWeight;
-  String get loseWeight;
-  String get getFitter;
-  String get gainMoreFlexibility;
-  String get learnTheBasics;
 
   /// No description provided for @foodRecommendation.
   ///
@@ -656,11 +650,71 @@ abstract class AppLocalizations {
   /// **'Recommendation'**
   String get recommendation;
 
-  /// No description provided for @hi.
+  /// No description provided for @whatsYourGoal.
   ///
   /// In en, this message translates to:
-  /// **'Hi'**
-  String get hi;
+  /// **'WHAT IS YOUR GOAL ?'**
+  String get whatsYourGoal;
+
+  /// No description provided for @gainWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain Weight'**
+  String get gainWeight;
+
+  /// No description provided for @loseWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Lose Weight'**
+  String get loseWeight;
+
+  /// No description provided for @getFitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Fitter'**
+  String get getFitter;
+
+  /// No description provided for @gainMoreFlexibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain More Flexibility'**
+  String get gainMoreFlexibility;
+
+  /// No description provided for @learnTheBasics.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn The Basics'**
+  String get learnTheBasics;
+
+  /// No description provided for @yourRegularPhysical.
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR REGULAR PHYSICAL'**
+  String get yourRegularPhysical;
+
+  /// No description provided for @activityLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'ACTIVITY LEVEL?'**
+  String get activityLevel;
+
+  /// No description provided for @registerSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered Successefully!'**
+  String get registerSuccess;
+
+  /// No description provided for @bigenner.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get bigenner;
+
+  /// No description provided for @trueBeast.
+  ///
+  /// In en, this message translates to:
+  /// **'True Beast'**
+  String get trueBeast;
 
   /// No description provided for @letsStartYourDay.
   ///
@@ -679,6 +733,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'unknownError occurred please try later'**
   String get unknownError;
+
+  /// No description provided for @hi.
+  ///
+  /// In en, this message translates to:
+  /// **'hi'**
+  String get hi;
 }
 
 class _AppLocalizationsDelegate

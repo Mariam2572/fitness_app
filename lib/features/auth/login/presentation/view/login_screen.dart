@@ -92,33 +92,33 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 24),
+                    // const SizedBox(height: 24),
 
-                    const Row(
-                      children: [
-                        Expanded(child: Divider(color: Colors.white)),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "Or",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        Expanded(child: Divider(color: Colors.white)),
-                      ],
-                    ),
+                    // const Row(
+                    //   children: [
+                    //     Expanded(child: Divider(color: Colors.white)),
+                    //     Padding(
+                    //       padding: EdgeInsets.symmetric(horizontal: 10),
+                    //       child: Text(
+                    //         "Or",
+                    //         style: TextStyle(color: Colors.white),
+                    //       ),
+                    //     ),
+                    //     Expanded(child: Divider(color: Colors.white)),
+                    //   ],
+                    // ),
 
                     const SizedBox(height: 32),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildSocialIcon(Icons.facebook),
-                        const SizedBox(width: 20),
-                        _buildSocialIcon(Icons.g_mobiledata_sharp),
-                        const SizedBox(width: 20),
-                        _buildSocialIcon(Icons.apple),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     _buildSocialIcon(Icons.facebook),
+                    //     const SizedBox(width: 20),
+                    //     _buildSocialIcon(Icons.g_mobiledata_sharp),
+                    //     const SizedBox(width: 20),
+                    //     // _buildSocialIcon(Icons.apple),
+                    //   ],
+                    // ),
 
                     const SizedBox(height: 24),
                     SizedBox(
@@ -214,10 +214,10 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-Widget _buildSocialIcon(IconData icon) {
-  return CircleAvatar(
-    radius: 22,
-    backgroundColor: Colors.black87,
-    child: Icon(icon, color: Colors.white),
-  );
-}
+// Widget _buildSocialIcon(IconData icon) {
+//   return CircleAvatar(
+//     radius: 22,
+//     backgroundColor: Colors.black87,
+//     child: Icon(icon, color: Colors.white),
+//   );
+// }

@@ -284,22 +284,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get popularTraining => 'Popular Training';
-  @override
-  String get gainWeight => 'Gain Weight';
-  @override
-  String get loseWeight => 'Lose Weight';
-  @override
-  String get getFitter => 'Get Fitter';
-  @override
-  String get gainMoreFlexibility => 'Gain More Flexibility';
-  @override
-  String get learnTheBasics => 'Learn The Basics';
-  
-  
-
-  // TODO: implement getwhatsYourGoal
-String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
-  
 
   @override
   String get foodRecommendation => 'Food Recommendation';
@@ -308,7 +292,37 @@ String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
   String get recommendation => 'Recommendation';
 
   @override
-  String get hi => 'Hi';
+  String get whatsYourGoal => 'WHAT IS YOUR GOAL ?';
+
+  @override
+  String get gainWeight => 'Gain Weight';
+
+  @override
+  String get loseWeight => 'Lose Weight';
+
+  @override
+  String get getFitter => 'Get Fitter';
+
+  @override
+  String get gainMoreFlexibility => 'Gain More Flexibility';
+
+  @override
+  String get learnTheBasics => 'Learn The Basics';
+
+  @override
+  String get yourRegularPhysical => 'YOUR REGULAR PHYSICAL';
+
+  @override
+  String get activityLevel => 'ACTIVITY LEVEL?';
+
+  @override
+  String get registerSuccess => 'Registered Successefully!';
+
+  @override
+  String get bigenner => 'Beginner';
+
+  @override
+  String get trueBeast => 'True Beast';
 
   @override
   String get letsStartYourDay => 'Let\'s Start Your Day';
@@ -318,4 +332,7 @@ String get getwhatsYourGoal => "WHAT'S YOUR GOAL?";
 
   @override
   String get unknownError => 'unknownError occurred please try later';
+
+  @override
+  String get hi => 'hi';
 }

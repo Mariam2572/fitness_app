@@ -104,7 +104,8 @@
   "trueBeast": "True Beast",
   "letsStartYourDay" : "Let's Start Your Day",
   "unableToGetUserName" : "Unable to get user name",
-  "unknownError" : "unknownError occurred please try later"
+  "unknownError" : "unknownError occurred please try later",
+  "hi" : "hi"
 
 
 }

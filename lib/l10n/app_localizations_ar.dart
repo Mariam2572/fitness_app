@@ -282,20 +282,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get popularTraining => 'التدريبات الشائعة';
-  @override
-  String get getwhatsYourGoal => 'ما هو هدفك؟';
-  @override
-  String get gainWeight => 'زيادة الوزن';
-  @override
-  String get loseWeight => 'فقدان الوزن';
-  @override
-  String get getFitter => 'تحسين اللياقة البدنية';
-  @override
-  String get gainMoreFlexibility => 'زيادة المرونة';
-  @override
-  String get learnTheBasics => 'تعلم الأساسيات';
-
-
 
   @override
   String get foodRecommendation => 'إقتراحات الطعام';
@@ -304,7 +290,37 @@ class AppLocalizationsAr extends AppLocalizations {
   String get recommendation => 'إقتراحات';
 
   @override
-  String get hi => 'مرحباً';
+  String get whatsYourGoal => 'ما هو هدفك؟';
+
+  @override
+  String get gainWeight => 'زيادة الوزن';
+
+  @override
+  String get loseWeight => 'فقدان الوزن';
+
+  @override
+  String get getFitter => 'حصول على الصحة';
+
+  @override
+  String get gainMoreFlexibility => 'زيادة الحركة';
+
+  @override
+  String get learnTheBasics => 'تعلم الاساسيات';
+
+  @override
+  String get yourRegularPhysical => 'نشاطك البدني المعتاد';
+
+  @override
+  String get activityLevel => 'مستوى النشاط؟';
+
+  @override
+  String get registerSuccess => 'تم التسجيل بنجاح!';
+
+  @override
+  String get bigenner => 'مبتدئ';
+
+  @override
+  String get trueBeast => 'True Beast';
 
   @override
   String get letsStartYourDay => 'لنبدأ يومك';
@@ -314,4 +330,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unknownError => 'حدث خطأ غير معروف، يرجى المحاولة لاحقًا';
+
+  @override
+  String get hi => 'أهلا';
 }
