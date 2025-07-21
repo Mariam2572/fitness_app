@@ -7,12 +7,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
 import 'package:fitness_app/features/logout/domain/usecases/logout_usecase.dart';
-import 'package:fitness_app/features/profile/domain/use_case/get_profile_data.dart';
+import 'package:fitness_app/features/profile/domain/use_case/get_profile_data_use_case.dart';
 import 'package:fitness_app/features/profile/domain/use_case/upload_photo__use_case.dart';
 import 'package:fitness_app/features/profile/presentation/view_model/profile_states.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  final GetProfileData getProfileData;
+  final GetProfileDataUseCase getProfileData;
   final UploadPhoto uploadPhoto;
   final LogoutUseCase _logoutUseCase;
   ProfileCubit(this.getProfileData, this.uploadPhoto, this._logoutUseCase)
@@ -85,4 +85,5 @@ class UploadPhotoIntent extends ProfileIntent {
   final File photo;
   UploadPhotoIntent(this.photo);
 }
+
 class LogoutIntent extends ProfileIntent {}

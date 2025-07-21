@@ -13,43 +13,23 @@ final class HomeViewLoading extends HomeViewState {}
 
 final class HomeViewSuccess extends HomeViewState {
   final String? userName;
+  final String? userImage;
   final List<Exercises>? exercises;
   final List<FoodCategory>? mealsCategories;
   final GetAllMusclesGroupsReponse? musclesGroups;
   final List<MusclesBean>? workoutsByMuscleGroupId;
-  // final GetAllMusclesByMuscleGroupIdReponse? musclesByMuscleGroupId;
+  
   const HomeViewSuccess({
     this.userName,
     this.exercises,
     this.mealsCategories,
     this.musclesGroups,
     this.workoutsByMuscleGroupId,
-    // this.musclesByMuscleGroupId,
+    this.userImage, 
+ 
   });
 }
-// final class GetUserNameSuccess extends HomeViewState {
-//   final String userName;
 
-//   const GetUserNameSuccess({required this.userName});
-// }
-
-// final class GetRandomExercisesSuccess extends HomeViewState {
-//   final List<Exercises>? exercises;
-
-//   const GetRandomExercisesSuccess({required this.exercises});
-// }
-
-// final class GetFoodCategorySuccess extends HomeViewState {
-//   final List<FoodCategory>? categories;
-
-//   const GetFoodCategorySuccess({required this.categories});
-// }
-
-// final class GetAllMusclesGroupsSuccess extends HomeViewState {
-//   final GetAllMusclesGroupsReponse? musclesGroups;
-
-//   const GetAllMusclesGroupsSuccess({required this.musclesGroups});
-// }
 
 final class GetMusclesByMuscleGroupIdSuccess extends HomeViewState {
   final List<MusclesBean>? workoutsByMuscleGroupId;

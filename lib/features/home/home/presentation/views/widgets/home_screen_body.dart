@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
@@ -74,11 +75,10 @@ class HomeScreenBody extends StatelessWidget {
                               ),
                             ),
                             
-                          const CircleAvatar(
+                           if (state is HomeViewSuccess)
+                           CircleAvatar(
                             radius: 24,
-                            backgroundImage: AssetImage(
-                              "assets/images/user.png",
-                            ),
+                            backgroundImage: CachedNetworkImageProvider(state.userImage??"")
                           ),
                         ],
                       ),

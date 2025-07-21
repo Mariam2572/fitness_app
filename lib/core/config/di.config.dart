@@ -110,7 +110,8 @@ import '../../features/profile/data/data_source/profile_remote_data_source_impl.
     as _i531;
 import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
 import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
-import '../../features/profile/domain/use_case/get_profile_data.dart' as _i663;
+import '../../features/profile/domain/use_case/get_profile_data_use_case.dart'
+    as _i280;
 import '../../features/profile/domain/use_case/upload_photo__use_case.dart'
     as _i763;
 import '../../features/profile/edit_profile/data/data_source/edit_profile_impl.dart'
@@ -283,11 +284,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()));
     gh.factory<_i401.LoginUsecase>(
         () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()));
-    gh.factory<_i204.HomeUseCase>(() => _i204.HomeUseCase(
-          gh<_i751.HomeRepo>(),
-          gh<_i80.GetAllMusclesGroupsUseCase>(),
-          gh<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(),
-        ));
     gh.factory<_i793.ChangePasswordUseCase>(
         () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()));
     gh.factory<_i782.MealsDetailsCubit>(
@@ -307,12 +303,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i589.GetFoodCategoriesUseCase(gh<_i474.FoodRepo>()));
     gh.factory<_i740.GetMealsByCategoryUseCase>(
         () => _i740.GetMealsByCategoryUseCase(gh<_i474.FoodRepo>()));
-    gh.factory<_i663.GetProfileData>(
-        () => _i663.GetProfileData(gh<_i1007.ProfileRepository>()));
     gh.factory<_i763.UploadPhoto>(
         () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
+    gh.factory<_i280.GetProfileDataUseCase>(
+        () => _i280.GetProfileDataUseCase(gh<_i1007.ProfileRepository>()));
     gh.factory<_i118.RegisterUseCase>(
         () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()));
+    gh.factory<_i204.HomeUseCase>(() => _i204.HomeUseCase(
+          gh<_i751.HomeRepo>(),
+          gh<_i80.GetAllMusclesGroupsUseCase>(),
+          gh<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(),
+          gh<_i280.GetProfileDataUseCase>(),
+        ));
     return this;
   }
 }

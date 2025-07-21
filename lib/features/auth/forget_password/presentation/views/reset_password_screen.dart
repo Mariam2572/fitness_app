@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper/sized_box_helper.dart';
+import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
@@ -215,16 +216,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
                                 listener: (context, state) {
                                   if (state is ResetPasswordSuccess) {
-                                    ScaffoldMessenger.of(
-                                      context,
-                                    ).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Password Reset Successfully!',
-                                        ),
-                                        backgroundColor: Colors.green,
-                                      ),
-                                    );
+                                   showSnackBar(context, "Password Reset Successfully!");
                                     Navigator.pushReplacementNamed(
                                       context,
                                       RoutesName.login,
@@ -232,14 +224,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
                                   }
                                   if (state is ResetPasswordError) {
-                                    ScaffoldMessenger.of(
-                                      context,
-                                    ).showSnackBar(
-                                      SnackBar(
-                                        content: Text(state.failureMessage),
-                                        backgroundColor: Colors.red,
-                                      ),
-                                    );
+                                   showErrorSnackBar(context, state.errorMessage);
                                   }
                                 },
                                 child: ElevatedButton(

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper/sized_box_helper.dart';
+import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/validator.dart';
@@ -118,12 +119,7 @@ class VerificationScreen extends StatelessWidget {
                                   listener: (context, state) {
 
                                     if (state is VerifyResetSuccess) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                          content: Text('Email Verified Successfully!'),
-                                          backgroundColor: Colors.green,
-                                        ),
-                                      );
+                                     showSnackBar(context, 'Email Verified Successfully!');
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (context) => BlocProvider.value(
@@ -135,13 +131,7 @@ class VerificationScreen extends StatelessWidget {
                                     }
                                     if (state is VerifyResetError) {
 
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text(state.failureMessage),
-
-                                          backgroundColor: Colors.red,
-                                        ),
-                                      );
+                                      showErrorSnackBar(context, state.failureMessage);
                                     }
                                   },
                                   child: ElevatedButton(
@@ -149,12 +139,7 @@ class VerificationScreen extends StatelessWidget {
                                       // Trigger the registration process
                                       if(forgetPasswordCubit.resetCodeController.text.length<6){
 
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(
-                                            content: Text('Invalid OTP Number'),
-                                            backgroundColor: Colors.red,
-                                          ),
-                                        );
+                                        showErrorSnackBar(context, 'Invalid OTP Number');
                                         return;
                                       }
                                       forgetPasswordCubit.doIntent(VerifyResetIntent());
@@ -173,21 +158,11 @@ class VerificationScreen extends StatelessWidget {
                                 BlocListener<ForgetPasswordCubit, ForgetPasswordState>(
                                   listener: (context, state) {
                                     if (state is ResendCodeState) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                          content: Text('Resent code successfully!'),
-                                          backgroundColor: Colors.green,
-                                        ),
-                                      );
+                                     showSnackBar(context, 'Resent code successfully!');
                                     }
 
                                     if (state is ForgetPasswordError) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text(state.errorMessage),
-                                          backgroundColor: Colors.red,
-                                        ),
-                                      );
+                                      showErrorSnackBar(context, state.failureMessage);
                                     }
                                   },
                                   child: ResendCode(),

@@ -16,7 +16,7 @@ class GetStartView extends StatefulWidget {
   final void Function(List<ChatMessage> messages) onSessionEnd;
   final PreviousConversationViewModel previousConversationViewModel;
 
-  const GetStartView({super.key, this.userName = "Ahmed", required this.messages, required this.onSessionEnd, required this.previousConversationViewModel, });
+  const GetStartView({super.key, required this.userName, required this.messages, required this.onSessionEnd, required this.previousConversationViewModel, });
 
   @override
   State<GetStartView> createState() => _GetStartViewState();

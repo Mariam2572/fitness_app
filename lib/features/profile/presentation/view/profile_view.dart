@@ -4,7 +4,7 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/logout/domain/usecases/logout_usecase.dart';
-import 'package:fitness_app/features/profile/domain/use_case/get_profile_data.dart';
+import 'package:fitness_app/features/profile/domain/use_case/get_profile_data_use_case.dart';
 import 'package:fitness_app/features/profile/domain/use_case/upload_photo__use_case.dart';
 import 'package:fitness_app/features/profile/logout_sheet.dart';
 import 'package:fitness_app/features/profile/presentation/view/widgets/build_back_button.dart';
@@ -28,7 +28,7 @@ class _ProfileViewState extends State<ProfileView> {
     return BlocProvider(
       create:
           (context) => ProfileCubit(
-            getIt<GetProfileData>(),
+            getIt<GetProfileDataUseCase>(),
             getIt<UploadPhoto>(),
             getIt<LogoutUseCase>(),
           )..doIntent(LoadProfileIntent()),

@@ -6,6 +6,7 @@ import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
 import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
 import 'package:fitness_app/features/home/home/domain/use_cases/home_use_case.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
@@ -32,31 +33,32 @@ class HomeViewCubit extends Cubit<HomeViewState> {
 
   Future<void> _getHomeData() async {
     emit(HomeViewLoading());
-    final userName = await homeUseCase.getUserName();
+    final userData = await homeUseCase.getUserName();
     final randomExercises = await homeUseCase.getRandomExercise();
     final mealsCat = await homeUseCase.getMealsCategories();
     final musclesGroups = await homeUseCase.getAllMusclesGroups();
 
-    if (userName is ApiSuccess<String> &&
+    if (userData is ApiSuccess<UserResponse> &&
         randomExercises is ApiSuccess<RandomExerciseResponse> &&
         mealsCat is ApiSuccess<FoodCategoriesResponse> &&
         musclesGroups is ApiSuccess<GetAllMusclesGroupsReponse>) {
       musclesGroupCat = musclesGroups.data?.musclesGroup ?? [];
       emit(
         HomeViewSuccess(
-          userName: userName.data ?? "Unknown User",
+          userName: userData.data?.user?.firstName ?? "Unknown User",
           exercises: randomExercises.data?.exercises ?? [],
           mealsCategories: mealsCat.data?.categories ?? [],
           musclesGroups: musclesGroups.data!,
+          userImage: userData.data?.user?.photo,
         ),
       );
-    } else if (userName is ApiError<String> &&
+    } else if (userData is ApiError<UserResponse> &&
         randomExercises is ApiError<RandomExerciseResponse> &&
         mealsCat is ApiError<FoodCategoriesResponse> &&
         musclesGroups is ApiError<GetAllMusclesGroupsReponse>) {
       emit(
         HomeViewError(
-          userNameError: userName.failure?.errorMessage,
+          userNameError: userData.failure?.errorMessage,
           randomExercisesError: randomExercises.failure?.errorMessage,
           mealsCategoriesError: mealsCat.failure?.errorMessage,
           musclesGroupsError: musclesGroups.failure?.errorMessage,

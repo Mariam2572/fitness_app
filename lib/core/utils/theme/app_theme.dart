@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData appTheme = ThemeData(
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.mainRed,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.mainRed,

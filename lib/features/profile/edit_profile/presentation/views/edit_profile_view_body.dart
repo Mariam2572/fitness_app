@@ -136,32 +136,32 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                             value:
                                 "${editProfileCubit.weight} ${context.loc.kg}",
                           ),
-                          responsiveHeight(context, 0.010),
-                          TapToEditWidget(
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                RoutesName.editHeight,
-                                arguments: context.read<EditProfileCubit>(),
-                              );
-                            },
-                            title: context.loc.yourHeight,
-                            value:
-                                "${editProfileCubit.height} ${context.loc.cm}",
-                          ),
-                          responsiveHeight(context, 0.010),
-                          TapToEditWidget(
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                RoutesName.editAge,
-                                arguments: context.read<EditProfileCubit>(),
-                              );
-                            },
-                            title: context.loc.yourAge,
-                            value:
-                                "${editProfileCubit.age} ${context.loc.year}",
-                          ),
+                          // responsiveHeight(context, 0.010),
+                          // TapToEditWidget(
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(
+                          //       context,
+                          //       RoutesName.editHeight,
+                          //       arguments: context.read<EditProfileCubit>(),
+                          //     );
+                          //   },
+                          //   title: context.loc.yourHeight,
+                          //   value:
+                          //       "${editProfileCubit.height} ${context.loc.cm}",
+                          // ),
+                          // responsiveHeight(context, 0.010),
+                          // TapToEditWidget(
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(
+                          //       context,
+                          //       RoutesName.editAge,
+                          //       arguments: context.read<EditProfileCubit>(),
+                          //     );
+                          //   },
+                          //   title: context.loc.yourAge,
+                          //   value:
+                          //       "${editProfileCubit.age} ${context.loc.year}",
+                          // ),
                           responsiveHeight(context, 0.010),
                           TapToEditWidget(
                             onPressed: () {
@@ -187,18 +187,18 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                             value: parseLevelsToActivity(editProfileCubit.activityLevel??""),
                           ),
                           responsiveHeight(context, 0.010),
-                          TapToEditWidget(
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                RoutesName.editGender,
-                                arguments: context.read<EditProfileCubit>(),
-                              );
-                            },
-                            title: context.loc.yourGender,
-                            value: EditProfileCubit.selectedGender.name,
-                          ),
-                          responsiveHeight(context, 0.010),
+                          // TapToEditWidget(
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(
+                          //       context,
+                          //       RoutesName.editGender,
+                          //       arguments: context.read<EditProfileCubit>(),
+                          //     );
+                          //   },
+                          //   title: context.loc.yourGender,
+                          //   value: EditProfileCubit.selectedGender.name,
+                          // ),
+                          // responsiveHeight(context, 0.010),
                         ],
                       ),
                     );

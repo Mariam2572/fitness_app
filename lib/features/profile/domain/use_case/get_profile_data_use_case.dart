@@ -4,9 +4,9 @@ import 'package:fitness_app/features/profile/domain/repos/profile_repo.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetProfileData {
+class GetProfileDataUseCase {
   final ProfileRepository repository;
-  GetProfileData(this.repository);
+  GetProfileDataUseCase(this.repository);
 
   Future<ApiResult<UserResponse>> call() async => await repository.getProfile();
 }
