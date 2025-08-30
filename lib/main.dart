@@ -13,6 +13,7 @@ import 'package:fitness_app/features/smartCoach/data/models/ConversationHiveMode
 import 'package:fitness_app/features/smartCoach/domain/use_case/send_message_use_case.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
 import 'package:fitness_app/l10n/app_localizations.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
