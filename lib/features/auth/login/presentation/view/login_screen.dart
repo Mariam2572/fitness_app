@@ -10,7 +10,7 @@ import 'package:fitness_app/core/utils/widgets/shared_container.dart';
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:fitness_app/features/auth/login/presentation/view_model/login_state.dart';
-import 'package:fitness_app/features/auth/login/presentation/widgets/form_fields_section.dart';
+import 'package:fitness_app/features/auth/login/presentation/view/widgets/form_fields_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,12 +76,16 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     const FormFieldsSection(),
                     const SizedBox(height: 16),
-                    //  const SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: TextButton(onPressed: () {
-                        Navigator.pushNamed(context, RoutesName.forgetPassword);
-                      },
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            RoutesName.forgetPassword,
+                          );
+                        },
                         child: Text(
                           context.loc.forgot_password,
                           style: const TextStyle(
@@ -92,52 +96,65 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
 
-                    // const SizedBox(height: 24),
+                    const SizedBox(height: 24),
 
-                    // const Row(
-                    //   children: [
-                    //     Expanded(child: Divider(color: Colors.white)),
-                    //     Padding(
-                    //       padding: EdgeInsets.symmetric(horizontal: 10),
-                    //       child: Text(
-                    //         "Or",
-                    //         style: TextStyle(color: Colors.white),
-                    //       ),
-                    //     ),
-                    //     Expanded(child: Divider(color: Colors.white)),
-                    //   ],
-                    // ),
+                    const Row(
+                      children: [
+                        Expanded(child: Divider(color: Colors.white)),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "Or",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        Expanded(child: Divider(color: Colors.white)),
+                      ],
+                    ),
 
                     const SizedBox(height: 32),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     _buildSocialIcon(Icons.facebook),
-                    //     const SizedBox(width: 20),
-                    //     _buildSocialIcon(Icons.g_mobiledata_sharp),
-                    //     const SizedBox(width: 20),
-                    //     // _buildSocialIcon(Icons.apple),
-                    //   ],
-                    // ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildSocialIcon(Icons.facebook),
+                        const SizedBox(width: 20),
+                        _buildSocialIcon(Icons.g_mobiledata_sharp),
+                        const SizedBox(width: 20),
+                        _buildSocialIcon(Icons.apple),
+                      ],
+                    ),
 
                     const SizedBox(height: 24),
                     SizedBox(
                       width: double.infinity,
                       child: BlocListener<LoginCubit, LoginState>(
-                        listener: (context, state) async{
+                        listener: (context, state) async {
                           if (state is LoginSuccess) {
                             //added the token here so i can get it from the login navigation
                             final token = state.response.token;
                             if (token != null && token.isNotEmpty) {
-                              await secureStorage.write(key: Constants.userToken, value: token);
+                              await secureStorage.write(
+                                key: Constants.userToken,
+                                value: token,
+                              );
                               showSnackBar(context, 'Login successful');
-                              Future.delayed(const Duration(milliseconds: 500), () {
-                                if (context.mounted) {
-                                  Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
-                                }
-                              });
+                              Future.delayed(
+                                const Duration(milliseconds: 500),
+                                () {
+                                  if (context.mounted) {
+                                    Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      RoutesName.layOut,
+                                      (route) => false,
+                                    );
+                                  }
+                                },
+                              );
                             } else {
-                              showErrorSnackBar(context, 'Token is missing in response');
+                              showErrorSnackBar(
+                                context,
+                                'Token is missing in response',
+                              );
                             }
                             showSnackBar(context, 'Login successful');
                             Navigator.pushNamedAndRemoveUntil(
@@ -214,10 +231,10 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-// Widget _buildSocialIcon(IconData icon) {
-//   return CircleAvatar(
-//     radius: 22,
-//     backgroundColor: Colors.black87,
-//     child: Icon(icon, color: Colors.white),
-//   );
-// }
+Widget _buildSocialIcon(IconData icon) {
+  return CircleAvatar(
+    radius: 22,
+    backgroundColor: Colors.black87,
+    child: Icon(icon, color: Colors.white),
+  );
+}
