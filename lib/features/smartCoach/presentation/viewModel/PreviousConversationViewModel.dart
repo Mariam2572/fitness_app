@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:fitness_app/features/smartCoach/data/message_model.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ConversationModel.dart';
 import 'package:fitness_app/features/smartCoach/domain/use_cases/get_previous_conversations_usecase.dart';

@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:ui';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SmartCoachView extends StatefulWidget {
   const SmartCoachView({
@@ -186,7 +187,7 @@ class _SmartCoachViewState extends State<SmartCoachView> {
                                 if (!isUser) ...[
                                   CircleAvatar(
                                     backgroundColor: Colors.transparent,
-                                    backgroundImage: AssetImage(AppAssets.chatRobot),
+                                    backgroundImage: AssetImage(AppAssets.robotAvatar),
                                     radius: 18,
                                   ),
                                   const SizedBox(width: 8),
