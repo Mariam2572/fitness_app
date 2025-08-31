@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/provider/app_config_provider.dart';
 import 'package:fitness_app/core/utils/routes/routes_generator.dart';
@@ -12,6 +13,7 @@ import 'package:fitness_app/features/smartCoach/data/models/ChatMessageHiveModel
 import 'package:fitness_app/features/smartCoach/data/models/ConversationHiveModel.dart';
 import 'package:fitness_app/features/smartCoach/domain/use_case/send_message_use_case.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
+import 'package:fitness_app/firebase_options.dart';
 import 'package:fitness_app/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
@@ -23,6 +25,9 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await configureDependencies();
   final geminiService = getIt<GeminiService>();
   await geminiService.initialize();
