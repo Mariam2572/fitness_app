@@ -1,18 +1,6 @@
-import 'package:fitness_app/core/constants/constants.dart';
-import 'package:fitness_app/core/utils/helper/extention.dart';
-import 'package:fitness_app/core/utils/helper/secure_storage.dart';
-import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
-import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
-import 'package:fitness_app/core/utils/theme/app_text_style.dart';
-import 'package:fitness_app/core/utils/widgets/shared_container.dart';
-import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
-import 'package:fitness_app/features/auth/login/presentation/view_model/login_cubit.dart';
-import 'package:fitness_app/features/auth/login/presentation/view_model/login_state.dart';
-import 'package:fitness_app/features/auth/login/presentation/view/widgets/form_fields_section.dart';
+import 'package:fitness_app/features/auth/login/presentation/view/widgets/login_screen_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -29,212 +17,16 @@ class LoginScreen extends StatelessWidget {
         ),
         Scaffold(
           backgroundColor: Colors.transparent,
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: context.padding.top + 15,
-                      bottom: context.padding.bottom + 15.0,
-                    ),
-                    child: Image.asset(AppAssets.logo),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    context.loc.hey_there,
-                    style: context.textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    context.loc.welcomeBack,
-                    style: context.textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                SharedContainer(
-                  height: context.height * .6,
-                  children: [
-                    Text(
-                      textAlign: TextAlign.center,
-                      context.loc.login,
-                      style: context.textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    const FormFieldsSection(),
-                    const SizedBox(height: 16),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                            context,
-                            RoutesName.forgetPassword,
-                          );
-                        },
-                        child: Text(
-                          context.loc.forgot_password,
-                          style: const TextStyle(
-                            color: AppColors.mainRed,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    const Row(
-                      children: [
-                        Expanded(child: Divider(color: Colors.white)),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            "Or",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        Expanded(child: Divider(color: Colors.white)),
-                      ],
-                    ),
-
-                    const SizedBox(height: 32),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildSocialIcon(Icons.facebook),
-                        const SizedBox(width: 20),
-                        _buildSocialIcon(Icons.g_mobiledata_sharp),
-                        const SizedBox(width: 20),
-                        _buildSocialIcon(Icons.apple),
-                      ],
-                    ),
-
-                    const SizedBox(height: 24),
-                    SizedBox(
-                      width: double.infinity,
-                      child: BlocListener<LoginCubit, LoginState>(
-                        listener: (context, state) async {
-                          if (state is LoginSuccess) {
-                            //added the token here so i can get it from the login navigation
-                            final token = state.response.token;
-                            if (token != null && token.isNotEmpty) {
-                              await secureStorage.write(
-                                key: Constants.userToken,
-                                value: token,
-                              );
-                              showSnackBar(context, 'Login successful');
-                              Future.delayed(
-                                const Duration(milliseconds: 500),
-                                () {
-                                  if (context.mounted) {
-                                    Navigator.pushNamedAndRemoveUntil(
-                                      context,
-                                      RoutesName.layOut,
-                                      (route) => false,
-                                    );
-                                  }
-                                },
-                              );
-                            } else {
-                              showErrorSnackBar(
-                                context,
-                                'Token is missing in response',
-                              );
-                            }
-                            showSnackBar(context, 'Login successful');
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              RoutesName.layOut,
-                              (route) => false,
-                            );
-                          }
-                          if (state is LoginFailure) {
-                            showErrorSnackBar(context, state.error);
-                          }
-                        },
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.mainRed,
-                            padding: const EdgeInsets.symmetric(vertical: 14),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          onPressed: () {
-                            final cubit = context.read<LoginCubit>();
-                            cubit.doIntent(
-                              PerformLogin(
-                                request: LoginRequest(
-                                  email: cubit.emailController.text,
-                                  password: cubit.passwordController.text,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            context.loc.login,
-                            style: AppTextStyle.instance.textStyle14.copyWith(
-                              color: AppColors.baseWhite,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 8),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          context.loc.dontHaveAccount,
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, RoutesName.register);
-                          },
-                          child: Text(
-                            context.loc.register,
-                            style: const TextStyle(
-                              color: AppColors.mainRed,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            title: Image.asset(AppAssets.logo),
           ),
+          body: LoginScreenBody(),
         ),
       ],
     );
   }
 }
 
-Widget _buildSocialIcon(IconData icon) {
-  return CircleAvatar(
-    radius: 22,
-    backgroundColor: Colors.black87,
-    child: Icon(icon, color: Colors.white),
-  );
-}
+
