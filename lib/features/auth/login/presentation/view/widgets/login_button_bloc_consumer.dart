@@ -21,8 +21,7 @@ class LoginButtonBlocConsumer extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) async {
         if (state is LoginSuccess) {
-          //added the token here so i can get it from the login navigation
-          final token = state.response.token;
+                final token = state.response.token;
           if (token != null && token.isNotEmpty) {
             await secureStorage.write(
               key: Constants.userToken,

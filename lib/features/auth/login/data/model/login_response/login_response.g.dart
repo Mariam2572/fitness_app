@@ -11,7 +11,7 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
       message: json['message'] as String?,
       user: json['user'] == null
           ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+          : UserData.fromJson(json['user'] as Map<String, dynamic>),
       token: json['token'] as String?,
     );
 

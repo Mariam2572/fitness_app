@@ -303,10 +303,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i589.GetFoodCategoriesUseCase(gh<_i474.FoodRepo>()));
     gh.factory<_i740.GetMealsByCategoryUseCase>(
         () => _i740.GetMealsByCategoryUseCase(gh<_i474.FoodRepo>()));
-    gh.factory<_i763.UploadPhoto>(
-        () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
     gh.factory<_i280.GetProfileDataUseCase>(
         () => _i280.GetProfileDataUseCase(gh<_i1007.ProfileRepository>()));
+    gh.factory<_i763.UploadPhoto>(
+        () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
     gh.factory<_i118.RegisterUseCase>(
         () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()));
     gh.factory<_i204.HomeUseCase>(() => _i204.HomeUseCase(

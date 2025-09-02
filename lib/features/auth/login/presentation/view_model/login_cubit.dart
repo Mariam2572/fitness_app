@@ -18,7 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> doIntent(LoginIntent intent) async {
     if (intent is PerformLogin) {
       await _handleLogin(intent);
-    }
+    } 
   }
 
   Future<void> _handleLogin(PerformLogin intent) async {
@@ -36,6 +36,8 @@ class LoginCubit extends Cubit<LoginState> {
         break;
     }
   }
+
+  
 }
 
 sealed class LoginIntent {}
@@ -45,3 +47,4 @@ class PerformLogin extends LoginIntent {
 
   PerformLogin({required this.request});
 }
+

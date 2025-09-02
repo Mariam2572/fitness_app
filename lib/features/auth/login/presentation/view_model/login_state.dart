@@ -20,6 +20,7 @@ final class LoginSuccess extends LoginState {
   List<Object> get props => [response];
 }
 
+
 final class LoginFailure extends LoginState {
   final String error;
   const LoginFailure(this.error);

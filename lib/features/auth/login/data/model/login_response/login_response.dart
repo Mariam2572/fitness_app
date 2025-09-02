@@ -1,14 +1,14 @@
 import 'package:collection/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'user.dart';
+import 'user_data.dart';
 
 part 'login_response.g.dart';
 
 @JsonSerializable()
 class LoginResponse {
   String? message;
-  User? user;
+  UserData? user;
   String? token;
 
   LoginResponse({this.message, this.user, this.token});
@@ -19,7 +19,7 @@ class LoginResponse {
 
   Map<String, dynamic> toJson() => _$LoginResponseToJson(this);
 
-  LoginResponse copyWith({String? message, User? user, String? token}) {
+  LoginResponse copyWith({String? message, UserData? user, String? token}) {
     return LoginResponse(
       message: message ?? this.message,
       user: user ?? this.user,

@@ -19,4 +19,6 @@ class LoginRepositoryImplementation implements LoginContract {
   }) async {
     return await _loginRemoteDataSource.login(loginRequest: loginRequest);
   }
+
+  
 }
