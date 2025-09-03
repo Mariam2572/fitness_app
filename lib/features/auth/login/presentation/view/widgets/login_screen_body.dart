@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/helper_func/animations_func.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/shared_container.dart';
@@ -39,16 +40,13 @@ class _LoginScreenBodyState extends State<LoginScreenBody>
     _animationController.forward();
   }
 
- 
-
   @override
   void didChangeDependencies() {
-    setupAnimationBasedOnLocal();
+    setupAnimationBasedOnLocal(context: context, animationController: _animationController, offset: offset, slidingAnimation: _slidingAnimation);
     super.didChangeDependencies();
   }
 
-  
-   @override
+  @override
   void dispose() {
     _animationController.dispose();
     super.dispose();
@@ -128,31 +126,20 @@ class _LoginScreenBodyState extends State<LoginScreenBody>
 
               const SizedBox(height: 32),
 
-              SlideTransition(position: _slidingAnimation,
-              child: LoginButtonBlocConsumer()),
+              LoginButtonBlocConsumer(),
 
               const SizedBox(height: 8),
 
-              SlideTransition(position: _slidingAnimation,
-              child: DoNotHaveAccountText()),
+              SlideTransition(
+                position: _slidingAnimation,
+                child: DoNotHaveAccountText(),
+              ),
             ],
           ),
         ],
       ),
     );
   }
-  void setupAnimationBasedOnLocal() {
-     final local = Localizations.localeOf(context);
-    final newOffset = local.languageCode == "ar" ? Offset(-1, 0) : Offset(1, 0);
-    if (newOffset != offset) {
-      setState(() {
-        offset = newOffset;
-        _slidingAnimation = Tween<Offset>(
-          begin: offset,
-          end: Offset.zero,
-        ).animate(_animationController);
-      });
-      _animationController.forward();
-    }
-  }
+
+ 
 }
