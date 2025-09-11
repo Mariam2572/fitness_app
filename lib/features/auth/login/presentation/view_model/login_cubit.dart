@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:bloc/bloc.dart';
 import 'package:fitness_app/features/auth/login/data/model/login_request/login_request.dart';
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
@@ -32,8 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
         );
       case ApiSuccess<LoginResponse>():
         emit(LoginSuccess(response.data!));
-      default:
-        break;
+      
     }
   }
 

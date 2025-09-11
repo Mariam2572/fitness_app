@@ -43,8 +43,7 @@ import '../../features/auth/login/data/data_source/login_remote_data_source_imp.
     as _i1015;
 import '../../features/auth/login/data/repository_implementation/login_repository_implementation.dart'
     as _i268;
-import '../../features/auth/login/domain/repository_icontract/login_contract.dart'
-    as _i96;
+import '../../features/auth/login/domain/repos/login_repo.dart' as _i983;
 import '../../features/auth/login/domain/usecases/login_usecase.dart' as _i401;
 import '../../features/auth/register/data/data_source/register_data_source_impl.dart'
     as _i932;
@@ -230,6 +229,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i762.ForgetPasswordDataSource>(
         () => _i224.ForgetPasswordDataSourceImpl(gh<_i785.ApiService>()));
+    gh.factory<_i983.LoginRepo>(() => _i268.LoginRepositoryImplementation(
+        loginRemoteDataSource: gh<_i520.LoginRemoteDataSource>()));
     gh.factory<_i980.WorkOutsDataSource>(
         () => _i931.WorkOutsDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i998.GetPreviousConversationsUseCase>(() =>
@@ -244,8 +245,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i338.FoodRemoteDataSourceImpl(gh<_i785.MealApiService>()));
     gh.factory<_i751.HomeRepo>(
         () => _i362.HomeRepoImpl(gh<_i159.HomeRemoteDataSource>()));
-    gh.factory<_i96.LoginContract>(() => _i268.LoginRepositoryImplementation(
-        loginRemoteDataSource: gh<_i520.LoginRemoteDataSource>()));
     gh.factory<_i659.ExerciseRepo>(
         () => _i824.ExerciseRepoImpl(gh<_i831.ExerciseRemoteDataSource>()));
     gh.factory<_i992.RegisterDataSource>(
@@ -256,6 +255,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i1004.LogoutRepository>(() => _i885.LogoutRepositoryImpl(
         remoteDataSource: gh<_i671.LogoutRemoteDataSource>()));
+    gh.factory<_i401.LoginUsecase>(
+        () => _i401.LoginUsecase(loginRepo: gh<_i983.LoginRepo>()));
     gh.factory<_i98.LogoutUseCase>(
         () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()));
     gh.factory<_i129.EditProfileRepo>(
@@ -282,8 +283,6 @@ extension GetItInjectableX on _i174.GetIt {
         _i1072.ProfileRepositoryImpl(gh<_i998.ProfileRemoteDataSource>()));
     gh.factory<_i369.RegisterRepo>(
         () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()));
-    gh.factory<_i401.LoginUsecase>(
-        () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()));
     gh.factory<_i793.ChangePasswordUseCase>(
         () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()));
     gh.factory<_i782.MealsDetailsCubit>(
