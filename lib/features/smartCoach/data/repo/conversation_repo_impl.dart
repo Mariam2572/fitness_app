@@ -1,9 +1,9 @@
 
-import 'package:fitness_app/features/smartCoach/data/data_sources/local/conversation_local_datasource.dart';
-import 'package:fitness_app/features/smartCoach/data/message_model.dart';
+import 'package:fitness_app/features/smartCoach/data/data_source/local/conversation_local_datasource.dart';
+import 'package:fitness_app/features/smartCoach/data/models/message_model.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ConversationHiveModel.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ConversationModel.dart';
-import 'package:fitness_app/features/smartCoach/domain/repositories/ConversationRepository.dart';
+import 'package:fitness_app/features/smartCoach/domain/repo/ConversationRepository.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: ConversationRepository)

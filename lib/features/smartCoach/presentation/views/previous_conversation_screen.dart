@@ -1,11 +1,10 @@
 import 'dart:ui';
 
-import 'package:fitness_app/features/smartCoach/data/message_model.dart';
+import 'package:fitness_app/features/smartCoach/data/models/message_model.dart';
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousConversationViewModel.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_chat_screenbody.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
 
 class PreviousConversationsScreen extends StatefulWidget {
   const PreviousConversationsScreen({

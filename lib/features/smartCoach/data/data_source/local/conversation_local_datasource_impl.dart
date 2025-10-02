@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/smartCoach/data/data_sources/local/conversation_local_datasource.dart';
+import 'package:fitness_app/features/smartCoach/data/data_source/local/conversation_local_datasource.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ConversationHiveModel.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';

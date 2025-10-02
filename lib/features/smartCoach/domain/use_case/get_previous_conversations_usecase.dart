@@ -1,6 +1,6 @@
 
 import 'package:fitness_app/features/smartCoach/data/models/ConversationModel.dart';
-import 'package:fitness_app/features/smartCoach/domain/repositories/ConversationRepository.dart';
+import 'package:fitness_app/features/smartCoach/domain/repo/ConversationRepository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

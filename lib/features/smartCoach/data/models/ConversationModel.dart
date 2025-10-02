@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/smartCoach/data/message_model.dart';
+import 'package:fitness_app/features/smartCoach/data/models/message_model.dart';
 
 class ConversationModel {
   List<ChatMessage> messages;

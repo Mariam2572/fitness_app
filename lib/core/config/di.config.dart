@@ -129,23 +129,23 @@ import '../../features/profile/edit_profile/domain/use_cases/upload_photo_use_ca
     as _i978;
 import '../../features/smartCoach/data/data_source/remote_data_source/smart_coach_remote_data_source_impl.dart'
     as _i101;
-import '../../features/smartCoach/data/data_sources/local/conversation_local_datasource.dart'
+import '../../features/smartCoach/data/data_source/local/conversation_local_datasource.dart'
     as _i74;
-import '../../features/smartCoach/data/data_sources/local/conversation_local_datasource_impl.dart'
+import '../../features/smartCoach/data/data_source/local/conversation_local_datasource_impl.dart'
     as _i683;
 import '../../features/smartCoach/data/models/ConversationHiveModel.dart'
     as _i359;
 import '../../features/smartCoach/data/repo/smart_coach_repo_impl.dart' as _i94;
-import '../../features/smartCoach/data/repositories/conversation_repo_impl.dart'
+import '../../features/smartCoach/data/repo/conversation_repo_impl.dart'
     as _i234;
-import '../../features/smartCoach/domain/repo/smart_coach_remote_data_source.dart'
+import '../../features/smartCoach/data/data_source/remote_data_source/smart_coach_remote_data_source.dart'
     as _i511;
 import '../../features/smartCoach/domain/repo/smart_coach_repo.dart' as _i708;
-import '../../features/smartCoach/domain/repositories/ConversationRepository.dart'
+import '../../features/smartCoach/domain/repo/ConversationRepository.dart'
     as _i374;
 import '../../features/smartCoach/domain/use_case/send_message_use_case.dart'
     as _i469;
-import '../../features/smartCoach/domain/use_cases/get_previous_conversations_usecase.dart'
+import '../../features/smartCoach/domain/use_case/get_previous_conversations_usecase.dart'
     as _i998;
 import '../../features/smartCoach/presentation/viewModel/PreviousConversationViewModel.dart'
     as _i72;

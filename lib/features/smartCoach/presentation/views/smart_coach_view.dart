@@ -1,5 +1,5 @@
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
-import 'package:fitness_app/features/smartCoach/data/message_model.dart';
+import 'package:fitness_app/features/smartCoach/data/models/message_model.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousConversationViewModel.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';

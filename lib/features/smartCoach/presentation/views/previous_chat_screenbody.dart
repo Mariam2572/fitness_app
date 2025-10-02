@@ -1,5 +1,5 @@
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
-import 'package:fitness_app/features/smartCoach/data/message_model.dart';
+import 'package:fitness_app/features/smartCoach/data/models/message_model.dart';
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/PreviousConversationViewModel.dart';
 import 'package:fitness_app/features/smartCoach/presentation/viewModel/previous_conversation_state.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/smartCoach/domain/repo/smart_coach_remote_data_source.dart';
+import 'package:fitness_app/features/smartCoach/data/data_source/remote_data_source/smart_coach_remote_data_source.dart';
 import 'package:fitness_app/features/smartCoach/domain/repo/smart_coach_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,6 +10,6 @@ class SmartCoachRepoImpl implements SmartCoachRepo {
 
   @override
   Future<String> sendMessage(String message) async {
-    return await remoteDataSource.sendPromptToAI(promp: message);
+    return await remoteDataSource.sendPromptToAI( message);
   }
 }
