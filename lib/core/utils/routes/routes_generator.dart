@@ -13,11 +13,11 @@ import 'package:fitness_app/features/auth/register/domain/use_cases/register_use
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/actvities_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/actvities_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
