@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:fitness_app/core/base/api_result.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/data/models/UserResponse.dart';
 import 'package:fitness_app/features/profile/data/data_source/profile_remote_data_source.dart';
 import 'package:fitness_app/features/profile/domain/repos/profile_repo.dart';
 import 'package:injectable/injectable.dart';

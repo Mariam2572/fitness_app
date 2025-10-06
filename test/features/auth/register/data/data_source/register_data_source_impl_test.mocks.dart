@@ -34,12 +34,11 @@ import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_move
     as _i4;
 import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart'
     as _i5;
-import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart'
+import 'package:fitness_app/features/home/data/models/ExercisesResponse.dart'
     as _i8;
-import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart'
+import 'package:fitness_app/features/home/data/models/RandomExerciseResponse.dart'
     as _i10;
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart'
-    as _i9;
+import 'package:fitness_app/features/home/data/models/UserResponse.dart' as _i9;
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart'
     as _i22;
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart'

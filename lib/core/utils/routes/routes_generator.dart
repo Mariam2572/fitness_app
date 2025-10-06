@@ -13,11 +13,11 @@ import 'package:fitness_app/features/auth/register/domain/use_cases/register_use
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_height_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_weight_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/actvities_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/goals_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/actvities_screen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/goals_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_age_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart';
 import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
@@ -25,7 +25,7 @@ import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.d
 import 'package:fitness_app/features/food/presentation/view/food_recommendation_page.dart';
 import 'package:fitness_app/features/food/presentation/view/food_recommendation_view.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
-import 'package:fitness_app/features/home/home/presentation/views/home_screen.dart';
+import 'package:fitness_app/features/home/presentation/views/home_screen.dart';
 import 'package:fitness_app/features/layOut/lay_out.dart';
 import 'package:fitness_app/features/onBoarding/on_boarding_screen.dart';
 import 'package:fitness_app/features/profile/edit_profile/domain/use_cases/edit_profile_use_case.dart';

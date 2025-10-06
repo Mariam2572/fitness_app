@@ -86,14 +86,13 @@ import '../../features/foodDetails/domain/usecases/meals_details_usecase.dart'
     as _i172;
 import '../../features/foodDetails/presentation/view_model/meals_details_cubit.dart'
     as _i782;
-import '../../features/home/home/data/data_sources/home_remote_data_source.dart'
-    as _i159;
-import '../../features/home/home/data/data_sources/home_remote_data_source_impl.dart'
-    as _i37;
-import '../../features/home/home/data/repositories/home_repo_impl.dart'
-    as _i362;
-import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
-import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
+import '../../features/home/data/data_sources/home_remote_data_source.dart'
+    as _i350;
+import '../../features/home/data/data_sources/home_remote_data_source_impl.dart'
+    as _i97;
+import '../../features/home/data/repositories/home_repo_impl.dart' as _i333;
+import '../../features/home/domain/repositories/home_repo.dart' as _i1021;
+import '../../features/home/domain/use_cases/home_use_case.dart' as _i933;
 import '../../features/logout/data/datasources/logout_remote_data_source_impl.dart'
     as _i115;
 import '../../features/logout/data/datasources/logout_remote_datasource.dart'
@@ -207,14 +206,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i710.MealsDetailsRemoteDataSource>(() =>
         _i986.MealsDetailsRemoteDataSourceImp(
             apiService: gh<_i785.MealApiService>()));
-    gh.factory<_i159.HomeRemoteDataSource>(() => _i37.HomeRemoteDataSourceImpl(
-          gh<_i785.ApiService>(),
-          gh<_i785.MealApiService>(),
-        ));
     gh.factory<_i671.LogoutRemoteDataSource>(() =>
         _i115.LogoutRemoteDataSourceImpl(apiService: gh<_i785.ApiService>()));
     gh.factory<_i469.SendMessageUseCase>(
         () => _i469.SendMessageUseCase(gh<_i708.SmartCoachRepo>()));
+    gh.factory<_i350.HomeRemoteDataSource>(() => _i97.HomeRemoteDataSourceImpl(
+          gh<_i785.ApiService>(),
+          gh<_i785.MealApiService>(),
+        ));
+    gh.factory<_i1021.HomeRepo>(
+        () => _i333.HomeRepoImpl(gh<_i350.HomeRemoteDataSource>()));
     gh.factory<_i520.LoginRemoteDataSource>(() =>
         _i1015.LoginRemoteDataSourceImp(apiService: gh<_i785.ApiService>()));
     gh.factory<_i998.ProfileRemoteDataSource>(
@@ -243,8 +244,6 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i998.GetPreviousConversationsUseCase>()));
     gh.factory<_i910.FoodRemoteDataSource>(
         () => _i338.FoodRemoteDataSourceImpl(gh<_i785.MealApiService>()));
-    gh.factory<_i751.HomeRepo>(
-        () => _i362.HomeRepoImpl(gh<_i159.HomeRemoteDataSource>()));
     gh.factory<_i659.ExerciseRepo>(
         () => _i824.ExerciseRepoImpl(gh<_i831.ExerciseRemoteDataSource>()));
     gh.factory<_i992.RegisterDataSource>(
@@ -308,8 +307,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
     gh.factory<_i118.RegisterUseCase>(
         () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()));
-    gh.factory<_i204.HomeUseCase>(() => _i204.HomeUseCase(
-          gh<_i751.HomeRepo>(),
+    gh.factory<_i933.HomeUseCase>(() => _i933.HomeUseCase(
+          gh<_i1021.HomeRepo>(),
           gh<_i80.GetAllMusclesGroupsUseCase>(),
           gh<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(),
           gh<_i280.GetProfileDataUseCase>(),

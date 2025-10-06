@@ -14,7 +14,7 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/widgets/item_option.dart';
 
 class CustomGoalsScreen extends StatefulWidget {
   final void Function(String?) onChanged;

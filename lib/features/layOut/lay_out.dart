@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:fitness_app/core/config/di.dart';
-import 'package:fitness_app/features/home/home/presentation/views/home_screen.dart';
+import 'package:fitness_app/features/home/presentation/views/home_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/data/message_model.dart';
 import 'package:fitness_app/features/smartCoach/data/models/ConversationModel.dart';

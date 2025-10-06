@@ -11,8 +11,8 @@ import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-import 'package:fitness_app/features/auth/register/presentation/widgets/blur_background.dart';
-import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/widgets/blur_background.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/widgets/item_option.dart';
 import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 
 class CustomActivtiesScreen extends StatefulWidget {

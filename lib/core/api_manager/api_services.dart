@@ -16,7 +16,7 @@ import 'package:fitness_app/features/auth/login/data/model/login_request/login_r
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
-import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
+import 'package:fitness_app/features/home/data/models/ExercisesResponse.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart';
@@ -27,8 +27,8 @@ import 'package:fitness_app/features/food/data/models/meals_of_category_response
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
 import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
 import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meals_datails_response.dart';
-import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/data/models/RandomExerciseResponse.dart';
+import 'package:fitness_app/features/home/data/models/UserResponse.dart';
 
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';

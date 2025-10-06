@@ -9,6 +9,7 @@ import 'package:mockito/mockito.dart';
 import 'login_usecase_test.mocks.dart';
 
 @GenerateMocks([LoginRepo])
+
 void main() {
   late LoginUsecase loginUsecase;
   late LoginRepo mockLoginRepo;

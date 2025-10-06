@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/data/models/UserResponse.dart';
 
 abstract class ProfileRemoteDataSource {
   // Future<String> uploadPhoto(File photo);

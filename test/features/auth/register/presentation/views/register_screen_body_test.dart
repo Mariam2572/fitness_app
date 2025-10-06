@@ -1,8 +1,8 @@
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/features/auth/register/domain/use_cases/register_use_case.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/widgets/register_screen_body.dart';
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/register_screen_body.dart';
-import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
+import 'package:fitness_app/features/auth/register/presentation/screens/register_sreen.dart';
 import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -126,8 +126,8 @@ void main() {
         );
       },
     );
-    testWidgets('check if text form field of password is validated', (
-      tester,
+    testWidgets('test when password filed is empty', (
+      tester
     ) async {
       await pumpWidgetWithLocalization(tester, RegisterScreen());
       await tester.enterText(find.byKey(const ValueKey('passwordField')), '');

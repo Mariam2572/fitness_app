@@ -29,7 +29,8 @@ class CustomTextFormField extends StatelessWidget {
         labelText: labelText,
         hintStyle: const TextStyle(color: Colors.white),
         prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
+        suffixIcon: suffixIcon ,
+        
         prefixIconColor: AppColors.neutral5,
       ),
     );

@@ -16,7 +16,7 @@ class RegisterDataSourceImpl implements RegisterDataSource {
   ) async {
     return await apiExecuter<RegisterResponse>(
       () async => await _apiService.register(registerRequest),
-      '',
+      'error in RegisterDataSourceImpl ',
     );
   }
 }

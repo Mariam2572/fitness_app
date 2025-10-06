@@ -23,7 +23,7 @@ class _FormFieldsSectionState extends State<FormFieldsSection> {
       child: Column(
         children: [
           CustomTextFormField(
-            // textKey: const ValueKey('emailField'),
+             textKey: Key('emailField'),
             validator: (value) => Validator.validateEmail(value),
             controller: context.read<LoginCubit>().emailController,
             labelText: context.loc.email,
@@ -49,7 +49,7 @@ class _FormFieldsSectionState extends State<FormFieldsSection> {
           const SizedBox(height: 16),
           CustomTextFormField(
             isObsecure: isObsecure,
-            // textKey:const ValueKey('passwordField') ,
+             textKey:Key('passwordField') ,
             validator: (value) => Validator.validatePassword(value),
             controller: context.read<LoginCubit>().passwordController,
             suffixIcon: InkWell(
