@@ -13,15 +13,24 @@ class GetAllMusclesByMuscleGroupIdReponse {
   @JsonKey(name: 'muscles')
   List<MusclesBean>? muscles;
 
-  GetAllMusclesByMuscleGroupIdReponse({this.message, this.muscleGroup, this.muscles});
+  GetAllMusclesByMuscleGroupIdReponse({
+    this.message,
+    this.muscleGroup,
+    this.muscles,
+  });
 
-  factory GetAllMusclesByMuscleGroupIdReponse.fromJson(Map<String, dynamic> json) => _$GetAllMusclesByMuscleGroupIdReponseFromJson(json);
+  factory GetAllMusclesByMuscleGroupIdReponse.fromJson(
+    Map<String, dynamic> json,
+  ) => _$GetAllMusclesByMuscleGroupIdReponseFromJson(json);
 
-  static List<GetAllMusclesByMuscleGroupIdReponse> fromList(List<Map<String, dynamic>> list) {
+  static List<GetAllMusclesByMuscleGroupIdReponse> fromList(
+    List<Map<String, dynamic>> list,
+  ) {
     return list.map(GetAllMusclesByMuscleGroupIdReponse.fromJson).toList();
   }
 
-  Map<String, dynamic> toJson() => _$GetAllMusclesByMuscleGroupIdReponseToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GetAllMusclesByMuscleGroupIdReponseToJson(this);
 }
 
 @JsonSerializable()

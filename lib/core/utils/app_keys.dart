@@ -1,3 +1,3 @@
 class AppKeys {
-  static const String geminiApiKey ="AIzaSyBuAX8fExmY1PPP8lUMY3A3yZRk1AMdl2s";
+  static const String geminiApiKey ="AIzaSyDTtFCty-JdKNDcEU7J7ouRT0HetTBgp_Q";
 }

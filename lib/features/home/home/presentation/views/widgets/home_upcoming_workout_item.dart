@@ -15,7 +15,9 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
   const HomeUpcomingWorkoutItem({
     super.key,
     required this.name,
-    required this.image, required this.muscle, this.onTap,
+    required this.image,
+    required this.muscle,
+    this.onTap,
   });
 
   @override
@@ -38,7 +40,7 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
                         (context, url, error) => const Icon(
                           Icons.error,
                           color: AppColors.neutral40,
-                          size: 45
+                          size: 45,
                         ),
                     placeholder:
                         (context, url) => Skeletonizer(
@@ -48,7 +50,7 @@ class HomeUpcomingWorkoutItem extends StatelessWidget {
                         ),
                   ),
                 ),
-        
+
                 Positioned(
                   bottom: 0,
                   left: 0,

@@ -1,19 +1,65 @@
 part of 'smart_coach_cubit.dart';
 
-sealed class SmartCoachState extends Equatable {
-  const SmartCoachState();
+enum SmartCoachStatus { initial, loading, success, failure }
+
+class SmartCoachState extends Equatable {
+  final SmartCoachStatus status;
+  final List<ChatMessage> messages;
+  final List<ConversationHiveModel> conversations;
+  final bool isTyping;
+  final bool isHistoryLoading;
+  final String? currentConversationId;
+  final String? userId;
+  final String? userName;
+  final String? errorMessage;
+
+  const SmartCoachState({
+    this.status = SmartCoachStatus.initial,
+    this.messages = const [],
+    this.conversations = const [],
+    this.isTyping = false,
+    this.isHistoryLoading = false,
+    this.currentConversationId,
+    this.userId,
+    this.userName,
+    this.errorMessage,
+  });
+
+  SmartCoachState copyWith({
+    SmartCoachStatus? status,
+    List<ChatMessage>? messages,
+    List<ConversationHiveModel>? conversations,
+    bool? isTyping,
+    bool? isHistoryLoading,
+    String? currentConversationId,
+    String? userId,
+    String? userName,
+    String? errorMessage,
+  }) {
+    return SmartCoachState(
+      status: status ?? this.status,
+      messages: messages ?? this.messages,
+      conversations: conversations ?? this.conversations,
+      isTyping: isTyping ?? this.isTyping,
+      isHistoryLoading: isHistoryLoading ?? this.isHistoryLoading,
+      currentConversationId:
+          currentConversationId ?? this.currentConversationId,
+      userId: userId ?? this.userId,
+        userName: userId?? this.userName,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
 
   @override
-  List<Object> get props => [];
-}
-
-final class SmartCoachInitial extends SmartCoachState {}
-final class SmartCoachLoading extends SmartCoachState {}
-final class SmartCoachSuccess extends SmartCoachState {
-    final String response;
-  const SmartCoachSuccess({required this.response});
-}
-final class SmartCoachFailure extends SmartCoachState {
-  final String message;
-  const SmartCoachFailure({required this.message});
+  List<Object?> get props => [
+    status,
+    messages,
+    conversations,
+    isTyping,
+    isHistoryLoading,
+    currentConversationId,
+    userId,
+    userName,
+    errorMessage,
+  ];
 }

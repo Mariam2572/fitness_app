@@ -4,7 +4,6 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
 import 'package:fitness_app/core/utils/widgets/grid_view_item.dart';
-import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:fitness_app/features/workOuts/presentation/view_model/cubit/work_outs_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,7 +46,7 @@ class _WorkOutsViewState extends State<WorkOutsView>
   @override
   void dispose() {
     _tabController?.dispose();
-    _tabController?.removeListener((){});
+    _tabController?.removeListener(() {});
     super.dispose();
   }
 
@@ -83,7 +82,7 @@ class _WorkOutsViewState extends State<WorkOutsView>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding:  EdgeInsets.only(top:15),
+                      padding: EdgeInsets.only(top: 15),
                       child: Text(
                         context.loc.workOuts,
                         textAlign: TextAlign.center,
@@ -130,7 +129,9 @@ class _WorkOutsViewState extends State<WorkOutsView>
                               : state is WorkOutsByIdFailure
                               ? Center(child: Text(state.error))
                               : const Center(
-                                child: CircularProgressIndicator(color: AppColors.mainRed),
+                                child: CircularProgressIndicator(
+                                  color: AppColors.mainRed,
+                                ),
                               ),
                     ),
                   ],
@@ -143,5 +144,3 @@ class _WorkOutsViewState extends State<WorkOutsView>
     );
   }
 }
-
-

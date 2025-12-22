@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +8,7 @@ class OnBoardingNavigation extends StatelessWidget {
   final VoidCallback onBack;
 
   const OnBoardingNavigation({
+    super.key,
     required this.currentIndex,
     required this.total,
     required this.onNext,

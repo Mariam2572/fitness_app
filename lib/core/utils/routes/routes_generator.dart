@@ -40,7 +40,6 @@ import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/e
 import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_heigth.dart';
 import 'package:fitness_app/features/profile/edit_profile/presentation/widgets/edit_weight.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
-import 'package:fitness_app/features/smartCoach/presentation/views/previous_conversation_screen.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/smart_coach_view.dart';
 import 'package:fitness_app/features/splash/splash_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
@@ -158,10 +157,8 @@ class RoutesGenerator {
         final cubit = settings.arguments as EditProfileCubit;
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const EditGender(),
-              ),
+              (_) =>
+                  BlocProvider.value(value: cubit, child: const EditGender()),
           settings: settings,
         );
       case RoutesName.editActivityLevel:
@@ -178,40 +175,30 @@ class RoutesGenerator {
         final cubit = settings.arguments as EditProfileCubit;
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const EditAge(),
-              ),
+              (_) => BlocProvider.value(value: cubit, child: const EditAge()),
           settings: settings,
         );
       case RoutesName.editGoals:
         final cubit = settings.arguments as EditProfileCubit;
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const EditGoals(),
-              ),
+              (_) => BlocProvider.value(value: cubit, child: const EditGoals()),
           settings: settings,
         );
       case RoutesName.editWeight:
         final cubit = settings.arguments as EditProfileCubit;
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const EditWeight(),
-              ),
+              (_) =>
+                  BlocProvider.value(value: cubit, child: const EditWeight()),
           settings: settings,
         );
       case RoutesName.editHeight:
         final cubit = settings.arguments as EditProfileCubit;
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const EditHeigth(),
-              ),
+              (_) =>
+                  BlocProvider.value(value: cubit, child: const EditHeigth()),
           settings: settings,
         );
 
@@ -238,7 +225,7 @@ class RoutesGenerator {
 
       case RoutesName.layOut:
         return MaterialPageRoute(
-          builder: (context) => const LayOut(),
+          builder: (context) => LayOut(),
           settings: settings,
         );
 
@@ -248,15 +235,15 @@ class RoutesGenerator {
           settings: settings,
         );
 
-      case RoutesName.previousChatScreen:
-        final args = settings.arguments as Map<String, dynamic>;
-        return MaterialPageRoute(
-          builder:
-              (context) => PreviousConversationsScreen(
-                onConversationSelected: args['onConversationSelected'],
-              ),
-          settings: settings,
-        );
+      // case RoutesName.previousChatScreen:
+      //   final args = settings.arguments as Map<String, dynamic>;
+      //   return MaterialPageRoute(
+      //     builder:
+      //         (context) => PreviousConversationsScreen(
+      //           onConversationSelected: args['onConversationSelected'],
+      //         ),
+      //     settings: settings,
+      //   );
 
       case RoutesName.profile:
         return MaterialPageRoute(
@@ -280,13 +267,7 @@ class RoutesGenerator {
       case RoutesName.smartCoach:
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder:
-              (context) => SmartCoachView(
-                messages: args['messages'],
-                onSessionEnd: args['onSessionEnd'],
-                previousConversationViewModel:
-                    args['previousConversationViewModel'],
-              ),
+          builder: (context) => SmartCoachView(),
           settings: settings,
         );
       case RoutesName.exerciseView:
@@ -321,7 +302,10 @@ class RoutesGenerator {
           builder:
               (context) => BlocProvider(
                 create:
-                    (context) =>FoodCubit(getIt<GetFoodCategoriesUseCase>(), getIt<GetMealsByCategoryUseCase>()),
+                    (context) => FoodCubit(
+                      getIt<GetFoodCategoriesUseCase>(),
+                      getIt<GetMealsByCategoryUseCase>(),
+                    ),
                 child: const FoodRecommendationPage(),
               ),
           settings: settings,

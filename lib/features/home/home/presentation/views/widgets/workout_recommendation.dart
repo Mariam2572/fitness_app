@@ -1,7 +1,7 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
-import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
+import 'package:fitness_app/features/home/home/data/models/exercises.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/recommendation_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +24,10 @@ class WorkoutRecommendation extends StatelessWidget {
               (videoUrl != null && videoUrl.isNotEmpty)
                   ? getYouTubeThumbnail(videoUrl)
                   : "https://img.youtube.com/vi/default.jpg";
-          return RecommendationExerciseVideoPlayer(exercise: exercises[index], image: image);
+          return RecommendationExerciseVideoPlayer(
+            exercise: exercises[index],
+            image: image,
+          );
         },
       ),
     );
@@ -42,11 +45,13 @@ class RecommendationExerciseVideoPlayer extends StatefulWidget {
   final String image;
 
   @override
-  State<RecommendationExerciseVideoPlayer> createState() => _RecommendationExerciseVideoPlayerState();
+  State<RecommendationExerciseVideoPlayer> createState() =>
+      _RecommendationExerciseVideoPlayerState();
 }
 
-class _RecommendationExerciseVideoPlayerState extends State<RecommendationExerciseVideoPlayer> {
-   YoutubePlayerController? _youtubeController;
+class _RecommendationExerciseVideoPlayerState
+    extends State<RecommendationExerciseVideoPlayer> {
+  YoutubePlayerController? _youtubeController;
 
   void showVideoDialog() {
     final videoId = YoutubePlayer.convertUrlToId(
@@ -56,10 +61,7 @@ class _RecommendationExerciseVideoPlayerState extends State<RecommendationExerci
     if (videoId == null) return;
     _youtubeController = YoutubePlayerController(
       initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(
-        autoPlay: true,
-        mute: false,
-      ),
+      flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
     );
     showDialog(
       context: context,
@@ -77,7 +79,7 @@ class _RecommendationExerciseVideoPlayerState extends State<RecommendationExerci
 
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF000000).withOpacity(0.2),
+                  color: const Color(0xFF000000).withValues(alpha: 0.2),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: const Offset(0, 3),
@@ -111,7 +113,7 @@ class _RecommendationExerciseVideoPlayerState extends State<RecommendationExerci
   Widget build(BuildContext context) {
     return RecommendationItem(
       onTap: () {
-       showVideoDialog();
+        showVideoDialog();
       },
       name: widget.exercise.exercise ?? "Exercise Not Found",
       image: widget.image,

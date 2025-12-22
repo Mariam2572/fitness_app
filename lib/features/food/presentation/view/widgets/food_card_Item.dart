@@ -1,13 +1,17 @@
-import 'dart:ui';
-
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
+
 class FoodItemCard extends StatelessWidget {
   final String imageUrl;
   final String title;
   final VoidCallback onTap;
 
-  const FoodItemCard({super.key, required this.imageUrl, required this.title, required this.onTap});
+  const FoodItemCard({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

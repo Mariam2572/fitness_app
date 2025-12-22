@@ -11,12 +11,16 @@ class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});
 
   @override
-@override
+  @override
   Widget build(BuildContext context) {
-  
-    return BlocProvider(create: (context) => EditProfileCubit(getIt<EditProfileUseCase>(),
-     getIt<GetLoggedUserDataUseCase>(), getIt<UploadPhotoUseCase>()),
-     child: const EditProfileViewBody(),
-     );
+    return BlocProvider(
+      create:
+          (context) => EditProfileCubit(
+            getIt<EditProfileUseCase>(),
+            getIt<GetLoggedUserDataUseCase>(),
+            getIt<UploadPhotoUseCase>(),
+          ),
+      child: const EditProfileViewBody(),
+    );
   }
 }

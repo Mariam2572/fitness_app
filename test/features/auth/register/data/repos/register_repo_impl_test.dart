@@ -35,7 +35,7 @@ void main() {
     token: 'token123',
   );
   setUp(() {
-    mockRepo =MockRegisterDataSource();
+    mockRepo = MockRegisterDataSource();
     repo = RegisterRepoImpl(mockRepo);
   });
   group('test forget password repo impl', () {
@@ -43,14 +43,10 @@ void main() {
       'when call forget password repo should call forget password data source and it should return Apisuccess<ForgetPasswordResponse>',
       () async {
         //arrange
-        
-        final result = ApiSuccess<RegisterResponse>(
-          data: expected,
-        );
+
+        final result = ApiSuccess<RegisterResponse>(data: expected);
         provideDummy<ApiResult<RegisterResponse>>(result);
-        when(
-          mockRepo.register(request),
-        ).thenAnswer((_) async => result);
+        when(mockRepo.register(request)).thenAnswer((_) async => result);
         //act
         final actual = await repo.register(request);
         //assert
@@ -59,7 +55,6 @@ void main() {
       },
     );
     test('should return ApiError when data source fails', () async {
-    
       final expected = ApiError<RegisterResponse>(
         message: 'Network error',
         failure: ServerFailure(errorMessage: 'Network error'),
@@ -73,5 +68,4 @@ void main() {
       expect(actual, equals(expected));
     });
   });
-
-  }
+}

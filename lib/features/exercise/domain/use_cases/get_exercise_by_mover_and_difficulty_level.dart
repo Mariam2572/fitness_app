@@ -11,7 +11,7 @@ class GetExerciseByMoverAndDifficultyLevelUseCase {
     required String primeMoverMuscleId,
     required String difficultyLevelId,
   }) async {
-   return await _exerciseRepo.getExerciseByMoverAndDifficultyLevel(
+    return await _exerciseRepo.getExerciseByMoverAndDifficultyLevel(
       primeMoverMuscleId: primeMoverMuscleId,
       difficultyLevelId: difficultyLevelId,
     );

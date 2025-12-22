@@ -14,7 +14,10 @@ abstract class DioModule {
   }
 
   @Singleton()
-  Dio provideDio(LogInterceptor logInterceptor,AppConfigProvider appConfigProvider) {
+  Dio provideDio(
+    LogInterceptor logInterceptor,
+    AppConfigProvider appConfigProvider,
+  ) {
     final dio = Dio(
       BaseOptions(
         connectTimeout: const Duration(seconds: 60),
@@ -48,6 +51,7 @@ abstract class DioModule {
   ApiService provideApiService(Dio dio) {
     return ApiService(dio);
   }
+
   @Singleton()
   MealApiService provideMealApiService(Dio dio) {
     return MealApiService(dio);

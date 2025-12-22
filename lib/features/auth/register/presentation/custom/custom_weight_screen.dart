@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -44,7 +43,12 @@ class _CustomWeightScreenState extends State<CustomWeightScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 133),
-    widget.isEditProfile ? const SizedBox() :     const CircularPercentIndicatorWidget(currentStep: 3, totalSteps: 6),
+        widget.isEditProfile
+            ? const SizedBox()
+            : const CircularPercentIndicatorWidget(
+              currentStep: 3,
+              totalSteps: 6,
+            ),
         const SizedBox(height: 18),
         Padding(
           padding: const EdgeInsets.only(left: 24),
@@ -86,27 +90,29 @@ class _CustomWeightScreenState extends State<CustomWeightScreen> {
                   setState(() {
                     selectedWeight = val;
                   });
-              
+
                   widget.onChanged?.call(val);
                 },
               ),
               const SizedBox(height: 16),
               SvgPicture.asset(AppAssets.arrowUp),
               const SizedBox(height: 31),
-          
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ElevatedButton(
-                    onPressed: widget.isEditProfile ? widget.onPressed :() {
-
-                    Navigator.pushNamed(
-                      context,
-                      RoutesName.chooseHeightScreen,
-                      arguments: context.read<RegisterCubit>(),
-                    );
-                  },
+                  onPressed:
+                      widget.isEditProfile
+                          ? widget.onPressed
+                          : () {
+                            Navigator.pushNamed(
+                              context,
+                              RoutesName.chooseHeightScreen,
+                              arguments: context.read<RegisterCubit>(),
+                            );
+                          },
                   child: Text(
-                    widget. isEditProfile ? context.loc.done :  context.loc.next,
+                    widget.isEditProfile ? context.loc.done : context.loc.next,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.w800,
                       color: AppColors.baseWhite,

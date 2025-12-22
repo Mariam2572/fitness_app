@@ -7,7 +7,11 @@ class NutrientBoxWidget extends StatelessWidget {
   final String value;
   final String label;
 
-  const NutrientBoxWidget({super.key, required this.label, required this.value});
+  const NutrientBoxWidget({
+    super.key,
+    required this.label,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {

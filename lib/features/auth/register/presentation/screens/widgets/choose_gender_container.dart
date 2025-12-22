@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +19,7 @@ class ChooseGenderContainer extends StatefulWidget {
   final Function(Gender gender)? onTap;
   const ChooseGenderContainer({
     super.key,
-     this.selectedGender,
+    this.selectedGender,
     this.isEditProfile = false,
     this.onTap,
   });
@@ -30,21 +29,22 @@ class ChooseGenderContainer extends StatefulWidget {
 }
 
 class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
-    late String? selectedGender;
-@override
+  late String? selectedGender;
+  @override
   void initState() {
     selectedGender = widget.selectedGender;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-
     onGenderSelected(Gender gender) {
       setState(() {
         selectedGender = gender.name;
       });
       widget.onTap?.call(gender);
     }
+
     return CustomGlassContainer(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 24),
@@ -56,45 +56,46 @@ class _ChooseGenderContainerState extends State<ChooseGenderContainer> {
               title: context.loc.male,
 
               isSelected: selectedGender == Gender.male.name,
-              onTap:()=> onGenderSelected(Gender.male),
+              onTap: () => onGenderSelected(Gender.male),
             ),
             GenderWidget(
               image: AppAssets.femaleIcon,
               title: context.loc.female,
 
               isSelected: selectedGender == Gender.female.name,
-              onTap:()=> onGenderSelected(Gender.female)
-              
+              onTap: () => onGenderSelected(Gender.female),
             ),
-            if(!widget.isEditProfile) 
+            if (!widget.isEditProfile)
               // const SizedBox(),
-                Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      selectedGender == null ? Colors.grey : AppColors.mainRed,
-                ),
-                onPressed: () {
-                  if (selectedGender != null) {
-                    Navigator.pushNamed(
-                      context,
-                      RoutesName.chooseAgeScreen,
-                      arguments:   context.read<RegisterCubit>(),
-                                        );
-                  } else {
-                    showSnackBar(context, context.loc.pleaseSelectYourGender);
-                  }
-                },
-                child: Text(
-                  context.loc.next,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.baseWhite,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        selectedGender == null
+                            ? Colors.grey
+                            : AppColors.mainRed,
+                  ),
+                  onPressed: () {
+                    if (selectedGender != null) {
+                      Navigator.pushNamed(
+                        context,
+                        RoutesName.chooseAgeScreen,
+                        arguments: context.read<RegisterCubit>(),
+                      );
+                    } else {
+                      showSnackBar(context, context.loc.pleaseSelectYourGender);
+                    }
+                  },
+                  child: Text(
+                    context.loc.next,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.baseWhite,
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),

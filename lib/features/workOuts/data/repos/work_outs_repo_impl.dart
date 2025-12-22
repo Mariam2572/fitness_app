@@ -12,7 +12,8 @@ class WorkOutsRepoImpl implements WorkOutsRepo {
   WorkOutsRepoImpl(this._workOutsDataSource);
 
   @override
-  Future<ApiResult<GetAllMusclesByMuscleGroupIdReponse>> getAllMusclesByMuscleGroupId(String id)async {
+  Future<ApiResult<GetAllMusclesByMuscleGroupIdReponse>>
+  getAllMusclesByMuscleGroupId(String id) async {
     return await _workOutsDataSource.getAllMusclesByMuscleGroupId(id);
   }
 
@@ -20,5 +21,4 @@ class WorkOutsRepoImpl implements WorkOutsRepo {
   Future<ApiResult<GetAllMusclesGroupsReponse>> getAllMusclesGroups() async {
     return await _workOutsDataSource.getAllMusclesGroups();
   }
-
 }

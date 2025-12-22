@@ -7,7 +7,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../auth/register/data/data_source/register_data_source_impl_test.mocks.dart';
 import 'food_data_source_imp_test.mocks.dart';
 
 @GenerateMocks([MealApiService])

@@ -7,7 +7,6 @@ import 'package:fitness_app/core/utils/enums/activity_enum.dart';
 import 'package:fitness_app/core/utils/enums/gender.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart';
-import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart';
 import 'package:fitness_app/features/profile/edit_profile/domain/use_cases/edit_profile_use_case.dart';
 import 'package:fitness_app/features/profile/edit_profile/domain/use_cases/get_logged_user_data_use_case.dart';
 import 'package:fitness_app/features/profile/edit_profile/domain/use_cases/upload_photo_use_case.dart';
@@ -38,7 +37,7 @@ class EditProfileCubit extends Cubit<ProfileState> {
   bool isEdited = false;
   bool isEditProfile = false;
   File? selectedImage;
-String? profilePhoto;
+  String? profilePhoto;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void doIntent(EditProfileIntent intent) {
@@ -65,7 +64,7 @@ String? profilePhoto;
         );
       case ApiSuccess<GetUserDataReponse>():
         {
-          profilePhoto=response.data?.user?.photo??"";
+          profilePhoto = response.data?.user?.photo ?? "";
           firstNameController.text = response.data?.user?.firstName ?? "";
           lastNameController.text = response.data?.user?.lastName ?? "";
           emailController.text = response.data?.user?.email ?? "";
@@ -116,26 +115,26 @@ String? profilePhoto;
     }
     // _Profile();
   }
-  Future<void> _uploadPohot(UploadPhotoIntent intent) async {
 
+  Future<void> _uploadPohot(UploadPhotoIntent intent) async {
     emit(ProfileLoading());
     final response = await _uploadPhotoUseCase.invoke(intent.photo);
     switch (response) {
-      case ApiError<String>():{
-        emit(
-          ProfileFailure(
-            response.failure?.errorMessage ?? 'An error occurred',
-          ),
-        );
-      }
-      case ApiSuccess<String>():{
-        emit(UploadPhotoSuccess(response.data??""));
-        _getProfile();
-      }
+      case ApiError<String>():
+        {
+          emit(
+            ProfileFailure(
+              response.failure?.errorMessage ?? 'An error occurred',
+            ),
+          );
+        }
+      case ApiSuccess<String>():
+        {
+          emit(UploadPhotoSuccess(response.data ?? ""));
+          _getProfile();
+        }
     }
-
   }
-
 }
 
 sealed class EditProfileIntent {}

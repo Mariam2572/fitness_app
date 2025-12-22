@@ -36,9 +36,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
   @override
   void initState() {
     super.initState();
-    selectedActivity = 
-      widget.initialActivity;
-    
+    selectedActivity = widget.initialActivity;
   }
 
   void _onActivitySelected(ActivityEnum? value) {
@@ -78,10 +76,12 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                widget.isEditProfile ? const SizedBox() :     const CircularPercentIndicatorWidget(
-                      currentStep: 6,
-                      totalSteps: 6,
-                    ),
+                    widget.isEditProfile
+                        ? const SizedBox()
+                        : const CircularPercentIndicatorWidget(
+                          currentStep: 6,
+                          totalSteps: 6,
+                        ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
                       context.loc.your_regular,
@@ -106,7 +106,7 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
                           height: MediaQuery.of(context).size.height * 0.46,
                           padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
-                            color: AppColors.neutral80.withOpacity(0.5),
+                            color: AppColors.neutral80.withValues(alpha: 0.5),
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: SingleChildScrollView(

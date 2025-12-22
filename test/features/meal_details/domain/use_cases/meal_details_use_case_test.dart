@@ -10,7 +10,6 @@ import 'package:fitness_app/features/foodDetails/domain/usecases/meals_details_u
 
 import 'meal_details_use_case_test.mocks.dart';
 
-
 @GenerateMocks([MealsDetailsContract])
 void main() {
   late MockMealsDetailsContract mockRepository;
@@ -30,8 +29,9 @@ void main() {
 
       provideDummy<ApiResult<MealsDatailsResponse>>(expectedResult);
 
-      when(mockRepository.mealsDatails(id: '1'))
-          .thenAnswer((_) async => expectedResult);
+      when(
+        mockRepository.mealsDatails(id: '1'),
+      ).thenAnswer((_) async => expectedResult);
 
       final result = await useCase.invoke(id: '1');
 
@@ -47,8 +47,9 @@ void main() {
 
       provideDummy<ApiResult<MealsDatailsResponse>>(expectedError);
 
-      when(mockRepository.mealsDatails(id: '1'))
-          .thenAnswer((_) async => expectedError);
+      when(
+        mockRepository.mealsDatails(id: '1'),
+      ).thenAnswer((_) async => expectedError);
 
       final result = await useCase.invoke(id: '1');
 

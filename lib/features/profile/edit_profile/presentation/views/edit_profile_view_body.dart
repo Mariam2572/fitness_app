@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:fitness_app/core/utils/enums/activity_enum.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper/sized_box_helper.dart';
-import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
@@ -48,7 +47,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             width: double.infinity,
             height: context.height,
             decoration: BoxDecoration(
-              color: AppColors.neutral90.withOpacity(.01),
+              color: AppColors.neutral90.withValues(alpha: .01),
               borderRadius: BorderRadius.circular(25.0),
             ),
             clipBehavior: Clip.antiAlias,
@@ -73,7 +72,6 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 },
                 builder: (context, state) {
                   if (state is ProfileSuccess) {
-            
                     return SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -184,7 +182,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                               );
                             },
                             title: context.loc.yourActivityLevel,
-                            value: parseLevelsToActivity(editProfileCubit.activityLevel??""),
+                            value: parseLevelsToActivity(
+                              editProfileCubit.activityLevel ?? "",
+                            ),
                           ),
                           responsiveHeight(context, 0.010),
                           // TapToEditWidget(
@@ -211,7 +211,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                   //   return const Center(child: Text("Succsss"));
                   // } else if (state is UploadPhotoFailure) {
                   //   return Center(child: Text(state.error));
-                  // } 
+                  // }
                   else {
                     return Center(
                       child: TextButton(

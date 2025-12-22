@@ -49,6 +49,3 @@ class ExerciseWidgetItem extends StatelessWidget {
     );
   }
 }
-
-
-

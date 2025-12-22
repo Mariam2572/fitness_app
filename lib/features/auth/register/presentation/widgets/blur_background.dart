@@ -21,11 +21,11 @@ class BlurredBackground extends StatelessWidget {
         Positioned.fill(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
-            child: Container(color: Colors.black.withOpacity(0)),
+            child: Container(color: Colors.black.withValues(alpha: 0)),
           ),
         ),
         Positioned.fill(
-          child: Container(color: Colors.black.withOpacity(overlayOpacity)),
+          child: Container(color: Colors.black.withValues(alpha: overlayOpacity)),
         ),
       ],
     );

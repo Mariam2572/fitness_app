@@ -17,6 +17,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
       isEditProfile: false,
       onChanged: (val) {
         context.read<RegisterCubit>().goal = val;
-      },      
+      },
     );
-}}
+  }
+}

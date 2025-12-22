@@ -3,6 +3,7 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 class VideoPlayerWidget extends StatefulWidget {
   const VideoPlayerWidget({super.key, required this.exercise});
   final Exercise exercise;
@@ -43,7 +44,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF000000).withOpacity(0.2),
+                  color: const Color(0xFF000000).withValues(alpha: 0.2),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: const Offset(0, 3),

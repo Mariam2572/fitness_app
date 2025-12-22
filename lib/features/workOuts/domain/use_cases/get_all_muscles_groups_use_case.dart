@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 class GetAllMusclesGroupsUseCase {
   final WorkOutsRepo _workOutsRepo;
   GetAllMusclesGroupsUseCase(this._workOutsRepo);
-  Future<ApiResult<GetAllMusclesGroupsReponse>>  invoke() async {
+  Future<ApiResult<GetAllMusclesGroupsReponse>> invoke() async {
     return await _workOutsRepo.getAllMusclesGroups();
   }
 }

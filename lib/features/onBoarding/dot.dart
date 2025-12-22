@@ -13,7 +13,7 @@ class Dot extends StatelessWidget {
       height: 8,
       margin: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
-        color: isActive ? AppColors.mainRed : Colors.white.withOpacity(0.3),
+        color: isActive ? AppColors.mainRed : Colors.white.withValues(alpha: 0.3),
         shape: BoxShape.circle,
       ),
     );

@@ -1,4 +1,3 @@
-
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -7,66 +6,62 @@ class TapToEditWidget extends StatelessWidget {
   final String title;
   final String value;
   final VoidCallback onPressed;
-  const TapToEditWidget({super.key, required this.title, required this.value, required this.onPressed});
+  const TapToEditWidget({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Row(
-        children: [
-          Text(
-            "$title (",
-            style: context.textTheme.bodyMedium
-                ?.copyWith(fontWeight: FontWeight.w600),
-          ),
-          TextButton(
-            onPressed: onPressed,
-            style: const ButtonStyle(
-              padding: WidgetStatePropertyAll(
-                EdgeInsets.zero,
-              ),
-            ),
-            child: Text(
-              context.loc.tapToEdit,
-              style: context.textTheme.bodyMedium
-                  ?.copyWith(
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text(
+              "$title (",
+              style: context.textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: AppColors.mainRed,
               ),
             ),
-          ),
-          Text(
-            ")",
-            style: context.textTheme.bodyMedium
-                ?.copyWith(fontWeight: FontWeight.w600),
-          ),
-        ],
-      ),
-      Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: 8.0,
-          horizontal: 16,
+            TextButton(
+              onPressed: onPressed,
+              style: const ButtonStyle(
+                padding: WidgetStatePropertyAll(EdgeInsets.zero),
+              ),
+              child: Text(
+                context.loc.tapToEdit,
+                style: context.textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.mainRed,
+                ),
+              ),
+            ),
+            Text(
+              ")",
+              style: context.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColors.neutral0.withValues(
-            alpha: 0.2,
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.neutral0.withValues(alpha: 0.2),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            border: Border.all(color: AppColors.neutral5, width: 1),
           ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(20),
-          ),
-          border: Border.all(
-            color: AppColors.neutral5,
-            width: 1,
-          ),
-        ),
-        child: Text(
-          value,
-          style: context.textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w600,
+          child: Text(
+            value,
+            style: context.textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
-      ),
-    ],);
+      ],
+    );
   }
 }

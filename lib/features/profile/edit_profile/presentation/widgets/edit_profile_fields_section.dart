@@ -3,7 +3,6 @@ import 'package:fitness_app/core/utils/helper/sized_box_helper.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/validator.dart';
-import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,30 +11,32 @@ class EditProfileFieldsSection extends StatefulWidget {
   const EditProfileFieldsSection({super.key});
 
   @override
-  State<EditProfileFieldsSection> createState() => _EditProfileFieldsSectionState();
+  State<EditProfileFieldsSection> createState() =>
+      _EditProfileFieldsSectionState();
 }
 
 class _EditProfileFieldsSectionState extends State<EditProfileFieldsSection> {
   bool isObscure = true;
   @override
   Widget build(BuildContext context) {
-    final editProfileCubit= context.read<EditProfileCubit>();
+    final editProfileCubit = context.read<EditProfileCubit>();
     return Form(
       key: editProfileCubit.formKey,
       child: Column(
         children: [
           TextFormField(
-      
             onFieldSubmitted: (value) {
               editProfileCubit.firstNameController.text = value;
-              editProfileCubit.doIntent(EditProfileInfoIntent(
-                editProfileRequest: editProfileCubit.currentEditProfileRequest
-
-              ));
+              editProfileCubit.doIntent(
+                EditProfileInfoIntent(
+                  editProfileRequest:
+                      editProfileCubit.currentEditProfileRequest,
+                ),
+              );
               editProfileCubit.doIntent(GetLoggedUserDataIntent());
             },
-            // onSaved: ,
 
+            // onSaved: ,
             key: const ValueKey('editFirstNameField'),
             validator: (value) => Validator.validateName(value),
             controller: editProfileCubit.firstNameController,
@@ -53,12 +54,14 @@ class _EditProfileFieldsSectionState extends State<EditProfileFieldsSection> {
           responsiveHeight(context, 0.02),
           TextFormField(
             key: const ValueKey('editLastNameField'),
-              onFieldSubmitted: (value) {
+            onFieldSubmitted: (value) {
               editProfileCubit.lastNameController.text = value;
-              editProfileCubit.doIntent(EditProfileInfoIntent(
-                editProfileRequest: editProfileCubit.currentEditProfileRequest
-
-              ));
+              editProfileCubit.doIntent(
+                EditProfileInfoIntent(
+                  editProfileRequest:
+                      editProfileCubit.currentEditProfileRequest,
+                ),
+              );
               editProfileCubit.doIntent(GetLoggedUserDataIntent());
             },
             validator: (value) => Validator.validateName(value),
@@ -77,13 +80,15 @@ class _EditProfileFieldsSectionState extends State<EditProfileFieldsSection> {
           responsiveHeight(context, 0.02),
           TextFormField(
             key: const ValueKey('editEmailField'),
-              onFieldSubmitted: (value) {
+            onFieldSubmitted: (value) {
               editProfileCubit.emailController.text = value;
 
-              editProfileCubit.doIntent(EditProfileInfoIntent(
-                editProfileRequest: editProfileCubit.currentEditProfileRequest
-
-              ));
+              editProfileCubit.doIntent(
+                EditProfileInfoIntent(
+                  editProfileRequest:
+                      editProfileCubit.currentEditProfileRequest,
+                ),
+              );
               editProfileCubit.doIntent(GetLoggedUserDataIntent());
             },
             validator: (value) => Validator.validateEmail(value),
@@ -99,7 +104,6 @@ class _EditProfileFieldsSectionState extends State<EditProfileFieldsSection> {
               prefixIconColor: AppColors.neutral5,
             ),
           ),
-
         ],
       ),
     );

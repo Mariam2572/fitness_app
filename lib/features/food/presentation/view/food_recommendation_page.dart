@@ -17,39 +17,35 @@ class FoodRecommendationPage extends StatefulWidget {
 class _FoodRecommendationPageState extends State<FoodRecommendationPage>
     with TickerProviderStateMixin {
   TabController? _tabController;
-  
-
 
   @override
   void initState() {
     super.initState();
     final cubit = context.read<FoodCubit>();
-  cubit.doIntent(LoadFoodCategoriesIntent()).then((value){
-    if(cubit.tabs.isNotEmpty){
-      _tabController = TabController(
-        length: cubit.tabs.length,
-        vsync: this,
-      );
-      cubit.doIntent(LoadMealsByCategoryIntent(category: cubit.tabs[0].strCategory ?? ''));
-      _tabController?.addListener(() {
+    cubit.doIntent(LoadFoodCategoriesIntent()).then((value) {
+      if (cubit.tabs.isNotEmpty) {
+        _tabController = TabController(length: cubit.tabs.length, vsync: this);
+        cubit.doIntent(
+          LoadMealsByCategoryIntent(category: cubit.tabs[0].strCategory ?? ''),
+        );
+        _tabController?.addListener(() {
           final index = _tabController!.index;
-        if (!_tabController!.indexIsChanging) {
-          final category = cubit.tabs[index].strCategory ?? '';
-    cubit.doIntent(
-      LoadMealsByCategoryIntent(category: category),
-      );}
-      });
-    }
-  });
-
+          if (!_tabController!.indexIsChanging) {
+            final category = cubit.tabs[index].strCategory ?? '';
+            cubit.doIntent(LoadMealsByCategoryIntent(category: category));
+          }
+        });
+      }
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black.withValues( alpha: 0.85),
+      backgroundColor: Colors.black.withValues(alpha: 0.85),
       body: Stack(
         children: [
-          Image.asset(AppAssets.homeBackground,),
+          Image.asset(AppAssets.homeBackground),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -60,9 +56,7 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
                 listenWhen:
                     (previous, current) => current is FoodCategoriesSuccess,
                 listener: (context, state) {
-                  if (state is FoodCategoriesSuccess) {
-                  
-                  }
+                  if (state is FoodCategoriesSuccess) {}
                 },
 
                 child: Column(
@@ -86,27 +80,29 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
                       ],
                     ),
                     const SizedBox(height: 10),
-                    if (context.read<FoodCubit>().tabs.isNotEmpty && _tabController != null)
-
+                    if (context.read<FoodCubit>().tabs.isNotEmpty &&
+                        _tabController != null)
                       AppTabBar(
                         controller: _tabController!,
                         tabs:
-
-                          context.read<FoodCubit>().tabs.map((level) => Tab(text: level.strCategory ?? ''))
-                            .toList(),
+                            context
+                                .read<FoodCubit>()
+                                .tabs
+                                .map(
+                                  (level) => Tab(text: level.strCategory ?? ''),
+                                )
+                                .toList(),
                       ),
                     Expanded(
-                      child:
-                          
-                             TabBarView(
-                                controller: _tabController,
-                                children:
-                                    context.read<FoodCubit>().tabs
-                                        .map(
-                                          (cat) => const MealsByCategoryTab(),
-                                        )
-                                        .toList(),
-                              ),
+                      child: TabBarView(
+                        controller: _tabController,
+                        children:
+                            context
+                                .read<FoodCubit>()
+                                .tabs
+                                .map((cat) => const MealsByCategoryTab())
+                                .toList(),
+                      ),
                     ),
                   ],
                 ),
@@ -118,4 +114,3 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
     );
   }
 }
-

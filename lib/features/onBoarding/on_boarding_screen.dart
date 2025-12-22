@@ -16,6 +16,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
   final List<OnBoardingItem> _onBoardingItems = [
     OnBoardingItem(
       image: AppAssets.onBoardingOne,

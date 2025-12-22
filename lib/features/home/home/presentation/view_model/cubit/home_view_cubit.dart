@@ -1,25 +1,20 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
-import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
-import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/exercises.dart';
+import 'package:fitness_app/features/home/home/data/models/random_exercise_response.dart';
+import 'package:fitness_app/features/home/home/data/models/user_response.dart';
 import 'package:fitness_app/features/home/home/domain/use_cases/home_use_case.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
-import 'package:flutter/material.dart';
-
 part 'home_view_state.dart';
 
 class HomeViewCubit extends Cubit<HomeViewState> {
   HomeViewCubit(this.homeUseCase) : super(HomeViewInitial());
   final HomeUseCase homeUseCase;
-  
-  List<MusclesGroupBean> musclesGroupCat = [];
 
+  List<MusclesGroupBean> musclesGroupCat = [];
 
   Future<void> doIntent(HomeIntent intent) async {
     switch (intent) {
@@ -74,7 +69,6 @@ class HomeViewCubit extends Cubit<HomeViewState> {
     final result = await homeUseCase.getWorkoutsExercise(initen.id);
     switch (result) {
       case ApiSuccess<GetAllMusclesByMuscleGroupIdReponse>():
-       
         emit(
           GetMusclesByMuscleGroupIdSuccess(
             workoutsByMuscleGroupId: result.data?.muscles,

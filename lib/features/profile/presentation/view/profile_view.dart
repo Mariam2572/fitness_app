@@ -38,7 +38,7 @@ class _ProfileViewState extends State<ProfileView> {
 }
 
 class _ProfileBody extends StatelessWidget {
-  const _ProfileBody({super.key});
+  const _ProfileBody();
 
   @override
   Widget build(BuildContext context) {

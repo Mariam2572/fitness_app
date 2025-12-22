@@ -7,13 +7,11 @@ import 'package:fitness_app/features/home/home/presentation/views/widgets/home_u
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class WorkoutExerciseInHomeView extends StatefulWidget {
   final List<MusclesGroupBean> musclesCroup;
 
-  const WorkoutExerciseInHomeView({Key? key, required this.musclesCroup})
-    : super(key: key);
+  const WorkoutExerciseInHomeView({super.key, required this.musclesCroup});
 
   @override
   State<WorkoutExerciseInHomeView> createState() =>
@@ -36,10 +34,6 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
     super.initState();
   }
 
-  
-
-  
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeViewCubit, HomeViewState>(
@@ -56,7 +50,7 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
                         .toList(),
                 controller: _tabController,
               ),
-             const SizedBox(height: 8),
+              const SizedBox(height: 8),
               SizedBox(
                 height: 90,
                 child: ListView.builder(
@@ -66,14 +60,19 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
                   itemBuilder: (context, index) {
                     return HomeUpcomingWorkoutItem(
                       onTap: () {
-                         Navigator.pushNamed(context, RoutesName.exerciseView,arguments: state.workoutsByMuscleGroupId![index]);
+                        Navigator.pushNamed(
+                          context,
+                          RoutesName.exerciseView,
+                          arguments: state.workoutsByMuscleGroupId![index],
+                        );
                       },
                       name:
                           state.workoutsByMuscleGroupId?[index].name ??
                           "Exercise Name Not Found",
                       image:
                           state.workoutsByMuscleGroupId?[index].image ??
-                          "Image Not Found", muscle: state.workoutsByMuscleGroupId![index],
+                          "Image Not Found",
+                      muscle: state.workoutsByMuscleGroupId![index],
                     );
                   },
                 ),
@@ -95,12 +94,14 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
       },
     );
   }
+
   void _initTabController(HomeViewCubit homeCubit) {
     _tabController = TabController(
       length: homeCubit.musclesGroupCat.length,
       vsync: this,
     );
   }
+
   void handleApiCallWhenTabChanges(HomeViewCubit homeCubit) {
     final firstId = homeCubit.musclesGroupCat[0].id;
     homeCubit.doIntent(GetMusclesByMuscleGroupIdIntent(id: firstId ?? ""));

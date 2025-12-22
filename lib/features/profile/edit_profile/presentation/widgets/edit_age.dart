@@ -19,10 +19,10 @@ class EditAge extends StatelessWidget {
         },
         onPressed: () {
           final editProfileCubit = context.read<EditProfileCubit>();
-    
+
           editProfileCubit.doIntent(
             EditProfileInfoIntent(
-          editProfileRequest: editProfileCubit.currentEditProfileRequest
+              editProfileRequest: editProfileCubit.currentEditProfileRequest,
             ),
           );
           Navigator.pop(context);

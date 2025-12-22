@@ -1,4 +1,4 @@
-import 'package:fitness_app/features/home/home/presentation/views/widgets/Exercisecard.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/exercise_card.dart';
 import 'package:flutter/material.dart';
 
 class PopularTraining extends StatelessWidget {

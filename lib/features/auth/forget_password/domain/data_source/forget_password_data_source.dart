@@ -7,7 +7,13 @@ import 'package:fitness_app/features/auth/forget_password/data/models/response/r
 import 'package:fitness_app/features/auth/forget_password/data/models/response/verify_reset_response.dart';
 
 abstract interface class ForgetPasswordDataSource {
-  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(ForgetPasswordRequest forgetPasswordRequest);
-  Future<ApiResult<VerifyResetResponse>> verifyReset(VerifyResetRequest verifyResetRequest);
-  Future<ApiResult<ResetPasswordResponse>> resetPassword(ResetPasswordRequest resetPasswordRequest);
+  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
+    ForgetPasswordRequest forgetPasswordRequest,
+  );
+  Future<ApiResult<VerifyResetResponse>> verifyReset(
+    VerifyResetRequest verifyResetRequest,
+  );
+  Future<ApiResult<ResetPasswordResponse>> resetPassword(
+    ResetPasswordRequest resetPasswordRequest,
+  );
 }

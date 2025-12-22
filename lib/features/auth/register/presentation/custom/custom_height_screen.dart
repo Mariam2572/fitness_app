@@ -42,9 +42,14 @@ class _CustomHeightScreenState extends State<CustomHeightScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-     ...[
+        ...[
           const SizedBox(height: 133),
-      widget.isEditProfile ? const SizedBox() :    const CircularPercentIndicatorWidget(currentStep: 4, totalSteps: 6),
+          widget.isEditProfile
+              ? const SizedBox()
+              : const CircularPercentIndicatorWidget(
+                currentStep: 4,
+                totalSteps: 6,
+              ),
           const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.only(left: 24),

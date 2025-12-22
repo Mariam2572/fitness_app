@@ -7,10 +7,10 @@ class UpcomingWorkoutsCategory extends StatefulWidget {
   // final bool isLoading;
 
   const UpcomingWorkoutsCategory({
-    Key? key,
+    super.key,
     required this.bodyParts,
     // required this.isLoading,
-  }) : super(key: key);
+  });
 
   @override
   State<UpcomingWorkoutsCategory> createState() =>
@@ -33,6 +33,9 @@ class _BodyPartsFilterWidgetState extends State<UpcomingWorkoutsCategory>
 
   @override
   Widget build(BuildContext context) {
-    return AppTabBar(tabs: widget.bodyParts.map((item)=> Tab(text: item.name ?? '',)).toList(), controller: _tabController);
+    return AppTabBar(
+      tabs: widget.bodyParts.map((item) => Tab(text: item.name ?? '')).toList(),
+      controller: _tabController,
+    );
   }
 }

@@ -18,18 +18,16 @@ final class HomeViewSuccess extends HomeViewState {
   final List<FoodCategory>? mealsCategories;
   final GetAllMusclesGroupsReponse? musclesGroups;
   final List<MusclesBean>? workoutsByMuscleGroupId;
-  
+
   const HomeViewSuccess({
     this.userName,
     this.exercises,
     this.mealsCategories,
     this.musclesGroups,
     this.workoutsByMuscleGroupId,
-    this.userImage, 
- 
+    this.userImage,
   });
 }
-
 
 final class GetMusclesByMuscleGroupIdSuccess extends HomeViewState {
   final List<MusclesBean>? workoutsByMuscleGroupId;

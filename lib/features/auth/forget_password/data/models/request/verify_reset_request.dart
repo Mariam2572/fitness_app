@@ -3,16 +3,10 @@ part 'verify_reset_request.g.dart';
 
 @JsonSerializable()
 class VerifyResetRequest {
-
   @JsonKey(name: 'resetCode')
   String? resetCode;
 
-
-  VerifyResetRequest({
-
-    this.resetCode,
-
-  });
+  VerifyResetRequest({this.resetCode});
 
   factory VerifyResetRequest.fromJson(Map<String, dynamic> json) =>
       _$VerifyResetRequestFromJson(json);

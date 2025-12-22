@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meal.dart';
@@ -16,5 +15,4 @@ class MealsDatailsResponse {
   }
 
   Map<String, dynamic> toJson() => _$MealsDatailsResponseToJson(this);
-
 }

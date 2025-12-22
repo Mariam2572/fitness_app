@@ -147,7 +147,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                     context,
                                     context.loc.passwordChangedSuccessfully,
                                   );
-                                  Navigator.pushReplacementNamed(context, RoutesName.login);
+                                  Navigator.pushReplacementNamed(
+                                    context,
+                                    RoutesName.login,
+                                  );
                                 } else if (state is ChangePasswordFailure) {
                                   showErrorSnackBar(context, state.message);
                                 }

@@ -36,8 +36,11 @@ class RecommendationItem extends StatelessWidget {
                 imageUrl: image,
                 fit: BoxFit.fill,
                 errorWidget:
-                    (context, url, error) =>
-                       const Icon(Icons.error, color: AppColors.neutral40, size: 45),
+                    (context, url, error) => const Icon(
+                      Icons.error,
+                      color: AppColors.neutral40,
+                      size: 45,
+                    ),
                 placeholder:
                     (context, url) => Skeletonizer(
                       child: Container(color: AppColors.neutral90With50Opacity),

@@ -17,9 +17,9 @@ void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
             filter: ImageFilter.blur(sigmaX: 22.6, sigmaY: 22.6),
             child: Container(
               decoration: BoxDecoration(
-                color: AppColors.neutral90.withOpacity(0.5), // glassy effect
+                color: AppColors.neutral90.withValues(alpha: 0.5), // glassy effect
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: Colors.white.withOpacity(0.08)),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
@@ -60,7 +60,6 @@ void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
                         width: 90,
                         height: 40,
                         child: ElevatedButton(
-                      
                           onPressed: onPressed,
                           child: Text(
                             context.loc.yes,

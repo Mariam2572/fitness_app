@@ -15,7 +15,6 @@ class ActivtiesScreen extends StatefulWidget {
 class _ActivtiesScreenState extends State<ActivtiesScreen> {
   @override
   Widget build(BuildContext context) {
-
     return CustomActivtiesScreen(
       isEditProfile: false,
       onChanged: (val) {

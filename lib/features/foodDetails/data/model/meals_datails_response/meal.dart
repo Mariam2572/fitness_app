@@ -115,7 +115,8 @@ class MealDetails {
     this.dateModified,
   });
 
-  factory MealDetails.fromJson(Map<String, dynamic> json) => _$MealDetailsFromJson(json);
+  factory MealDetails.fromJson(Map<String, dynamic> json) =>
+      _$MealDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$MealDetailsToJson(this);
 

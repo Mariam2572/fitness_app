@@ -16,5 +16,6 @@ class ChooseAgeScreenBody extends StatelessWidget {
       onChanged: (val) {
         context.read<RegisterCubit>().age = val;
       },
-    );}
+    );
+  }
 }

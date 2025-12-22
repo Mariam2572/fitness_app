@@ -22,15 +22,17 @@ sealed class ProfileState extends Equatable {
 //   List<Object> get props => [error];
 // }
 
-
 final class ProfileInitial extends ProfileState {}
+
 final class ProfileLoading extends ProfileState {}
+
 final class ProfileSuccess extends ProfileState {
   final GetUserDataReponse response;
   const ProfileSuccess(this.response);
   @override
   List<Object> get props => [response];
 }
+
 final class ProfileFailure extends ProfileState {
   final String error;
   const ProfileFailure(this.error);
@@ -44,4 +46,3 @@ final class UploadPhotoSuccess extends ProfileState {
   @override
   List<Object> get props => [response];
 }
-

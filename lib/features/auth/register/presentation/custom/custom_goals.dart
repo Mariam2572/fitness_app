@@ -5,7 +5,6 @@ import 'dart:ui';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
-import 'package:fitness_app/features/profile/edit_profile/presentation/view_model/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +22,7 @@ class CustomGoalsScreen extends StatefulWidget {
   final void Function()? onPressed;
   const CustomGoalsScreen({
     super.key,
-     this.onPressed,
+    this.onPressed,
     required this.onChanged,
     required this.isEditProfile,
     this.initialGoal,
@@ -65,10 +64,10 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7), // adjust as needed
             child: Container(
-              color: Colors.black.withOpacity(0), // Transparent layer
+              color: Colors.black.withValues(alpha: 0), // Transparent layer
             ),
           ),
-          Container(color: Colors.black.withOpacity(0.3)),
+          Container(color: Colors.black.withValues(alpha: 0.3)),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(24),
@@ -95,10 +94,12 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-            widget.isEditProfile ? const SizedBox() :         const CircularPercentIndicatorWidget(
-                      currentStep: 5,
-                      totalSteps: 6,
-                    ),
+                    widget.isEditProfile
+                        ? const SizedBox()
+                        : const CircularPercentIndicatorWidget(
+                          currentStep: 5,
+                          totalSteps: 6,
+                        ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                     Text(
                       'context.loc.whatsYourGoal',
@@ -124,7 +125,7 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                           height: MediaQuery.of(context).size.height * 0.46,
                           padding: const EdgeInsets.all(24),
                           decoration: BoxDecoration(
-                            color: AppColors.neutral80.withOpacity(0.5),
+                            color: AppColors.neutral80.withValues(alpha: 0.5),
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: SingleChildScrollView(
@@ -144,7 +145,7 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                                     ],
                                   ),
                                 ),
-                              
+
                                 ElevatedButton(
                                   onPressed: () {
                                     if (selectedGoal == null) {

@@ -4,11 +4,9 @@ import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/cubit/home_view_cubit.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/CategoryView.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/category_view.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/meal_recommendation.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/popular_training_cards.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/upcoming_workout.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/upcoming_workouts_category.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/workout_exercise_in_home_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/workout_recommendation.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +33,9 @@ class HomeScreenBody extends StatelessWidget {
         SafeArea(
           child: BlocConsumer<HomeViewCubit, HomeViewState>(
             listener: (BuildContext context, HomeViewState state) {},
-            buildWhen: (previous, current) => 
-                previous != current && current is HomeViewSuccess,
+            buildWhen:
+                (previous, current) =>
+                    previous != current && current is HomeViewSuccess,
             builder: (context, state) {
               final isLoading = state is HomeViewLoading;
 
@@ -74,12 +73,14 @@ class HomeScreenBody extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            
-                           if (state is HomeViewSuccess)
-                           CircleAvatar(
-                            radius: 24,
-                            backgroundImage: CachedNetworkImageProvider(state.userImage??"")
-                          ),
+
+                          if (state is HomeViewSuccess)
+                            CircleAvatar(
+                              radius: 24,
+                              backgroundImage: CachedNetworkImageProvider(
+                                state.userImage ?? "",
+                              ),
+                            ),
                         ],
                       ),
 
@@ -138,9 +139,10 @@ class HomeScreenBody extends StatelessWidget {
                         ],
                       ),
                       if (state is HomeViewSuccess)
-                        WorkoutExerciseInHomeView(musclesCroup: state.musclesGroups?.musclesGroup ?? []),
-                        
-                     
+                        WorkoutExerciseInHomeView(
+                          musclesCroup: state.musclesGroups?.musclesGroup ?? [],
+                        ),
+
                       const SizedBox(height: 24),
 
                       Row(

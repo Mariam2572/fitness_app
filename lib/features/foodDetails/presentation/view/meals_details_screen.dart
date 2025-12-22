@@ -15,24 +15,35 @@ import 'package:fitness_app/features/foodDetails/presentation/view_model/meals_d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class MealsDetailsScreen extends StatelessWidget {
   const MealsDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final mealId = args['id'];
     final meals = args['meals'] as List<Meal>;
 
-    return MultiBlocProvider(providers: [
+    return MultiBlocProvider(
+      providers: [
         BlocProvider(
-        create: (_) => MealsDetailsCubit(getIt.get<MealsDetailsUsecase>())
-      ..doIntent(PerformMealsDetails(id: mealId)),
-    child:  _MealsDetailsBody(meals),
-    ),
-      BlocProvider(create: (_)=> FoodCubit(getIt.get<GetFoodCategoriesUseCase>(), getIt.get<GetMealsByCategoryUseCase>()))
-    ], child: _MealsDetailsBody(meals));
+          create:
+              (_) =>
+                  MealsDetailsCubit(getIt.get<MealsDetailsUsecase>())
+                    ..doIntent(PerformMealsDetails(id: mealId)),
+          child: _MealsDetailsBody(meals),
+        ),
+        BlocProvider(
+          create:
+              (_) => FoodCubit(
+                getIt.get<GetFoodCategoriesUseCase>(),
+                getIt.get<GetMealsByCategoryUseCase>(),
+              ),
+        ),
+      ],
+      child: _MealsDetailsBody(meals),
+    );
   }
 }
 
@@ -74,7 +85,6 @@ class _MealsDetailsBody extends StatelessWidget {
                 }
 
                 return SingleChildScrollView(
-
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -82,19 +92,18 @@ class _MealsDetailsBody extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(16),
                         child: Column(
-
                           children: [
                             const SizedBox(height: 16),
                             IngredientsSection(meal: meal),
                             const SizedBox(height: 16),
-                             RecommendationsSection(meals:meals),
+                            RecommendationsSection(meals: meals),
                             if (errorMessage != null) ...[
                               const SizedBox(height: 16),
                               Text(
-                                '$errorMessage',
+                                errorMessage,
                                 style: const TextStyle(color: Colors.redAccent),
                               ),
-                            ]
+                            ],
                           ],
                         ),
                       ),
@@ -109,7 +118,3 @@ class _MealsDetailsBody extends StatelessWidget {
     );
   }
 }
-
-
-
-

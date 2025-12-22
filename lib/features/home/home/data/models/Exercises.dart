@@ -1,74 +1,43 @@
-/// _id : "67cfa4ffc1b27e475670739f"
-/// exercise : "Stability Ball Sit Up"
-/// short_youtube_demonstration : "Video Demonstration"
-/// in_depth_youtube_explanation : "Video Explanation"
-/// difficulty_level : "Beginner"
-/// target_muscle_group : "Abdominals"
-/// prime_mover_muscle : "Rectus Abdominis"
-/// secondary_muscle : null
-/// tertiary_muscle : null
-/// primary_equipment : "Stability Ball"
-/// _primary_items : 1
-/// secondary_equipment : null
-/// _secondary_items : 0
-/// posture : "Supine"
-/// single_or_double_arm : "No Arms"
-/// continuous_or_alternating_arms : "Continuous"
-/// grip : "Head Supported"
-/// load_position_ending : "No Load"
-/// continuous_or_alternating_legs : "Continuous"
-/// foot_elevation : "No Elevation"
-/// combination_exercises : "Single Exercise"
-/// movement_pattern_1 : "Spinal Flexion"
-/// movement_pattern_2 : "Other"
-/// movement_pattern_3 : null
-/// plane_of_motion_1 : "Sagittal Plane"
-/// plane_of_motion_2 : null
-/// plane_of_motion_3 : null
-/// body_region : "Midsection"
-/// force_type : "Other"
-/// mechanics : null
-/// laterality : "Bilateral"
-/// primary_exercise_classification : "Unsorted*"
-/// short_youtube_demonstration_link : "https://youtu.be/7L90imlW0es?si=gY7k7XVC43IRrv-N"
-/// in_depth_youtube_explanation_link : "https://youtu.be/3aQXaB4PU_A"
+
+library;
 
 class Exercises {
   Exercises({
-      this.id, 
-      this.exercise, 
-      this.shortYoutubeDemonstration, 
-      this.inDepthYoutubeExplanation, 
-      this.difficultyLevel, 
-      this.targetMuscleGroup, 
-      this.primeMoverMuscle, 
-      this.secondaryMuscle, 
-      this.tertiaryMuscle, 
-      this.primaryEquipment, 
-      this.primaryItems, 
-      this.secondaryEquipment, 
-      this.secondaryItems, 
-      this.posture, 
-      this.singleOrDoubleArm, 
-      this.continuousOrAlternatingArms, 
-      this.grip, 
-      this.loadPositionEnding, 
-      this.continuousOrAlternatingLegs, 
-      this.footElevation, 
-      this.combinationExercises, 
-      this.movementPattern1, 
-      this.movementPattern2, 
-      this.movementPattern3, 
-      this.planeOfMotion1, 
-      this.planeOfMotion2, 
-      this.planeOfMotion3, 
-      this.bodyRegion, 
-      this.forceType, 
-      this.mechanics, 
-      this.laterality, 
-      this.primaryExerciseClassification, 
-      this.shortYoutubeDemonstrationLink, 
-      this.inDepthYoutubeExplanationLink,});
+    this.id,
+    this.exercise,
+    this.shortYoutubeDemonstration,
+    this.inDepthYoutubeExplanation,
+    this.difficultyLevel,
+    this.targetMuscleGroup,
+    this.primeMoverMuscle,
+    this.secondaryMuscle,
+    this.tertiaryMuscle,
+    this.primaryEquipment,
+    this.primaryItems,
+    this.secondaryEquipment,
+    this.secondaryItems,
+    this.posture,
+    this.singleOrDoubleArm,
+    this.continuousOrAlternatingArms,
+    this.grip,
+    this.loadPositionEnding,
+    this.continuousOrAlternatingLegs,
+    this.footElevation,
+    this.combinationExercises,
+    this.movementPattern1,
+    this.movementPattern2,
+    this.movementPattern3,
+    this.planeOfMotion1,
+    this.planeOfMotion2,
+    this.planeOfMotion3,
+    this.bodyRegion,
+    this.forceType,
+    this.mechanics,
+    this.laterality,
+    this.primaryExerciseClassification,
+    this.shortYoutubeDemonstrationLink,
+    this.inDepthYoutubeExplanationLink,
+  });
 
   Exercises.fromJson(dynamic json) {
     id = json['_id'];
@@ -179,5 +148,4 @@ class Exercises {
     map['in_depth_youtube_explanation_link'] = inDepthYoutubeExplanationLink;
     return map;
   }
-
 }

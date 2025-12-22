@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 typedef TabIdGetter<CubitType> = String? Function(CubitType cubit, int index);
 typedef TabCountGetter<CubitType> = int Function(CubitType cubit);
-typedef TabChangeIntent<CubitType> = Future<void> Function(CubitType cubit, String? tabId);
+typedef TabChangeIntent<CubitType> =
+    Future<void> Function(CubitType cubit, String? tabId);
 
 Future<TabController?> setupTabs<CubitType>({
   required CubitType cubit,

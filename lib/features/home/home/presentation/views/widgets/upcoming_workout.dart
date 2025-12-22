@@ -20,8 +20,8 @@ class UpcomingWorkout extends StatelessWidget {
         itemBuilder: (context, index) {
           return HomeUpcomingWorkoutItem(
             name: muscles[index].name ?? "Exercise Name Not Found",
-            image:muscles[index].image ?? "Image Not Found", muscle: muscles[index],
-                
+            image: muscles[index].image ?? "Image Not Found",
+            muscle: muscles[index],
           );
         },
       ),

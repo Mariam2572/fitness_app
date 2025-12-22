@@ -38,18 +38,17 @@ void main() {
     const exerciseResponse = ExerciseByPrimeMoverAndDifficultyResponse(
       exercises: [],
     );
-        final exepectedLevelResponse = ApiSuccess<LevelsByMusclesModel>(
+    final exepectedLevelResponse = ApiSuccess<LevelsByMusclesModel>(
       data: levelresponse,
     );
-        const expectedExerciseResponse =
+    const expectedExerciseResponse =
         ApiSuccess<ExerciseByPrimeMoverAndDifficultyResponse>(
           data: exerciseResponse,
         );
     blocTest<ExerciseCubit, ExerciseState>(
       'when call doIntent with GetLevelsByPrimeMoverMusclesIntent then call getLevelsByPrimeMoverMuscleUseCases and emit ExerciseSuccess',
-      
+
       build: () {
-    
         provideDummy<ApiResult<LevelsByMusclesModel>>(exepectedLevelResponse);
         provideDummy<ApiResult<ExerciseByPrimeMoverAndDifficultyResponse>>(
           expectedExerciseResponse,
@@ -67,20 +66,17 @@ void main() {
         return exerciseCubit;
       },
 
-      act:
-          (bloc) {
-            bloc.doIntent(
-              GetLevelsByPrimeMoverMusclesIntent(
-                primeMoverMuscleId: '123456',
-              ),
-            );
-            bloc.doIntent(
-              GetExerciseByMoverAndDifficulty(
-                primeMoverMuscleId: '123456',
-                difficultyLevelId: '123456',
-              ),
-            );
-          },
+      act: (bloc) {
+        bloc.doIntent(
+          GetLevelsByPrimeMoverMusclesIntent(primeMoverMuscleId: '123456'),
+        );
+        bloc.doIntent(
+          GetExerciseByMoverAndDifficulty(
+            primeMoverMuscleId: '123456',
+            difficultyLevelId: '123456',
+          ),
+        );
+      },
       expect:
           () => [
             ExerciseLoading(),
@@ -102,15 +98,16 @@ void main() {
         ).called(1);
       },
     );
-    blocTest<ExerciseCubit, ExerciseState>('when call doIntent with GetLevelsByPrimeMoverMusclesIntent then call getLevelsByPrimeMoverMuscleUseCases and emit ExerciseFailure',
-     build: () {
-          final exepectedLevelResponse = ApiError<LevelsByMusclesModel>(
-      failure: ServerFailure(errorMessage: 'request failed'),
-    );
-        final expectedExerciseResponse =
-        ApiError<ExerciseByPrimeMoverAndDifficultyResponse>(
-      failure: ServerFailure(errorMessage: 'request failed'),
+    blocTest<ExerciseCubit, ExerciseState>(
+      'when call doIntent with GetLevelsByPrimeMoverMusclesIntent then call getLevelsByPrimeMoverMuscleUseCases and emit ExerciseFailure',
+      build: () {
+        final exepectedLevelResponse = ApiError<LevelsByMusclesModel>(
+          failure: ServerFailure(errorMessage: 'request failed'),
         );
+        final expectedExerciseResponse =
+            ApiError<ExerciseByPrimeMoverAndDifficultyResponse>(
+              failure: ServerFailure(errorMessage: 'request failed'),
+            );
         provideDummy<ApiResult<LevelsByMusclesModel>>(exepectedLevelResponse);
         provideDummy<ApiResult<ExerciseByPrimeMoverAndDifficultyResponse>>(
           expectedExerciseResponse,
@@ -127,25 +124,22 @@ void main() {
 
         return exerciseCubit;
       },
-      act:
-          (bloc) {
-            bloc.doIntent(
-              GetLevelsByPrimeMoverMusclesIntent(
-                primeMoverMuscleId: '123456',
-              ),
-            );
-            bloc.doIntent(
-              GetExerciseByMoverAndDifficulty(
-                primeMoverMuscleId: '123456',
-                difficultyLevelId: '123456',
-              ),
-            );
-          },
+      act: (bloc) {
+        bloc.doIntent(
+          GetLevelsByPrimeMoverMusclesIntent(primeMoverMuscleId: '123456'),
+        );
+        bloc.doIntent(
+          GetExerciseByMoverAndDifficulty(
+            primeMoverMuscleId: '123456',
+            difficultyLevelId: '123456',
+          ),
+        );
+      },
       expect:
           () => [
             ExerciseLoading(),
             const ExerciseFailuer(message: 'An error occurred , try later'),
-          ], 
-      );
+          ],
+    );
   });
 }

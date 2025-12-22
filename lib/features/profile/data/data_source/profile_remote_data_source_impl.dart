@@ -1,6 +1,5 @@
-import 'dart:io';
 import 'package:fitness_app/core/api_manager/api_services.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/user_response.dart';
 import 'package:fitness_app/features/profile/data/data_source/profile_remote_data_source.dart';
 
 import 'package:injectable/injectable.dart';
@@ -17,9 +16,4 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
     return response;
   }
-
-  // @override
-  // Future<String> uploadPhoto(File photo) async {
-  //   return await apiService.uploadPhoto(photo);
-  // }
 }

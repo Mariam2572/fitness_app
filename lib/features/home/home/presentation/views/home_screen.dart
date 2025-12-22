@@ -23,7 +23,6 @@ class HomeScreen extends StatelessWidget {
               (context) => WorkOutsCubit(
                 getIt<GetAllMusclesGroupsUseCase>(),
                 getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
-                
               )..doIntent(GetAllMusclesGroupsIntent()),
         ),
         BlocProvider(

@@ -15,17 +15,23 @@ class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   ForgetPasswordRepoImpl({required this.forgetPasswordDataSource});
 
   @override
-  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(ForgetPasswordRequest forgetPasswordRequest) async {
+  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
+    ForgetPasswordRequest forgetPasswordRequest,
+  ) async {
     return await forgetPasswordDataSource.forgetPassword(forgetPasswordRequest);
   }
+
   @override
-  Future<ApiResult<VerifyResetResponse>> verifyReset(VerifyResetRequest verifyResetRequest)  async {
+  Future<ApiResult<VerifyResetResponse>> verifyReset(
+    VerifyResetRequest verifyResetRequest,
+  ) async {
     return await forgetPasswordDataSource.verifyReset(verifyResetRequest);
   }
 
   @override
-  Future<ApiResult<ResetPasswordResponse>> resetPassword(ResetPasswordRequest resetPasswordRequest)async {
+  Future<ApiResult<ResetPasswordResponse>> resetPassword(
+    ResetPasswordRequest resetPasswordRequest,
+  ) async {
     return await forgetPasswordDataSource.resetPassword(resetPasswordRequest);
   }
-
 }

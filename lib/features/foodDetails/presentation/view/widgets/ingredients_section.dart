@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class IngredientsSection extends StatelessWidget {
   final MealDetails? meal;
 
-  const IngredientsSection({required this.meal});
+  const IngredientsSection({super.key, required this.meal});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +28,13 @@ class IngredientsSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           padding: const EdgeInsets.all(8),
-          child: meal != null
-              ? IngredientColumn(meal: meal?? MealDetails())
-              : const Text(
-            'No ingredients available.',
-            style: TextStyle(color: Colors.white70),
-          ),
+          child:
+              meal != null
+                  ? IngredientColumn(meal: meal ?? MealDetails())
+                  : const Text(
+                    'No ingredients available.',
+                    style: TextStyle(color: Colors.white70),
+                  ),
         ),
       ],
     );

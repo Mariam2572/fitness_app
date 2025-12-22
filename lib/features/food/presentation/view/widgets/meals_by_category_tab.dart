@@ -5,6 +5,7 @@ import 'package:fitness_app/features/food/presentation/view%20model/food_status.
 import 'package:fitness_app/features/food/presentation/view/widgets/food_item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class MealsByCategoryTab extends StatelessWidget {
   const MealsByCategoryTab({super.key});
 
@@ -55,4 +56,3 @@ class MealsByCategoryTab extends StatelessWidget {
     );
   }
 }
-

@@ -1,6 +1,6 @@
-
 import 'package:json_annotation/json_annotation.dart';
 part 'levels_by_muscles_model.g.dart';
+
 @JsonSerializable()
 class LevelsByMusclesModel {
   @JsonKey(name: 'message')
@@ -12,7 +12,8 @@ class LevelsByMusclesModel {
 
   LevelsByMusclesModel({this.message, this.totalLevels, this.difficultyLevels});
 
-  factory LevelsByMusclesModel.fromJson(Map<String, dynamic> json) => _$LevelsByMusclesModelFromJson(json);
+  factory LevelsByMusclesModel.fromJson(Map<String, dynamic> json) =>
+      _$LevelsByMusclesModelFromJson(json);
 
   static List<LevelsByMusclesModel> fromList(List<Map<String, dynamic>> list) {
     return list.map(LevelsByMusclesModel.fromJson).toList();
@@ -30,7 +31,8 @@ class DifficultyLevels {
 
   DifficultyLevels({this.id, this.name});
 
-  factory DifficultyLevels.fromJson(Map<String, dynamic> json) => _$DifficultyLevelsFromJson(json);
+  factory DifficultyLevels.fromJson(Map<String, dynamic> json) =>
+      _$DifficultyLevelsFromJson(json);
 
   static List<DifficultyLevels> fromList(List<Map<String, dynamic>> list) {
     return list.map(DifficultyLevels.fromJson).toList();

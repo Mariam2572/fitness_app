@@ -1,9 +1,10 @@
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
 import 'package:fitness_app/features/food/presentation/view%20model/food_status.dart';
-import 'package:fitness_app/features/food/presentation/view/widgets/food_card_Item.dart';
+import 'package:fitness_app/features/food/presentation/view/widgets/food_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class MealsByCategoryTab extends StatelessWidget {
   const MealsByCategoryTab({super.key});
 
@@ -27,11 +28,11 @@ class MealsByCategoryTab extends StatelessWidget {
               final meal = meals[index];
               return FoodItemCard(
                 onTap: () {
-                  Navigator.pushNamed(context, RoutesName.mealsDetailsScreen,
-                  arguments:{
-                    'id' :meal.id,
-                    'meals':meals
-                  } );
+                  Navigator.pushNamed(
+                    context,
+                    RoutesName.mealsDetailsScreen,
+                    arguments: {'id': meal.id, 'meals': meals},
+                  );
                 },
                 imageUrl: meal.thumbnail ?? '',
                 title: meal.name ?? '',
@@ -52,4 +53,3 @@ class MealsByCategoryTab extends StatelessWidget {
     );
   }
 }
-

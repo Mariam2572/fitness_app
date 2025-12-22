@@ -6,7 +6,7 @@ part of 'api_services.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
 class _ApiService implements ApiService {
   _ApiService(
@@ -380,7 +380,7 @@ class _ApiService implements ApiService {
 
   @override
   Future<ChangePasswordResponse> changePassword(
-    ChangePasswordRequest ChangePasswordRequest,
+    ChangePasswordRequest changePasswordRequest,
     String userToken,
   ) async {
     final _extra = <String, dynamic>{};
@@ -388,7 +388,7 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{r'Authorization': userToken};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    _data.addAll(ChangePasswordRequest.toJson());
+    _data.addAll(changePasswordRequest.toJson());
     final _options = _setStreamType<ChangePasswordResponse>(Options(
       method: 'PATCH',
       headers: _headers,
@@ -653,7 +653,7 @@ class _ApiService implements ApiService {
   }
 }
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
 class _MealApiService implements MealApiService {
   _MealApiService(

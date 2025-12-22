@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/core/utils/helper/secure_storage.dart';
-import 'package:fitness_app/core/constants/constants.dart';
-import 'package:fitness_app/core/utils/helper/secure_storage.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:flutter/material.dart';
@@ -18,40 +16,47 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    checkAuth();
     super.initState();
+    initSplash();
   }
-  checkAuth() async {
-    final token = await readSecureData(Constants.userToken);
-    Timer(const Duration(seconds: 2), () {
+
+  void initSplash() {
+    Future.delayed(const Duration(seconds: 2), () async {
+      final token = await readSecureData(Constants.userToken);
       if (token != null) {
-        Navigator.pushReplacementNamed(context, RoutesName.layOut);
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, RoutesName.layOut);
+        }
       } else {
-        Navigator.pushReplacementNamed(context, RoutesName.login);
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, RoutesName.onBoardingOne);
+        }
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(AppAssets.backGround),
-        Padding(
-          padding: const EdgeInsets.only(
-            right: 66,
-            left: 66,
-            top: 160,
-            bottom: 160,
+    return Scaffold(
+      body: Stack(
+        children: [
+          Image.asset(
+            AppAssets.backGround,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
-          child: Center(
-            child: Container(
-              // height: 243,
-              // width: 151,
-              child: Image.asset(AppAssets.fit, fit: BoxFit.fitWidth),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 66,
+                vertical: 160,
+              ),
+              child: Image.asset(AppAssets.fit, fit: BoxFit.contain),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

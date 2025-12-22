@@ -79,9 +79,13 @@ class LoginScreen extends StatelessWidget {
                     //  const SizedBox(height: 8),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: TextButton(onPressed: () {
-                        Navigator.pushNamed(context, RoutesName.forgetPassword);
-                      },
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            RoutesName.forgetPassword,
+                          );
+                        },
                         child: Text(
                           context.loc.forgot_password,
                           style: const TextStyle(
@@ -107,8 +111,8 @@ class LoginScreen extends StatelessWidget {
                     //     Expanded(child: Divider(color: Colors.white)),
                     //   ],
                     // ),
-
                     const SizedBox(height: 32),
+
                     // Row(
                     //   mainAxisAlignment: MainAxisAlignment.center,
                     //   children: [
@@ -119,25 +123,37 @@ class LoginScreen extends StatelessWidget {
                     //     // _buildSocialIcon(Icons.apple),
                     //   ],
                     // ),
-
                     const SizedBox(height: 24),
                     SizedBox(
                       width: double.infinity,
                       child: BlocListener<LoginCubit, LoginState>(
-                        listener: (context, state) async{
+                        listener: (context, state) async {
                           if (state is LoginSuccess) {
                             //added the token here so i can get it from the login navigation
                             final token = state.response.token;
                             if (token != null && token.isNotEmpty) {
-                              await secureStorage.write(key: Constants.userToken, value: token);
+                              await secureStorage.write(
+                                key: Constants.userToken,
+                                value: token,
+                              );
                               showSnackBar(context, 'Login successful');
-                              Future.delayed(const Duration(milliseconds: 500), () {
-                                if (context.mounted) {
-                                  Navigator.pushNamedAndRemoveUntil(context, RoutesName.layOut, (route) => false);
-                                }
-                              });
+                              Future.delayed(
+                                const Duration(milliseconds: 500),
+                                () {
+                                  if (context.mounted) {
+                                    Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      RoutesName.layOut,
+                                      (route) => false,
+                                    );
+                                  }
+                                },
+                              );
                             } else {
-                              showErrorSnackBar(context, 'Token is missing in response');
+                              showErrorSnackBar(
+                                context,
+                                'Token is missing in response',
+                              );
                             }
                             showSnackBar(context, 'Login successful');
                             Navigator.pushNamedAndRemoveUntil(

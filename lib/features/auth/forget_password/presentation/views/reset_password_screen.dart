@@ -8,7 +8,6 @@ import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/validator.dart';
 import 'package:fitness_app/features/auth/forget_password/presentation/view_model/cubit/forget_password_cubit.dart';
-import 'package:fitness_app/features/auth/forget_password/presentation/views/verification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -77,15 +76,12 @@ class ResetPasswordScreen extends StatelessWidget {
                         width: double.infinity,
                         height: context.height * 0.40,
                         decoration: BoxDecoration(
-                          color: AppColors.neutral90.withOpacity(.01),
+                          color: AppColors.neutral90.withValues(alpha: .01),
                           borderRadius: BorderRadius.circular(50.0),
                         ),
                         clipBehavior: Clip.antiAlias,
                         child: BackdropFilter(
-                          filter: ImageFilter.blur(
-                            sigmaX: 22.6,
-                            sigmaY: 22.6,
-                          ),
+                          filter: ImageFilter.blur(sigmaX: 22.6, sigmaY: 22.6),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -98,19 +94,18 @@ class ResetPasswordScreen extends StatelessWidget {
                                       key: const ValueKey('passwordField'),
                                       validator:
                                           (value) =>
-                                          Validator.validatePassword(value),
+                                              Validator.validatePassword(value),
                                       controller:
-                                      context
-                                          .read<ForgetPasswordCubit>()
-                                          .newPasswordController,
+                                          context
+                                              .read<ForgetPasswordCubit>()
+                                              .newPasswordController,
                                       style: const TextStyle(
                                         color: AppColors.neutral10,
                                       ),
                                       decoration: InputDecoration(
                                         focusColor: AppColors.neutral10,
 
-                                        focusedBorder:
-                                        const OutlineInputBorder(
+                                        focusedBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: AppColors.neutral10,
                                             width: 0.5,
@@ -119,8 +114,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                             Radius.circular(50),
                                           ),
                                         ),
-                                        enabledBorder:
-                                        const OutlineInputBorder(
+                                        enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: AppColors.neutral10,
                                             width: 0.5,
@@ -131,13 +125,11 @@ class ResetPasswordScreen extends StatelessWidget {
                                         ),
 
                                         labelText: context.loc.password,
-                                        labelStyle: context
-                                            .textTheme
-                                            .bodySmall
+                                        labelStyle: context.textTheme.bodySmall
                                             ?.copyWith(
-                                          fontWeight: FontWeight.w800,
-                                          color: AppColors.neutral10,
-                                        ),
+                                              fontWeight: FontWeight.w800,
+                                              color: AppColors.neutral10,
+                                            ),
                                         prefixIcon: Image.asset(
                                           AppAssets.lock,
                                           color: AppColors.neutral10,
@@ -148,26 +140,31 @@ class ResetPasswordScreen extends StatelessWidget {
                                       ),
                                       obscureText: true,
                                     ),
-                                    SizedBox(
-                                      height: 24,
-                                    ),
-                                    TextFormField(obscureText: true,
-                                      key: const ValueKey('confirmPasswordField'),
+                                    SizedBox(height: 24),
+                                    TextFormField(
+                                      obscureText: true,
+                                      key: const ValueKey(
+                                        'confirmPasswordField',
+                                      ),
                                       validator:
                                           (value) =>
-                                          Validator.validateConfirmPassword(value,forgetPasswordCubit.newPasswordController.text),
+                                              Validator.validateConfirmPassword(
+                                                value,
+                                                forgetPasswordCubit
+                                                    .newPasswordController
+                                                    .text,
+                                              ),
                                       controller:
-                                      context
-                                          .read<ForgetPasswordCubit>()
-                                          .newPasswordConfirmController,
+                                          context
+                                              .read<ForgetPasswordCubit>()
+                                              .newPasswordConfirmController,
                                       style: const TextStyle(
                                         color: AppColors.neutral10,
                                       ),
                                       decoration: InputDecoration(
                                         focusColor: AppColors.neutral10,
 
-                                        focusedBorder:
-                                        const OutlineInputBorder(
+                                        focusedBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: AppColors.neutral10,
                                             width: 0.5,
@@ -176,8 +173,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                             Radius.circular(50),
                                           ),
                                         ),
-                                        enabledBorder:
-                                        const OutlineInputBorder(
+                                        enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: AppColors.neutral10,
                                             width: 0.5,
@@ -188,13 +184,11 @@ class ResetPasswordScreen extends StatelessWidget {
                                         ),
 
                                         labelText: context.loc.confirm_password,
-                                        labelStyle: context
-                                            .textTheme
-                                            .bodySmall
+                                        labelStyle: context.textTheme.bodySmall
                                             ?.copyWith(
-                                          fontWeight: FontWeight.w800,
-                                          color: AppColors.neutral10,
-                                        ),
+                                              fontWeight: FontWeight.w800,
+                                              color: AppColors.neutral10,
+                                            ),
                                         prefixIcon: Image.asset(
                                           AppAssets.lock,
                                           color: AppColors.neutral10,
@@ -210,39 +204,47 @@ class ResetPasswordScreen extends StatelessWidget {
                               ),
                               responsiveHeight(context, 0.01),
                               BlocListener<
-                                  ForgetPasswordCubit,
-                                  ForgetPasswordState
+                                ForgetPasswordCubit,
+                                ForgetPasswordState
                               >(
-
                                 listener: (context, state) {
                                   if (state is ResetPasswordSuccess) {
-                                   showSnackBar(context, "Password Reset Successfully!");
+                                    showSnackBar(
+                                      context,
+                                      "Password Reset Successfully!",
+                                    );
                                     Navigator.pushReplacementNamed(
                                       context,
                                       RoutesName.login,
                                     );
-
                                   }
                                   if (state is ResetPasswordError) {
-                                   showErrorSnackBar(context, state.errorMessage);
+                                    showErrorSnackBar(
+                                      context,
+                                      state.errorMessage,
+                                    );
                                   }
                                 },
                                 child: ElevatedButton(
                                   onPressed: () {
                                     // Trigger the registration process
-                                    if(forgetPasswordCubit.formKeyResetPassword.currentState!.validate()){
-                                    forgetPasswordCubit.doIntent(
-                                      ResetPasswordIntent(),
-                                    );}
+                                    if (forgetPasswordCubit
+                                        .formKeyResetPassword
+                                        .currentState!
+                                        .validate()) {
+                                      forgetPasswordCubit.doIntent(
+                                        ResetPasswordIntent(),
+                                      );
+                                    }
                                     //Navigate to complete registration process
                                   },
                                   child: Text(
                                     context.loc.done,
                                     style: context.textTheme.bodyLarge
                                         ?.copyWith(
-                                      fontWeight: FontWeight.w900,
-                                      color: AppColors.neutral10,
-                                    ),
+                                          fontWeight: FontWeight.w900,
+                                          color: AppColors.neutral10,
+                                        ),
                                   ),
                                 ),
                               ),

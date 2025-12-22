@@ -20,7 +20,11 @@ class GridViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, RoutesName.exerciseView,arguments: muscle);
+        Navigator.pushNamed(
+          context,
+          RoutesName.exerciseView,
+          arguments: muscle,
+        );
       },
       child: Container(
         height: 163,

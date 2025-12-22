@@ -5,11 +5,7 @@ class AppTabBar extends StatelessWidget {
   final List<Widget> tabs;
   final TabController controller;
 
-  const AppTabBar({
-    super.key,
-    required this.tabs,
-    required this.controller,
-  }) ;
+  const AppTabBar({super.key, required this.tabs, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +22,7 @@ class AppTabBar extends StatelessWidget {
         color: AppColors.mainRed,
         borderRadius: BorderRadius.circular(25),
       ),
-      tabs: tabs
+      tabs: tabs,
     );
   }
 }
