@@ -1,8 +1,6 @@
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
-import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
-import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_intent.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/get_start_view.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
 import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
@@ -20,15 +18,6 @@ class LayOut extends StatefulWidget {
 
 class _LayOutState extends State<LayOut> {
   int _selectedIndex = 0;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   Future.microtask(() {
-  //     context.read<SmartCoachCubit>().doIntent(LoadConversationsIntent());
-  //   });
-  // }
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

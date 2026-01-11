@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
           create:
               (context) =>
                   HomeViewCubit(getIt<HomeUseCase>())
-                    ..doIntent(HomeViewDataIntent()),
+                    ..doIntent(GetHomeDataIntent()),
         ),
 
         BlocProvider(

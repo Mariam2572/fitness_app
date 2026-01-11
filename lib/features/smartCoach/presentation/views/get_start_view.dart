@@ -7,15 +7,14 @@ import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GetStartView extends StatefulWidget {
-
-  const GetStartView({super.key,});
+  const GetStartView({super.key});
 
   @override
   State<GetStartView> createState() => _GetStartViewState();
 }
 
 class _GetStartViewState extends State<GetStartView> {
-   String _userName= 'User';
+  String _userName = '...';
 
   @override
   void initState() {
@@ -145,8 +144,7 @@ class _GetStartViewState extends State<GetStartView> {
                                   ),
                                   elevation: 5,
                                   shadowColor: AppColors.mainRed.withValues(
-                                    alpha: 
-                                    0.5,
+                                    alpha: 0.5,
                                   ),
                                 ),
                                 onPressed: () {

@@ -1,32 +1,31 @@
-import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/cubit/home_view_cubit.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/home_upcoming_workout_item.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/common/error_state_widget.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/muscles_groups/upcoming_workout_item.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/muscles_groups/workouts_list_skeleton.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
-class WorkoutExerciseInHomeView extends StatefulWidget {
-  final List<MusclesGroupBean> musclesCroup;
+/// Workout tabs view displaying muscle group tabs with exercises
+class WorkoutTabsView extends StatefulWidget {
+  final List<MusclesGroupBean> musclesGroups;
 
-  const WorkoutExerciseInHomeView({super.key, required this.musclesCroup});
+  const WorkoutTabsView({super.key, required this.musclesGroups});
 
   @override
-  State<WorkoutExerciseInHomeView> createState() =>
-      _BodyPartsFilterWidgetState();
+  State<WorkoutTabsView> createState() => _WorkoutTabsViewState();
 }
 
-class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
+class _WorkoutTabsViewState extends State<WorkoutTabsView>
     with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    if (widget.musclesCroup.isNotEmpty) {
+    if (widget.musclesGroups.isNotEmpty) {
       _initTabController();
     }
   }
@@ -39,10 +38,8 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
 
   @override
   Widget build(BuildContext context) {
-    if (widget.musclesCroup.isEmpty) {
-      return Center(
-        child: Text("No data available", style: context.textTheme.bodyMedium),
-      );
+    if (widget.musclesGroups.isEmpty) {
+      return const ErrorStateWidget(message: "No data available", height: 90);
     }
 
     return BlocBuilder<HomeViewCubit, HomeViewState>(
@@ -56,37 +53,14 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
           children: [
             AppTabBar(
               tabs:
-                  widget.musclesCroup
+                  widget.musclesGroups
                       .map((item) => Tab(text: item.name ?? ''))
                       .toList(),
               controller: _tabController,
             ),
             const SizedBox(height: 8),
             if (state.workoutsByMuscleGroupStatus.isLoading)
-              Skeletonizer(
-                enabled: true,
-                effect: const ShimmerEffect(
-                  baseColor: AppColors.neutral90,
-                  highlightColor: AppColors.neutral70,
-                ),
-                child: SizedBox(
-                  height: 90,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4, // Show 4 skeleton items
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 90,
-                        margin: const EdgeInsets.only(right: 16),
-                        decoration: BoxDecoration(
-                          color: AppColors.neutral90With50Opacity,
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              )
+              const WorkoutsListSkeleton()
             else if (state.workoutsByMuscleGroupStatus.isSuccess &&
                 state.workoutsByMuscleGroup.isNotEmpty)
               SizedBox(
@@ -112,14 +86,10 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
                 ),
               )
             else if (state.workoutsByMuscleGroupStatus.isFailure)
-              SizedBox(
-                height: 90,
-                child: Center(
-                  child: Text(
+              ErrorStateWidget(
+                message:
                     state.workoutsByMuscleGroupError ?? "Unable to get muscles",
-                    style: context.textTheme.bodyMedium,
-                  ),
-                ),
+                height: 90,
               )
             else
               const SizedBox(height: 90),
@@ -131,7 +101,7 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
 
   void _initTabController() {
     _tabController = TabController(
-      length: widget.musclesCroup.length,
+      length: widget.musclesGroups.length,
       vsync: this,
     );
     _tabController.addListener(_onTabChanged);
@@ -140,7 +110,7 @@ class _BodyPartsFilterWidgetState extends State<WorkoutExerciseInHomeView>
   void _onTabChanged() {
     if (!_tabController.indexIsChanging) {
       final homeCubit = context.read<HomeViewCubit>();
-      final id = widget.musclesCroup[_tabController.index].id;
+      final id = widget.musclesGroups[_tabController.index].id;
       if (id != null) {
         homeCubit.doIntent(GetWorkoutsByMuscleGroupIdIntent(id: id));
       }

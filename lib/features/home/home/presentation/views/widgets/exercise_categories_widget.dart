@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/category_item.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/category_view.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/categories/category_item.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/categories/category_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
