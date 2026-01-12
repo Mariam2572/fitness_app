@@ -18,27 +18,28 @@ import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_c
 import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await configureDependencies();
   final geminiService = getIt<GeminiService>();
   await geminiService.initialize();
   await Hive.initFlutter();
   Hive.registerAdapter(ConversationHiveModelAdapter());
   Hive.registerAdapter(ChatMessageHiveModelAdapter());
+  Bloc.observer = SimpleBlocObserver();
   runApp(
     ChangeNotifierProvider(
       create: (_) => AppConfigProvider(),
       child: const MyApp(),
     ),
   );
-  Bloc.observer = SimpleBlocObserver();
 }
 
 class MyApp extends StatelessWidget {
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RoutesGenerator.onGenerator,
             theme: AppTheme.appTheme,
-            initialRoute:  RoutesName.splash,
+            initialRoute: RoutesName.splash,
           ),
         );
       },

@@ -6,9 +6,9 @@ import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SharedContainer extends StatelessWidget {
-  List<Widget> children;
-  double? height;
-  SharedContainer({super.key, required this.children, this.height});
+final  List<Widget> children;
+final double? height;
+  const SharedContainer({super.key, required this.children, this.height});
 
   @override
   Widget build(BuildContext context) {

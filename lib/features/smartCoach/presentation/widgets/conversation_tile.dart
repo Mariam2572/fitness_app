@@ -1,4 +1,3 @@
-
 // Widget للـ Conversation Tile
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/smartCoach/data/models/conversation_hive_model.dart';
@@ -70,19 +69,6 @@ class ConversationTile extends StatelessWidget {
       onDismissed: (_) => onDelete(),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        leading: Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            color: AppColors.mainRed.withValues(alpha: 0.15),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: const Icon(
-            Icons.chat_bubble,
-            color: AppColors.mainRed,
-            size: 24,
-          ),
-        ),
         title: Text(
           conversation.title ?? 'Untitled Conversation',
           style: const TextStyle(
@@ -94,33 +80,36 @@ class ConversationTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Padding(
-          padding: const EdgeInsets.only(top: 4),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.access_time,
-                size: 12,
-                color: AppColors.neutral30,
-              ),
-              const SizedBox(width: 4),
-              Text(
-                _formatDate(conversation.updatedAt),
-                style: const TextStyle(
+          padding: const EdgeInsets.only(top: 4, left: 8),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.access_time,
+                  size: 12,
                   color: AppColors.neutral30,
-                  fontSize: 12,
                 ),
-              ),
-              const SizedBox(width: 12),
-              const Icon(Icons.message, size: 12, color: AppColors.neutral30),
-              const SizedBox(width: 4),
-              Text(
-                '${conversation.messages.length} messages',
-                style: const TextStyle(
-                  color: AppColors.neutral30,
-                  fontSize: 12,
+                const SizedBox(width: 4),
+                Text(
+                  _formatDate(conversation.updatedAt),
+                  style: const TextStyle(
+                    color: AppColors.neutral30,
+                    fontSize: 12,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(width: 12),
+                const Icon(Icons.message, size: 12, color: AppColors.neutral30),
+                const SizedBox(width: 4),
+                Text(
+                  '${conversation.messages.length} messages',
+                  style: const TextStyle(
+                    color: AppColors.neutral30,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         trailing: const Icon(Icons.chevron_right, color: AppColors.neutral50),

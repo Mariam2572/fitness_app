@@ -6,11 +6,11 @@ import 'package:fitness_app/features/food/data/models/meals_of_category_response
 import 'package:flutter/material.dart';
 
 class RecommendationCard extends StatelessWidget {
-  String imagePath;
-  String label;
-  final List<Meal> meals;
-  final Meal meal;
-  RecommendationCard({
+final  String imagePath;
+final String label;
+final List<Meal> meals;
+final Meal meal;
+  const RecommendationCard({
     super.key,
     required this.imagePath,
     required this.label,

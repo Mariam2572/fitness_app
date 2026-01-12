@@ -1,19 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:ui';
 
 import 'package:fitness_app/core/utils/helper/extention.dart';
-import 'package:fitness_app/core/utils/helper_func/snack_bar.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:fitness_app/core/utils/routes/routes_name.dart';
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:fitness_app/features/auth/register/presentation/screens/widgets/circular_percent_indicator_widget.dart';
-import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
-import 'package:fitness_app/features/auth/register/presentation/widgets/item_option.dart';
+import 'package:fitness_app/features/auth/register/presentation/widgets/custom_widgets/goal_selection_widget.dart';
+import 'package:flutter/material.dart';
 
 class CustomGoalsScreen extends StatefulWidget {
   final void Function(String?) onChanged;
@@ -48,13 +40,6 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> goals = [
-      context.loc.gainWeight,
-      context.loc.loseWeight,
-      context.loc.getFitter,
-      context.loc.gainMoreFlexibility,
-      context.loc.learnTheBasics,
-    ];
     return Scaffold(
       body: Stack(
         children: [
@@ -117,72 +102,11 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
                       ),
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                    Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(25),
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.46,
-                          padding: const EdgeInsets.all(24),
-                          decoration: BoxDecoration(
-                            color: AppColors.neutral80.withValues(alpha: 0.5),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                ...goals.map(
-                                  (goal) => Column(
-                                    children: [
-                                      OptionItem(
-                                        value: goal,
-                                        label: goal,
-                                        selectedValue: selectedGoal,
-                                        onChanged:
-                                            (value) => _onGoalSelected(value!),
-                                      ),
-                                      const SizedBox(height: 16),
-                                    ],
-                                  ),
-                                ),
-
-                                ElevatedButton(
-                                  onPressed: () {
-                                    if (selectedGoal == null) {
-                                      showSnackBar(
-                                        context,
-                                        'Please Select Your Goal',
-                                      );
-                                      return;
-                                    }
-                                    if (widget.isEditProfile) {
-                                      widget.onPressed?.call();
-                                      return;
-                                    }
-                                    context.read<RegisterCubit?>()?.goal =
-                                        selectedGoal;
-                                    Navigator.pushNamed(
-                                      context,
-                                      RoutesName.activities,
-                                      arguments: context.read<RegisterCubit>(),
-                                    );
-                                  },
-                                  child: Text(
-                                    widget.isEditProfile
-                                        ? context.loc.done
-                                        : context.loc.next,
-                                    style: AppTextStyle.instance.textStyle14
-                                        .copyWith(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    GoalSelectionWidget(
+                      isEditProfile: widget.isEditProfile,
+                      initialGoal: selectedGoal,
+                      onGoalSelected: _onGoalSelected,
+                      onPressed: widget.onPressed,
                     ),
                   ],
                 ),

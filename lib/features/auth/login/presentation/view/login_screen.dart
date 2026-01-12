@@ -26,6 +26,7 @@ class LoginScreen extends StatelessWidget {
           fit: BoxFit.cover,
           height: double.infinity,
           width: double.infinity,
+      
         ),
         Scaffold(
           backgroundColor: Colors.transparent,
@@ -136,6 +137,9 @@ class LoginScreen extends StatelessWidget {
                                 key: Constants.userToken,
                                 value: token,
                               );
+                              // Check if widget is still mounted before using context
+                              if (!context.mounted) return;
+
                               showSnackBar(context, 'Login successful');
                               Future.delayed(
                                 const Duration(milliseconds: 500),
@@ -150,19 +154,19 @@ class LoginScreen extends StatelessWidget {
                                 },
                               );
                             } else {
+                              // Check if widget is still mounted before using context
+                              if (!context.mounted) return;
+
                               showErrorSnackBar(
                                 context,
                                 'Token is missing in response',
                               );
                             }
-                            showSnackBar(context, 'Login successful');
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              RoutesName.layOut,
-                              (route) => false,
-                            );
                           }
                           if (state is LoginFailure) {
+                            // No async gap here, but good practice to check
+                            if (!context.mounted) return;
+
                             showErrorSnackBar(context, state.error);
                           }
                         },

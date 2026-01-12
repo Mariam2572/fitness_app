@@ -32,8 +32,6 @@ class LoginCubit extends Cubit<LoginState> {
         );
       case ApiSuccess<LoginResponse>():
         emit(LoginSuccess(response.data!));
-      default:
-        break;
     }
   }
 }

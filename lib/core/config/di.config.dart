@@ -94,6 +94,8 @@ import '../../features/home/home/data/repositories/home_repo_impl.dart'
     as _i362;
 import '../../features/home/home/domain/repositories/home_repo.dart' as _i751;
 import '../../features/home/home/domain/use_cases/home_use_case.dart' as _i204;
+import '../../features/logout/data/datasources/logout_local_datasource.dart'
+    as _i975;
 import '../../features/logout/data/datasources/logout_remote_data_source_impl.dart'
     as _i115;
 import '../../features/logout/data/datasources/logout_remote_datasource.dart'
@@ -175,6 +177,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i291.AppConfigProvider>(
         () => appModule.appConfigProvider);
     gh.factory<_i722.ChatHistoryService>(() => _i527.ChatHistoryServiceImpl());
+    gh.factory<_i975.LogoutLocalDataSource>(
+        () => _i975.LogoutLocalDataSourceImpl());
     gh.singleton<_i361.Dio>(() => dioModule.provideDio(
           gh<_i361.LogInterceptor>(),
           gh<_i291.AppConfigProvider>(),
@@ -233,12 +237,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i638.WorkOutsRepoImpl(gh<_i980.WorkOutsDataSource>()));
     gh.factory<_i283.ChangePasswordRemoteDataSource>(
         () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()));
-    gh.factory<_i1004.LogoutRepository>(() => _i885.LogoutRepositoryImpl(
-        remoteDataSource: gh<_i671.LogoutRemoteDataSource>()));
-    gh.factory<_i98.LogoutUseCase>(
-        () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()));
     gh.factory<_i129.EditProfileRepo>(
         () => _i98.EditProfileRepoImpl(gh<_i843.EditProfileDataSource>()));
+    gh.factory<_i1004.LogoutRepository>(() => _i885.LogoutRepositoryImpl(
+          remoteDataSource: gh<_i671.LogoutRemoteDataSource>(),
+          localDataSource: gh<_i975.LogoutLocalDataSource>(),
+        ));
     gh.factory<_i1023.GetAllMusclesByMuscleGroupIdUseCase>(() =>
         _i1023.GetAllMusclesByMuscleGroupIdUseCase(gh<_i1002.WorkOutsRepo>()));
     gh.factory<_i80.GetAllMusclesGroupsUseCase>(
@@ -286,6 +290,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i280.GetProfileDataUseCase(gh<_i1007.ProfileRepository>()));
     gh.factory<_i763.UploadPhoto>(
         () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
+    gh.factory<_i98.LogoutUseCase>(
+        () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()));
     gh.factory<_i118.RegisterUseCase>(
         () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()));
     gh.factory<_i46.SmartCoachCubit>(() => _i46.SmartCoachCubit(

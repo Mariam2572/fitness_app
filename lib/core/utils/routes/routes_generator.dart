@@ -82,22 +82,7 @@ class RoutesGenerator {
                   BlocProvider.value(value: cubit, child: const GoalsScreen()),
           settings: settings,
         );
-      case RoutesName.register:
-        final cubit = RegisterCubit(getIt<RegisterUseCase>());
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(value: cubit, child: RegisterScreen()),
-          settings: settings,
-        );
 
-      case RoutesName.goals:
-        final cubit = settings.arguments as RegisterCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) =>
-                  BlocProvider.value(value: cubit, child: const GoalsScreen()),
-          settings: settings,
-        );
 
       case RoutesName.chooseGenderScreen:
         final cubit = settings.arguments as RegisterCubit;
@@ -265,9 +250,8 @@ class RoutesGenerator {
           settings: settings,
         );
       case RoutesName.smartCoach:
-        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (context) => SmartCoachView(),
+          builder: (context) => const SmartCoachView(),
           settings: settings,
         );
       case RoutesName.exerciseView:
@@ -296,7 +280,6 @@ class RoutesGenerator {
               ),
           settings: settings,
         );
-
       case RoutesName.food:
         return MaterialPageRoute(
           builder:

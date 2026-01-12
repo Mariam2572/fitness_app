@@ -4,10 +4,10 @@ import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class IngredientItem extends StatelessWidget {
-  String name;
-  String amount;
+final String name;
+final String amount;
 
-  IngredientItem({super.key, required this.name, required this.amount});
+  const IngredientItem({super.key, required this.name, required this.amount});
 
   @override
   Widget build(BuildContext context) {

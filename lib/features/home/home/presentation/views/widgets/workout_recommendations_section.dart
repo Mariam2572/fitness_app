@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/cubit/home_view_cubit.dart';
-import 'package:fitness_app/features/home/home/presentation/views/widgets/workout_recommendation.dart';
+import 'package:fitness_app/features/home/home/presentation/views/widgets/workout_recommendations/workout_recommendation_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';

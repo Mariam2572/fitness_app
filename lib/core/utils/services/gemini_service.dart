@@ -17,8 +17,8 @@ class GeminiService {
     }
 
     try {
-      const apiKeyFromAppKeys = AppKeys.geminiApiKey;
-      
+      final apiKeyFromAppKeys = AppKeys.geminiApiKey;
+
       if (apiKeyFromAppKeys.isEmpty) {
         throw Exception('Gemini API key not found in AppKeys');
       }
@@ -26,7 +26,7 @@ class GeminiService {
       // Always use the API key from AppKeys (it's the source of truth)
       // This ensures that when you update the key, it will be used immediately
       await writeSecureData(Constants.geminiApiKey, apiKeyFromAppKeys);
-      
+
       Gemini.init(apiKey: apiKeyFromAppKeys);
       gemini = Gemini.instance;
       _isInitialized = true;

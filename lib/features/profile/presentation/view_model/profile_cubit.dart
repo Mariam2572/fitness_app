@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
-import 'package:fitness_app/core/constants/constants.dart';
-import 'package:fitness_app/core/utils/helper/secure_storage.dart' as SecureStorage;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fitness_app/core/base/api_result.dart';
@@ -24,9 +22,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       case LoadProfileIntent():
         await _loadProfile();
         break;
-      // case UploadPhotoIntent(:final photo):
-      //   await _uploadPhoto(photo);
-      //   break;
       case LogoutIntent():
         await _logout();
         break;
@@ -58,7 +53,6 @@ class ProfileCubit extends Cubit<ProfileState> {
         );
       case ApiSuccess<String>():
         emit(ProfileSuccess(message: response.data!));
-      await  SecureStorage.deleteSecureData(Constants.userToken  );
       default:
         break;
     }
