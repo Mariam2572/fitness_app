@@ -1,8 +1,8 @@
-import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/smartCoach/data/models/message_model.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/previous_chat_screenbody.dart';
+import 'package:fitness_app/features/smartCoach/presentation/widgets/build_appbar.dart';
 import 'package:fitness_app/features/smartCoach/presentation/widgets/smart_coach_background.dart';
 import 'package:fitness_app/features/smartCoach/presentation/widgets/smart_coach_chat_list.dart';
 import 'package:fitness_app/features/smartCoach/presentation/widgets/smart_coach_input_area.dart';
@@ -38,31 +38,9 @@ class _SmartCoachViewState extends State<SmartCoachView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Image.asset(AppAssets.backButton, width: 32, height: 32),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text("Smart Coach"),
-        actions: [
-          Builder(
-            builder:
-                (context) => IconButton(
-                  icon: Image.asset(
-                    AppAssets.drawerIcon,
-                    width: 32,
-                    height: 32,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openEndDrawer();
-                  },
-                ),
-          ),
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: const BuildAppbar(),
       ),
       extendBodyBehindAppBar: true,
       endDrawer: Drawer(

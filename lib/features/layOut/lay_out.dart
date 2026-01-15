@@ -1,13 +1,7 @@
-import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_screen.dart';
 import 'package:fitness_app/features/profile/presentation/view/profile_view.dart';
 import 'package:fitness_app/features/smartCoach/presentation/views/get_start_view.dart';
-import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_by_muscle_group_id_use_case.dart';
-import 'package:fitness_app/features/workOuts/domain/use_cases/get_all_muscles_groups_use_case.dart';
-import 'package:fitness_app/features/workOuts/presentation/view_model/cubit/work_outs_cubit.dart';
-import 'package:fitness_app/features/workOuts/presentation/views/work_outs_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LayOut extends StatefulWidget {
   const LayOut({super.key});
@@ -41,15 +35,6 @@ class _LayOutState extends State<LayOut> {
     final screens = [
       const HomeScreen(),
          GetStartView(),
-      
-      BlocProvider(
-        create:
-            (context) => WorkOutsCubit(
-              getIt<GetAllMusclesGroupsUseCase>(),
-              getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
-            )..doIntent(GetAllMusclesGroupsIntent()),
-        child: const WorkOutsView(),
-      ),
       const ProfileView(),
     ];
 

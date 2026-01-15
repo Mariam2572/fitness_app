@@ -13,8 +13,6 @@ part 'home_view_state.dart';
 class HomeViewCubit extends Cubit<HomeViewState> {
   HomeViewCubit(this.homeUseCase) : super(const HomeViewState());
   final HomeUseCase homeUseCase;
-
-  /// Main intent dispatcher following MVI pattern
   Future<void> doIntent(HomeIntent intent) async {
     switch (intent) {
       case GetUserDataIntent():
@@ -167,23 +165,17 @@ class HomeViewCubit extends Cubit<HomeViewState> {
 
 sealed class HomeIntent {}
 
-/// Intent to fetch user data
 class GetUserDataIntent extends HomeIntent {}
 
-/// Intent to fetch workout recommendations
 class GetWorkoutRecommendationsIntent extends HomeIntent {}
 
-/// Intent to fetch meals categories
 class GetMealsCategoriesIntent extends HomeIntent {}
 
-/// Intent to fetch muscles groups
 class GetMusclesGroupsIntent extends HomeIntent {}
 
-/// Intent to fetch workouts by muscle group ID
 class GetWorkoutsByMuscleGroupIdIntent extends HomeIntent {
   final String id;
   GetWorkoutsByMuscleGroupIdIntent({required this.id});
 }
 
-/// Intent to fetch all initial home data
 class GetHomeDataIntent extends HomeIntent {}

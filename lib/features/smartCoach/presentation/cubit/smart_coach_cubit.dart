@@ -48,7 +48,6 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
     String? conversationId,
     List<ChatMessage>? initialMessages,
   }) async {
-    log("SmartCoachCubit.initialize called");
     emit(state.copyWith(status: SmartCoachStatus.loading));
 
     // 1. Fetch User Profile

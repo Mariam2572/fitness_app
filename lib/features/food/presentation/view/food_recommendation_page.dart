@@ -45,7 +45,8 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage>
       backgroundColor: Colors.black.withValues(alpha: 0.85),
       body: Stack(
         children: [
-          Image.asset(AppAssets.homeBackground),
+          Image.asset(AppAssets.homeBackground,
+           fit: BoxFit.fill, height: double.infinity, width: double.infinity,),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
