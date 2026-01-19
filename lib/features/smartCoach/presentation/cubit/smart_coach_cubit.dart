@@ -42,7 +42,7 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
         break;
     }
   }
-  
+
   /// Initialize the chat session. Call this when entering the screen.
   Future<void> initialize({
     String? conversationId,
@@ -54,19 +54,26 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
     String userId = "unknown_user";
     try {
       final result = await _getProfileDataUseCase();
-      
+
       if (result is ApiSuccess<UserResponse>) {
         // Assuming ApiSuccess has generic T, here UserResponse
-        final fetchedId = result .data?.user?.id;
+        final fetchedId = result.data?.user?.id;
         if (fetchedId != null) {
           userId = fetchedId;
-          emit(state.copyWith(status: SmartCoachStatus.initial, userId: userId));
+          emit(
+            state.copyWith(status: SmartCoachStatus.initial, userId: userId),
+          );
           log("User profile fetched: $userId");
         } else {
           log("User profile fetched but ID is null");
         }
       } else if (result is ApiError<UserResponse>) {
-        emit(state.copyWith(status: SmartCoachStatus.failure, errorMessage: result.message));
+        emit(
+          state.copyWith(
+            status: SmartCoachStatus.failure,
+            errorMessage: result.message,
+          ),
+        );
         log("User profile fetch failed: ${result.message}");
       }
     } catch (e) {
@@ -109,6 +116,7 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
         currentConversationId: const Uuid().v4(),
         messages: [],
         status: SmartCoachStatus.initial,
+        isNewMessage: false,
       ),
     );
   }
@@ -135,7 +143,12 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
     try {
       final result = await _getProfileDataUseCase();
       if (result is ApiSuccess<UserResponse>) {
-        emit(state.copyWith(status:   SmartCoachStatus.success, userName: result.data?.user?.firstName ?? 'User'));
+        emit(
+          state.copyWith(
+            status: SmartCoachStatus.success,
+            userName: result.data?.user?.firstName ?? 'User',
+          ),
+        );
         return result.data?.user?.firstName ?? 'User';
       }
     } catch (e) {
@@ -162,6 +175,7 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
           status:
               SmartCoachStatus
                   .initial, // Reset status to allow sending new messages
+          isNewMessage: false, // Don't animate cached messages
         ),
       );
     }
@@ -193,6 +207,7 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
         messages: updatedMessages,
         isTyping: true,
         status: SmartCoachStatus.loading,
+        isNewMessage: false,
       ),
     );
 
@@ -207,6 +222,7 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
           messages: finalMessages,
           isTyping: false,
           status: SmartCoachStatus.success,
+          isNewMessage: true,
         ),
       );
 
@@ -219,6 +235,7 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
           isTyping: false,
           status: SmartCoachStatus.failure,
           errorMessage: e.toString(),
+          isNewMessage: false,
         ),
       );
     }
@@ -257,5 +274,4 @@ class SmartCoachCubit extends Cubit<SmartCoachState> {
 
     await _chatHistoryService.saveConversation(conversation);
   }
-
 }

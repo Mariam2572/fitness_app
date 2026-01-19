@@ -2,6 +2,7 @@ import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
 import 'package:fitness_app/features/smartCoach/presentation/widgets/smart_coach_empty_state.dart';
+import 'package:fitness_app/features/smartCoach/presentation/widgets/typewriter_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -59,6 +60,8 @@ class _SmartCoachChatListState extends State<SmartCoachChatList> {
 
             final msg = state.messages[index];
             final isUser = msg.role == 'user';
+            final isLastAiMessage =
+                !isUser && index == state.messages.length - 1 && state.isNewMessage;
 
             return Padding(
               padding: const EdgeInsets.only(bottom: 12),
@@ -90,13 +93,22 @@ class _SmartCoachChatListState extends State<SmartCoachChatList> {
                           bottomRight: Radius.circular(isUser ? 0 : 16),
                         ),
                       ),
-                      child: Text(
-                        msg.text,
-                        style: const TextStyle(
-                          color: AppColors.baseWhite,
-                          fontSize: 15,
-                        ),
-                      ),
+                      child:
+                          isLastAiMessage
+                              ? TypewriterText(
+                                text: msg.text,
+                                style: const TextStyle(
+                                  color: AppColors.baseWhite,
+                                  fontSize: 15,
+                                ),
+                              )
+                              : Text(
+                                msg.text,
+                                style: const TextStyle(
+                                  color: AppColors.baseWhite,
+                                  fontSize: 15,
+                                ),
+                              ),
                     ),
                   ),
                   if (isUser) ...[

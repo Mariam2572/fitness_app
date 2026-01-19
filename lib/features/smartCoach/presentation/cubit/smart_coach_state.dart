@@ -12,6 +12,7 @@ class SmartCoachState extends Equatable {
   final String? userId;
   final String? userName;
   final String? errorMessage;
+  final bool isNewMessage;
 
   const SmartCoachState({
     this.status = SmartCoachStatus.initial,
@@ -23,6 +24,7 @@ class SmartCoachState extends Equatable {
     this.userId,
     this.userName,
     this.errorMessage,
+    this.isNewMessage = false,
   });
 
   SmartCoachState copyWith({
@@ -35,6 +37,7 @@ class SmartCoachState extends Equatable {
     String? userId,
     String? userName,
     String? errorMessage,
+    bool? isNewMessage,
   }) {
     return SmartCoachState(
       status: status ?? this.status,
@@ -47,6 +50,7 @@ class SmartCoachState extends Equatable {
       userId: userId ?? this.userId,
         userName: userId?? this.userName,
       errorMessage: errorMessage ?? this.errorMessage,
+      isNewMessage: isNewMessage ?? this.isNewMessage,
     );
   }
 
@@ -61,5 +65,6 @@ class SmartCoachState extends Equatable {
     userId,
     userName,
     errorMessage,
+    isNewMessage,
   ];
 }
