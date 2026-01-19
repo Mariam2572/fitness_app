@@ -237,7 +237,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i283.ChangePasswordRemoteDataSource>(
         () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()));
     gh.factory<_i1004.LogoutRepository>(() => _i885.LogoutRepositoryImpl(
-        remoteDataSource: gh<_i671.LogoutRemoteDataSource>()));
+        remoteDataSource: gh<_i671.LogoutRemoteDataSource>(), localDataSource: gh<_i975.LogoutLocalDataSource>()));
     gh.factory<_i401.LoginUsecase>(
         () => _i401.LoginUsecase(loginRepo: gh<_i983.LoginRepo>()));
     gh.factory<_i98.LogoutUseCase>(
@@ -271,7 +271,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i369.RegisterRepo>(
         () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()));
     gh.factory<_i401.LoginUsecase>(
-        () => _i401.LoginUsecase(loginRepo: gh<_i96.LoginContract>()));
+        () => _i401.LoginUsecase(loginRepo: gh<_i983.LoginRepo>()));
     gh.factory<_i793.ChangePasswordUseCase>(
         () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()));
     gh.factory<_i782.MealsDetailsCubit>(
