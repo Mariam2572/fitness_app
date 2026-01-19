@@ -6,7 +6,7 @@ class LogoutUseCase {
   final LogoutRepository _repository;
 
   LogoutUseCase(this._repository);
- call() async {
-   return await _repository.logout();
- }
+  call() async {
+    return await _repository.logout();
+  }
 }

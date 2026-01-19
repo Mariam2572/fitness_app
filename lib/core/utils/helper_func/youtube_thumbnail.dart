@@ -1,7 +1,8 @@
 String getYouTubeThumbnail(String youtubeLink) {
   try {
     final uri = Uri.parse(youtubeLink);
-    final videoId = uri.queryParameters['v'] ??
+    final videoId =
+        uri.queryParameters['v'] ??
         (uri.pathSegments.isNotEmpty ? uri.pathSegments.last : null);
 
     if (videoId == null || videoId.isEmpty) {

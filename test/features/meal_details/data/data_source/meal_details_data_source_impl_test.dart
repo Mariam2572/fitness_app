@@ -17,7 +17,9 @@ void main() {
 
   setUp(() {
     mockMealApiService = MockMealApiService();
-    dataSource = MealsDetailsRemoteDataSourceImp(apiService: mockMealApiService);
+    dataSource = MealsDetailsRemoteDataSourceImp(
+      apiService: mockMealApiService,
+    );
   });
 
   group('MealsDetailsRemoteDataSourceImp Tests', () {
@@ -26,8 +28,9 @@ void main() {
 
     test('should return ApiSuccess when API call is successful', () async {
       // arrange
-      when(mockMealApiService.getMealsDetails('1'))
-          .thenAnswer((_) async => response);
+      when(
+        mockMealApiService.getMealsDetails('1'),
+      ).thenAnswer((_) async => response);
 
       // act
       final result = await dataSource.mealsDatails(id: '1');
@@ -40,18 +43,17 @@ void main() {
 
     test('should return ApiError when API call throws an exception', () async {
       // arrange
-      when(mockMealApiService.getMealsDetails('1'))
-          .thenThrow(Exception('Failed to load meal'));
+      when(
+        mockMealApiService.getMealsDetails('1'),
+      ).thenThrow(Exception('Failed to load meal'));
 
       // act
       final result = await dataSource.mealsDatails(id: '1');
 
       // assert
       expect(result, isA<ApiError<MealsDatailsResponse>>());
-      expect(result , isA<ApiError<MealsDatailsResponse>>());
+      expect(result, isA<ApiError<MealsDatailsResponse>>());
       verify(mockMealApiService.getMealsDetails('1')).called(1);
-
     });
-
   });
 }

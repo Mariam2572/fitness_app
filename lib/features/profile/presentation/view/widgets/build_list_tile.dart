@@ -3,11 +3,11 @@ import 'package:fitness_app/core/utils/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class BuildListTile extends StatelessWidget {
-  IconData icon;
-  String title;
-  Color? color;
-  final VoidCallback? onTap;
-  BuildListTile({
+final  IconData icon;
+final String title;
+final Color? color;
+final VoidCallback? onTap;
+  const BuildListTile({
     super.key,
     required this.icon,
     required this.title,

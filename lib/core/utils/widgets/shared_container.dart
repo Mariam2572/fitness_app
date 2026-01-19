@@ -1,17 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
 
+import 'package:fitness_app/core/utils/helper/extention.dart';
+import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fitness_app/core/utils/helper/extention.dart';
-import 'package:fitness_app/core/utils/theme/app_assets.dart';
-import 'package:fitness_app/core/utils/theme/app_colors.dart';
-
 class SharedContainer extends StatelessWidget {
-  List<Widget> children;
-  double? height;
-  SharedContainer({Key? key, required this.children, this.height})
-    : super(key: key);
+final  List<Widget> children;
+final double? height;
+  const SharedContainer({super.key, required this.children, this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class SharedContainer extends StatelessWidget {
       width: double.infinity,
       height: height ?? context.height * 0.7,
       decoration: BoxDecoration(
-        color: AppColors.neutral90.withOpacity(.01),
+        color: AppColors.neutral90.withValues(alpha: .01),
         borderRadius: BorderRadius.circular(25.0),
       ),
       clipBehavior: Clip.antiAlias,

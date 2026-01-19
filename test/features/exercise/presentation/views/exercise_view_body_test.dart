@@ -24,7 +24,13 @@ void main() {
     return MaterialApp(
       home: BlocProvider<ExerciseCubit>.value(
         value: mockCubit,
-        child:  ExerciseViewBody(muscle: MusclesBean(id: '1', name: 'name',image: AppAssets.exerciseImage ),),
+        child: ExerciseViewBody(
+          muscle: MusclesBean(
+            id: '1',
+            name: 'name',
+            image: AppAssets.exerciseImage,
+          ),
+        ),
       ),
     );
   }

@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
@@ -16,10 +12,9 @@ import 'package:fitness_app/features/auth/login/data/model/login_request/login_r
 import 'package:fitness_app/features/auth/login/data/model/login_response/login_response.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
-import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/exercises_response.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/request/edit_profile_request.dart';
 import 'package:fitness_app/features/profile/edit_profile/data/models/response/get_user_data_reponse.dart';
-import 'package:fitness_app/features/profile/edit_profile/data/models/response/upload_photo_response.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
@@ -27,8 +22,8 @@ import 'package:fitness_app/features/food/data/models/meals_of_category_response
 import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise_by_prime_mover_and_difficulty_response.dart';
 import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
 import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meals_datails_response.dart';
-import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/random_exercise_response.dart';
+import 'package:fitness_app/features/home/home/data/models/user_response.dart';
 
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -57,7 +52,6 @@ abstract class ApiService {
     @Query("primeMoverMuscleId") String primeMoverMuscleId,
   );
 
-
   @GET(Constants.getAllMusclesGroupsEndPoint)
   Future<GetAllMusclesGroupsReponse> getAllMusclesGroups();
 
@@ -77,40 +71,38 @@ abstract class ApiService {
     @Query("difficultyLevelId") String difficultyLevelId,
     @Query("limit") int limit,
   );
-
-  // @MultiPart()
-  // @PUT(Constants.upLoadProfilePhoto)
-  // Future<String> uploadPhoto(@Part(name: "photo") File image);
-
   @GET(Constants.getCurrentUserDataEndPoint)
-  Future<UserResponse> getProfileData(
-  );
+  Future<UserResponse> getProfileData();
   @PATCH(Constants.changePassword)
   Future<ChangePasswordResponse> changePassword(
-    @Body() ChangePasswordRequest ChangePasswordRequest,
+    @Body() ChangePasswordRequest changePasswordRequest,
     @Header("Authorization") String userToken,
   );
-    @GET(Constants.logoutEndPoint)
+  @GET(Constants.logoutEndPoint)
   Future<String> logout();
-    @GET(Constants.getLoggedProfileDataEndPoint)
+  @GET(Constants.getLoggedProfileDataEndPoint)
   Future<GetUserDataReponse> getLoggedProfileData();
 
   @PUT(Constants.editProfileEndPoint)
-  Future<GetUserDataReponse> editProfile(@Body() EditProfileRequest editProfileRequest);
-  // @PUT(Constants.uploadPhotoEndPoint)
-  // @MultiPart()
-  // Future<String> uploadPhoto(@Part(name: "photo",contentType: "image/jpeg") File image);
+  Future<GetUserDataReponse> editProfile(
+    @Body() EditProfileRequest editProfileRequest,
+  );
 
   @POST(Constants.forgotPassword)
-  Future<ForgetPasswordResponse> forgotPassword(@Body()ForgetPasswordRequest forgetPasswordRequest);
+  Future<ForgetPasswordResponse> forgotPassword(
+    @Body() ForgetPasswordRequest forgetPasswordRequest,
+  );
 
   @POST(Constants.verifyResetCode)
-  Future<VerifyResetResponse> verifyResetCode(@Body()VerifyResetRequest verifyResetRequest);
+  Future<VerifyResetResponse> verifyResetCode(
+    @Body() VerifyResetRequest verifyResetRequest,
+  );
 
   @PUT(Constants.resetPassword)
-  Future<ResetPasswordResponse> resetPassword(@Body()ResetPasswordRequest resetPassword);
+  Future<ResetPasswordResponse> resetPassword(
+    @Body() ResetPasswordRequest resetPassword,
+  );
 }
-
 
 @RestApi(baseUrl: Constants.mealBaseUrl)
 abstract class MealApiService {
@@ -125,5 +117,4 @@ abstract class MealApiService {
   Future<MealsOfCategoryResponse> getMealsByCategory(
     @Query('c') String category,
   );
-
 }

@@ -25,7 +25,7 @@ void main() {
       'when call exercise use case should call exercise repo and it should return ApiSuccess<exerciseResponse>',
       () async {
         //arrange
-        var result = ApiSuccess<LevelsByMusclesModel>(data: expectedLevel);
+        final result = ApiSuccess<LevelsByMusclesModel>(data: expectedLevel);
         provideDummy<ApiResult<LevelsByMusclesModel>>(result);
         when(
           repo.getLevelsByMuscles(primeMoverMuscleId: '1234'),

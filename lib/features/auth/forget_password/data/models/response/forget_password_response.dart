@@ -9,15 +9,16 @@ class ForgetPasswordResponse {
   @JsonKey(name: 'info')
   String? info;
 
-  ForgetPasswordResponse({this.message, this.info, });
+  ForgetPasswordResponse({this.message, this.info});
 
   factory ForgetPasswordResponse.fromJson(Map<String, dynamic> json) =>
       _$ForgetPasswordResponseFromJson(json);
 
-  static List<ForgetPasswordResponse> fromList(List<Map<String, dynamic>> list) {
+  static List<ForgetPasswordResponse> fromList(
+    List<Map<String, dynamic>> list,
+  ) {
     return list.map(ForgetPasswordResponse.fromJson).toList();
   }
 
   Map<String, dynamic> toJson() => _$ForgetPasswordResponseToJson(this);
 }
-

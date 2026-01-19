@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'exercise.dart';
+import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_mover_and_difficulty_model/exercise.dart';
 
 class ExerciseByPrimeMoverAndDifficultyResponse extends Equatable {
   final String? message;

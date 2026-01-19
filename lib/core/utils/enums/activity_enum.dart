@@ -16,6 +16,7 @@ String activityEnumToString(ActivityEnum? activityEnum) {
       throw ArgumentError('Unknown ActivityEnum value: $activityEnum');
   }
 }
+
 ActivityEnum? stringToActivityEnum(String? value) {
   switch (value) {
     case 'level1':
@@ -32,20 +33,20 @@ ActivityEnum? stringToActivityEnum(String? value) {
       return null;
   }
 }
-parseLevelsToActivity(String level){
+
+parseLevelsToActivity(String level) {
   switch (level) {
     case 'level1':
-    return 'Rookie';
+      return 'Rookie';
     case 'level2':
-    return 'Beginner';
+      return 'Beginner';
     case 'level3':
-    return 'Intermediate';
+      return 'Intermediate';
     case 'level4':
-    return 'Advanced';
+      return 'Advanced';
     case 'level5':
-    return 'True Beast';
-      
-    
+      return 'True Beast';
+
     default:
   }
 }

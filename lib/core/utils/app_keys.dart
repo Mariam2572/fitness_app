@@ -1,3 +1,5 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class AppKeys {
-  static const String geminiApiKey ="AIzaSyBuAX8fExmY1PPP8lUMY3A3yZRk1AMdl2s";
+  static String get geminiApiKey => dotenv.env['GEMINI_API_KEY'] ?? '';
 }

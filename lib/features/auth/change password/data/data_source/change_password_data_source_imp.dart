@@ -7,7 +7,7 @@ import 'package:fitness_app/features/auth/change%20password/data/model/change_pa
 import 'package:fitness_app/features/auth/change%20password/data/model/change_password_response.dart';
 import 'package:injectable/injectable.dart';
 
-import 'change_password_data_source.dart';
+import 'package:fitness_app/features/auth/change%20password/data/data_source/change_password_data_source.dart';
 
 @Injectable(as: ChangePasswordRemoteDataSource)
 class ChangePasswordRemoteDataSourceImpl

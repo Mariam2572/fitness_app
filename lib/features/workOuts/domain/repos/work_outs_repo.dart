@@ -4,5 +4,6 @@ import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscl
 
 abstract interface class WorkOutsRepo {
   Future<ApiResult<GetAllMusclesGroupsReponse>> getAllMusclesGroups();
-  Future<ApiResult<GetAllMusclesByMuscleGroupIdReponse>> getAllMusclesByMuscleGroupId(String id);
+  Future<ApiResult<GetAllMusclesByMuscleGroupIdReponse>>
+  getAllMusclesByMuscleGroupId(String id);
 }

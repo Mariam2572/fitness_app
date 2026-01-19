@@ -6,9 +6,7 @@ class VerifyResetResponse {
   @JsonKey(name: 'status')
   String? status;
 
-
-
-  VerifyResetResponse({this.status });
+  VerifyResetResponse({this.status});
 
   factory VerifyResetResponse.fromJson(Map<String, dynamic> json) =>
       _$VerifyResetResponseFromJson(json);
@@ -19,4 +17,3 @@ class VerifyResetResponse {
 
   Map<String, dynamic> toJson() => _$VerifyResetResponseToJson(this);
 }
-

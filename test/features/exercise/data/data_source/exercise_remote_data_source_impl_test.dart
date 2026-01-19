@@ -10,7 +10,6 @@ import 'package:mockito/mockito.dart';
 import '../../../auth/register/data/data_source/register_data_source_impl_test.mocks.dart';
 
 @GenerateMocks([ApiService])
-
 void main() {
   late MockApiService mockApiService;
   late ExerciseRemoteDataSourceImpl exercisDataSource;
@@ -21,15 +20,22 @@ void main() {
   });
 
   group('ExerciseRemoteDataSourceImpl', () {
-    test('should return success ApiResult when getLevelsByMuscles succeeds', () async {
-      when(mockApiService.getLevelsByMuscles('12346')).thenAnswer((_) async => LevelsByMusclesModel(message: 'success'));
+    test(
+      'should return success ApiResult when getLevelsByMuscles succeeds',
+      () async {
+        when(
+          mockApiService.getLevelsByMuscles('12346'),
+        ).thenAnswer((_) async => LevelsByMusclesModel(message: 'success'));
 
-      final result = await exercisDataSource.getLevelsByMuscles(primeMoverMuscleId: '12346');
+        final result = await exercisDataSource.getLevelsByMuscles(
+          primeMoverMuscleId: '12346',
+        );
 
-      expect(result, isA<ApiSuccess<LevelsByMusclesModel>>());
-      expect((result as ApiSuccess).data.message, equals('success'));
-      verify(mockApiService.getLevelsByMuscles('12346')).called(1);
-    });
+        expect(result, isA<ApiSuccess<LevelsByMusclesModel>>());
+        expect((result as ApiSuccess).data.message, equals('success'));
+        verify(mockApiService.getLevelsByMuscles('12346')).called(1);
+      },
+    );
 
     test(
       'should return failure ApiResult when.getLevelsByMuscles throws exception',
@@ -38,7 +44,9 @@ void main() {
           mockApiService.getLevelsByMuscles('12346'),
         ).thenThrow(Exception('Registration failed'));
 
-        final result = await exercisDataSource.getLevelsByMuscles(primeMoverMuscleId: '12346');
+        final result = await exercisDataSource.getLevelsByMuscles(
+          primeMoverMuscleId: '12346',
+        );
 
         expect(result, isA<ApiError<LevelsByMusclesModel>>());
         verify(mockApiService.getLevelsByMuscles('12346')).called(1);
@@ -46,28 +54,54 @@ void main() {
     );
   });
   group('ExerciseRemoteDataSourceImpl', () {
-    test('should return success ApiResult when getExerciseByMoverAndDifficulty succeeds', () async {
-      when(mockApiService.getExerciseByMoverAndDifficulty('12346','123')).thenAnswer((_) async => const ExerciseByPrimeMoverAndDifficultyResponse(message: 'success'));
+    test(
+      'should return success ApiResult when getExerciseByMoverAndDifficulty succeeds',
+      () async {
+        when(
+          mockApiService.getExerciseByMoverAndDifficulty('12346', '123'),
+        ).thenAnswer(
+          (_) async => const ExerciseByPrimeMoverAndDifficultyResponse(
+            message: 'success',
+          ),
+        );
 
-      final result = await exercisDataSource.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '12346', difficultyLevelId: '123');
-      expect(result, isA<ApiSuccess<ExerciseByPrimeMoverAndDifficultyResponse>>());
-      expect((result as ApiSuccess).data.message, equals('success'));
-      verify(mockApiService.getExerciseByMoverAndDifficulty('12346','123')).called(1);
-    });
+        final result = await exercisDataSource
+            .getExerciseByMoverAndDifficultyLevel(
+              primeMoverMuscleId: '12346',
+              difficultyLevelId: '123',
+            );
+        expect(
+          result,
+          isA<ApiSuccess<ExerciseByPrimeMoverAndDifficultyResponse>>(),
+        );
+        expect((result as ApiSuccess).data.message, equals('success'));
+        verify(
+          mockApiService.getExerciseByMoverAndDifficulty('12346', '123'),
+        ).called(1);
+      },
+    );
 
     test(
       'should return failure ApiResult when.getExerciseByMoverAndDifficulty throws exception',
       () async {
         when(
-          mockApiService.getExerciseByMoverAndDifficulty('12346','123'),
+          mockApiService.getExerciseByMoverAndDifficulty('12346', '123'),
         ).thenThrow(Exception('Registration failed'));
 
-        final result = await exercisDataSource.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '12346', difficultyLevelId: '123');
+        final result = await exercisDataSource
+            .getExerciseByMoverAndDifficultyLevel(
+              primeMoverMuscleId: '12346',
+              difficultyLevelId: '123',
+            );
 
-        expect(result, isA<ApiError<ExerciseByPrimeMoverAndDifficultyResponse>>());
-        verify(mockApiService.getExerciseByMoverAndDifficulty('12346','123')).called(1);
+        expect(
+          result,
+          isA<ApiError<ExerciseByPrimeMoverAndDifficultyResponse>>(),
+        );
+        verify(
+          mockApiService.getExerciseByMoverAndDifficulty('12346', '123'),
+        ).called(1);
       },
     );
   });
-
 }

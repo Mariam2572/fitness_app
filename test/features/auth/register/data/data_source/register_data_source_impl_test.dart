@@ -13,12 +13,10 @@ import 'register_data_source_impl_test.mocks.dart';
 void main() {
   late MockApiService mockApiService;
   late RegisterDataSourceImpl registerDataSource;
-
   setUp(() {
     mockApiService = MockApiService();
     registerDataSource = RegisterDataSourceImpl(mockApiService);
   });
-
   group('RegisterDataSourceImpl', () {
     final request = RegisterRequest(
       firstName: 'John',
@@ -26,35 +24,27 @@ void main() {
       email: 'john.doe@example.com',
       password: 'password123',
       rePassword: 'password123',
-      gender: 'male',
-      height: 180,
-      weight: 75,
-      age: 25,
-      goal: 'lose_weight',
-      activityLevel: 'medium',
     );
-
     final response = RegisterResponse(message: 'success');
-
-    test('should return success ApiResult when register succeeds', () async {
-      when(mockApiService.register(request)).thenAnswer((_) async => response);
-
-      final result = await registerDataSource.register(request);
-
-      expect(result, isA<ApiSuccess<RegisterResponse>>());
-      expect((result as ApiSuccess).data.message, equals('success'));
-      verify(mockApiService.register(request)).called(1);
-    });
-
+    test(
+      'when call register should return success ApiResult when register succeeds',
+      () async {
+        when(
+          mockApiService.register(request),
+        ).thenAnswer((_) async => response);
+        final result = await registerDataSource.register(request);
+        expect(result, isA<ApiSuccess<RegisterResponse>>());
+        expect((result as ApiSuccess).data.message, equals('success'));
+        verify(mockApiService.register(request)).called(1);
+      },
+    );
     test(
       'should return failure ApiResult when register throws exception',
       () async {
         when(
           mockApiService.register(request),
         ).thenThrow(Exception('Registration failed'));
-
         final result = await registerDataSource.register(request);
-
         expect(result, isA<ApiError<RegisterResponse>>());
         verify(mockApiService.register(request)).called(1);
       },

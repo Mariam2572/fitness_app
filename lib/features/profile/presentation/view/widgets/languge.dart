@@ -35,7 +35,7 @@ class Languge extends StatelessWidget {
                       final newLang = value ? 'en' : 'ar';
                       provider.changeLanguage(newLang);
                     },
-                    activeColor: Colors.white,
+                    activeThumbColor: Colors.white,
                     activeTrackColor: AppColors.mainRed,
                     splashRadius: 2,
                   ),

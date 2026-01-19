@@ -53,8 +53,8 @@ class _ResendCodeState extends State<ResendCode> {
             Text(
               context.loc.didnt_receive_verficcation_code,
               style: context.textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.neutral10
+                fontWeight: FontWeight.w400,
+                color: AppColors.neutral10,
               ),
             ),
             GestureDetector(
@@ -63,9 +63,7 @@ class _ResendCodeState extends State<ResendCode> {
                       ? () {
                         final cubit = context.read<ForgetPasswordCubit>();
                         cubit.resetCodeController.clear();
-                        cubit.doIntent(
-                          ForgetPasswordIntent(isResend: true),
-                        );
+                        cubit.doIntent(ForgetPasswordIntent(isResend: true));
                         log('resend function called');
                         startTimer();
                       }
@@ -74,10 +72,9 @@ class _ResendCodeState extends State<ResendCode> {
                 context.loc.resend_code,
                 style: context.textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w400,
-                  color:canResend? AppColors.mainRed:Colors.grey,
-                    decorationColor:canResend? AppColors.mainRed:Colors.grey,
+                  color: canResend ? AppColors.mainRed : Colors.grey,
+                  decorationColor: canResend ? AppColors.mainRed : Colors.grey,
                   decoration: TextDecoration.underline,
-
                 ),
               ),
             ),
@@ -87,15 +84,8 @@ class _ResendCodeState extends State<ResendCode> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
-              '${
-    context.loc.resend_code_in
-              } $remainingSeconds ${
-              context.loc.seconds
-
-              }',
-              style: TextStyle(
-                color: Colors.grey,
-              ),
+              '${context.loc.resend_code_in} $remainingSeconds ${context.loc.seconds}',
+              style: TextStyle(color: Colors.grey),
             ),
           ),
       ],

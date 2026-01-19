@@ -31,9 +31,6 @@ class MealsDetailsCubit extends Cubit<MealsDetailsState> {
         );
       case ApiSuccess<MealsDatailsResponse>():
         emit(MealsDetailsSuccess(response.data!));
-      default:
-        emit(const MealsDetailsFailure('Unexpected error occurred'));
-        break;
     }
   }
 }

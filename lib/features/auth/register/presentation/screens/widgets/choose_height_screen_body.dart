@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChooseHeightScreenBody extends StatelessWidget {
-
   const ChooseHeightScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-  return CustomHeightScreen(
-    isEditProfile: false,
-    initialValue: context.read<RegisterCubit>().height,
-    onChanged: (val) {
-      context.read<RegisterCubit>().height = val;
-    },
-  );
+    return CustomHeightScreen(
+      isEditProfile: false,
+      initialValue: context.read<RegisterCubit>().height,
+      onChanged: (val) {
+        context.read<RegisterCubit>().height = val;
+      },
+    );
   }
 }

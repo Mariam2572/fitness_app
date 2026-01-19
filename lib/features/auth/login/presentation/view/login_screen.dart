@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
           fit: BoxFit.cover,
           height: double.infinity,
           width: double.infinity,
+      
         ),
         Scaffold(
           backgroundColor: Colors.transparent,

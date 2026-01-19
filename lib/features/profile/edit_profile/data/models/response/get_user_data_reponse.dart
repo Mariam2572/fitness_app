@@ -11,7 +11,8 @@ class GetUserDataReponse {
 
   GetUserDataReponse({this.message, this.user});
 
-  factory GetUserDataReponse.fromJson(Map<String, dynamic> json) => _$GetUserDataReponseFromJson(json);
+  factory GetUserDataReponse.fromJson(Map<String, dynamic> json) =>
+      _$GetUserDataReponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetUserDataReponseToJson(this);
 }
@@ -81,7 +82,8 @@ class UserData {
     this.resetCodeVerified,
   });
 
-  factory UserData.fromJson(Map<String, dynamic> json) => _$UserDataFromJson(json);
+  factory UserData.fromJson(Map<String, dynamic> json) =>
+      _$UserDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserDataToJson(this);
 }

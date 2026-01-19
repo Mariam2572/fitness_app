@@ -1,89 +1,162 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
-import 'package:fitness_app/features/home/home/data/models/Exercises.dart';
-import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/exercises.dart';
+import 'package:fitness_app/features/home/home/data/models/random_exercise_response.dart';
+import 'package:fitness_app/features/home/home/data/models/user_response.dart';
 import 'package:fitness_app/features/home/home/domain/use_cases/home_use_case.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_groups_reponse.dart';
-import 'package:flutter/material.dart';
-
 part 'home_view_state.dart';
 
 class HomeViewCubit extends Cubit<HomeViewState> {
-  HomeViewCubit(this.homeUseCase) : super(HomeViewInitial());
+  HomeViewCubit(this.homeUseCase) : super(const HomeViewState());
   final HomeUseCase homeUseCase;
-  
-  List<MusclesGroupBean> musclesGroupCat = [];
-
-
   Future<void> doIntent(HomeIntent intent) async {
     switch (intent) {
-      case GetMusclesByMuscleGroupIdIntent():
-        await _getMusclesByMuscleGroupId(intent);
-
-      case HomeViewDataIntent():
+      case GetUserDataIntent():
+        await _getUserData();
+      case GetWorkoutRecommendationsIntent():
+        await _getWorkoutRecommendations();
+      case GetMealsCategoriesIntent():
+        await _getMealsCategories();
+      case GetMusclesGroupsIntent():
+        await _getMusclesGroups();
+      case GetWorkoutsByMuscleGroupIdIntent():
+        await _getWorkoutsByMuscleGroupId(intent.id);
+      case GetHomeDataIntent():
         await _getHomeData();
     }
   }
 
+  /// Fetches all initial home data by calling individual section handlers
+  /// Each section loads independently without waiting for others
   Future<void> _getHomeData() async {
-    emit(HomeViewLoading());
-    final userData = await homeUseCase.getUserName();
-    final randomExercises = await homeUseCase.getRandomExercise();
-    final mealsCat = await homeUseCase.getMealsCategories();
-    final musclesGroups = await homeUseCase.getAllMusclesGroups();
+    // Fire all requests independently - don't wait for them
+    // This allows each section to show loading/success states independently
+    _getUserData();
+    _getWorkoutRecommendations();
+    _getMealsCategories();
+    _getMusclesGroups();
+  }
 
-    if (userData is ApiSuccess<UserResponse> &&
-        randomExercises is ApiSuccess<RandomExerciseResponse> &&
-        mealsCat is ApiSuccess<FoodCategoriesResponse> &&
-        musclesGroups is ApiSuccess<GetAllMusclesGroupsReponse>) {
-      musclesGroupCat = musclesGroups.data?.musclesGroup ?? [];
-      emit(
-        HomeViewSuccess(
-          userName: userData.data?.user?.firstName ?? "Unknown User",
-          exercises: randomExercises.data?.exercises ?? [],
-          mealsCategories: mealsCat.data?.categories ?? [],
-          musclesGroups: musclesGroups.data!,
-          userImage: userData.data?.user?.photo,
-        ),
-      );
-    } else if (userData is ApiError<UserResponse> &&
-        randomExercises is ApiError<RandomExerciseResponse> &&
-        mealsCat is ApiError<FoodCategoriesResponse> &&
-        musclesGroups is ApiError<GetAllMusclesGroupsReponse>) {
-      emit(
-        HomeViewError(
-          userNameError: userData.failure?.errorMessage,
-          randomExercisesError: randomExercises.failure?.errorMessage,
-          mealsCategoriesError: mealsCat.failure?.errorMessage,
-          musclesGroupsError: musclesGroups.failure?.errorMessage,
-        ),
-      );
+  /// Fetches user data independently
+  Future<void> _getUserData() async {
+    emit(state.copyWith(userDataStatus: HomeDataStatus.loading));
+
+    final result = await homeUseCase.getUserName();
+
+    switch (result) {
+      case ApiSuccess<UserResponse>():
+        emit(
+          state.copyWith(
+            userDataStatus: HomeDataStatus.success,
+            userName: result.data?.user?.firstName ?? "Unknown User",
+            userImage: result.data?.user?.photo,
+          ),
+        );
+      case ApiError<UserResponse>():
+        emit(
+          state.copyWith(
+            userDataStatus: HomeDataStatus.failure,
+            userDataError: result.failure?.errorMessage,
+          ),
+        );
     }
   }
 
-  Future<void> _getMusclesByMuscleGroupId(
-    GetMusclesByMuscleGroupIdIntent initen,
-  ) async {
-    emit(HomeViewLoading());
-    final result = await homeUseCase.getWorkoutsExercise(initen.id);
+  /// Fetches workout recommendations independently
+  Future<void> _getWorkoutRecommendations() async {
+    emit(state.copyWith(workoutRecommendationsStatus: HomeDataStatus.loading));
+
+    final result = await homeUseCase.getRandomExercise();
+
+    switch (result) {
+      case ApiSuccess<RandomExerciseResponse>():
+        emit(
+          state.copyWith(
+            workoutRecommendationsStatus: HomeDataStatus.success,
+            workoutRecommendations: result.data?.exercises ?? [],
+          ),
+        );
+      case ApiError<RandomExerciseResponse>():
+        emit(
+          state.copyWith(
+            workoutRecommendationsStatus: HomeDataStatus.failure,
+            workoutRecommendationsError: result.failure?.errorMessage,
+          ),
+        );
+    }
+  }
+
+  /// Fetches meals categories independently
+  Future<void> _getMealsCategories() async {
+    emit(state.copyWith(mealsCategoriesStatus: HomeDataStatus.loading));
+
+    final result = await homeUseCase.getMealsCategories();
+
+    switch (result) {
+      case ApiSuccess<FoodCategoriesResponse>():
+        emit(
+          state.copyWith(
+            mealsCategoriesStatus: HomeDataStatus.success,
+            mealsCategories: result.data?.categories ?? [],
+          ),
+        );
+      case ApiError<FoodCategoriesResponse>():
+        emit(
+          state.copyWith(
+            mealsCategoriesStatus: HomeDataStatus.failure,
+            mealsCategoriesError: result.failure?.errorMessage,
+          ),
+        );
+    }
+  }
+
+  /// Fetches muscles groups independently
+  Future<void> _getMusclesGroups() async {
+    emit(state.copyWith(musclesGroupsStatus: HomeDataStatus.loading));
+
+    final result = await homeUseCase.getAllMusclesGroups();
+
+    switch (result) {
+      case ApiSuccess<GetAllMusclesGroupsReponse>():
+        emit(
+          state.copyWith(
+            musclesGroupsStatus: HomeDataStatus.success,
+            musclesGroups: result.data,
+          ),
+        );
+      case ApiError<GetAllMusclesGroupsReponse>():
+        emit(
+          state.copyWith(
+            musclesGroupsStatus: HomeDataStatus.failure,
+            musclesGroupsError: result.failure?.errorMessage,
+          ),
+        );
+    }
+  }
+
+  /// Fetches workouts by muscle group ID independently
+  Future<void> _getWorkoutsByMuscleGroupId(String id) async {
+    emit(state.copyWith(workoutsByMuscleGroupStatus: HomeDataStatus.loading));
+
+    final result = await homeUseCase.getWorkoutsExercise(id);
+
     switch (result) {
       case ApiSuccess<GetAllMusclesByMuscleGroupIdReponse>():
-       
         emit(
-          GetMusclesByMuscleGroupIdSuccess(
-            workoutsByMuscleGroupId: result.data?.muscles,
+          state.copyWith(
+            workoutsByMuscleGroupStatus: HomeDataStatus.success,
+            workoutsByMuscleGroup: result.data?.muscles ?? [],
           ),
         );
       case ApiError<GetAllMusclesByMuscleGroupIdReponse>():
         emit(
-          HomeViewError(
-            musclesByMuscleGroupIdError: result.failure?.errorMessage,
+          state.copyWith(
+            workoutsByMuscleGroupStatus: HomeDataStatus.failure,
+            workoutsByMuscleGroupError: result.failure?.errorMessage,
           ),
         );
     }
@@ -92,10 +165,17 @@ class HomeViewCubit extends Cubit<HomeViewState> {
 
 sealed class HomeIntent {}
 
-class GetMusclesByMuscleGroupIdIntent extends HomeIntent {
-  final String id;
+class GetUserDataIntent extends HomeIntent {}
 
-  GetMusclesByMuscleGroupIdIntent({required this.id});
+class GetWorkoutRecommendationsIntent extends HomeIntent {}
+
+class GetMealsCategoriesIntent extends HomeIntent {}
+
+class GetMusclesGroupsIntent extends HomeIntent {}
+
+class GetWorkoutsByMuscleGroupIdIntent extends HomeIntent {
+  final String id;
+  GetWorkoutsByMuscleGroupIdIntent({required this.id});
 }
 
-class HomeViewDataIntent extends HomeIntent {}
+class GetHomeDataIntent extends HomeIntent {}

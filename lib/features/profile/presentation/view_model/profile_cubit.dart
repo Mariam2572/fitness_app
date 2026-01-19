@@ -1,11 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fitness_app/core/base/api_result.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/user_response.dart';
 import 'package:fitness_app/features/logout/domain/usecases/logout_usecase.dart';
 import 'package:fitness_app/features/profile/domain/use_case/get_profile_data_use_case.dart';
 import 'package:fitness_app/features/profile/domain/use_case/upload_photo__use_case.dart';
@@ -23,9 +22,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       case LoadProfileIntent():
         await _loadProfile();
         break;
-      // case UploadPhotoIntent(:final photo):
-      //   await _uploadPhoto(photo);
-      //   break;
       case LogoutIntent():
         await _logout();
         break;
@@ -44,20 +40,6 @@ class ProfileCubit extends Cubit<ProfileState> {
         break;
     }
   }
-
-  // Future<void> _uploadPhoto(File photo) async {
-  //   emit(ProfileUploading());
-  //   final result = await uploadPhoto(photo);
-  //   switch (result) {
-  //     case ApiSuccess<String>():
-  //       log('Photo uploaded: ${result.data}');
-  //       await _loadProfile(); // Reload profile after upload
-  //       break;
-  //     case ApiError<String>():
-  //       emit(ProfileError(message: result.failure.toString()));
-  //       break;
-  //   }
-  // }
 
   _logout() async {
     emit(ProfileLoading());

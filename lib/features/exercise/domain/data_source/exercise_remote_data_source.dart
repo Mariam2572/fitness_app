@@ -7,5 +7,8 @@ abstract interface class ExerciseRemoteDataSource {
     required String primeMoverMuscleId,
   });
   Future<ApiResult<ExerciseByPrimeMoverAndDifficultyResponse>>
-  getExerciseByMoverAndDifficultyLevel({required String primeMoverMuscleId , required String difficultyLevelId});
+  getExerciseByMoverAndDifficultyLevel({
+    required String primeMoverMuscleId,
+    required String difficultyLevelId,
+  });
 }

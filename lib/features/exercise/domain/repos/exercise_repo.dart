@@ -3,6 +3,12 @@ import 'package:fitness_app/features/exercise/data/models/exercise_by_prime_move
 import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_model.dart';
 
 abstract interface class ExerciseRepo {
-  Future<ApiResult<LevelsByMusclesModel>> getLevelsByMuscles({required String primeMoverMuscleId});
-  Future<ApiResult<ExerciseByPrimeMoverAndDifficultyResponse>> getExerciseByMoverAndDifficultyLevel({required String primeMoverMuscleId , required String difficultyLevelId});
+  Future<ApiResult<LevelsByMusclesModel>> getLevelsByMuscles({
+    required String primeMoverMuscleId,
+  });
+  Future<ApiResult<ExerciseByPrimeMoverAndDifficultyResponse>>
+  getExerciseByMoverAndDifficultyLevel({
+    required String primeMoverMuscleId,
+    required String difficultyLevelId,
+  });
 }

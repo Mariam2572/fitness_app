@@ -20,9 +20,7 @@ void main() {
         //arrange
         const result = ApiSuccess<String>(data: 'success');
         provideDummy<ApiResult<String>>(result);
-        when(
-          repo.logout(),
-        ).thenAnswer((_) async => result);
+        when(repo.logout()).thenAnswer((_) async => result);
         //act
         final actual = await repo.logout();
         //assert
@@ -40,9 +38,7 @@ void main() {
         );
         provideDummy<ApiResult<String>>(expectedLevel);
 
-        when(
-          repo.logout(),
-        ).thenAnswer((_) async => expectedLevel);
+        when(repo.logout()).thenAnswer((_) async => expectedLevel);
         //act
         final actual = await repo.logout();
         //assert
@@ -50,4 +46,5 @@ void main() {
         expect(actual, isA<ApiError<String>>());
       },
     );
-  });}
+  });
+}

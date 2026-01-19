@@ -1,30 +1,18 @@
-/// _id : "6856d472db65200514416f77"
-/// firstName : "Ahmed"
-/// lastName : "Gamal"
-/// email : "gemiahmed2002@gmail.com"
-/// gender : "male"
-/// age : 22
-/// weight : 74
-/// height : 169
-/// activityLevel : "level3"
-/// goal : "Get Fitter"
-/// photo : "https://fitness.elevateegy.com/uploads/default-profile.png"
-/// createdAt : "2025-06-21T15:49:06.015Z"
-
 class User {
   User({
-      this.id, 
-      this.firstName, 
-      this.lastName, 
-      this.email, 
-      this.gender, 
-      this.age, 
-      this.weight, 
-      this.height, 
-      this.activityLevel, 
-      this.goal, 
-      this.photo, 
-      this.createdAt,});
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.gender,
+    this.age,
+    this.weight,
+    this.height,
+    this.activityLevel,
+    this.goal,
+    this.photo,
+    this.createdAt,
+  });
 
   User.fromJson(dynamic json) {
     id = json['_id'];
@@ -69,5 +57,4 @@ class User {
     map['createdAt'] = createdAt;
     return map;
   }
-
 }

@@ -10,3 +10,6 @@ Future<String?> readSecureData(String key) async {
   final String? value = await secureStorage.read(key: key);
   return value;
 }
+Future<void> deleteSecureData(String key) async {
+  await secureStorage.delete(key: key);
+}

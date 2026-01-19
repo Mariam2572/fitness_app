@@ -129,8 +129,9 @@ class _RegisterScreenBodyState extends State<RegisterScreenBody> with SingleTick
                                 .formKey
                                 .currentState
                                 ?.validate() ??
-                            true))
+                            true)) {
                           return;
+                        }
                         Navigator.pushNamed(
                           context,
                           RoutesName.chooseGenderScreen,

@@ -29,6 +29,7 @@ class Constants {
   static const String editProfileEndPoint = 'auth/editProfile';
 
   static const String geminiApiKey = "geminiApiKey";
-  static const String logoutEndPoint = 'auth/logout';  static const String changePassword = 'auth/change-password';
+  static const String logoutEndPoint = 'auth/logout';
+  static const String changePassword = 'auth/change-password';
   static const String upLoadProfilePhoto = "auth/upload-photo";
 }

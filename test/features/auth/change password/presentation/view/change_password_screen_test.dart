@@ -1,4 +1,3 @@
-import 'package:fitness_app/features/auth/change%20password/data/model/change_password_request.dart';
 import 'package:fitness_app/features/auth/change%20password/presentation/view%20model/change_password_cubit.dart';
 import 'package:fitness_app/features/auth/change%20password/presentation/view%20model/change_password_states.dart';
 import 'package:fitness_app/features/auth/change%20password/presentation/view/change_password_screen.dart';

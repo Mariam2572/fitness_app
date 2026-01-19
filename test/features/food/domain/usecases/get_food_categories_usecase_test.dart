@@ -13,7 +13,6 @@ import 'get_food_categories_usecase_test.mocks.dart';
 void main() {
   late MockFoodRepo mockRepo;
   late GetFoodCategoriesUseCase useCase;
-  final response = FoodCategoriesResponse(categories: []);
 
   setUp(() {
     mockRepo = MockFoodRepo();

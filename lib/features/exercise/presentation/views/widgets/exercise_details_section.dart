@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
-import 'package:fitness_app/core/utils/helper_func/youtube_thumbnail.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/core/utils/widgets/app_tab_bar.dart';
@@ -23,7 +22,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ExerciseCubit>();
-    if (cubit.tabController == null || cubit.levels.isEmpty) {
+    if (cubit.levels.isEmpty) {
       return const SizedBox.shrink(); // or a loading indicator
     }
     return Stack(
@@ -57,7 +56,7 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection> {
 
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF000000).withOpacity(0.2),
+                color: const Color(0xFF000000).withValues(alpha: 0.2),
                 spreadRadius: 5,
                 blurRadius: 7,
                 offset: const Offset(0, 3),
@@ -108,9 +107,9 @@ class _ExerciseDetailsSectionState extends State<ExerciseDetailsSection> {
           left: 16,
           child: IconButton(
             onPressed: () {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-    Navigator.of(context).pop();
-  });
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                Navigator.of(context).pop();
+              });
             },
             icon: SvgPicture.asset(AppAssets.backIcon),
           ),

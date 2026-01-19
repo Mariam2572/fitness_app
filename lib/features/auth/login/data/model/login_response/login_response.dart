@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'user_data.dart';
+import 'package:fitness_app/features/auth/login/data/model/login_response/user_data.dart';
 
 part 'login_response.g.dart';
 

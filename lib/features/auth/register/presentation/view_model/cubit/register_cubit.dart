@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fitness_app/core/base/api_result.dart';
-import 'package:fitness_app/core/utils/enums/activity_enum.dart';
 import 'package:fitness_app/core/utils/enums/gender.dart';
 import 'package:fitness_app/features/auth/register/data/models/request/register_request.dart';
 import 'package:fitness_app/features/auth/register/data/models/response/register_response.dart';
@@ -46,9 +45,6 @@ class RegisterCubit extends Cubit<RegisterState> {
         );
       case ApiSuccess<RegisterResponse>():
         emit(RegisterSuccess(response.data!));
-      default:
-        emit(const RegisterFailure('Unexpected error occurred'));
-        break;
     }
   }
 

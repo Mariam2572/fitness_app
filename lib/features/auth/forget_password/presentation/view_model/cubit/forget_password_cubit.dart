@@ -98,9 +98,9 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     if (result is ApiSuccess<ResetPasswordResponse>) {
       emit(ResetPasswordSuccess(data: result.data!));
     } else if (result is ApiError<ResetPasswordResponse>) {
-      print(result.message);
-      print(result.failure?.errorMessage);
-      print("Ssss");
+      log(result.message??'');
+      log(result.failure!.errorMessage);
+      log("Ssss");
       emit(
         ResetPasswordError(
           errorMessage: result.message ?? "",

@@ -10,7 +10,7 @@ import 'package:fitness_app/features/exercise/domain/data_source/exercise_remote
 
 @Injectable(as: ExerciseRemoteDataSource)
 class ExerciseRemoteDataSourceImpl implements ExerciseRemoteDataSource {
-  ApiService _apiService;
+  final ApiService _apiService;
   ExerciseRemoteDataSourceImpl(this._apiService);
 
   @override
@@ -28,7 +28,6 @@ class ExerciseRemoteDataSourceImpl implements ExerciseRemoteDataSource {
   getExerciseByMoverAndDifficultyLevel({
     required String primeMoverMuscleId,
     required String difficultyLevelId,
-    
   }) async {
     return apiExecuter<ExerciseByPrimeMoverAndDifficultyResponse>(
       () async => await _apiService.getExerciseByMoverAndDifficulty(

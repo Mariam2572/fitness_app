@@ -4,12 +4,13 @@ import 'package:fitness_app/features/profile/edit_profile/data/models/response/g
 import 'package:fitness_app/features/profile/edit_profile/domain/repos/edit_profile_repo.dart';
 import 'package:injectable/injectable.dart';
 
-
 @injectable
 class EditProfileUseCase {
   final EditProfileRepo _editProfileRepo;
   EditProfileUseCase(this._editProfileRepo);
-  Future<ApiResult<GetUserDataReponse>>  invoke(EditProfileRequest editProfileRequest) async {
+  Future<ApiResult<GetUserDataReponse>> invoke(
+    EditProfileRequest editProfileRequest,
+  ) async {
     return await _editProfileRepo.editProfile(editProfileRequest);
   }
 }

@@ -12,9 +12,12 @@ class GetAllMusclesGroupsReponse {
 
   GetAllMusclesGroupsReponse({this.message, this.musclesGroup});
 
-  factory GetAllMusclesGroupsReponse.fromJson(Map<String, dynamic> json) => _$GetAllMusclesGroupsReponseFromJson(json);
+  factory GetAllMusclesGroupsReponse.fromJson(Map<String, dynamic> json) =>
+      _$GetAllMusclesGroupsReponseFromJson(json);
 
-  static List<GetAllMusclesGroupsReponse> fromList(List<Map<String, dynamic>> list) {
+  static List<GetAllMusclesGroupsReponse> fromList(
+    List<Map<String, dynamic>> list,
+  ) {
     return list.map(GetAllMusclesGroupsReponse.fromJson).toList();
   }
 

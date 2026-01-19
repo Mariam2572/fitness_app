@@ -5,7 +5,6 @@ import 'package:fitness_app/features/auth/register/presentation/custom/custom_we
 import 'package:fitness_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 
 class ChooseWeightScreenBody extends StatelessWidget {
-
   const ChooseWeightScreenBody({super.key});
 
   @override

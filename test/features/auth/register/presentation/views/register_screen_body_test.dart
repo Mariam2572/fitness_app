@@ -14,10 +14,8 @@ import '../view_model/cubit/register_cubit_test.mocks.dart';
 
 @GenerateMocks([RegisterUseCase])
 void main() {
-  late final AppLocalizations appLocalizations;
   late final RegisterUseCase registerUseCase;
   setUpAll(() async {
-    appLocalizations = await AppLocalizations.delegate.load(const Locale('en'));
     registerUseCase = MockRegisterUseCase();
   });
 
@@ -55,7 +53,7 @@ void main() {
     ) async {
       await pumpWidgetWithLocalization(tester, RegisterScreen());
       final authBackground = find.image(
-         const AssetImage(AppAssets.authBackGround),
+        const AssetImage(AppAssets.authBackGround),
       );
       expect(authBackground, findsOneWidget);
     });

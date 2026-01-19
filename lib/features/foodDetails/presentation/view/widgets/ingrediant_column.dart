@@ -17,16 +17,13 @@ class IngredientColumn extends StatelessWidget {
       final ingredient = mealMap['strIngredient$i']?.toString().trim();
       final amount = mealMap['strMeasure$i']?.toString().trim();
 
-      if (ingredient != null && ingredient.isNotEmpty &&
+      if (ingredient != null &&
+          ingredient.isNotEmpty &&
           ingredient != 'null' &&
-          amount != null && amount.isNotEmpty &&
+          amount != null &&
+          amount.isNotEmpty &&
           amount != 'null') {
-        ingredientWidgets.add(
-          IngredientItem(
-            name: ingredient,
-            amount: amount,
-          ),
-        );
+        ingredientWidgets.add(IngredientItem(name: ingredient, amount: amount));
       }
     }
 

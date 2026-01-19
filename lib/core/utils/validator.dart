@@ -15,6 +15,8 @@ class Validator {
   static String? validateName(String? val) {
     if (val == null || val.isEmpty) {
       return 'Name is required';
+    } else if (val.length < 2) {
+      return 'Name must be at least 2 characters long';
     } else {
       return null;
     }

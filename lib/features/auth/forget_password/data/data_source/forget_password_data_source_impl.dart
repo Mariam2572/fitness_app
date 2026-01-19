@@ -9,7 +9,7 @@ import 'package:fitness_app/features/auth/forget_password/data/models/response/v
 import 'package:fitness_app/features/auth/forget_password/domain/data_source/forget_password_data_source.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../core/base/api_excuter.dart';
+import 'package:fitness_app/core/base/api_excuter.dart';
 
 @Injectable(as: ForgetPasswordDataSource)
 class ForgetPasswordDataSourceImpl implements ForgetPasswordDataSource {
@@ -17,26 +17,30 @@ class ForgetPasswordDataSourceImpl implements ForgetPasswordDataSource {
   ForgetPasswordDataSourceImpl(this.apiService);
   @override
   Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
-      ForgetPasswordRequest forgetPasswordRequest,
+    ForgetPasswordRequest forgetPasswordRequest,
   ) async {
     return await apiExecuter<ForgetPasswordResponse>(() async {
-      var response = await apiService.forgotPassword(forgetPasswordRequest);
+      final response = await apiService.forgotPassword(forgetPasswordRequest);
       return response;
     }, 'ForgetPasswordDataSourceImpl forgetPassword');
   }
 
   @override
-  Future<ApiResult<VerifyResetResponse>> verifyReset(VerifyResetRequest verifyResetRequest) async {
+  Future<ApiResult<VerifyResetResponse>> verifyReset(
+    VerifyResetRequest verifyResetRequest,
+  ) async {
     return await apiExecuter<VerifyResetResponse>(() async {
-      var response = await apiService.verifyResetCode(verifyResetRequest);
+      final response = await apiService.verifyResetCode(verifyResetRequest);
       return response;
     }, 'ForgetPasswordDataSourceImpl verifyReset');
   }
 
   @override
-  Future<ApiResult<ResetPasswordResponse>> resetPassword(ResetPasswordRequest resetPasswordRequest)  async {
+  Future<ApiResult<ResetPasswordResponse>> resetPassword(
+    ResetPasswordRequest resetPasswordRequest,
+  ) async {
     return await apiExecuter<ResetPasswordResponse>(() async {
-      var response = await apiService.resetPassword(resetPasswordRequest);
+      final response = await apiService.resetPassword(resetPasswordRequest);
       return response;
     }, 'ForgetPasswordDataSourceImpl resetPassword');
   }

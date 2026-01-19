@@ -9,6 +9,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'exercise_repo_impl_test.mocks.dart';
+
 @GenerateMocks([ExerciseRemoteDataSource])
 void main() {
   late ExerciseRemoteDataSource mockRepo;
@@ -22,7 +23,10 @@ void main() {
       'when call levelByMuscles repo should call levelByMuscles data source and it should return Apisuccess<ForgetPasswordResponse>',
       () async {
         //arrange
-      final  expecetdLevelsByMusclesModel = LevelsByMusclesModel(difficultyLevels: [],message: 'success');
+        final expecetdLevelsByMusclesModel = LevelsByMusclesModel(
+          difficultyLevels: [],
+          message: 'success',
+        );
         final result = ApiSuccess<LevelsByMusclesModel>(
           data: expecetdLevelsByMusclesModel,
         );
@@ -31,20 +35,25 @@ void main() {
           mockRepo.getLevelsByMuscles(primeMoverMuscleId: '1223'),
         ).thenAnswer((_) async => result);
         //act
-        final actual = await repo.getLevelsByMuscles(primeMoverMuscleId: '1223');
+        final actual = await repo.getLevelsByMuscles(
+          primeMoverMuscleId: '1223',
+        );
         //assert
-        verify(mockRepo.getLevelsByMuscles(primeMoverMuscleId: '1223')).called(1);
+        verify(
+          mockRepo.getLevelsByMuscles(primeMoverMuscleId: '1223'),
+        ).called(1);
         expect(actual, result);
       },
     );
     test('should return ApiError when data source fails', () async {
-    
       final expected = ApiError<LevelsByMusclesModel>(
         message: 'Network error',
         failure: ServerFailure(errorMessage: 'Network error'),
       );
 
-      when(mockRepo.getLevelsByMuscles(primeMoverMuscleId: '1223')).thenAnswer((_) async => expected);
+      when(
+        mockRepo.getLevelsByMuscles(primeMoverMuscleId: '1223'),
+      ).thenAnswer((_) async => expected);
 
       final actual = await repo.getLevelsByMuscles(primeMoverMuscleId: '1223');
 
@@ -57,18 +66,36 @@ void main() {
       'when call exerciseByLevel repo should call exerciseByLevel data source and it should return Apisuccess<ForgetPasswordResponse>',
       () async {
         //arrange
-      const  expecetdExerciseByPrimeMover = ExerciseByPrimeMoverAndDifficultyResponse(exercises: [],message: 'success');
-        const  exerciseResult = ApiSuccess<ExerciseByPrimeMoverAndDifficultyResponse>(
-          data: expecetdExerciseByPrimeMover,
+        const expecetdExerciseByPrimeMover =
+            ExerciseByPrimeMoverAndDifficultyResponse(
+              exercises: [],
+              message: 'success',
+            );
+        const exerciseResult =
+            ApiSuccess<ExerciseByPrimeMoverAndDifficultyResponse>(
+              data: expecetdExerciseByPrimeMover,
+            );
+        provideDummy<ApiResult<ExerciseByPrimeMoverAndDifficultyResponse>>(
+          exerciseResult,
         );
-        provideDummy<ApiResult<ExerciseByPrimeMoverAndDifficultyResponse>>(exerciseResult);
         when(
-          mockRepo.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '1233', difficultyLevelId: '12354'),
+          mockRepo.getExerciseByMoverAndDifficultyLevel(
+            primeMoverMuscleId: '1233',
+            difficultyLevelId: '12354',
+          ),
         ).thenAnswer((_) async => exerciseResult);
         //act
-        final actual = await repo.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '1233', difficultyLevelId: '12354');
+        final actual = await repo.getExerciseByMoverAndDifficultyLevel(
+          primeMoverMuscleId: '1233',
+          difficultyLevelId: '12354',
+        );
         //assert
-        verify(mockRepo.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '1233', difficultyLevelId: '12354')).called(1);
+        verify(
+          mockRepo.getExerciseByMoverAndDifficultyLevel(
+            primeMoverMuscleId: '1233',
+            difficultyLevelId: '12354',
+          ),
+        ).called(1);
         expect(actual, exerciseResult);
       },
     );
@@ -77,11 +104,23 @@ void main() {
         message: 'Network error',
         failure: ServerFailure(errorMessage: 'Network error'),
       );
-      when(mockRepo.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '1233', difficultyLevelId: '1123')).thenAnswer((_) async => expected);
-      final actual = await repo.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '1233', difficultyLevelId: '1123');
-      verify(mockRepo.getExerciseByMoverAndDifficultyLevel(primeMoverMuscleId: '1233', difficultyLevelId: '1123')).called(1);
+      when(
+        mockRepo.getExerciseByMoverAndDifficultyLevel(
+          primeMoverMuscleId: '1233',
+          difficultyLevelId: '1123',
+        ),
+      ).thenAnswer((_) async => expected);
+      final actual = await repo.getExerciseByMoverAndDifficultyLevel(
+        primeMoverMuscleId: '1233',
+        difficultyLevelId: '1123',
+      );
+      verify(
+        mockRepo.getExerciseByMoverAndDifficultyLevel(
+          primeMoverMuscleId: '1233',
+          difficultyLevelId: '1123',
+        ),
+      ).called(1);
       expect(actual, equals(expected));
     });
   });
-
-  }
+}

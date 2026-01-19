@@ -1,4 +1,3 @@
-
 import 'package:fitness_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +20,6 @@ extension PaddingHelper on BuildContext {
 
 extension OrientationHelper on BuildContext {
   Orientation get orientation => MediaQuery.of(this).orientation;
-}
-
-extension TextScaleFactorHelper on BuildContext {
-  double get textScaleFactor => MediaQuery.of(this).textScaleFactor;
 }
 
 extension ViewInsetsHelper on BuildContext {

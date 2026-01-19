@@ -33,7 +33,7 @@ class _FoodRecommendationViewState extends State<FoodRecommendationView> {
             getIt.get<GetFoodCategoriesUseCase>(),
             getIt.get<GetMealsByCategoryUseCase>(),
           ),
-      child:  FoodRecommendationViewBody(currentCategory: currentCategory??""),
+      child: FoodRecommendationViewBody(currentCategory: currentCategory ?? ""),
     );
   }
 }

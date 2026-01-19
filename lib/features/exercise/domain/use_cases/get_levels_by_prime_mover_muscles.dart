@@ -7,12 +7,14 @@ import 'package:fitness_app/features/exercise/domain/repos/exercise_repo.dart';
 
 @injectable
 class GetLevelsByPrimeMoverMuscleUseCases {
-  ExerciseRepo _exerciseRepo;
-  GetLevelsByPrimeMoverMuscleUseCases(
-     this._exerciseRepo,
-  );
+  final ExerciseRepo _exerciseRepo;
+  GetLevelsByPrimeMoverMuscleUseCases(this._exerciseRepo);
 
-  Future<ApiResult<LevelsByMusclesModel>> call({required String primeMoverMuscleId}) async {
-    return await _exerciseRepo.getLevelsByMuscles(primeMoverMuscleId: primeMoverMuscleId);
+  Future<ApiResult<LevelsByMusclesModel>> call({
+    required String primeMoverMuscleId,
+  }) async {
+    return await _exerciseRepo.getLevelsByMuscles(
+      primeMoverMuscleId: primeMoverMuscleId,
+    );
   }
 }

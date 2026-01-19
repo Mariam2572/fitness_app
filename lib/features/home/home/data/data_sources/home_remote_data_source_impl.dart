@@ -5,8 +5,8 @@ import 'package:fitness_app/core/constants/constants.dart';
 import 'package:fitness_app/core/utils/helper/secure_storage.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
 import 'package:fitness_app/features/home/home/data/data_sources/home_remote_data_source.dart';
-import 'package:fitness_app/features/home/home/data/models/ExercisesResponse.dart';
-import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/exercises_response.dart';
+import 'package:fitness_app/features/home/home/data/models/random_exercise_response.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: HomeRemoteDataSource)
@@ -19,14 +19,13 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<ApiResult<String>> getCurrentUserName() async {
     try {
-      var userToken = await secureStorage.read(key: Constants.userToken);
+      final userToken = await secureStorage.read(key: Constants.userToken);
 
       if (userToken == null) {
         return const ApiError(message: "Token is missing");
       }
 
       final response = await apiService.getUserData("Bearer $userToken");
-      
 
       final firstName = response.user?.firstName ?? "Guest";
 
@@ -37,11 +36,9 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   @override
-  Future<ApiResult<RandomExerciseResponse>> getRandomExercises(
-   
-  ) async {
-   return apiExecuter(
-      ()async => await apiService.getRandomExercises(
+  Future<ApiResult<RandomExerciseResponse>> getRandomExercises() async {
+    return apiExecuter(
+      () async => await apiService.getRandomExercises(
         Constants.randomExerciseTargetMuscleGroupId,
         Constants.randomExerciseDifficultyLevelId,
         5,

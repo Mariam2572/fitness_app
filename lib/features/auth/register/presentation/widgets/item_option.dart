@@ -4,16 +4,7 @@ import 'package:flutter/material.dart';
 class OptionItem<T> extends StatelessWidget {
   final String label;
   final T value;
-  final T? selectedValue;
-  final ValueChanged<T?> onChanged;
-
-  const OptionItem({
-    super.key,
-    required this.label,
-    required this.value,
-    required this.selectedValue,
-    required this.onChanged,
-  });
+  const OptionItem({super.key, required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +30,7 @@ class OptionItem<T> extends StatelessWidget {
           ),
           Radio<T>(
             value: value,
-            groupValue: selectedValue,
             activeColor: const Color.fromRGBO(211, 211, 211, 1),
-            onChanged: onChanged,
           ),
         ],
       ),

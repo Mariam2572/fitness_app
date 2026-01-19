@@ -13,7 +13,6 @@ import 'package:mockito/mockito.dart';
 import 'register_cubit_test.mocks.dart';
 // ignore: non_constant_identifier_names
 
-
 @GenerateMocks([RegisterUseCase])
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -54,42 +53,36 @@ void main() {
           data: registerResponse,
         );
         provideDummy<ApiResult<RegisterResponse>>(expectedResponse);
-        when(registerUseCase.invoke(registerRequest))
-            .thenAnswer((_) async => expectedResponse);
+        when(
+          registerUseCase.invoke(registerRequest),
+        ).thenAnswer((_) async => expectedResponse);
         return registerCubit;
       },
-      act: (bloc) => bloc.doIntent(
-        RegisterUserIntent(request: registerRequest),
-      ),
-      expect: () => [
-        RegisterLoading(),
-        RegisterSuccess(registerResponse),
-      ],
+      act:
+          (bloc) => bloc.doIntent(RegisterUserIntent(request: registerRequest)),
+      expect: () => [RegisterLoading(), RegisterSuccess(registerResponse)],
       verify: (bloc) {
         verify(registerUseCase.invoke(registerRequest)).called(1);
       },
     );
-  blocTest<RegisterCubit, RegisterState>(
-    'When call doIntent with RegisterUserIntent, it should call registerUseCase and return ApiError and emits RegisterLoading and then RegisterFailure',
-    build: () {
-      final expectedResponse = ApiError<RegisterResponse>(
-        failure: ServerFailure(errorMessage: 'Registration failed'),
-      );
-      provideDummy<ApiResult<RegisterResponse>>(expectedResponse);
-      when(registerUseCase.invoke(registerRequest))
-          .thenAnswer((_) async => expectedResponse);
-      return registerCubit;
-    },
-    act: (bloc) => bloc.doIntent(
-      RegisterUserIntent(request: registerRequest),
-    ),
-    expect: () => [
-      RegisterLoading(),
-      RegisterFailure('Registration failed'),
-    ],
-    verify: (bloc) {
-      verify(registerUseCase.invoke(registerRequest)).called(1);
-    },
-  );
+    blocTest<RegisterCubit, RegisterState>(
+      'When call doIntent with RegisterUserIntent, it should call registerUseCase and return ApiError and emits RegisterLoading and then RegisterFailure',
+      build: () {
+        final expectedResponse = ApiError<RegisterResponse>(
+          failure: ServerFailure(errorMessage: 'Registration failed'),
+        );
+        provideDummy<ApiResult<RegisterResponse>>(expectedResponse);
+        when(
+          registerUseCase.invoke(registerRequest),
+        ).thenAnswer((_) async => expectedResponse);
+        return registerCubit;
+      },
+      act:
+          (bloc) => bloc.doIntent(RegisterUserIntent(request: registerRequest)),
+      expect: () => [RegisterLoading(), RegisterFailure('Registration failed')],
+      verify: (bloc) {
+        verify(registerUseCase.invoke(registerRequest)).called(1);
+      },
+    );
   });
 }

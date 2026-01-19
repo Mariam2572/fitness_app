@@ -26,20 +26,24 @@ void main() {
   });
 
   group('MealsDetailsRepositoryImplementation', () {
-    test('should return ApiSuccess when remote data source returns success', () async {
-      final expectedResult = ApiSuccess<MealsDatailsResponse>(data: response);
+    test(
+      'should return ApiSuccess when remote data source returns success',
+      () async {
+        final expectedResult = ApiSuccess<MealsDatailsResponse>(data: response);
 
-      // الحل السحري بدون registerFallbackValue
-      provideDummy<ApiResult<MealsDatailsResponse>>(expectedResult);
+        // الحل السحري بدون registerFallbackValue
+        provideDummy<ApiResult<MealsDatailsResponse>>(expectedResult);
 
-      when(mockRemoteDataSource.mealsDatails(id: '1'))
-          .thenAnswer((_) async => expectedResult);
+        when(
+          mockRemoteDataSource.mealsDatails(id: '1'),
+        ).thenAnswer((_) async => expectedResult);
 
-      final actual = await repository.mealsDatails(id: '1');
+        final actual = await repository.mealsDatails(id: '1');
 
-      verify(mockRemoteDataSource.mealsDatails(id: '1')).called(1);
-      expect(actual, expectedResult);
-    });
+        verify(mockRemoteDataSource.mealsDatails(id: '1')).called(1);
+        expect(actual, expectedResult);
+      },
+    );
 
     test('should return ApiError when remote data source fails', () async {
       final expectedError = ApiError<MealsDatailsResponse>(
@@ -49,8 +53,9 @@ void main() {
 
       provideDummy<ApiResult<MealsDatailsResponse>>(expectedError);
 
-      when(mockRemoteDataSource.mealsDatails(id: '1'))
-          .thenAnswer((_) async => expectedError);
+      when(
+        mockRemoteDataSource.mealsDatails(id: '1'),
+      ).thenAnswer((_) async => expectedError);
 
       final actual = await repository.mealsDatails(id: '1');
 

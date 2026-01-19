@@ -1,7 +1,7 @@
 import 'package:fitness_app/core/base/api_result.dart';
 import 'package:fitness_app/features/food/data/models/food_categories_response.dart';
-import 'package:fitness_app/features/home/home/data/models/RandomExerciseResponse.dart';
-import 'package:fitness_app/features/home/home/data/models/UserResponse.dart';
+import 'package:fitness_app/features/home/home/data/models/random_exercise_response.dart';
+import 'package:fitness_app/features/home/home/data/models/user_response.dart';
 import 'package:fitness_app/features/home/home/domain/repositories/home_repo.dart';
 import 'package:fitness_app/features/profile/domain/use_case/get_profile_data_use_case.dart';
 import 'package:fitness_app/features/workOuts/data/models/response/get_all_muscles_by_muscle_group_id_reponse.dart';
@@ -19,7 +19,8 @@ class HomeUseCase {
   HomeUseCase(
     this.homeRepo,
     this.getAllMusclesGroupsUseCase,
-    this.getAllMusclesByMuscleGroupIdUseCase, this.getProfileDataUseCase,
+    this.getAllMusclesByMuscleGroupIdUseCase,
+    this.getProfileDataUseCase,
   );
 
   Future<ApiResult<UserResponse>> getUserName() async {
@@ -34,9 +35,6 @@ class HomeUseCase {
     return await homeRepo.getMealsCategories();
   }
 
-  // Future<ApiResult<ExercisesResponse>> getAllExercises()async{
-  //   return await homeRepo.getAllExercises();
-  // }
   Future<ApiResult<GetAllMusclesGroupsReponse>> getAllMusclesGroups() async {
     return await getAllMusclesGroupsUseCase.invoke();
   }
