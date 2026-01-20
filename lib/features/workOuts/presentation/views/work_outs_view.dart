@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
@@ -78,63 +79,65 @@ class _WorkOutsViewState extends State<WorkOutsView>
                   muscles = state.response.muscles ?? [];
                 }
 
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 15),
-                      child: Text(
-                        context.loc.workOuts,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyle.instance.textStyle24.copyWith(
-                          color: AppColors.baseWhite,
-                          fontWeight: FontWeight.w600,
+                return AnimatedSlideInWidget(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: Text(
+                          context.loc.workOuts,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyle.instance.textStyle24.copyWith(
+                            color: AppColors.baseWhite,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                    if (context.read<WorkOutsCubit>().groups.isNotEmpty &&
-                        _tabController != null)
-                      SizedBox(
-                        height: 56,
-                        child: AppTabBar(
-                          controller: _tabController!,
-                          tabs:
-                              context
-                                  .read<WorkOutsCubit>()
-                                  .groups
-                                  .map((level) => Tab(text: level.name ?? ''))
-                                  .toList(),
+                      if (context.read<WorkOutsCubit>().groups.isNotEmpty &&
+                          _tabController != null)
+                        SizedBox(
+                          height: 56,
+                          child: AppTabBar(
+                            controller: _tabController!,
+                            tabs:
+                                context
+                                    .read<WorkOutsCubit>()
+                                    .groups
+                                    .map((level) => Tab(text: level.name ?? ''))
+                                    .toList(),
+                          ),
                         ),
-                      ),
-                    const SizedBox(height: 8),
-                    Expanded(
-                      child:
-                          state is WorkOutsByIdSuccess
-                              ? GridView.builder(
-                                itemCount: muscles.length,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 20,
-                                      mainAxisSpacing: 20,
-                                    ),
-                                itemBuilder: (context, index) {
-                                  return GridViewItem(
-                                    name: muscles[index].name ?? '',
-                                    image: muscles[index].image ?? '',
-                                    muscle: state.response.muscles![index],
-                                  );
-                                },
-                              )
-                              : state is WorkOutsByIdFailure
-                              ? Center(child: Text(state.error))
-                              : const Center(
-                                child: CircularProgressIndicator(
-                                  color: AppColors.mainRed,
+                      const SizedBox(height: 8),
+                      Expanded(
+                        child:
+                            state is WorkOutsByIdSuccess
+                                ? GridView.builder(
+                                  itemCount: muscles.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        crossAxisSpacing: 20,
+                                        mainAxisSpacing: 20,
+                                      ),
+                                  itemBuilder: (context, index) {
+                                    return GridViewItem(
+                                      name: muscles[index].name ?? '',
+                                      image: muscles[index].image ?? '',
+                                      muscle: state.response.muscles![index],
+                                    );
+                                  },
+                                )
+                                : state is WorkOutsByIdFailure
+                                ? Center(child: Text(state.error))
+                                : const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.mainRed,
+                                  ),
                                 ),
-                              ),
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 );
               },
             ),

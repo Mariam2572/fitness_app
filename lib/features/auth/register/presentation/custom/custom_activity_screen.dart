@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/enums/activity_enum.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
@@ -46,56 +47,64 @@ class _CustomActivtiesScreenState extends State<CustomActivtiesScreen> {
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.red,
-                          child: IconButton(
-                            onPressed: () => Navigator.pop(context),
-                            icon: const Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
+                child: AnimatedSlideInWidget(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.red,
+                            child: IconButton(
+                              onPressed: () => Navigator.pop(context),
+                              icon: const Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                        ),
-                        Image.asset(AppAssets.fit, width: 80),
-                      ],
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    widget.isEditProfile
-                        ? const SizedBox()
-                        : const CircularPercentIndicatorWidget(
-                          currentStep: 6,
-                          totalSteps: 6,
-                        ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                    Text(
-                      context.loc.your_regular,
-                      style: AppTextStyle.instance.textStyle20.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                          ),
+                          Image.asset(AppAssets.fit, width: 80),
+                        ],
                       ),
-                    ),
-                    Text(
-                      context.loc.activity_level,
-                      style: AppTextStyle.instance.textStyle20.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.08,
                       ),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                    ActivitySelectionWidget(
-                      initialActivity: selectedActivity,
-                      isEditProfile: widget.isEditProfile,
-                      onActivitySelected: _onActivitySelected,
-                    ),
-                  ],
+                      widget.isEditProfile
+                          ? const SizedBox()
+                          : const CircularPercentIndicatorWidget(
+                            currentStep: 6,
+                            totalSteps: 6,
+                          ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                      ),
+                      Text(
+                        context.loc.your_regular,
+                        style: AppTextStyle.instance.textStyle20.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Text(
+                        context.loc.activity_level,
+                        style: AppTextStyle.instance.textStyle20.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                      ),
+                      ActivitySelectionWidget(
+                        initialActivity: selectedActivity,
+                        isEditProfile: widget.isEditProfile,
+                        onActivitySelected: _onActivitySelected,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

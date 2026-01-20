@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/widgets/build_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class CompleteRegisterationAppBarAndBackgroundSection extends StatelessWidget {
             title: Image.asset(AppAssets.logo, fit: BoxFit.fill),
             context: context,
           ),
-          body: body,
+          body: AnimatedSlideInWidget(child: body),
         ),
       ],
     );

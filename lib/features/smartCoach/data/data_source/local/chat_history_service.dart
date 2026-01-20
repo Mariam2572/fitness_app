@@ -1,5 +1,6 @@
 import 'package:fitness_app/features/smartCoach/data/models/conversation_hive_model.dart';
 import 'package:fitness_app/features/smartCoach/data/repo/chat_history_repo.dart';
+import 'dart:developer';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,10 +13,18 @@ class ChatHistoryServiceImpl implements ChatHistoryService {
   Future<void> init() async {
     if (_box != null && _box!.isOpen) return;
 
-    if (!Hive.isBoxOpen(_boxName)) {
+    try {
+      if (!Hive.isBoxOpen(_boxName)) {
+        _box = await Hive.openBox<ConversationHiveModel>(_boxName);
+      } else {
+        _box = Hive.box<ConversationHiveModel>(_boxName);
+      }
+    } catch (e) {
+      // If model schema changed or stored data is corrupt (e.g. a null where a non-null String is expected),
+      // Hive may throw during box open. Recover by resetting the local box.
+      log('ChatHistoryService init: failed to open box $_boxName, resetting. Error: $e');
+      await Hive.deleteBoxFromDisk(_boxName);
       _box = await Hive.openBox<ConversationHiveModel>(_boxName);
-    } else {
-      _box = Hive.box<ConversationHiveModel>(_boxName);
     }
   }
 

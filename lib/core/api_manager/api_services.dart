@@ -24,7 +24,6 @@ import 'package:fitness_app/features/exercise/data/models/levels_by_muscles_mode
 import 'package:fitness_app/features/foodDetails/data/model/meals_datails_response/meals_datails_response.dart';
 import 'package:fitness_app/features/home/home/data/models/random_exercise_response.dart';
 import 'package:fitness_app/features/home/home/data/models/user_response.dart';
-
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 

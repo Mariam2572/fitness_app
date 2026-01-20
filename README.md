@@ -353,4 +353,3 @@ flutter test --coverage
 
 ---
 
-**Built with ❤️ using Flutter**

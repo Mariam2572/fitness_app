@@ -64,9 +64,9 @@ class MealHeader extends StatelessWidget {
                 maxLines: 2,
               ),
               const SizedBox(height: 16),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   NutrientBoxWidget(value: '100 K', label: 'Energy'),
                   NutrientBoxWidget(value: '15 G', label: 'Protein'),
                   NutrientBoxWidget(value: '58 G', label: 'Carbs'),

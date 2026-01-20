@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_text_style.dart';
@@ -57,58 +58,69 @@ class _CustomGoalsScreenState extends State<CustomGoalsScreen> {
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: const CircleAvatar(
-                            backgroundColor: Colors.red,
-                            child: Icon(Icons.arrow_back, color: Colors.white),
+                child: AnimatedSlideInWidget(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: const CircleAvatar(
+                              backgroundColor: Colors.red,
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                        ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                          ),
 
-                        Image.asset(AppAssets.fit, width: 80),
-                      ],
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                    widget.isEditProfile
-                        ? const SizedBox()
-                        : const CircularPercentIndicatorWidget(
-                          currentStep: 5,
-                          totalSteps: 6,
+                          Image.asset(AppAssets.fit, width: 80),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.08,
+                      ),
+                      widget.isEditProfile
+                          ? const SizedBox()
+                          : const CircularPercentIndicatorWidget(
+                            currentStep: 5,
+                            totalSteps: 6,
+                          ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                      ),
+                      Text(
+                        context.loc.whatsYourGoal,
+                        style: AppTextStyle.instance.textStyle20.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
                         ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                    Text(
-                      'context.loc.whatsYourGoal',
-                      style: AppTextStyle.instance.textStyle20.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
                       ),
-                    ),
-                    Text(
-                      context.loc.thisHelpsUsCreateYourPersonalizedPlan,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyle.instance.textStyle16.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
+                      Text(
+                        context.loc.thisHelpsUsCreateYourPersonalizedPlan,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.instance.textStyle16.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                    GoalSelectionWidget(
-                      isEditProfile: widget.isEditProfile,
-                      initialGoal: selectedGoal,
-                      onGoalSelected: _onGoalSelected,
-                      onPressed: widget.onPressed,
-                    ),
-                  ],
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                      ),
+                      GoalSelectionWidget(
+                        isEditProfile: widget.isEditProfile,
+                        initialGoal: selectedGoal,
+                        onGoalSelected: _onGoalSelected,
+                        onPressed: widget.onPressed,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

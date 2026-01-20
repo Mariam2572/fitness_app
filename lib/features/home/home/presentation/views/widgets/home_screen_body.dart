@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/features/home/home/presentation/view_model/cubit/home_view_cubit.dart';
 import 'package:fitness_app/features/home/home/presentation/views/widgets/categories/categories_section.dart';
@@ -34,36 +35,38 @@ class HomeScreenBody extends StatelessWidget {
           child: SafeArea(
             child: SingleChildScrollView(
               padding: REdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  HomeHeaderSection(),
-              
-                  SizedBox(height: 24),
-              
-                  // Categories Section
-                  CategoriesSection(),
-              
-                  SizedBox(height: 24),
-              
-                  // Workout Recommendations Section
-                  WorkoutRecommendationsSection(),
-              
-                  SizedBox(height: 24),
-              
-                  // Muscles Groups/Upcoming Workouts Section
-                  MusclesGroupsSection(),
-              
-                  SizedBox(height: 24),
-              
-                  // Meals Recommendations Section
-                  MealsRecommendationsSection(),
-              
-                  SizedBox(height: 24),
-              
-                  // Popular Training Section
-                  PopularTrainingSection(),
-                ],
+              child: AnimatedSlideInWidget(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    HomeHeaderSection(),
+
+                    SizedBox(height: 24),
+
+                    // Categories Section
+                    CategoriesSection(),
+
+                    SizedBox(height: 24),
+
+                    // Workout Recommendations Section
+                    WorkoutRecommendationsSection(),
+
+                    SizedBox(height: 24),
+
+                    // Muscles Groups/Upcoming Workouts Section
+                    MusclesGroupsSection(),
+
+                    SizedBox(height: 24),
+
+                    // Meals Recommendations Section
+                    MealsRecommendationsSection(),
+
+                    SizedBox(height: 24),
+
+                    // Popular Training Section
+                    PopularTrainingSection(),
+                  ],
+                ),
               ),
             ),
           ),

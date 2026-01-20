@@ -236,12 +236,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i638.WorkOutsRepoImpl(gh<_i980.WorkOutsDataSource>()));
     gh.factory<_i283.ChangePasswordRemoteDataSource>(
         () => _i20.ChangePasswordRemoteDataSourceImpl(gh<_i785.ApiService>()));
-    gh.factory<_i1004.LogoutRepository>(() => _i885.LogoutRepositoryImpl(
-        remoteDataSource: gh<_i671.LogoutRemoteDataSource>(), localDataSource: gh<_i975.LogoutLocalDataSource>()));
     gh.factory<_i401.LoginUsecase>(
         () => _i401.LoginUsecase(loginRepo: gh<_i983.LoginRepo>()));
-    gh.factory<_i98.LogoutUseCase>(
-        () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()));
     gh.factory<_i129.EditProfileRepo>(
         () => _i98.EditProfileRepoImpl(gh<_i843.EditProfileDataSource>()));
     gh.factory<_i1004.LogoutRepository>(() => _i885.LogoutRepositoryImpl(
@@ -270,8 +266,6 @@ extension GetItInjectableX on _i174.GetIt {
         _i1072.ProfileRepositoryImpl(gh<_i998.ProfileRemoteDataSource>()));
     gh.factory<_i369.RegisterRepo>(
         () => _i566.RegisterRepoImpl(gh<_i992.RegisterDataSource>()));
-    gh.factory<_i401.LoginUsecase>(
-        () => _i401.LoginUsecase(loginRepo: gh<_i983.LoginRepo>()));
     gh.factory<_i793.ChangePasswordUseCase>(
         () => _i793.ChangePasswordUseCase(gh<_i760.ChangePasswordRepo>()));
     gh.factory<_i782.MealsDetailsCubit>(
@@ -297,8 +291,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
     gh.factory<_i98.LogoutUseCase>(
         () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()));
-    gh.factory<_i763.UploadPhoto>(
-        () => _i763.UploadPhoto(gh<_i1007.ProfileRepository>()));
     gh.factory<_i118.RegisterUseCase>(
         () => _i118.RegisterUseCase(gh<_i369.RegisterRepo>()));
     gh.factory<_i46.SmartCoachCubit>(() => _i46.SmartCoachCubit(

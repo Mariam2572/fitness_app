@@ -54,22 +54,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
               child: BlocConsumer<EditProfileCubit, ProfileState>(
-                listener: (context, state) {
-                  // if (state is UploadPhotoFailure) {
-                  //   showErrorSnackBar(context, state.error);
-                  // } else if (state is UploadPhotoSuccess) {
-                  //   showSnackBar(context, "Photo Upload Success");
-                  // } else if (state is ProfileSuccess) {
-                  //   showSnackBar(context, "Profile Edit Success");
-                  // } else if (state is ProfileFailure) {
-                  //   showSnackBar(context, state.error);
-                  // }
-                  // if (state is UploadPhotoSuccess) {
-                  //   showSnackBar(context, "Upload success");
-                  // } else if (state is UploadPhotoFailure) {
-                  //   showErrorSnackBar(context, state.error);
-                  // }
-                },
+                listener: (context, state) {},
                 builder: (context, state) {
                   if (state is ProfileSuccess) {
                     return SingleChildScrollView(
@@ -83,7 +68,8 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                               bottom: context.padding.bottom + 25.0,
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
                                   onTap: () => Navigator.pop(context),
@@ -134,32 +120,6 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                             value:
                                 "${editProfileCubit.weight} ${context.loc.kg}",
                           ),
-                          // responsiveHeight(context, 0.010),
-                          // TapToEditWidget(
-                          //   onPressed: () {
-                          //     Navigator.pushNamed(
-                          //       context,
-                          //       RoutesName.editHeight,
-                          //       arguments: context.read<EditProfileCubit>(),
-                          //     );
-                          //   },
-                          //   title: context.loc.yourHeight,
-                          //   value:
-                          //       "${editProfileCubit.height} ${context.loc.cm}",
-                          // ),
-                          // responsiveHeight(context, 0.010),
-                          // TapToEditWidget(
-                          //   onPressed: () {
-                          //     Navigator.pushNamed(
-                          //       context,
-                          //       RoutesName.editAge,
-                          //       arguments: context.read<EditProfileCubit>(),
-                          //     );
-                          //   },
-                          //   title: context.loc.yourAge,
-                          //   value:
-                          //       "${editProfileCubit.age} ${context.loc.year}",
-                          // ),
                           responsiveHeight(context, 0.010),
                           TapToEditWidget(
                             onPressed: () {
@@ -187,18 +147,6 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                             ),
                           ),
                           responsiveHeight(context, 0.010),
-                          // TapToEditWidget(
-                          //   onPressed: () {
-                          //     Navigator.pushNamed(
-                          //       context,
-                          //       RoutesName.editGender,
-                          //       arguments: context.read<EditProfileCubit>(),
-                          //     );
-                          //   },
-                          //   title: context.loc.yourGender,
-                          //   value: EditProfileCubit.selectedGender.name,
-                          // ),
-                          // responsiveHeight(context, 0.010),
                         ],
                       ),
                     );
@@ -206,17 +154,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     return const Center(
                       child: CircularProgressIndicator(color: Colors.white),
                     );
-                  }
-                  // else if (state is UploadPhotoSuccess) {
-                  //   return const Center(child: Text("Succsss"));
-                  // } else if (state is UploadPhotoFailure) {
-                  //   return Center(child: Text(state.error));
-                  // }
-                  else {
+                  } else {
                     return Center(
                       child: TextButton(
                         onPressed: () {
-                          editProfileCubit.doIntent(GetLoggedUserDataIntent());
+                          editProfileCubit.doIntent(
+                            GetLoggedUserDataIntent(),
+                          );
                         },
                         child: const Text(
                           "try again",

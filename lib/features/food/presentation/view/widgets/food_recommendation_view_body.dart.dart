@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
@@ -43,8 +44,12 @@ class _FoodRecommendationViewBodyState extends State<FoodRecommendationViewBody>
       backgroundColor: Colors.black.withValues(alpha: 0.85),
       body: Stack(
         children: [
-          Image.asset(AppAssets.homeBackground,
-           fit: BoxFit.fill, height: double.infinity, width: double.infinity,),
+          Image.asset(
+            AppAssets.homeBackground,
+            fit: BoxFit.fill,
+            height: double.infinity,
+            width: double.infinity,
+          ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -85,54 +90,57 @@ class _FoodRecommendationViewBodyState extends State<FoodRecommendationViewBody>
                   }
                 },
 
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: SvgPicture.asset(AppAssets.backIcon),
-                        ),
-                        const SizedBox(width: 16),
-                        Text(
-                          context.loc.foodRecommendation,
-                          style: context.textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.w900,
+                child: AnimatedSlideInWidget(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: SvgPicture.asset(AppAssets.backIcon),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    if (_tabs.isNotEmpty && _tabController != null)
-                      AppTabBar(
-                        controller: _tabController!,
-                        tabs:
-                            _tabs
-                                .map(
-                                  (level) => Tab(text: level.strCategory ?? ''),
-                                )
-                                .toList(),
+                          const SizedBox(width: 16),
+                          Text(
+                            context.loc.foodRecommendation,
+                            style: context.textTheme.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ],
                       ),
-                    Expanded(
-                      child:
-                          _tabs.isEmpty
-                              ? const Center(
-                                child: CircularProgressIndicator(
-                                  color: AppColors.mainRed,
+                      const SizedBox(height: 10),
+                      if (_tabs.isNotEmpty && _tabController != null)
+                        AppTabBar(
+                          controller: _tabController!,
+                          tabs:
+                              _tabs
+                                  .map(
+                                    (level) =>
+                                        Tab(text: level.strCategory ?? ''),
+                                  )
+                                  .toList(),
+                        ),
+                      Expanded(
+                        child:
+                            _tabs.isEmpty
+                                ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.mainRed,
+                                  ),
+                                )
+                                : TabBarView(
+                                  controller: _tabController,
+                                  children:
+                                      _tabs
+                                          .map(
+                                            (cat) => const MealsByCategoryTab(),
+                                          )
+                                          .toList(),
                                 ),
-                              )
-                              : TabBarView(
-                                controller: _tabController,
-                                children:
-                                    _tabs
-                                        .map(
-                                          (cat) => const MealsByCategoryTab(),
-                                        )
-                                        .toList(),
-                              ),
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

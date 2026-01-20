@@ -1,3 +1,5 @@
+import 'package:fitness_app/core/animation/page_fade_transition.dart';
+import 'package:fitness_app/core/animation/page_slide_transition.dart';
 import 'package:fitness_app/core/config/di.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/features/auth/forget_password/presentation/views/forget_password_screen.dart';
@@ -19,10 +21,6 @@ import 'package:fitness_app/features/auth/register/presentation/screens/choose_a
 import 'package:fitness_app/features/auth/register/presentation/screens/choose_gender_screen.dart';
 import 'package:fitness_app/features/auth/register/presentation/views/register_sreen.dart';
 import 'package:fitness_app/features/exercise/presentation/views/exercise_view.dart';
-import 'package:fitness_app/features/food/domain/usecases/get_food_categories_usecase.dart';
-import 'package:fitness_app/features/food/domain/usecases/get_meals_of_category_usecase.dart';
-import 'package:fitness_app/features/food/presentation/view%20model/food_cubit.dart';
-import 'package:fitness_app/features/food/presentation/view/food_recommendation_page.dart';
 import 'package:fitness_app/features/food/presentation/view/food_recommendation_view.dart';
 import 'package:fitness_app/features/foodDetails/presentation/view/meals_details_screen.dart';
 import 'package:fitness_app/features/home/home/presentation/views/home_screen.dart';
@@ -54,257 +52,249 @@ class RoutesGenerator {
     switch (settings.name) {
       case RoutesName.register:
         final cubit = RegisterCubit(getIt<RegisterUseCase>());
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(value: cubit, child: RegisterScreen()),
+        return PageSlideTransition(
+          page: BlocProvider.value(value: cubit, child: RegisterScreen()),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.forgetPassword:
-        return MaterialPageRoute(
-          builder: (context) => ForgetPasswordScreen(),
+        return PageSlideTransition(
+          page: ForgetPasswordScreen(),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.verifyCode:
-        return MaterialPageRoute(
-          builder: (context) => VerificationScreen(),
+        // Use fade transition for verification (dialog-like)
+        return PageFadeTransition(
+          page: VerificationScreen(),
           settings: settings,
         );
       case RoutesName.resetPaswword:
-        return MaterialPageRoute(
-          builder: (context) => ResetPasswordScreen(),
+        // Use fade transition for reset password (confirmation screen)
+        return PageFadeTransition(
+          page: ResetPasswordScreen(),
           settings: settings,
         );
       case RoutesName.goals:
         final cubit = settings.arguments as RegisterCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) =>
-                  BlocProvider.value(value: cubit, child: const GoalsScreen()),
+        return PageSlideTransition(
+          page: BlocProvider.value(value: cubit, child: const GoalsScreen()),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
-
       case RoutesName.chooseGenderScreen:
         final cubit = settings.arguments as RegisterCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const ChooseGenderScreen(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider.value(
+            value: cubit,
+            child: const ChooseGenderScreen(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.chooseAgeScreen:
         final cubit = settings.arguments as RegisterCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const ChooseAgeScreen(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider.value(
+            value: cubit,
+            child: const ChooseAgeScreen(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.chooseWeightScreen:
         final cubit = settings.arguments as RegisterCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const ChooseWeightScreen(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider.value(
+            value: cubit,
+            child: const ChooseWeightScreen(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.chooseHeightScreen:
         final cubit = settings.arguments as RegisterCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const ChooseHeightScreen(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider.value(
+            value: cubit,
+            child: const ChooseHeightScreen(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.activities:
         final cubit = settings.arguments as RegisterCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const ActivtiesScreen(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider.value(
+            value: cubit,
+            child: const ActivtiesScreen(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.editGender:
         final cubit = settings.arguments as EditProfileCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) =>
-                  BlocProvider.value(value: cubit, child: const EditGender()),
+        return PageSlideTransition(
+          page: BlocProvider.value(value: cubit, child: const EditGender()),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.editActivityLevel:
         final cubit = settings.arguments as EditProfileCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(
-                value: cubit,
-                child: const EditActivityLevel(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider.value(
+            value: cubit,
+            child: const EditActivityLevel(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.editAge:
         final cubit = settings.arguments as EditProfileCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(value: cubit, child: const EditAge()),
+        return PageSlideTransition(
+          page: BlocProvider.value(value: cubit, child: const EditAge()),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.editGoals:
         final cubit = settings.arguments as EditProfileCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) => BlocProvider.value(value: cubit, child: const EditGoals()),
+        return PageSlideTransition(
+          page: BlocProvider.value(value: cubit, child: const EditGoals()),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.editWeight:
         final cubit = settings.arguments as EditProfileCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) =>
-                  BlocProvider.value(value: cubit, child: const EditWeight()),
+        return PageSlideTransition(
+          page: BlocProvider.value(value: cubit, child: const EditWeight()),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.editHeight:
         final cubit = settings.arguments as EditProfileCubit;
-        return MaterialPageRoute(
-          builder:
-              (_) =>
-                  BlocProvider.value(value: cubit, child: const EditHeigth()),
+        return PageSlideTransition(
+          page: BlocProvider.value(value: cubit, child: const EditHeigth()),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.onBoardingOne:
-        return MaterialPageRoute(
-          builder: (context) => const OnBoardingScreen(),
+        return PageSlideTransition(
+          page: const OnBoardingScreen(),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.splash:
-        return MaterialPageRoute(
-          builder: (context) => const SplashView(),
+        return PageSlideTransition(
+          page: const SplashView(),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.login:
-        return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
-                create: (context) => LoginCubit(getIt<LoginUsecase>()),
-                child: const LoginScreen(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider(
+            create: (context) => LoginCubit(getIt<LoginUsecase>()),
+            child: const LoginScreen(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.layOut:
-        return MaterialPageRoute(
-          builder: (context) => LayOut(),
+        return PageSlideTransition(
+          page: LayOut(),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.home:
-        return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+        return PageSlideTransition(
+          page: const HomeScreen(),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       // case RoutesName.previousChatScreen:
       //   final args = settings.arguments as Map<String, dynamic>;
-      //   return MaterialPageRoute(
-      //     builder:
-      //         (context) => PreviousConversationsScreen(
-      //           onConversationSelected: args['onConversationSelected'],
-      //         ),
-      //     settings: settings,
+      //   return PageSlideTransition(
+      //     page: PreviousConversationsScreen(
+      //       onConversationSelected: args['onConversationSelected'],
+      //     ),
+      //     direction: AxisDirection.left,
       //   );
 
       case RoutesName.profile:
-        return MaterialPageRoute(
-          builder: (context) => const ProfileView(),
+        return PageSlideTransition(
+          page: const ProfileView(),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.workouts:
-        return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
-                create:
-                    (context) => WorkOutsCubit(
-                      getIt<GetAllMusclesGroupsUseCase>(),
-                      getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
-                    )..doIntent(GetAllMusclesGroupsIntent()),
-                child: const WorkOutsView(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider(
+            create:
+                (context) => WorkOutsCubit(
+                  getIt<GetAllMusclesGroupsUseCase>(),
+                  getIt<GetAllMusclesByMuscleGroupIdUseCase>(),
+                )..doIntent(GetAllMusclesGroupsIntent()),
+            child: const WorkOutsView(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.smartCoach:
-        return MaterialPageRoute(
-          builder: (context) => const SmartCoachView(),
+        return PageSlideTransition(
+          page: const SmartCoachView(),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.exerciseView:
-        return MaterialPageRoute(
-          builder: (context) => const ExerciseView(),
+        return PageSlideTransition(
+          page: const ExerciseView(),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.food:
-        return MaterialPageRoute(
-          builder: (context) => const FoodRecommendationView(),
+        return PageSlideTransition(
+          page: const FoodRecommendationView(),
+          direction: AxisDirection.left,
           settings: settings,
         );
 
       case RoutesName.mealsDetailsScreen:
-        return MaterialPageRoute(
-          builder: (context) => const MealsDetailsScreen(),
+        return PageSlideTransition(
+          page: const MealsDetailsScreen(),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.changePassword:
-        return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
-                create:
-                    (_) => ChangePasswordCubit(getIt<ChangePasswordUseCase>()),
-                child: const ChangePasswordScreen(),
-              ),
-          settings: settings,
-        );
-      case RoutesName.food:
-        return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
-                create:
-                    (context) => FoodCubit(
-                      getIt<GetFoodCategoriesUseCase>(),
-                      getIt<GetMealsByCategoryUseCase>(),
-                    ),
-                child: const FoodRecommendationPage(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider(
+            create: (_) => ChangePasswordCubit(getIt<ChangePasswordUseCase>()),
+            child: const ChangePasswordScreen(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
       case RoutesName.editProfile:
-        return MaterialPageRoute(
-          builder:
-              (context) => BlocProvider(
-                create:
-                    (context) => EditProfileCubit(
-                      getIt<EditProfileUseCase>(),
-                      getIt<GetLoggedUserDataUseCase>(),
-                      getIt<UploadPhotoUseCase>(),
-                    )..doIntent(GetLoggedUserDataIntent()),
-                child: const EditProfileView(),
-              ),
+        return PageSlideTransition(
+          page: BlocProvider(
+            create:
+                (context) => EditProfileCubit(
+                  getIt<EditProfileUseCase>(),
+                  getIt<GetLoggedUserDataUseCase>(),
+                  getIt<UploadPhotoUseCase>(),
+                )..doIntent(GetLoggedUserDataIntent()),
+            child: const EditProfileView(),
+          ),
+          direction: AxisDirection.left,
           settings: settings,
         );
       default:

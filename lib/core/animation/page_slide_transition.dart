@@ -4,11 +4,14 @@ class PageSlideTransition extends PageRouteBuilder {
   final Widget page;
   final AxisDirection direction;
 
-  PageSlideTransition({required this.page, required this.direction})
-    : super(
-        transitionDuration: const Duration(milliseconds: 500),
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-      );
+  PageSlideTransition({
+    required this.page,
+    required this.direction,
+    super.settings,
+  }) : super(
+         transitionDuration: const Duration(milliseconds: 500),
+         pageBuilder: (context, animation, secondaryAnimation) => page,
+       );
 
   @override
   Widget buildTransitions(context, animation, secondaryAnimation, child) {

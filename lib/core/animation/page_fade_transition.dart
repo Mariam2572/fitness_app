@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class PageFadeTransition extends PageRouteBuilder {
   final Widget page;
 
-  PageFadeTransition({required this.page})
+  PageFadeTransition({required this.page, super.settings})
     : super(
         transitionDuration: const Duration(seconds: 2),
         pageBuilder: (context, animation, secondaryAnimation) => page,

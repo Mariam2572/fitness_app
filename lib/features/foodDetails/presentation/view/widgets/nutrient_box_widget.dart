@@ -40,11 +40,13 @@ class NutrientBoxWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(
-                  label,
-                  style: AppTextStyle.instance.textStyle12.copyWith(
-                    color: AppColors.mainRed,
-                    fontWeight: FontWeight.w700,
+                Expanded(
+                  child: Text(
+                    label,
+                    style: AppTextStyle.instance.textStyle12.copyWith(
+                      color: AppColors.mainRed,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],

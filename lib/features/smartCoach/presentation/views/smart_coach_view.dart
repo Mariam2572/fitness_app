@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/smartCoach/data/models/message_model.dart';
 import 'package:fitness_app/features/smartCoach/presentation/cubit/smart_coach_cubit.dart';
@@ -23,10 +24,10 @@ class _SmartCoachViewState extends State<SmartCoachView> {
   @override
   void initState() {
     super.initState();
-      context.read<SmartCoachCubit>().initialize(
-        conversationId: widget.conversationId,
-        initialMessages: widget.initialMessages,
-      );
+    context.read<SmartCoachCubit>().initialize(
+      conversationId: widget.conversationId,
+      initialMessages: widget.initialMessages,
+    );
   }
 
   @override
@@ -57,26 +58,28 @@ class _SmartCoachViewState extends State<SmartCoachView> {
           const SmartCoachBackground(),
           Padding(
             padding: const EdgeInsets.only(top: 100),
-            child: Column(
-              children: [
-                Expanded(
-                  child: BlocListener<SmartCoachCubit, SmartCoachState>(
-                    listener: (context, state) {
-                      if (state.errorMessage != null &&
-                          state.status == SmartCoachStatus.failure) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Error: ${state.errorMessage}"),
-                            backgroundColor: AppColors.mainRed,
-                          ),
-                        );
-                      }
-                    },
-                    child: const SmartCoachChatList(),
+            child: AnimatedSlideInWidget(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: BlocListener<SmartCoachCubit, SmartCoachState>(
+                      listener: (context, state) {
+                        if (state.errorMessage != null &&
+                            state.status == SmartCoachStatus.failure) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Error: ${state.errorMessage}"),
+                              backgroundColor: AppColors.mainRed,
+                            ),
+                          );
+                        }
+                      },
+                      child: const SmartCoachChatList(),
+                    ),
                   ),
-                ),
-                const SmartCoachInputArea(),
-              ],
+                  const SmartCoachInputArea(),
+                ],
+              ),
             ),
           ),
         ],

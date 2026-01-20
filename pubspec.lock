@@ -18,21 +18,13 @@ packages:
     source: hosted
     version: "1.3.59"
   analyzer:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: analyzer
       sha256: "37577842a27e4338429a1cbc32679d508836510b056f1eedf0c8d20e39c1383d"
       url: "https://pub.dev"
     source: hosted
     version: "6.4.1"
-  ansi:
-    dependency: transitive
-    description:
-      name: ansi
-      sha256: "070af96189f9da6f996cee46049682bdcd1d191b483e13f9d2a2600729d8b2a1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.2"
   archive:
     dependency: transitive
     description:
@@ -169,14 +161,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
-  change_case:
-    dependency: transitive
-    description:
-      name: change_case
-      sha256: f4e08feaa845e75e4f5ad2b0e15f24813d7ea6c27e7b78252f0c17f752cf1157
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   characters:
     dependency: transitive
     description:
@@ -257,14 +241,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
-  commitlint_cli:
-    dependency: "direct dev"
-    description:
-      name: commitlint_cli
-      sha256: "7882210129f2616d4899ad85073a75ef293deac693dd6f7dc4f0492b0758322b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.8.1"
   convert:
     dependency: transitive
     description:
@@ -1297,10 +1273,10 @@ packages:
     dependency: "direct main"
     description:
       name: retrofit
-      sha256: "0f629ed26b2c48c66fe54bd548313c6fdf7955be18bff37e08a46dd3f97f8eaf"
+      sha256: "661ec56ecb891dfb8bbfad40827ad012daca7c69d6693b1703d72eb1ae1a5ec5"
       url: "https://pub.dev"
     source: hosted
-    version: "4.9.2"
+    version: "4.8.0"
   retrofit_generator:
     dependency: "direct dev"
     description:
@@ -1706,14 +1682,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
-  verbose:
-    dependency: transitive
-    description:
-      name: verbose
-      sha256: "8e63580e35d58a15e4fca702fe91766430b1d28738c160c466e5cb10c373002a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.1"
   vm_service:
     dependency: transitive
     description:

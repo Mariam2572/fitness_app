@@ -30,10 +30,11 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+
+  await configureDependencies();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await configureDependencies();
   final geminiService = getIt<GeminiService>();
   await geminiService.initialize();
   await Hive.initFlutter();
@@ -41,8 +42,8 @@ Future<void> main() async {
   Hive.registerAdapter(ChatMessageHiveModelAdapter());
   Bloc.observer = SimpleBlocObserver();
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => AppConfigProvider(),
+    ChangeNotifierProvider.value(
+  value: getIt<AppConfigProvider>(),
       child: const MyApp(),
     ),
   );

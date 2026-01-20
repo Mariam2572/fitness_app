@@ -1,3 +1,4 @@
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/helper/extention.dart';
 import 'package:fitness_app/core/utils/routes/routes_name.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
@@ -29,78 +30,84 @@ class ProfileBody extends StatelessWidget {
               ),
             ),
           ),
-          SafeArea(
-            child: BlocBuilder<ProfileCubit, ProfileState>(
-              builder: (context, state) {
-                if (state is ProfileLoading) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (state is ProfileSuccess) {
-                  final user = state.user;
-                  return Column(
-                    children: [
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+          RefreshIndicator(
+            onRefresh: () =>
+                context.read<ProfileCubit>().doIntent(LoadProfileIntent()),
+            child: SafeArea(
+              child: BlocBuilder<ProfileCubit, ProfileState>(
+                builder: (context, state) {
+                  if (state is ProfileLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is ProfileSuccess) {
+                    final user = state.user;
+                    return AnimatedSlideInWidget(
+                      child: Column(
                         children: [
-                          BuildBackButton(),
-                          SizedBox(width: 80),
-                          Text(
-                            'Profile',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              BuildBackButton(),
+                              SizedBox(width: 80),
+                              Text(
+                                'Profile',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          CircleAvatar(
+                            radius: 40,
+                            backgroundImage: NetworkImage(
+                              user?.user!.photo ??
+                                  'https://i.imgur.com/BoN9kdC.png',
                             ),
                           ),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                user?.user!.firstName ?? 'User Name',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Text("  "),
+                              Text(
+                                user?.user!.lastName ?? 'User Name',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+            
+                          const SizedBox(height: 24),
+                          _buildSettingsList(context),
                         ],
                       ),
-                      const SizedBox(height: 16),
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundImage: NetworkImage(
-                          user?.user!.photo ??
-                              'https://i.imgur.com/BoN9kdC.png',
-                        ),
+                    );
+                  } else if (state is ProfileError) {
+                    return Center(
+                      child: Text(
+                        'Error: ${state.message}',
+                        style: const TextStyle(color: Colors.red),
                       ),
-                      const SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            user?.user!.firstName ?? 'User Name',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const Text("  "),
-                          Text(
-                            user?.user!.lastName ?? 'User Name',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      const SizedBox(height: 24),
-                      _buildSettingsList(context),
-                    ],
-                  );
-                } else if (state is ProfileError) {
-                  return Center(
-                    child: Text(
-                      'Error: ${state.message}',
-                      style: const TextStyle(color: Colors.red),
-                    ),
-                  );
-                }
-
-                return const SizedBox.shrink();
-              },
+                    );
+                  }
+            
+                  return const SizedBox.shrink();
+                },
+              ),
             ),
           ),
         ],

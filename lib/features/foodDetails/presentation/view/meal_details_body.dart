@@ -1,4 +1,4 @@
-
+import 'package:fitness_app/core/animation/animated_widgets.dart';
 import 'package:fitness_app/core/utils/theme/app_assets.dart';
 import 'package:fitness_app/core/utils/theme/app_colors.dart';
 import 'package:fitness_app/features/food/data/models/meals_of_category_response.dart';
@@ -48,30 +48,34 @@ class MealsDetailsBody extends StatelessWidget {
                   errorMessage = state.error;
                 }
 
-                return SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      MealHeader(meal: meal),
-                      Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 16),
-                            IngredientsSection(meal: meal),
-                            const SizedBox(height: 16),
-                            RecommendationsSection(meals: meals),
-                            if (errorMessage != null) ...[
+                return AnimatedSlideInWidget(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        MealHeader(meal: meal),
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            children: [
                               const SizedBox(height: 16),
-                              Text(
-                                errorMessage,
-                                style: const TextStyle(color: Colors.redAccent),
-                              ),
+                              IngredientsSection(meal: meal),
+                              const SizedBox(height: 16),
+                              RecommendationsSection(meals: meals),
+                              if (errorMessage != null) ...[
+                                const SizedBox(height: 16),
+                                Text(
+                                  errorMessage,
+                                  style: const TextStyle(
+                                    color: Colors.redAccent,
+                                  ),
+                                ),
+                              ],
                             ],
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },
