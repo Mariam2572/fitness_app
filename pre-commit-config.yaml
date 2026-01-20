@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: flutter-lint
+        name: Flutter Lint
+        entry: bash -c 'flutter pub get && flutter format . && flutter analyze'
+        language: system
+        types: [dart]

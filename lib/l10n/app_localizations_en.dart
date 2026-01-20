@@ -1,0 +1,338 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for English (`en`).
+class AppLocalizationsEn extends AppLocalizations {
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get heyThere => 'Hey there!';
+
+  @override
+  String get welcomeBack => 'Welcome back!';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get createAccount => 'Create an account';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get tellUsAboutYourSelf => 'Tell us about yourself!';
+
+  @override
+  String get weNeedToKnowYourGender => 'We Need To Know Your Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get howOldAreYou => 'How old are you?';
+
+  @override
+  String get thisHelpsUsCreateYourPersonalizedPlan =>
+      'This helps us create your personalized plan';
+
+  @override
+  String get whatIsYourWeight => 'What is your weight?';
+
+  @override
+  String get whatIsYourHeight => 'What is your height?';
+
+  @override
+  String get pleaseSelectYourGender => 'Please select your gender';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get kg => 'kg';
+
+  @override
+  String get cm => 'CM';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get forgot_password => 'Forgot password?';
+
+  @override
+  String get first_name => 'First Name';
+
+  @override
+  String get last_name => 'Last Name';
+
+  @override
+  String get already_have_account => 'Already Have An Account?';
+
+  @override
+  String get your_regular => 'YOUR REGULAR PHYSICAL';
+
+  @override
+  String get activity_level => 'ACTIVITY LEVEL?';
+
+  @override
+  String get rookie => 'Rookie';
+
+  @override
+  String get beginner => 'Beginner';
+
+  @override
+  String get intermediate => 'Intermediate';
+
+  @override
+  String get advance => 'Advance';
+
+  @override
+  String get true_beast => 'True Beast';
+
+  @override
+  String get hey_there => 'Hey there!';
+
+  @override
+  String get welcom_back => 'Welcome back!';
+
+  @override
+  String get create_account => 'Create Account';
+
+  @override
+  String get forgetPassword => 'Forget Password?';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get smartChat => 'Smart Chat';
+
+  @override
+  String get workOuts => 'Workouts';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account yet ?';
+
+  @override
+  String get disciplineQuote => 'the price of excellence \n is discipline';
+
+  @override
+  String get onboardingText1 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get funFitness => 'Fitness has never been so \n much fun';
+
+  @override
+  String get onboardingText2 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get noMoreExcuses => 'NO MORE EXCUSES \n Do It Now';
+
+  @override
+  String get onboardingText3 =>
+      'Lorem ipsum dolor sit amet consectetur. Eu urna ut gravida quis id pretium purus. Mauris massa';
+
+  @override
+  String get doIt => 'Do It';
+
+  @override
+  String get enter_your_email => 'Enter your email';
+
+  @override
+  String get forget_password_title => 'Forget password';
+
+  @override
+  String get send_otp => 'Send OTP';
+
+  @override
+  String get otp_code => 'OTP CODE';
+
+  @override
+  String get enter_your_otp_check_your_email =>
+      'Enter Your OTP Check Your Email';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get didnt_receive_verficcation_code =>
+      'Didn\'t Receive Verification Code?';
+
+  @override
+  String get resend_code => 'Resend Code?';
+
+  @override
+  String get resend_code_in => 'resend code in';
+
+  @override
+  String get seconds => 'seconds';
+
+  @override
+  String get password_characters => 'make sure its 8 characters or more';
+
+  @override
+  String get create_new_password => 'Create New Password';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get email_sent_successfully => 'Email Sent Successfully!';
+
+  @override
+  String get anErrorOccurred => 'An error occurred , Please try later';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get confirmNewPassword => 'Confirm New Password';
+
+  @override
+  String get passwordChangedSuccessfully => 'Password changed successfully!';
+
+  @override
+  String get passwordsDoNotMatch =>
+      'New password and confirmation do not match';
+
+  @override
+  String get noResponse => ' No Response';
+
+  @override
+  String get logout_confirmation => 'Are you sure to close the Application ?';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get yourWeight => 'Your Weight';
+
+  @override
+  String get yourHeight => 'Your Height';
+
+  @override
+  String get yourAge => 'Your Age';
+
+  @override
+  String get yourGender => 'Your Gender';
+
+  @override
+  String get yourGoal => 'Your Goal';
+
+  @override
+  String get yourActivityLevel => 'Your Activity Level';
+
+  @override
+  String get tapToEdit => 'tap To Edit';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get recommendationsToday => 'Recommendations Today';
+
+  @override
+  String get upcomingWorkouts => 'Upcoming Workouts';
+
+  @override
+  String get seeAll => 'See All';
+
+  @override
+  String get recommendationsForYou => 'Recommendations For You';
+
+  @override
+  String get popularTraining => 'Popular Training';
+
+  @override
+  String get foodRecommendation => 'Food Recommendation';
+
+  @override
+  String get recommendation => 'Recommendation';
+
+  @override
+  String get whatsYourGoal => 'WHAT IS YOUR GOAL ?';
+
+  @override
+  String get gainWeight => 'Gain Weight';
+
+  @override
+  String get loseWeight => 'Lose Weight';
+
+  @override
+  String get getFitter => 'Get Fitter';
+
+  @override
+  String get gainMoreFlexibility => 'Gain More Flexibility';
+
+  @override
+  String get learnTheBasics => 'Learn The Basics';
+
+  @override
+  String get yourRegularPhysical => 'YOUR REGULAR PHYSICAL';
+
+  @override
+  String get activityLevel => 'ACTIVITY LEVEL?';
+
+  @override
+  String get registerSuccess => 'Registered Successefully!';
+
+  @override
+  String get bigenner => 'Beginner';
+
+  @override
+  String get trueBeast => 'True Beast';
+
+  @override
+  String get letsStartYourDay => 'Let\'s Start Your Day';
+
+  @override
+  String get unableToGetUserName => 'Unable to get user name';
+
+  @override
+  String get unknownError => 'unknownError occurred please try later';
+
+  @override
+  String get hi => 'hi';
+}

@@ -1,0 +1,49 @@
+name: Branch and PR Validation
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get branch name
+        id: extract_branch
+        run: |
+          echo "GITHUB_REF: $GITHUB_REF"
+          BRANCH_NAME=$(echo "${GITHUB_HEAD_REF:-${GITHUB_REF##*/}}" | tr '[:upper:]' '[:lower:]')
+          echo "Branch name: $BRANCH_NAME"
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
+      - name: Validate branch name
+        run: |
+          BRANCH_NAME="${{ steps.extract_branch.outputs.branch_name }}"
+          echo "Validating branch name: $BRANCH_NAME"
+
+          if [[ "$BRANCH_NAME" =~ ^(feature|bugfix|hotfix|release)/[a-z0-9\-]+$ ]]; then
+            echo " Branch name is valid."
+          else
+            echo " Invalid branch name. Must match: feature/, bugfix/, hotfix/, or release/ followed by lowercase letters, numbers, or hyphens."
+            exit 1
+          fi
+
+      - name: Validate PR title
+        if: github.event_name == 'pull_request'
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "Validating PR title: $PR_TITLE"
+
+          if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore):\ .+ ]]; then
+            echo " PR title is valid."
+          else
+            echo " Invalid PR title. Must follow Conventional Commits (e.g., 'feat: add login page')."
+            exit 1
+          fi

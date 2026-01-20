@@ -43,6 +43,13 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-# Environment variables
+# Generated dependency injection and API service files
+lib/core/api_manager/api_services.g.dart
+lib/core/config/di.config.dart
+# Local env file 
 .env
+# App Keys
+lib\core\utils\app_keys.dart
+
+
+
