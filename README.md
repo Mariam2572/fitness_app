@@ -238,68 +238,92 @@ test/
 
 ### Onboarding
 
-![Onboarding Screen 1](WhatsApp%20Image%202026-01-20%20at%203.30.41%20PM.jpeg)
-![Onboarding Screen 2](WhatsApp%20Image%202026-01-20%20at%203.30.42%20PM.jpeg)
-![Onboarding Screen 3](WhatsApp%20Image%202026-01-20%20at%203.30.42%20PM%20(1).jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.41 PM.jpeg" alt="Onboarding Screen 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.42 PM.jpeg" alt="Onboarding Screen 2" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.42 PM (1).jpeg" alt="Onboarding Screen 3" width="200"/>
+</div>
 
 ### Authentication
 
 #### Login
-![Login Screen](WhatsApp%20Image%202026-01-20%20at%203.30.43%20PM.jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.43 PM.jpeg" alt="Login Screen" width="200"/>
+</div>
 
 #### Registration
-![Register Screen 1](WhatsApp%20Image%202026-01-20%20at%203.30.47%20PM.jpeg)
-![Register Screen 2](WhatsApp%20Image%202026-01-20%20at%204.53.44%20PM.jpeg)
-![Register Screen 3](image-2.png)
-![Register Screen 4](WhatsApp%20Image%202026-01-20%20at%204.53.44%20PM%20(2).jpeg)
-![Register Screen 5](WhatsApp%20Image%202026-01-20%20at%204.53.45%20PM.jpeg)
-![Register Screen 6](WhatsApp%20Image%202026-01-20%20at%204.53.45%20PM%20(1).jpeg)
-![Register Screen 7](WhatsApp%20Image%202026-01-20%20at%204.53.45%20PM%20(2).jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.47 PM.jpeg" alt="Register Screen 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.53.44 PM.jpeg" alt="Register Screen 2" width="200"/>
+  <img src="image-2.png" alt="Register Screen 3" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.53.44 PM (2).jpeg" alt="Register Screen 4" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.53.45 PM.jpeg" alt="Register Screen 5" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.53.45 PM (1).jpeg" alt="Register Screen 6" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.53.45 PM (2).jpeg" alt="Register Screen 7" width="200"/>
+</div>
 
 #### Password Recovery
-![Forget Password Screen](WhatsApp%20Image%202026-01-20%20at%203.30.49%20PM%20(4).jpeg)
-![Reset Password Screen 1](WhatsApp%20Image%202026-01-20%20at%203.30.49%20PM%20(5).jpeg)
-![Reset Password Screen 2](WhatsApp%20Image%202026-01-20%20at%203.30.50%20PM.jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.49 PM (4).jpeg" alt="Forget Password Screen" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.49 PM (5).jpeg" alt="Reset Password Screen 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.50 PM.jpeg" alt="Reset Password Screen 2" width="200"/>
+</div>
 
 ### Home
 
-![Home Screen 1](image.png)
-![Home Screen 2](WhatsApp%20Image%202026-01-20%20at%204.40.13%20PM.jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="image.png" alt="Home Screen 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.40.13 PM.jpeg" alt="Home Screen 2" width="200"/>
+</div>
 
 ### Food Recommendations
 
-![Food Recommendation 1](WhatsApp%20Image%202026-01-20%20at%204.30.23%20PM.jpeg)
-![Food Recommendation 2](WhatsApp%20Image%202026-01-20%20at%204.30.23%20PM%20(1).jpeg)
-![Food Recommendation 3](WhatsApp%20Image%202026-01-20%20at%204.30.23%20PM%20(2).jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 4.30.23 PM.jpeg" alt="Food Recommendation 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.30.23 PM (1).jpeg" alt="Food Recommendation 2" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.30.23 PM (2).jpeg" alt="Food Recommendation 3" width="200"/>
+</div>
 
 ### AI Smart Coach
 
-![Smart Coach Screen 1](WhatsApp%20Image%202026-01-20%20at%203.30.46%20PM.jpeg)
-![Smart Coach Screen 2](WhatsApp%20Image%202026-01-20%20at%204.38.03%20PM.jpeg)
-![Smart Coach Screen 3](WhatsApp%20Image%202026-01-20%20at%204.38.03%20PM%20(1).jpeg)
-![Smart Coach Screen 4](WhatsApp%20Image%202026-01-20%20at%204.38.03%20PM%20(2).jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.46 PM.jpeg" alt="Smart Coach Screen 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.38.03 PM.jpeg" alt="Smart Coach Screen 2" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.38.03 PM (1).jpeg" alt="Smart Coach Screen 3" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 4.38.03 PM (2).jpeg" alt="Smart Coach Screen 4" width="200"/>
+</div>
 
 ### Workout Management
 
-![Workout View 1](WhatsApp%20Image%202026-01-20%20at%203.30.43%20PM%20(1).jpeg)
-![Workout View 2](WhatsApp%20Image%202026-01-20%20at%203.30.48%20PM%20(2).jpeg)
-![Workout View 3](WhatsApp%20Image%202026-01-20%20at%203.30.48%20PM%20(1).jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.43 PM (1).jpeg" alt="Workout View 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.48 PM (2).jpeg" alt="Workout View 2" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.48 PM (1).jpeg" alt="Workout View 3" width="200"/>
+</div>
 
 ### Profile
 
-![Profile Screen](WhatsApp%20Image%202026-01-20%20at%203.30.49%20PM%20(2).jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.49 PM (2).jpeg" alt="Profile Screen" width="200"/>
+</div>
 
 #### Edit Profile
-![Edit Profile 1](WhatsApp%20Image%202026-01-20%20at%203.30.49%20PM%20(1).jpeg)
-![Edit Profile 2](WhatsApp%20Image%202026-01-20%20at%203.30.49%20PM%20(3).jpeg)
-![Edit Profile 3](WhatsApp%20Image%202026-01-20%20at%203.30.48%20PM%20(3).jpeg)
-![Edit Profile 4](WhatsApp%20Image%202026-01-20%20at%203.30.49%20PM.jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.49 PM (1).jpeg" alt="Edit Profile 1" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.49 PM (3).jpeg" alt="Edit Profile 2" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.48 PM (3).jpeg" alt="Edit Profile 3" width="200"/>
+  <img src="WhatsApp Image 2026-01-20 at 3.30.49 PM.jpeg" alt="Edit Profile 4" width="200"/>
+</div>
 
 #### Change Password
-![Change Password Screen](WhatsApp%20Image%202026-01-20%20at%203.30.47%20PM%20(1).jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.47 PM (1).jpeg" alt="Change Password Screen" width="200"/>
+</div>
 
 #### Logout
-![Logout Screen](WhatsApp%20Image%202026-01-20%20at%203.30.48%20PM.jpeg)
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="WhatsApp Image 2026-01-20 at 3.30.48 PM.jpeg" alt="Logout Screen" width="200"/>
+</div>
 
 ## Getting Started
 
