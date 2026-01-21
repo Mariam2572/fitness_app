@@ -155,30 +155,23 @@ The Smart Coach feature uses `ConversationHiveModel` to store:
 
 This ensures a seamless user experience even when offline and provides fast access to previous coaching sessions.
 
-## Backend Services
+## Data Sources & APIs
 
-The application leverages **Firebase** as the primary backend infrastructure.
+The application relies on a robust set of RESTful APIs to provide a dynamic and personalized experience.
 
-### Firebase Services
+### Primary Backend API
+A custom REST API service handles the core application logic:
+- **Authentication**: Secure login, registration, and password management
+- **User Management**: Profile updates and user settings
+- **Exercise Data**: Comprehensive database of exercises, muscle groups, and workout routines
+- **Workout Logic**: Random workout generation and difficulty assessments
 
-1. **Firebase Authentication**
-   - Email/password authentication
-   - Secure user session management
-   - Password reset functionality
+### External Services
+- **TheMealDB API**: Provides an extensive collection of meal data, recipes, and ingredients for the nutrition features.
+- **Gemini API**: Powers the AI Smart Coach, enabling natural language interactions for personalized fitness and nutrition advice.
 
-2. **Cloud Firestore**
-   - Real-time database for user data
-   - Workout and meal information storage
-   - User profile synchronization
-
-3. **Firebase Core**
-   - Application initialization
-   - Platform-specific configurations
-
-### Additional Services
-
-- **Gemini API**: Powers the AI Smart Coach functionality
-- **RESTful API**: External API integration for exercise and meal data using Retrofit
+### Implementation
+API communication is handled using **Retrofit** and **Dio**, ensuring type-safe and efficient network requests with proper error handling and logging.
 
 ## CI/CD & Quality Assurance
 
@@ -331,8 +324,8 @@ test/
 
 - Flutter SDK (version 3.7.2 or higher)
 - Dart SDK
-- Firebase project setup
 - Gemini API key
+- Backend API Access
 
 ### Installation
 
@@ -347,15 +340,15 @@ cd fitness_app
 flutter pub get
 ```
 
-3. Configure Firebase:
-   - Add `firebase_options.dart` with your Firebase configuration
-   - Set up Firebase Authentication and Firestore
-
-4. Configure environment variables:
+3. Configure environment variables:
    - Create a `.env` file in the root directory
-   - Add your Gemini API key
+   - Add your Gemini API key and Base URL:
+     ```
+     GEMINI_API_KEY=your_api_key_here
+     BASE_URL=your_backend_url
+     ```
 
-5. Generate code:
+4. Generate code:
 ```bash
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
